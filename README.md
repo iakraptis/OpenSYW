@@ -1,6 +1,6 @@
 # OpenSY
 
-A remake of Seven Years War (Korea vs Japan) on the [OpenRA](https://github.com/OpenRA/OpenRA) engine.
+A remake of Seven Years War RTS (1997) on the [OpenRA](https://github.com/OpenRA/OpenRA) engine.
 
 ## Installing the game assets
 
@@ -20,6 +20,9 @@ The converted files are written into `mods/syw` and are ignored by git. Run the 
 mod. Options: `--list` shows the stages, `--only units,chrome` runs some of them, and `--write-yaml` updates the few
 generated YAML files kept in the repository (the FIELD3 tileset, crop sequences, cursors and menu fire regions). The
 converter is `OpenRA.Mods.Syw/AssetInstaller`; `mods/syw/install-manifest.txt` lists every file it wrote.
+
+## Original Game Description
+Seven Years War is based on the historical conflict between Korea and Japan in the late 16th century. Similar to other real-time strategy games the workers harvest vegetables which are used to construct buildings. In turn these are used to build walking, sailing or flying combat units which are used to defeat the enemy.
 
 ## Development environment
 
