@@ -40,6 +40,7 @@ ArrowShipBow:
 # original drops 6), power 90 each, with the cannon-type splash, then reloads. The bomber's three LocalOffsets place
 # them across its wings. Range 1 cell, so it must be nearly overhead; cooldown 100 (133 ticks).
 BomberBombs:
+	Report: bomb.wav
 	ReloadDelay: 133
 	Burst: 3
 	BurstDelays: 5
@@ -94,6 +95,7 @@ TorpedoBlast:
 			Concrete: 150
 		DamageTypes: DefaultDeath
 	Warhead@Explosion: CreateEffect
+		ImpactSounds: exp1.wav
 		Image: explosion
 		Explosions: cannon
 		ExplosionPalette: knight

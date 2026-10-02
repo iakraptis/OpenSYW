@@ -1,11 +1,15 @@
 # Vehicle chassis and turret use stock OpenRA traits. Timing/speed are initial
 # gameplay values; original dynamic armor/depletion and splash are not ported.
 ^syw-vehicle:
+	Voiced:
+		VoiceSet: MachineVoice
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
 	AttackMove:
+		Voice: Move
 	# Repair button (stats panel): +500 HP every second until fully healed; a full repair costs
 	# 50% of the unit's price, charged per step. Stops if the owner runs out of money.
 	RepairableBuilding:
+		RepairingNotification: Repairing
 		RepairPercent: 50
 		RepairInterval: 25
 		RepairStep: 500
@@ -31,6 +35,7 @@
 	RevealsShroud:
 		Range: 7c0
 	Mobile:
+		Voice: Move
 		Locomotor: wheeled
 		Speed: 65
 		TurnSpeed: 32
@@ -76,6 +81,7 @@
 	MapEditorData:
 		Categories: Vehicles
 	Passenger:
+		Voice: Move
 		CargoType: Vehicle
 		Weight: 2
 

@@ -5,6 +5,7 @@
 # Visual-only destruction effect; shared by all Korean buildings and towers.
 KoreanBuildingExplosion:
 	Warhead@Effect: CreateEffect
+		ImpactSounds: destroy1.wav
 		Image: explosion
 		Explosions: building
 		ExplosionPalette: knight
@@ -14,13 +15,21 @@ KoreanBuildingExplosion:
 # Visual-only destruction effect for vehicles (EXP.SPR group B, flash and smoke).
 VehicleExplosion:
 	Warhead@Effect: CreateEffect
+		ImpactSounds: exp1.wav
 		Image: explosion
 		Explosions: vehicle
 		ExplosionPalette: knight
 		ImpactActors: false
 		ValidTargets: Ground, Water
 
+# Ships go down with the sinking sound instead of the explosion.
+ShipExplosion:
+	Inherits: VehicleExplosion
+	Warhead@Effect: CreateEffect
+		ImpactSounds: sink.wav
+
 Bow:
+	Report: arrow1.wav
 	ReloadDelay: 27
 	Range: 5c0
 	ValidTargets: Ground, GroundActor
@@ -46,6 +55,7 @@ Bow:
 # Gunner's weapon, also the base of every gun (Japanese Gunner, Armored Car, Japanese Arrow Tower).
 # The bullet is FIRE 140-148 (2026-09-30, user-identified); fast, so the hit lands almost at once.
 Musket:
+	Report: gun1.wav, gun2.wav, gun3.wav
 	ReloadDelay: 40
 	Range: 5c0
 	ValidTargets: Ground, GroundActor
@@ -70,6 +80,7 @@ Musket:
 # Footman's melee weapon. InstantHit at melee range - the swing itself is
 # shown by the attack animation, so no separate projectile sprite is needed.
 Sword:
+	Report: sword1.wav, sword2.wav, sword3.wav
 	ReloadDelay: 18
 	Range: 1c256
 	ValidTargets: Ground, GroundActor
@@ -92,6 +103,8 @@ Sword:
 # full within 1 cell of impact, then 50% to 1.5 cells and 25% to 2 cells; enemies/neutrals only.
 # Inherited by FighterRockets and CannonShot.
 FireCarRockets:
+	# Also the fighter's rockets (FighterRockets inherits this); CannonShot sets its own.
+	Report: tank1.wav
 	# Two shots 5 ticks apart; original cooldown 70.
 	ReloadDelay: 93
 	Burst: 2
@@ -133,6 +146,7 @@ FireCarRockets:
 # Shell speed, area damage and explosion come from FireCarRockets.
 CannonShot:
 	Inherits: FireCarRockets
+	Report: cannon1.wav, cannon2.wav, cannon3.wav
 	ReloadDelay: 147
 	Burst: 1
 	Range: 10c0
@@ -153,6 +167,7 @@ CannonShot:
 
 # Monk fireball: initial stock damage approximation, not original spell mechanics.
 MonkFireball:
+	Report: buda1.wav
 	ReloadDelay: 33
 	Range: 5c0
 	ValidTargets: Ground
@@ -192,6 +207,7 @@ MonkHeal:
 # Sky strike at the target using original RAIN frame 281.
 # One-shots any infantry (toughest: Footman/Commander 26,775 HP), with headroom.
 ShamanLightning:
+	Report: thunder1.wav
 	TargetActorCenter: true
 	ReloadDelay: 50
 	Range: 8c0
@@ -219,6 +235,10 @@ ShamanLightning:
 
 # Provisional mine balance, separate from original game research.
 MinerMineExplosion:
+	Warhead@Sound: CreateEffect
+		ImpactSounds: exp1.wav
+		ImpactActors: false
+		ValidTargets: Ground
 	Warhead@Damage: SpreadDamage
 		Spread: 512
 		Damage: 12000

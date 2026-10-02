@@ -16,7 +16,7 @@ the installer converts its files into the mod.
    Without a folder it looks for `SYWAR` next to this repository.
 3. Start the game with `launch-game.cmd` or `launch-game.sh`.
 
-The converted files are written into `mods/syw` and are ignored by git. Run the installer again after updating the
+The converted files are written into `mods/syw` and are ignored by git; sounds and voices go to `mods/syw/audio`. Run the installer again after updating the
 mod. Options: `--list` shows the stages, `--only units,chrome` runs some of them, and `--write-yaml` updates the few
 generated YAML files kept in the repository (the FIELD3 tileset, crop sequences, cursors and menu fire regions). The
 converter is `OpenRA.Mods.Syw/AssetInstaller`; `mods/syw/install-manifest.txt` lists every file it wrote.

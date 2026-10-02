@@ -41,6 +41,15 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 
 		public byte[] Read(string relative) => File.ReadAllBytes(Find(relative));
 
+		// The files directly inside a folder (any case), as relative paths in the game's own spelling, sorted.
+		public IEnumerable<string> Files(string folder)
+		{
+			var prefix = folder.Replace('\\', '/').TrimEnd('/') + "/";
+			return files.Keys
+				.Where(f => f.StartsWith(prefix, StringComparison.OrdinalIgnoreCase) && f.IndexOf('/', prefix.Length) < 0)
+				.OrderBy(f => f, StringComparer.OrdinalIgnoreCase);
+		}
+
 		public string Sha1(string relative) => Convert.ToHexString(SHA1.HashData(Read(relative))).ToLowerInvariant();
 	}
 }

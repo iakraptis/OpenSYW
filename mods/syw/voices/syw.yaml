@@ -1,0 +1,65 @@
+# Unit voices, installed from the original game's effect/ folder into audio/ (install-assets --only audio).
+# Select is the unit's own reply; the rest are the shared announcer lines played when an order is given:
+# Move, Attack, Harvest, Build, Unload and the spell lines. Action is the engine's catch-all phrase for the
+# remaining attack orders. vstop is kept for a future "stop movement" button.
+
+# Peasants and bulls (both factions).
+WorkerVoice:
+	DefaultVariant: .wav
+	Voices:
+		Select: vyes01
+		Move: vmove
+		Attack: vattack
+		Action: vattack
+		Harvest: vharvest
+		Build: vbuild
+		Die: scream1, scream2, scream3
+
+# Every other infantry unit. Heal and MassHeal are the Monk's and Priest's spells, Mine the Miner's,
+# Conquer the Occupier's and Thief's capture.
+InfantryVoice:
+	DefaultVariant: .wav
+	Voices:
+		Select: vyes02
+		Move: vmove
+		Attack: vattack
+		Action: vattack
+		Heal: vheal
+		MassHeal: vmassheal
+		Mine: vmine
+		Die: scream1, scream2, scream3
+		Conquer: vconquer
+
+# The Commander and the General.
+CaptainVoice:
+	DefaultVariant: .wav
+	Voices:
+		Select: vyes03
+		Move: vmove
+		Attack: vattack
+		Action: vattack
+		Die: scream1, scream2, scream3
+
+# The Shaman and the Witch: Lightning (Shaman), Earthquake and Bewilderment (Witch).
+FemaleVoice:
+	DefaultVariant: .wav
+	Voices:
+		Select: vwyes01
+		Move: vmove
+		Attack: vattack
+		Action: vattack
+		Thunder: vthunder
+		Earthquake: vearth
+		Betray: vbetray
+		Die: wscream1
+
+# Vehicles, ships and aircraft: no reply of their own, only the announcer lines.
+MachineVoice:
+	DefaultVariant: .wav
+	Voices:
+		# Empty: selecting them says nothing (an empty clip list plays nothing; the key must exist).
+		Select:
+		Move: vmove
+		Attack: vattack
+		Action: vattack
+		Unload: vrideout

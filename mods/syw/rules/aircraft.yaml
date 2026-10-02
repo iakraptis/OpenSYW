@@ -1,10 +1,14 @@
 # Flying dragon: stock hovering aircraft behavior; movement is provisional.
 fighter:
+	Voiced:
+		VoiceSet: MachineVoice
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
 	AttackMove:
+		Voice: Move
 	# Repair button (stats panel): +500 HP every second until fully healed; a full repair costs
 	# 50% of the unit's price, charged per step. Stops if the owner runs out of money.
 	RepairableBuilding:
+		RepairingNotification: Repairing
 		RepairPercent: 50
 		RepairInterval: 25
 		RepairStep: 500
@@ -33,6 +37,7 @@ fighter:
 		Type: GroundPosition
 		Range: 7c0
 	Aircraft:
+		Voice: Move
 		CruiseAltitude: 1536
 		Speed: 90
 		TurnSpeed: 32
@@ -109,6 +114,7 @@ transporter:
 		TargetTypes: Ground, Vehicle
 		RequiresCondition: !airborne
 	Cargo:
+		UnloadVoice: Unload
 		Types: Infantry, Vehicle
 		MaxWeight: 8
 		AfterUnloadDelay: 10

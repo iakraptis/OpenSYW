@@ -84,7 +84,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 					return;
 
 				if (mineLayer != null)
-					world.IssueOrder(new Order(PaidMineLayer.OrderId, caster, false));
+					IssueWithVoice(new Order(PaidMineLayer.OrderId, caster, false));
 				else if (earthquake != null)
 					world.OrderGenerator = new GroundSpellOrderGenerator(caster);
 				else
@@ -133,7 +133,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 				else if (bewilder != null)
 					world.OrderGenerator = new TransformOrderGenerator(caster, bewilder);
 				else
-					world.IssueOrder(new Order(MassHeal.OrderId, caster, false));
+					IssueWithVoice(new Order(MassHeal.OrderId, caster, false));
 			};
 
 			// Slot 3 (second row).
@@ -162,7 +162,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 				if (third.IsDisabled())
 					return;
 
-				world.IssueOrder(new Order(disturb != null ? Disturb.OrderId : DetectMines.OrderId, caster, false));
+				IssueWithVoice(new Order(disturb != null ? Disturb.OrderId : DetectMines.OrderId, caster, false));
 			};
 
 			// The status lines sit below whichever button rows are shown.
@@ -172,6 +172,13 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 			status.GetText = () => !ValidCaster ? "" : FluentProvider.GetMessage(Status());
 			hint.GetText = () => !ValidCaster || !Targeting ? "" :
 				FluentProvider.GetMessage(world.OrderGenerator is MineLineOrderGenerator ? "spell-mine-rotate" : "spell-cancel");
+		}
+
+		// Button orders skip the world click handler, which is what normally plays the unit's voice for an order.
+		void IssueWithVoice(Order order)
+		{
+			world.IssueOrder(order);
+			new[] { order }.PlayVoiceForOrders();
 		}
 
 		Sprite Icon(string name) => world.Map.Sequences.HasSequence("spell-icons", name) ?

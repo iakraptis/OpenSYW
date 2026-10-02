@@ -26,6 +26,9 @@ namespace OpenRA.Mods.Syw.Traits
 		[FluentReference(optional: true)]
 		public readonly string StopNotification = null;
 
+		[Desc("Sound played once, over the whole map, when a shower starts.")]
+		public readonly string StartSound = null;
+
 		public override object Create(ActorInitializer init) { return new RainController(this); }
 	}
 
@@ -62,6 +65,7 @@ namespace OpenRA.Mods.Syw.Traits
 				token = self.GrantCondition(info.Condition);
 				ticks = self.World.SharedRandom.Next(info.Duration[0], info.Duration[1] + 1);
 				TextNotificationsManager.AddTransientLine(null, info.StartNotification);
+				Game.Sound.Play(SoundType.World, info.StartSound);
 			}
 			else
 				ticks = info.CheckInterval;

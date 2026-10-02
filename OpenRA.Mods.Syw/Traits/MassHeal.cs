@@ -10,10 +10,14 @@ namespace OpenRA.Mods.Syw.Traits
 		[Desc("HP restored to each unit.")]
 		public readonly int Amount = 6000;
 		public readonly WDist Range = WDist.FromCells(4);
+		[VoiceReference]
+		[Desc("Voice played when the Mass Heal spell is ordered.")]
+		public readonly string Voice = "MassHeal";
+
 		public override object Create(ActorInitializer init) => new MassHeal(this);
 	}
 
-	public class MassHeal : IResolveOrder
+	public class MassHeal : IResolveOrder, IOrderVoice
 	{
 		public const string OrderId = "SywMassHeal";
 		public readonly MassHealInfo Info;
@@ -32,6 +36,11 @@ namespace OpenRA.Mods.Syw.Traits
 
 		// Units only (mobile or aircraft), so buildings and mines are never affected.
 		static bool IsUnit(Actor a) => a.Info.HasTraitInfo<MobileInfo>() || a.Info.HasTraitInfo<AircraftInfo>();
+
+		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
+		{
+			return order.OrderString == OrderId ? Info.Voice : null;
+		}
 
 		public void ResolveOrder(Actor self, Order order)
 		{

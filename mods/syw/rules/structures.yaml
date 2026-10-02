@@ -1,7 +1,6 @@
 # Flattened from the stock cnc mod's ^Building/^SelectableBuilding base chain
-# (engine/mods/cnc/rules/defaults.yaml), trimmed of traits that need audio,
-# weapon, or economy assets we don't have yet (SoundOnDamageTransition,
-# WithMakeAnimation, Sellable, ...).
+# (engine/mods/cnc/rules/defaults.yaml), trimmed of traits that need
+# weapon or economy assets we don't have yet (WithMakeAnimation, ...).
 # Shared by all 3x3 Korea buildings - see hq/barracks below.
 ^syw-building:
 	# ^ExistsInWorld
@@ -15,15 +14,22 @@
 	# Repair button (stats panel): +1000 HP every second until fully healed; a full repair costs
 	# 50% of the building's price, charged per step. Stops if the owner runs out of money.
 	RepairableBuilding:
+		RepairingNotification: Repairing
 		RepairPercent: 50
 		RepairInterval: 25
 		RepairStep: 1000
 	# Sell button (stats panel), like C&C: refunds 50% of the value, scaled by remaining health.
 	# Unlike C&C, no infantry spawn from a sold building. The button sells directly, so no sell cursor.
 	Sellable:
+		Notification: Selling
 		RequiresCondition: !constructing
 		RefundPercent: 50
 		Cursor: default
+	# Fire sound when the building drops below 50% HP, at most once every 20 seconds
+	# (repairing under attack keeps crossing the threshold).
+	SoundOnHeavyDamage:
+		Sounds: fire.wav
+		Cooldown: 500
 	# Conquest victory: every building must be destroyed, like C&C.
 	MustBeDestroyed:
 		RequiredForShortGame: true
@@ -133,6 +139,8 @@ hq:
 		Produces: Workers.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Training
+		CancelledAudio: Cancelled
 		Type: Workers.Korea
 	ProductionBar:
 		ProductionType: Workers.Korea
@@ -197,6 +205,8 @@ barracks:
 		Produces: Infantry.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Training
+		CancelledAudio: Cancelled
 		Type: Infantry.Korea
 		Group: Infantry
 	ProductionBar:
@@ -316,6 +326,8 @@ heavyarmsworkshop:
 		Produces: Vehicles.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Making
+		CancelledAudio: Cancelled
 		Type: Vehicles.Korea
 		Group: Vehicles
 	ProductionBar:
@@ -365,6 +377,8 @@ planeworks:
 		Produces: Aircraft.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Making
+		CancelledAudio: Cancelled
 		Type: Aircraft.Korea
 		Group: Aircraft
 	ProductionBar:
@@ -414,6 +428,8 @@ barracks2:
 		Produces: AdvancedInfantry.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Training
+		CancelledAudio: Cancelled
 		Type: AdvancedInfantry.Korea
 		Group: Infantry
 	ProductionBar:
@@ -462,6 +478,8 @@ temple:
 		Produces: Temple.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Training
+		CancelledAudio: Cancelled
 		Type: Temple.Korea
 		Group: Infantry
 	ProductionBar:
@@ -510,6 +528,8 @@ shamanhouse:
 		Produces: Shaman.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Training
+		CancelledAudio: Cancelled
 		Type: Shaman.Korea
 		Group: Infantry
 	ProductionBar:
@@ -558,6 +578,8 @@ stable:
 		Produces: Cavalry.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Training
+		CancelledAudio: Cancelled
 		Type: Cavalry.Korea
 		Group: Infantry
 	ProductionBar:
@@ -674,6 +696,8 @@ shipyard:
 		Produces: Naval.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
+		QueuedAudio: Making
+		CancelledAudio: Cancelled
 		Type: Naval.Korea
 		Group: Ships
 	ProductionBar:

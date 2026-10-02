@@ -8,10 +8,14 @@ namespace OpenRA.Mods.Syw.Traits
 	{
 		[GrantedConditionReference]
 		public readonly string Condition = "casting-lightning";
+		[VoiceReference]
+		[Desc("Voice played when the Lightning spell is ordered.")]
+		public readonly string Voice = "Thunder";
+
 		public override object Create(ActorInitializer init) => new ManualLightning(this);
 	}
 
-	public class ManualLightning : IResolveOrder, INotifyAttack, ITick
+	public class ManualLightning : IResolveOrder, IOrderVoice, INotifyAttack, ITick
 	{
 		public const string OrderId = "SywCastLightning";
 		readonly ManualLightningInfo info;
@@ -25,6 +29,11 @@ namespace OpenRA.Mods.Syw.Traits
 		{
 			if (token != Actor.InvalidConditionToken)
 				token = self.RevokeCondition(token);
+		}
+
+		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
+		{
+			return order.OrderString == OrderId ? info.Voice : null;
 		}
 
 		public void ResolveOrder(Actor self, Order order)

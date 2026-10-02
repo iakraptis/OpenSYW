@@ -84,6 +84,13 @@ world:
 		Duration: 1500, 3000
 		StartNotification: notification-rain-start
 		StopNotification: notification-rain-stop
+		StartSound: rain1.wav
+	# A thunderclap every 20-40 seconds while it rains (the rain sound itself plays once, from RainController).
+	AmbientSound@THUNDER:
+		RequiresCondition: raining
+		SoundFiles: thunder1.wav
+		Delay: 500, 1000
+		Interval: 500, 1000
 	# Rain streaks (based on C&C gdi06), faded in and out by the RainController condition.
 	WeatherOverlay:
 		RequiresCondition: raining
