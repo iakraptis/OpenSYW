@@ -5,7 +5,6 @@
 #endregion
 
 using System.Linq;
-using OpenRA;
 using OpenRA.Mods.Common;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Traits;
@@ -55,9 +54,8 @@ namespace OpenRA.Mods.Syw.Traits
 		int ticksRemaining;
 		int conditionToken = Actor.InvalidConditionToken;
 		int structureConditionToken = Actor.InvalidConditionToken;
-		bool complete;
 
-		public bool IsComplete => complete;
+		public bool IsComplete { get; private set; }
 		public bool HasBuilder => builder != null;
 
 		public UnderConstruction(ActorInitializer init, UnderConstructionInfo info)
@@ -69,7 +67,7 @@ namespace OpenRA.Mods.Syw.Traits
 			// Map/editor-placed actors (no UnderConstructionInit) start already finished.
 			if (init.GetOrDefault<UnderConstructionInit>() == null)
 			{
-				complete = true;
+				IsComplete = true;
 				return;
 			}
 
@@ -80,7 +78,7 @@ namespace OpenRA.Mods.Syw.Traits
 		/// <summary>Called by the Builder's ConstructBuilding activity once it has walked up to the site.</summary>
 		public bool TryAssignBuilder(Actor peasant)
 		{
-			if (complete || builder != null)
+			if (IsComplete || builder != null)
 				return false;
 
 			builder = peasant;
@@ -89,7 +87,7 @@ namespace OpenRA.Mods.Syw.Traits
 
 		void ITick.Tick(Actor self)
 		{
-			if (complete || builder == null)
+			if (IsComplete || builder == null)
 				return;
 
 			if (--ticksRemaining <= 0)
@@ -113,7 +111,7 @@ namespace OpenRA.Mods.Syw.Traits
 
 		void Complete(Actor self)
 		{
-			complete = true;
+			IsComplete = true;
 
 			if (structureConditionToken != Actor.InvalidConditionToken)
 			{

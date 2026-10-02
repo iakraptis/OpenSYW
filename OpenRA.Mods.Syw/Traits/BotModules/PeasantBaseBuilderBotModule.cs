@@ -167,8 +167,8 @@ namespace OpenRA.Mods.Syw.Traits
 
 			// The type whose (count + 1) / weight is smallest is furthest below its desired share.
 			return Info.BuildingFractions
-				.Where(kv => kv.Value > 0 && builder.Info.Types.Contains(kv.Key) && world.Map.Rules.Actors.ContainsKey(kv.Key))
-				.Where(kv => !Info.BuildingLimits.TryGetValue(kv.Key, out var limit) || Count(kv.Key) < limit)
+				.Where(kv => kv.Value > 0 && builder.Info.Types.Contains(kv.Key) && world.Map.Rules.Actors.ContainsKey(kv.Key)
+					&& (!Info.BuildingLimits.TryGetValue(kv.Key, out var limit) || Count(kv.Key) < limit))
 				.Where(kv =>
 				{
 					var prereqs = world.Map.Rules.Actors[kv.Key].TraitInfoOrDefault<BuildableInfo>()?.Prerequisites;

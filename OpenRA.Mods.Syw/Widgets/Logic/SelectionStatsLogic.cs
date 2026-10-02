@@ -29,8 +29,11 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 			panel.Get<LabelWidget>("STATS_COUNT").GetText = () =>
 				Current != null && count > 1 ? FluentProvider.GetMessage("selection-stats-count", "count", count) : "";
 
-			var lines = new[] { panel.Get<LabelWidget>("STATS_LINE_1"), panel.Get<LabelWidget>("STATS_LINE_2"),
-				panel.Get<LabelWidget>("STATS_LINE_3"), panel.Get<LabelWidget>("STATS_LINE_4") };
+			var lines = new[]
+			{
+				panel.Get<LabelWidget>("STATS_LINE_1"), panel.Get<LabelWidget>("STATS_LINE_2"),
+				panel.Get<LabelWidget>("STATS_LINE_3"), panel.Get<LabelWidget>("STATS_LINE_4")
+			};
 			for (var i = 0; i < lines.Length; i++)
 			{
 				var line = i;
@@ -131,7 +134,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 			return tooltip == null ? a.Info.Name : FluentProvider.GetMessage(tooltip.Name);
 		}
 
-		string Line(Actor a, int line)
+		static string Line(Actor a, int line)
 		{
 			var health = a.TraitOrDefault<Health>();
 			var weapon = a.TraitsImplementing<Armament>().Select(x => x.Info.WeaponInfo).FirstOrDefault(w => w != null && Damage(w) > 0);

@@ -177,7 +177,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			return new Template(TemplateBase[sheet] + frame, sheet, frame, terrain, category, AverageColor(rgb, image.Width, image.Height));
 		}
 
-		static string Classify(string sheet, int frame, OpenRA.Primitives.Color[] rgb)
+		static string Classify(string sheet, int frame, Primitives.Color[] rgb)
 		{
 			if (FieldBlock(sheet, frame) != null || (sheet == "field31" && BridgeFrames.Contains(frame)))
 				return "Clear";
@@ -203,9 +203,9 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		}
 
 		// The colour a 1x1 box downscale gives (as Pillow computes it): each row averaged and rounded, then the rows.
-		static string AverageColor(OpenRA.Primitives.Color[] rgb, int width, int height)
+		static string AverageColor(Primitives.Color[] rgb, int width, int height)
 		{
-			int Channel(Func<OpenRA.Primitives.Color, int> pick)
+			int Channel(Func<Primitives.Color, int> pick)
 			{
 				var rows = 0;
 				for (var y = 0; y < height; y++)

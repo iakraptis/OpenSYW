@@ -1,4 +1,3 @@
-using OpenRA.Mods.Common;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Common.Traits.Render;
 using OpenRA.Traits;
@@ -63,6 +62,7 @@ namespace OpenRA.Mods.Syw.Traits
 		void INotifyHarvestAction.Harvested(Actor self, string resourceType)
 		{
 			harvestPending = true;
+
 			// Match WithInfantryBody's attack timing: start after its movement tick,
 			// otherwise stopping on the resource cell can overwrite this animation.
 			self.World.AddFrameEndTask(_ =>

@@ -5,7 +5,6 @@
 #endregion
 
 using System.Collections.Generic;
-using OpenRA;
 using OpenRA.Mods.Common;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Syw.Activities;

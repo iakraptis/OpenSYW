@@ -4,7 +4,6 @@
  */
 #endregion
 
-using OpenRA;
 using OpenRA.Activities;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Syw.Traits;

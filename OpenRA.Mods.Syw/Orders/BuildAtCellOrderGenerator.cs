@@ -6,7 +6,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using OpenRA;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common.Graphics;
 using OpenRA.Mods.Common.Traits;
@@ -27,7 +26,6 @@ namespace OpenRA.Mods.Syw.Orders
 	public class BuildAtCellOrderGenerator : IOrderGenerator
 	{
 		readonly string worldDefaultCursor = ChromeMetrics.Get<string>("WorldDefaultCursor");
-		readonly World world;
 		readonly Actor builderActor;
 		readonly string actorType;
 		readonly ActorInfo actorInfo;
@@ -35,7 +33,6 @@ namespace OpenRA.Mods.Syw.Orders
 
 		public BuildAtCellOrderGenerator(World world, Actor builderActor, string actorType)
 		{
-			this.world = world;
 			this.builderActor = builderActor;
 			this.actorType = actorType;
 			actorInfo = world.Map.Rules.Actors[actorType];

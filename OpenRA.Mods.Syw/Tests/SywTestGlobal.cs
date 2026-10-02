@@ -50,7 +50,7 @@ namespace OpenRA.Mods.Syw.Tests
 
 		[Desc("Whether an idle overlay with this image is currently shown on the actor (damage smoke, flags, ...).")]
 		public bool Overlay(Actor actor, string image) =>
-			actor.TraitsImplementing<OpenRA.Mods.Common.Traits.Render.WithIdleOverlay>().Any(o => o.Info.Image == image && !o.IsTraitDisabled);
+			actor.TraitsImplementing<Common.Traits.Render.WithIdleOverlay>().Any(o => o.Info.Image == image && !o.IsTraitDisabled);
 
 		[Desc("Select one actor, as a click would. The panels update on the next UI tick.")]
 		public void Select(Actor actor) => actor.World.Selection.Combine(actor.World, new[] { actor }, false, true);
