@@ -38,6 +38,9 @@ namespace OpenRA.Mods.Syw.Tests
 		public void Construct(Actor builder, string building, CPos cell) =>
 			Resolve(builder, new Order(Builder.OrderID, builder, Target.FromCell(builder.World, cell), false) { TargetString = building });
 
+		[Desc("Whether a Peasant is tied to a construction site (walking to it or building it).")]
+		public bool Busy(Actor builder) => builder.TraitOrDefault<Builder>()?.IsBusy ?? false;
+
 		[Desc("Whether the player can currently see the actor (cloaked units are hidden from enemies).")]
 		public bool Visible(Actor actor, Player player) => actor.IsInWorld && actor.CanBeViewedByPlayer(player);
 

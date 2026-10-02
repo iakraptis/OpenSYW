@@ -103,11 +103,15 @@ namespace OpenRA.Mods.Syw.Traits
 				.Where(a => a.Owner == player && a.IsInWorld && !a.IsDead && Info.BuilderTypes.Contains(a.Info.Name))
 				.ToList();
 
-			if (builders.Count(b => b.Trait<Builder>().IsBusy) >= Info.MaxConcurrentConstructions)
-				return;
-
 			var free = builders.Where(b => !b.Trait<Builder>().IsBusy).ToList();
 			if (free.Count == 0)
+				return;
+
+			// Finish what is already paid for before starting anything new.
+			if (ResumeAbandonedSite(bot, builders, free))
+				return;
+
+			if (builders.Count(b => b.Trait<Builder>().IsBusy) >= Info.MaxConcurrentConstructions)
 				return;
 
 			// Economy first: grow the workforce before spending on buildings. Builders inside a construction
@@ -154,6 +158,24 @@ namespace OpenRA.Mods.Syw.Traits
 				bot.QueueOrder(new Order(Builder.OrderID, builder, Target.FromCell(world, cell.Value), false) { TargetString = type });
 				return;
 			}
+		}
+
+		// Sends the nearest free builder to one of our unfinished sites that nobody is building or walking to
+		// (its builder was killed, blocked or pulled away). Returns false if there is no such site.
+		bool ResumeAbandonedSite(IBot bot, List<Actor> builders, List<Actor> free)
+		{
+			var claimed = builders.Select(b => b.Trait<Builder>().Site).Where(s => s != null).ToHashSet();
+			var site = world.ActorsHavingTrait<UnderConstruction>()
+				.FirstOrDefault(a => a.Owner == player && !a.IsDead && a.IsInWorld && !claimed.Contains(a) &&
+					free.Any(b => b.Trait<Builder>().CanResume(b, a)));
+			if (site == null)
+				return false;
+
+			var builder = free.Where(b => b.Trait<Builder>().CanResume(b, site))
+				.OrderBy(b => (b.Location - site.Location).LengthSquared).First();
+			AIUtils.BotDebug("{0}: resuming abandoned {1} at {2}.", player, site.Info.Name, site.Location);
+			bot.QueueOrder(new Order(Builder.ResumeOrderID, builder, Target.FromActor(site), false));
+			return true;
 		}
 
 		IEnumerable<string> ChooseBuildings(Builder builder)

@@ -50,13 +50,15 @@ namespace OpenRA.Mods.Syw.Traits
 
 		readonly Health health;
 
-		Actor builder;
 		int ticksRemaining;
 		int conditionToken = Actor.InvalidConditionToken;
 		int structureConditionToken = Actor.InvalidConditionToken;
 
 		public bool IsComplete { get; private set; }
-		public bool HasBuilder => builder != null;
+		public bool HasBuilder => Builder != null;
+
+		/// <summary>The unit parked inside, building it, or null.</summary>
+		public Actor Builder { get; private set; }
 
 		public UnderConstruction(ActorInitializer init, UnderConstructionInfo info)
 		{
@@ -78,16 +80,16 @@ namespace OpenRA.Mods.Syw.Traits
 		/// <summary>Called by the Builder's ConstructBuilding activity once it has walked up to the site.</summary>
 		public bool TryAssignBuilder(Actor peasant)
 		{
-			if (IsComplete || builder != null)
+			if (IsComplete || Builder != null)
 				return false;
 
-			builder = peasant;
+			Builder = peasant;
 			return true;
 		}
 
 		void ITick.Tick(Actor self)
 		{
-			if (IsComplete || builder == null)
+			if (IsComplete || Builder == null)
 				return;
 
 			if (--ticksRemaining <= 0)
@@ -134,11 +136,11 @@ namespace OpenRA.Mods.Syw.Traits
 
 		void ReleaseBuilder(Actor self)
 		{
-			if (builder == null)
+			if (Builder == null)
 				return;
 
-			var freedBuilder = builder;
-			builder = null;
+			var freedBuilder = Builder;
+			Builder = null;
 
 			self.World.AddFrameEndTask(w =>
 			{
@@ -170,10 +172,10 @@ namespace OpenRA.Mods.Syw.Traits
 		{
 			// The construction site was destroyed/sold/removed while a builder was parked inside it -
 			// there is no sensible "outside" position to eject them to, so they go down with the building.
-			if (builder != null && !builder.IsDead && !builder.Disposed)
-				builder.Dispose();
+			if (Builder != null && !Builder.IsDead && !Builder.Disposed)
+				Builder.Dispose();
 
-			builder = null;
+			Builder = null;
 		}
 	}
 }
