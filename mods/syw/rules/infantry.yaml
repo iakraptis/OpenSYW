@@ -1,0 +1,663 @@
+# Flattened from the stock cnc mod's E1 (engine/mods/cnc/rules/infantry.yaml)
+# and its ^Soldier/^Infantry/^SpriteActor/^ExistsInWorld/^SelectableCombatUnit/
+# ^PlayerHandicaps base chain (engine/mods/cnc/rules/defaults.yaml), trimmed of
+# combat/weapon/veterancy/tiberium-specific traits we don't have assets for yet.
+# Shared by all Korea infantry - see peasant/archer below.
+^syw-infantry:
+	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
+	AttackMove:
+	# ^ExistsInWorld
+	AppearsOnRadar:
+	UpdatesPlayerStatistics:
+	CombatDebugOverlay:
+	GivesExperience:
+		PlayerExperienceModifier: 1
+	ScriptTriggers:
+	RenderDebugState:
+
+	# ^SpriteActor
+	BodyOrientation:
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+
+	# ^PlayerHandicaps
+	HandicapFirepowerMultiplier:
+	HandicapDamageMultiplier:
+	HandicapProductionTimeMultiplier:
+
+	# ^Selectable (^SelectableCombatUnit minus the decorations that need a
+	# chrome/terrain palette we haven't set up yet)
+	Selectable:
+		Priority: 10
+		PriorityModifiers: Ctrl
+		Bounds: 768, 768, 0, -256
+		DecorationBounds: 512, 725, 0, -256
+	SelectionDecorations:
+
+	# ^Infantry
+	Huntable:
+	OwnerLostAction:
+		Action: Kill
+		DeathTypes: DefaultDeath
+	HitShape:
+	Armor:
+		Type: None
+	RevealsShroud:
+		Range: 5c0
+	Mobile:
+		AlwaysTurnInPlace: true
+		Locomotor: foot
+		Speed: 55
+	Targetable:
+		TargetTypes: Ground, Infantry
+	Targetable@HEAL:
+		RequiresCondition: wounded
+		TargetTypes: Heal
+	GrantConditionOnDamageState@HEAL:
+		Condition: wounded
+		ValidDamageStates: Light, Medium, Heavy, Critical
+	Passenger:
+		CargoType: Infantry
+		Weight: 1
+	HiddenUnderFog:
+
+	# ^Soldier
+	MustBeDestroyed:
+
+	MapEditorData:
+		Categories: Infantry
+
+peasant:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: peasant
+	Health:
+		HP: 19125
+	WithGathererInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: idle
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: actor-peasant.name
+	# A Peasant (or the Bull, which inherits this) killed while carrying crops drops a chest
+	# worth 100 credits to whoever collects it.
+	DropsChestWhenLoaded:
+		Chest: resource-chest
+	Harvester:
+		Resources: Potato, Rice
+		SearchOnCreation: false
+		BaleLoadDelay: 20
+		BaleUnloadDelay: 4
+		HarvestFacings: 8
+	StoresResources:
+		Capacity: 5
+		Resources: Potato, Rice
+	# Hovering the HQ or Mill with nothing to unload showed the struck-out hand, although the order still works.
+	DockClientManager:
+		EnterBlockedCursor: enter
+	Buildable:
+		Queue: Workers.Korea
+		BuildPaletteOrder: 10
+		Icon: icon
+		IconPalette: knight
+	Builder:
+		Types: hq, barracks, mill, beaconmound, heavyarmsworkshop, barracks2, planeworks, temple, shamanhouse, stable, arrowtower, cannontower, shipyard
+
+footman:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: footman
+	Health:
+		HP: 26775
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: attack
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	Armament:
+		Weapon: Sword
+		MuzzlePalette: knight
+		FireDelay: 6
+	AttackFrontal:
+		FacingTolerance: 0
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	AutoTarget:
+		ScanRadius: 4
+	Buildable:
+		Queue: Infantry.Korea
+		BuildPaletteOrder: 5
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: actor-footman.name
+
+footman.colorpicker:
+	Inherits: footman
+	RenderSprites:
+		Image: footman
+		Palette: colorpicker
+	-MapEditorData:
+	-Buildable:
+
+peasant.colorpicker:
+	Inherits: peasant
+	RenderSprites:
+		Image: peasant
+		Palette: colorpicker
+	-MapEditorData:
+	-Buildable:
+
+archer:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: archer
+	Health:
+		HP: 19125
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: shoot
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	Armament:
+		Weapon: Bow
+		MuzzlePalette: knight
+		FireDelay: 6
+	AttackFrontal:
+		FacingTolerance: 0
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	AutoTarget:
+		ScanRadius: 4
+	Buildable:
+		Queue: Infantry.Korea
+		BuildPaletteOrder: 10
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: actor-archer.name
+
+archer.colorpicker:
+	Inherits: archer
+	RenderSprites:
+		Image: archer
+		Palette: colorpicker
+	-MapEditorData:
+	-Buildable:
+
+gunner:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: gunner
+	Health:
+		HP: 22950
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: shoot
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	Armament:
+		Weapon: Musket
+		MuzzlePalette: knight
+		FireDelay: 3
+	AttackFrontal:
+		FacingTolerance: 0
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	AutoTarget:
+		ScanRadius: 4
+	Buildable:
+		Prerequisites: beaconmound
+		Queue: Infantry.Korea
+		BuildPaletteOrder: 20
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: actor-gunner.name
+
+gunner.colorpicker:
+	Inherits: gunner
+	RenderSprites:
+		Image: gunner
+		Palette: colorpicker
+	-MapEditorData:
+	-Buildable:
+
+monk:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: monk
+	Health:
+		HP: 22950
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: shoot
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	Armament:
+		Weapon: MonkFireball
+		MuzzlePalette: knight
+		FireDelay: 6
+	AmmoPool@MANA:
+		Name: mana
+		Armaments: secondary
+		Ammo: 100
+		InitialAmmo: 100
+		AmmoCondition: mana
+	ReloadAmmoPool@MANA:
+		AmmoPool: mana
+		# 1 mana every 50 ticks (0.5 mana/second at normal speed).
+		Delay: 10
+		Count: 1
+		ResetOnFire: false
+	WithAmmoPipsDecoration@MANA:
+		AmmoPools: mana
+		PipCount: 10
+		Image: mana-pips
+		FullSequence: full
+		EmptySequence: empty
+		Palette: knight
+		Position: BottomLeft
+		Margin: 0, 4
+		RequiresSelection: true
+	Armament@HEAL:
+		AmmoUsage: 30
+		RequiresCondition: mana >= 30
+		Name: secondary
+		Weapon: MonkHeal
+		FireDelay: 6
+		MuzzlePalette: knight
+		Cursor: heal
+		OutsideRangeCursor: heal
+		TargetRelationships: Ally
+		ForceTargetRelationships: None
+	# Mass Heal (FIRE 196 button): needs full mana and spends all of it. Heal amount provisional (one Heal each).
+	MassHeal:
+		Amount: 6000
+		Range: 4c0
+	# Disturb (FIRE 191): reveals invisible enemies (mines) within 5 cells for 5 seconds.
+	Disturb:
+		ManaCost: 40
+		Duration: 125
+		Range: 5c0
+		Condition: disturbing
+	DetectCloaked@DISTURB:
+		RequiresCondition: disturbing
+		Range: 5c0
+		DetectionTypes: Mine, Cloak
+	WithRangeCircle@DISTURB:
+		RequiresCondition: disturbing
+		Type: Disturb
+		Range: 5c0
+		Visible: Always
+		Color: 80C0FF
+	AutoTargetPriority@HEAL:
+		RequiresCondition: mana >= 30
+		ValidTargets: Heal
+		ValidRelationships: Ally
+		Priority: 2
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+		Priority: 1
+	AttackFrontal:
+		FacingTolerance: 0
+	AutoTarget:
+		ScanRadius: 5
+	Buildable:
+		Prerequisites: temple
+		Queue: Temple.Korea
+		BuildPaletteOrder: 20
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-monk.name
+
+
+shaman:
+	Inherits: ^syw-infantry
+	RevealsShroud:
+		Range: 8c0
+	RenderSprites:
+		Image: shaman
+	Health:
+		HP: 22950
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: shoot
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	ManualLightning:
+	# Transform (FIRE 199 button): one allied Peasant becomes a random infantry unit.
+	ShamanTransform:
+		ManaCost: 70
+		# Melee: adjacent cells, diagonals included.
+		Range: 1c512
+		Results: footman, archer, gunner, occupier, miner, monk, shaman, commander
+	Armament:
+		Weapon: MonkFireball
+		RequiresCondition: !casting-lightning
+		MuzzlePalette: knight
+		FireDelay: 6
+	Armament@LIGHTNING:
+		Name: secondary
+		Weapon: ShamanLightning
+		AmmoUsage: 90
+		PauseOnCondition: mana < 90 || !casting-lightning
+		MuzzlePalette: knight
+		FireDelay: 6
+	AmmoPool@MANA:
+		Name: mana
+		Armaments: secondary
+		Ammo: 100
+		InitialAmmo: 100
+		AmmoCondition: mana
+	ReloadAmmoPool@MANA:
+		AmmoPool: mana
+		# Uniform 100-mana pools: 1 mana every 10 ticks (2.5/second), the same recharge
+		# time per spell as the old 20-mana pool at 1 per 50 ticks.
+		Delay: 10
+		Count: 1
+		ResetOnFire: false
+	WithAmmoPipsDecoration@MANA:
+		AmmoPools: mana
+		PipCount: 10
+		Image: mana-pips
+		FullSequence: full
+		EmptySequence: empty
+		Palette: knight
+		Position: BottomLeft
+		Margin: 0, 4
+		RequiresSelection: true
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+		Priority: 1
+	AttackFrontal:
+		Armaments: primary
+		FacingTolerance: 0
+	AttackFrontal@LIGHTNING:
+		Armaments: secondary
+		RequiresCondition: casting-lightning
+		FacingTolerance: 0
+	AutoTarget:
+		ScanRadius: 5
+	Buildable:
+		Prerequisites: shamanhouse
+		Queue: Shaman.Korea
+		BuildPaletteOrder: 20
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-shaman.name
+
+
+commander:
+	Inherits: ^syw-infantry
+	Armor:
+		Type: Light
+	RenderSprites:
+		Image: commander
+	Health:
+		HP: 26775
+	Mobile:
+		Speed: 85
+	Selectable:
+		Bounds: 1280, 1280, 0, -256
+		DecorationBounds: 1280, 1280, 0, -256
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+		DefaultAttackSequence: shoot
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	Armament:
+		Weapon: CommanderBow
+		MuzzlePalette: knight
+		FireDelay: 6
+	AttackFrontal:
+		FacingTolerance: 0
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	AutoTarget:
+		ScanRadius: 4
+	Buildable:
+		Queue: Cavalry.Korea
+		Prerequisites: stable
+		BuildPaletteOrder: 10
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-commander.name
+
+occupier:
+	Inherits: ^syw-infantry
+	# Half the normal infantry speed (55).
+	Mobile:
+		Speed: 28
+	RenderSprites:
+		Image: occupier
+	Health:
+		HP: 11475
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	CaptureManager:
+	Captures:
+		CaptureTypes: building
+		ValidRelationships: Enemy, Neutral
+		SabotageThreshold: 0
+		SabotageCursor: enter
+		ConsumedByCapture: true
+	Buildable:
+		Queue: AdvancedInfantry.Korea
+		Prerequisites: barracks2
+		BuildPaletteOrder: 10
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-occupier.name
+
+miner:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: miner
+	Health:
+		HP: 19125
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	PaidMineLayer:
+		Mine: syw-mine-building
+		ManaCost: 30
+	AmmoPool@MANA:
+		Name: mana
+		Armaments: none
+		Ammo: 100
+		InitialAmmo: 100
+	ReloadAmmoPool@MANA:
+		AmmoPool: mana
+		# Uniform 100-mana pools: 1 mana every 10 ticks (2.5/second), the same recharge
+		# time per spell as the old 20-mana pool at 1 per 50 ticks.
+		Delay: 10
+		Count: 1
+		ResetOnFire: false
+	WithAmmoPipsDecoration@MANA:
+		AmmoPools: mana
+		PipCount: 10
+		Image: mana-pips
+		FullSequence: full
+		EmptySequence: empty
+		Palette: knight
+		Position: BottomLeft
+		Margin: 0, 4
+		RequiresSelection: true
+	Buildable:
+		Queue: AdvancedInfantry.Korea
+		Prerequisites: barracks2
+		BuildPaletteOrder: 20
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-miner.name
+
+syw-mine:
+	Armor:
+		Type: None
+	RenderSprites:
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	HiddenUnderFog:
+	Interactable:
+	Mine:
+		CrushClasses: mine
+		DetonateClasses: mine
+		AvoidFriendly: true
+		BlockFriendly: false
+	Health:
+		HP: 1000
+	Immobile:
+		OccupiesSpace: true
+	HitShape:
+	Targetable:
+		TargetTypes: Ground, Mine
+	Cloak:
+		# None keeps the friendly marker opaque; enemies still cannot see it.
+		CloakStyle: None
+		DetectionTypes: Mine
+		InitialDelay: 0
+		UncloakOn: None
+	FireWarheadsOnDeath:
+		Weapon: MinerMineExplosion
+		EmptyWeapon: MinerMineExplosion
+	Tooltip:
+		Name: actor-syw-mine.name
+	MapEditorData:
+		Categories: System
+
+# Mine while being laid (BUILD1 frame 200): cannot detonate, hidden from enemies like the
+# armed mine. After the build time it replaces itself with the armed syw-mine (frame 201).
+syw-mine-building:
+	Inherits: syw-mine
+	-Mine:
+	-FireWarheadsOnDeath:
+	KillsSelf:
+		# Provisional build time: 100 ticks (4 seconds).
+		Delay: 100
+	SpawnActorOnDeath:
+		Actor: syw-mine
+		SkipMakeAnimations: true
+
+# Chest dropped by a Peasant or Bull killed while carrying crops (MOUSE 50). Anyone's infantry or
+# vehicles collect it by walking over it: 100 credits, paid instantly. It never expires.
+resource-chest:
+	Interactable:
+	HiddenUnderFog:
+	Tooltip:
+		Name: actor-resource-chest.name
+		ShowOwnerRow: false
+	Crate:
+		Duration: 0
+		TerrainTypes: Clear, Crops
+	GiveCashCrateAction:
+		Amount: 100
+		SelectionShares: 1
+	RenderSprites:
+		Image: resource-chest
+		Palette: knight
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	MapEditorData:
+		Categories: System
+
+# Ox cart reuses gathering/docking, but cannot construct buildings.
+bull:
+	Inherits: peasant
+	-Builder:
+	-Targetable@HEAL:
+	-GrantConditionOnDamageState@HEAL:
+	RenderSprites:
+		Image: bull
+	Health:
+		HP: 19125
+	Selectable:
+		Bounds: 1536, 1536, 0, -256
+		DecorationBounds: 1536, 1536, 0, -256
+	Targetable:
+		TargetTypes: Ground, Vehicle
+	Passenger:
+		CargoType: Vehicle
+		Weight: 2
+	StoresResources:
+		Capacity: 30
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: actor-bull.name
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: heavyarmsworkshop
+	MapEditorData:
+		Categories: Vehicles

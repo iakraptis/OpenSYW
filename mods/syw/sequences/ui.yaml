@@ -1,0 +1,68 @@
+# UI-only images (not gameplay sprites). "clock" is the production-queue
+# progress overlay ProductionPaletteWidget always requires (hardcoded
+# default image name): a dimmed wedge for the time left, 48 frames drawn by
+# SYWtoORA/tools/chrome_export.py. Frame 0 (fully dimmed) doubles as the
+# "can't build" overlay.
+clock:
+	idle:
+		Filename: chrome/assets/clock.png
+		Length: *
+
+mana-pips:
+	full:
+		Filename: chrome/assets/mana-full.png
+	empty:
+		Filename: chrome/assets/mana-empty.png
+
+# Spell buttons from FIRE.SPR 188/189/191/195/196/197/198/199/200/202/205/276 (SYWtoORA/tools/spell_icon_export.py).
+spell-icons:
+	heal:
+		Filename: art/icons/spells/heal.png
+	lightning:
+		Filename: art/icons/spells/lightning.png
+	minefield:
+		Filename: art/icons/spells/minefield.png
+	mine:
+		Filename: art/icons/spells/mine.png
+	transform:
+		Filename: art/icons/spells/transform.png
+	massheal:
+		Filename: art/icons/spells/massheal.png
+	disturb:
+		Filename: art/icons/spells/disturb.png
+	earthquake:
+		Filename: art/icons/spells/earthquake.png
+	bewilder:
+		Filename: art/icons/spells/bewilder.png
+	detectmines:
+		Filename: art/icons/spells/detectmines.png
+	repair:
+		Filename: art/icons/spells/repair.png
+	sell:
+		Filename: art/icons/spells/sell.png
+
+# Rally point marker: the TREE 264-267 banner (building_effects_export.py); its pole foot (frame pixel 3,31)
+# sits on the rally cell. The blue cloth uses the team-colour range.
+rallypoint:
+	flag:
+		Filename: art/effects/rally.png
+		Length: 4
+		Tick: 150
+		Offset: 13, -15
+		ZOffset: 2535
+
+# Smoke over vehicles, ships and aircraft below 50% health (FIRE 130-137, building_effects_export.py).
+damage-smoke:
+	loop:
+		Filename: art/effects/damage-smoke.png
+		Length: 8
+		Tick: 100
+		Offset: 0, -12
+		ZOffset: 1024
+
+# The Witch's Earthquake (FIRE96 0-7, 96x96: the 3x3 cells around the target).
+earthquake:
+	quake:
+		Filename: art/effects/earthquake.png
+		Length: 8
+		Tick: 80

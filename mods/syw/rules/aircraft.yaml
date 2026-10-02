@@ -1,0 +1,121 @@
+# Flying dragon: stock hovering aircraft behavior; movement is provisional.
+fighter:
+	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
+	AttackMove:
+	# Repair button (stats panel): +500 HP every second until fully healed; a full repair costs
+	# 50% of the unit's price, charged per step. Stops if the owner runs out of money.
+	RepairableBuilding:
+		RepairPercent: 50
+		RepairInterval: 25
+		RepairStep: 500
+	AppearsOnRadar:
+	UpdatesPlayerStatistics:
+	CombatDebugOverlay:
+	GivesExperience:
+	ScriptTriggers:
+	RenderDebugState:
+	BodyOrientation:
+	QuantizeFacingsFromSequence:
+		Sequence: idle
+	Selectable:
+		Priority: 10
+		Bounds: 1536, 1536
+	SelectionDecorations:
+	Huntable:
+	OwnerLostAction:
+		Action: Kill
+	HitShape:
+	Health:
+		HP: 22950
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Type: GroundPosition
+		Range: 7c0
+	Aircraft:
+		CruiseAltitude: 1536
+		Speed: 90
+		TurnSpeed: 32
+		CanHover: true
+		CanSlide: true
+		VTOL: true
+		CanForceLand: false
+	Targetable:
+		TargetTypes: Air
+	HiddenUnderFog:
+		Type: GroundPosition
+	MustBeDestroyed:
+	# Destruction effect (EXP.SPR group B, flash and smoke); visual only.
+	FireWarheadsOnDeath:
+		Weapon: VehicleExplosion
+		EmptyWeapon: VehicleExplosion
+	RenderSprites:
+		Image: fighter
+		PlayerPalette: vehicle-player
+	WithFacingSpriteBody:
+	# Smokes below 50% health (FIRE 130-137).
+	GrantConditionOnDamageState@SMOKE:
+		Condition: damage-smoke
+		ValidDamageStates: Heavy, Critical
+	WithIdleOverlay@DAMAGESMOKE:
+		Image: damage-smoke
+		Sequence: loop
+		Palette: knight
+		RequiresCondition: damage-smoke
+	Armament:
+		Weapon: FighterRockets
+		LocalOffset: 512,0,0
+		MuzzlePalette: knight
+	AttackAircraft:
+		AttackType: Hover
+		FacingTolerance: 64
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	AutoTarget:
+		ScanRadius: 7
+	Buildable:
+		Queue: Aircraft.Korea
+		Prerequisites: planeworks
+		BuildPaletteOrder: 10
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: actor-fighter.name
+	MapEditorData:
+		Categories: Aircraft
+
+# Unarmed air transport. Capacity is provisional until original behavior is recovered.
+transporter:
+	Inherits: fighter
+	-Armament:
+	-AttackAircraft:
+	-AutoTarget:
+	-AutoTargetPriority@COMBAT:
+	RenderSprites:
+		Image: transporter
+	Health:
+		HP: 38250
+	Aircraft:
+		Speed: 75
+		CanForceLand: true
+		LandableTerrainTypes: Clear, Crops
+		AirborneCondition: airborne
+	Targetable:
+		RequiresCondition: airborne
+	Targetable@LANDED:
+		TargetTypes: Ground, Vehicle
+		RequiresCondition: !airborne
+	Cargo:
+		Types: Infantry, Vehicle
+		MaxWeight: 8
+		AfterUnloadDelay: 10
+		UnloadTerrainTypes: Clear, Crops
+	Buildable:
+		BuildPaletteOrder: 20
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: actor-transporter.name

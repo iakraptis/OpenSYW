@@ -1,0 +1,416 @@
+# Japanese faction. Every actor inherits its Korean counterpart and overrides only what differs: art, production
+# queue (*.Japan), name, and the values from SYWtoORA/proposedJapan.md (Korean live value x the Japan/Korea ratio
+# recovered from syw.exe, plus the user's weaker Footman and Fighter). Japanese buildings provide the same
+# prerequisite names as the Korean ones (barracks, beaconmound, ...), so shared prerequisites work for both.
+# Art: SYWtoORA/tools/japan_export.py.
+
+# ---------------------------------------------------------------- Infantry
+
+jpeasant:
+	Inherits: peasant
+	RenderSprites:
+		Image: jpeasant
+	Buildable:
+		Queue: Workers.Japan
+	Builder:
+		Types: jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, airport, jtemple, witchhouse, jstable, jarrowtower, jcannontower, jshipyard
+
+jbull:
+	Inherits: bull
+	RenderSprites:
+		Image: jbull
+	Buildable:
+		Queue: Workers.Japan
+
+# User change: weaker than Korea's Footman (26,775 HP, 4,500 damage).
+jfootman:
+	Inherits: footman
+	RenderSprites:
+		Image: jfootman
+	Health:
+		HP: 22950
+	Armament:
+		Weapon: JapaneseSword
+	Buildable:
+		Queue: Infantry.Japan
+
+jarcher:
+	Inherits: archer
+	RenderSprites:
+		Image: jarcher
+	Buildable:
+		Queue: Infantry.Japan
+
+# Japan advantage: +20% damage and +1 range at the same price.
+jgunner:
+	Inherits: gunner
+	RenderSprites:
+		Image: jgunner
+	Armament:
+		Weapon: JapaneseMusket
+	Buildable:
+		Queue: Infantry.Japan
+
+# Melee cavalry (Korea's Commander uses a bow).
+general:
+	Inherits: commander
+	RenderSprites:
+		Image: general
+	Armament:
+		Weapon: GeneralSword
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+	Buildable:
+		Queue: Cavalry.Japan
+	Tooltip:
+		Name: actor-general.name
+
+thief:
+	Inherits: occupier
+	RenderSprites:
+		Image: thief
+	Buildable:
+		Queue: AdvancedInfantry.Japan
+	Tooltip:
+		Name: actor-thief.name
+
+# The Monk's spells: Heal, Mass Heal and Disturb (user decision, 2026-09-29; the original Priest had Detect mine).
+priest:
+	Inherits: monk
+	RenderSprites:
+		Image: priest
+	Buildable:
+		Queue: Temple.Japan
+	Tooltip:
+		Name: actor-priest.name
+
+# Earthquake and Bewilderment instead of Lightning and Transform.
+witch:
+	Inherits: shaman
+	-ManualLightning:
+	-ShamanTransform:
+	-Armament@LIGHTNING:
+	-AttackFrontal@LIGHTNING:
+	-Armament:
+	RenderSprites:
+		Image: witch
+	# The Shaman's fireball, without the Lightning casting gate.
+	Armament@FIREBALL:
+		Name: primary
+		Weapon: MonkFireball
+		MuzzlePalette: knight
+		FireDelay: 6
+	AmmoPool@MANA:
+		Armaments: none
+	# Earthquake (FIRE 198): power 105 over the 5x5 cells around a ground target.
+	EarthquakeSpell:
+		Weapon: Earthquake
+		ManaCost: 60
+	# Bewilderment (FIRE 200): an enemy unit within 5 cells changes sides (80%).
+	Bewilder:
+		ManaCost: 60
+		Range: 5c0
+		SuccessPercent: 80
+	Buildable:
+		Queue: Shaman.Japan
+	Tooltip:
+		Name: actor-witch.name
+
+# ---------------------------------------------------------------- Vehicles
+
+# Gun car: one bullet per 33 ticks from a turret (Korea's Fire Car fires a 2-rocket volley per 93).
+armoredcar:
+	Inherits: firecar
+	RenderSprites:
+		Image: armoredcar
+	# TANK 26-35 has a forward roof mount, not a central pivot.
+	# At 0.85 sprite scale: about 10 screen px forward, 6 px above ground.
+	# Rotate the mount with the hull; the turret can still aim independently.
+	Turreted:
+		Offset: 320,0,192
+	Armament:
+		Weapon: ArmoredCarGun
+	# 2026-09-29 (user design): carries up to 5 infantry like a transport; deploy to unload.
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		AfterUnloadDelay: 10
+	Buildable:
+		Queue: Vehicles.Japan
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: actor-armoredcar.name
+
+# The same Cannon as Korea's, 200 more expensive.
+jcannon:
+	Inherits: cannon
+	Buildable:
+		Queue: Vehicles.Japan
+	Valued:
+		Cost: 1600
+
+# ---------------------------------------------------------------- Aircraft
+
+jtransporter:
+	Inherits: transporter
+	RenderSprites:
+		Image: jtransporter
+	Buildable:
+		Queue: Aircraft.Japan
+	Valued:
+		Cost: 1600
+
+# User change: weaker than Korea's Fighter (22,950 HP); same reload and price.
+jfighter:
+	Inherits: fighter
+	RenderSprites:
+		Image: jfighter
+	Health:
+		HP: 20655
+	Buildable:
+		Queue: Aircraft.Japan
+
+# Japan only: flies over the target and drops 6 bombs with cannon-type splash.
+bomber:
+	Inherits: fighter
+	RenderSprites:
+		Image: bomber
+	Health:
+		HP: 30600
+	# One bomb from each offset (left wing, centre, right wing), so the burst lands side by side.
+	Armament:
+		Weapon: BomberBombs
+		LocalOffset: 0,-256,0, 0,0,0, 0,256,0
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+	Buildable:
+		Queue: Aircraft.Japan
+		BuildPaletteOrder: 30
+	Valued:
+		Cost: 1700
+	Tooltip:
+		Name: actor-bomber.name
+
+# ---------------------------------------------------------------- Ships
+
+# Japan advantage: the Turtle Ship's stats for 1,300.
+jcannonship:
+	Inherits: cannonship
+	RenderSprites:
+		Image: jcannonship
+	Buildable:
+		Queue: Naval.Japan
+	Valued:
+		Cost: 1300
+
+# Japan advantage: cheaper than the Patrol Ship and 1 more range.
+arrowship:
+	Inherits: patrolship
+	RenderSprites:
+		Image: arrowship
+	Health:
+		HP: 45900
+	Armament:
+		Weapon: ArrowShipBow
+	Buildable:
+		Queue: Naval.Japan
+		BuildPaletteOrder: 20
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: actor-arrowship.name
+
+# Japan's transport is a submarine: carries units.
+submarine:
+	Inherits: transportship
+	RenderSprites:
+		Image: submarine
+	Health:
+		HP: 53550
+	Buildable:
+		Queue: Naval.Japan
+		BuildPaletteOrder: 30
+	Tooltip:
+		Name: actor-submarine.name
+
+# Japan only: a suicide boat. It rams an enemy ship, or reaches its attack-move destination, and explodes
+# (power 1,500, 3x3 splash).
+torpedo:
+	Inherits: ^syw-ship
+	RenderSprites:
+		Image: torpedo
+	Selectable:
+		Bounds: 1024, 1024
+	Health:
+		HP: 3825
+	RevealsShroud:
+		Range: 4c0
+	Armament:
+		Weapon: TorpedoTargeting
+	AttackFrontal:
+		FacingTolerance: 512
+	# Controls: attack-move only. Plain moves are refused (right-click needs force-move, which RejectMoveOrders then
+	# drops). On an attack-move it rams any enemy ship within 5 cells; if none, it explodes at the destination.
+	AttackMoveOnly:
+	GrantCondition@ATTACKMOVEONLY:
+		Condition: attack-move-only
+	Mobile:
+		RequireForceMoveCondition: attack-move-only
+	# AttackAnything lets an attack-move divert to enemies in scan range; no scanning while idle, so it never
+	# sets off on its own.
+	AutoTarget:
+		ScanRadius: 5
+		InitialStance: AttackAnything
+		ScanOnIdle: false
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Water
+		ValidRelationships: Enemy
+	GrantConditionOnAttack:
+		Condition: triggered
+	KillsSelf:
+		RequiresCondition: triggered
+	FireWarheadsOnDeath:
+		Weapon: TorpedoBlast
+		EmptyWeapon: TorpedoBlast
+	Buildable:
+		Queue: Naval.Japan
+		BuildPaletteOrder: 40
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: actor-torpedo.name
+
+# ---------------------------------------------------------------- Buildings
+
+jhq:
+	Inherits: hq
+	RenderSprites:
+		Image: jhq
+	Production:
+		Produces: Workers.Japan
+	ProductionQueue:
+		Type: Workers.Japan
+	ProductionBar:
+		ProductionType: Workers.Japan
+
+jbarracks:
+	Inherits: barracks
+	RenderSprites:
+		Image: jbarracks
+	Production:
+		Produces: Infantry.Japan
+	ProductionQueue:
+		Type: Infantry.Japan
+	ProductionBar:
+		ProductionType: Infantry.Japan
+
+jmill:
+	Inherits: mill
+	RenderSprites:
+		Image: jmill
+
+jbeacon:
+	Inherits: beaconmound
+	RenderSprites:
+		Image: jbeacon
+	Tooltip:
+		Name: actor-jbeacon.name
+
+jheavyarms:
+	Inherits: heavyarmsworkshop
+	RenderSprites:
+		Image: jheavyarms
+	Tooltip:
+		Name: actor-jheavyarms.name
+	Production:
+		Produces: Vehicles.Japan
+	ProductionQueue:
+		Type: Vehicles.Japan
+	ProductionBar:
+		ProductionType: Vehicles.Japan
+
+jbarracks2:
+	Inherits: barracks2
+	RenderSprites:
+		Image: jbarracks2
+	Production:
+		Produces: AdvancedInfantry.Japan
+	ProductionQueue:
+		Type: AdvancedInfantry.Japan
+	ProductionBar:
+		ProductionType: AdvancedInfantry.Japan
+
+airport:
+	Inherits: planeworks
+	RenderSprites:
+		Image: airport
+	Tooltip:
+		Name: actor-airport.name
+	Production:
+		Produces: Aircraft.Japan
+	ProductionQueue:
+		Type: Aircraft.Japan
+	ProductionBar:
+		ProductionType: Aircraft.Japan
+
+jtemple:
+	Inherits: temple
+	RenderSprites:
+		Image: jtemple
+	Production:
+		Produces: Temple.Japan
+	ProductionQueue:
+		Type: Temple.Japan
+	ProductionBar:
+		ProductionType: Temple.Japan
+
+witchhouse:
+	Inherits: shamanhouse
+	RenderSprites:
+		Image: witchhouse
+	Tooltip:
+		Name: actor-witchhouse.name
+	Production:
+		Produces: Shaman.Japan
+	ProductionQueue:
+		Type: Shaman.Japan
+	ProductionBar:
+		ProductionType: Shaman.Japan
+
+jstable:
+	Inherits: stable
+	RenderSprites:
+		Image: jstable
+	Production:
+		Produces: Cavalry.Japan
+	ProductionQueue:
+		Type: Cavalry.Japan
+	ProductionBar:
+		ProductionType: Cavalry.Japan
+
+# Towers shoot guns: strong against infantry and cavalry.
+jarrowtower:
+	Inherits: arrowtower
+	RenderSprites:
+		Image: jarrowtower
+	Armament:
+		Weapon: JapanTowerGun
+
+jcannontower:
+	Inherits: cannontower
+	RenderSprites:
+		Image: jcannontower
+	Armament:
+		Weapon: JapanCannonTowerShot
+
+jshipyard:
+	Inherits: shipyard
+	RenderSprites:
+		Image: jshipyard
+	Production:
+		Produces: Naval.Japan
+	ProductionQueue:
+		Type: Naval.Japan
+	ProductionBar:
+		ProductionType: Naval.Japan

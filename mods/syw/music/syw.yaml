@@ -1,0 +1,5 @@
+# Original SYW menu theme (SYWAR/effect/menumus.WAV, 8-bit mono PCM 22 kHz), played behind the main menu.
+menumus: Main Theme
+	Filename: music/menumus
+	Extension: wav
+	Hidden: true

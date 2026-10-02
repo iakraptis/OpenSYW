@@ -1,0 +1,58 @@
+Cursors:
+	syw|cursors/default.yaml
+
+Missions:
+	syw|missions/syw.yaml
+
+Music:
+	syw|music/syw.yaml
+
+Notifications:
+	syw|notifications/syw.yaml
+
+Rules:
+	syw|rules/mpspawn.yaml
+	syw|rules/palettes.yaml
+	syw|rules/player.yaml
+	syw|rules/ai.yaml
+	syw|rules/world.yaml
+	syw|rules/infantry.yaml
+	syw|rules/structures.yaml
+	syw|rules/vehicles.yaml
+	syw|rules/aircraft.yaml
+	syw|rules/ships.yaml
+	syw|rules/japan.yaml
+
+Sequences:
+	syw|sequences/shroud.yaml
+	syw|sequences/resources.yaml
+	syw|sequences/peasant.yaml
+	syw|sequences/bull.yaml
+	syw|sequences/archer.yaml
+	syw|sequences/gunner.yaml
+	syw|sequences/monk.yaml
+	syw|sequences/commander.yaml
+	syw|sequences/occupier.yaml
+	syw|sequences/miner.yaml
+	syw|sequences/shaman.yaml
+	syw|sequences/footman.yaml
+	syw|sequences/firecar.yaml
+	syw|sequences/fighter.yaml
+	syw|sequences/ships.yaml
+	syw|sequences/japan.yaml
+	syw|sequences/structures.yaml
+	syw|sequences/projectiles.yaml
+	syw|sequences/ui.yaml
+	syw|sequences/mapeditor.yaml
+	syw|sequences/mpspawn.yaml
+
+TileSets:
+	syw|tilesets/syw.yaml
+	syw|tilesets/field3.yaml
+
+Voices:
+	syw|voices/syw.yaml
+
+Weapons:
+	syw|weapons/syw.yaml
+	syw|weapons/japan.yaml

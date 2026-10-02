@@ -1,0 +1,119 @@
+# Vehicle chassis and turret use stock OpenRA traits. Timing/speed are initial
+# gameplay values; original dynamic armor/depletion and splash are not ported.
+^syw-vehicle:
+	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
+	AttackMove:
+	# Repair button (stats panel): +500 HP every second until fully healed; a full repair costs
+	# 50% of the unit's price, charged per step. Stops if the owner runs out of money.
+	RepairableBuilding:
+		RepairPercent: 50
+		RepairInterval: 25
+		RepairStep: 500
+	AppearsOnRadar:
+	UpdatesPlayerStatistics:
+	CombatDebugOverlay:
+	GivesExperience:
+	ScriptTriggers:
+	RenderDebugState:
+	BodyOrientation:
+	QuantizeFacingsFromSequence:
+		Sequence: idle
+	Selectable:
+		Priority: 10
+		Bounds: 1280, 1280, 0, -256
+	SelectionDecorations:
+	Huntable:
+	OwnerLostAction:
+		Action: Kill
+	HitShape:
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 7c0
+	Mobile:
+		Locomotor: wheeled
+		Speed: 65
+		TurnSpeed: 32
+	Targetable:
+		TargetTypes: Ground, Vehicle
+	HiddenUnderFog:
+	MustBeDestroyed:
+	# Destruction effect (EXP.SPR group B, flash and smoke); visual only.
+	FireWarheadsOnDeath:
+		Weapon: VehicleExplosion
+		EmptyWeapon: VehicleExplosion
+	RenderSprites:
+		PlayerPalette: vehicle-player
+	WithFacingSpriteBody:
+	WithMoveAnimation:
+	# Smokes below 50% health (FIRE 130-137).
+	GrantConditionOnDamageState@SMOKE:
+		Condition: damage-smoke
+		ValidDamageStates: Heavy, Critical
+	WithIdleOverlay@DAMAGESMOKE:
+		Image: damage-smoke
+		Sequence: loop
+		Palette: knight
+		RequiresCondition: damage-smoke
+	Turreted:
+		TurnSpeed: 32
+		RealignDelay: 40
+	WithSpriteTurret:
+	Armament:
+		LocalOffset: 512,0,128
+		MuzzlePalette: knight
+	AttackTurreted:
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	AutoTarget:
+		ScanRadius: 7
+	Buildable:
+		Queue: Vehicles.Korea
+		Prerequisites: heavyarmsworkshop
+		Icon: icon
+		IconPalette: knight
+	MapEditorData:
+		Categories: Vehicles
+	Passenger:
+		CargoType: Vehicle
+		Weight: 2
+
+firecar:
+	Inherits: ^syw-vehicle
+	Armor:
+		Type: Light
+	RenderSprites:
+		Image: firecar
+	Health:
+		HP: 32513
+	Armament:
+		Weapon: FireCarRockets
+	Buildable:
+		BuildPaletteOrder: 10
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: actor-firecar.name
+
+# Original Cannon uses TANK 52-74.
+cannon:
+	Inherits: ^syw-vehicle
+	RenderSprites:
+		Image: cannon
+	Health:
+		HP: 34425
+	Mobile:
+		Speed: 50
+	RevealsShroud:
+		Range: 10c0
+	Armament:
+		Weapon: CannonShot
+	AutoTarget:
+		ScanRadius: 10
+	Buildable:
+		BuildPaletteOrder: 20
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: actor-cannon.name

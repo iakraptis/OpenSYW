@@ -1,0 +1,559 @@
+Container@PLAYER_WIDGETS:
+	Logic: MenuButtonsChromeLogic, SelectionStatsLogic, BuildingTrainingLogic, TransportCargoLogic, SpellPaletteLogic
+	Children:
+		LogicTicker@SIDEBAR_TICKER:
+		Background@SIDEBAR_BACKGROUND:
+			X: WINDOW_WIDTH - 320
+			Width: 320
+			Height: WINDOW_HEIGHT
+			Background: sidebar-panel
+		MenuButton@OPTIONS_BUTTON:
+			Key: escape
+		WorldLabelWithTooltip@CASH:
+			Logic: IngameCashCounterLogic
+			X: WINDOW_WIDTH - 280
+			Y: 16
+			Width: 240
+			Height: 24
+			Align: Center
+			Font: Bold
+			Contrast: true
+			TooltipContainer: TOOLTIP_CONTAINER
+			TooltipTemplate: SIMPLE_TOOLTIP
+		Container@RADAR_PANEL:
+			Logic: IngameRadarDisplayLogic
+			X: WINDOW_WIDTH - 241
+			Y: 119
+			Width: 192
+			Height: 192
+			Children:
+				LogicTicker@RADAR_TICKER:
+				ColorBlock@RADAR_FADETOBLACK:
+					Width: PARENT_WIDTH
+					Height: PARENT_HEIGHT
+					Color: 000000
+				Radar@RADAR_MINIMAP:
+					Width: PARENT_WIDTH
+					Height: PARENT_HEIGHT
+					WorldInteractionController: INTERACTION_CONTROLLER
+		Container@STATS_PANEL:
+			X: WINDOW_WIDTH - 266
+			Y: 408
+			Width: 240
+			Height: 176
+			Children:
+				Background@STATS_PORTRAIT_FRAME:
+					X: 28
+					Y: 14
+					Width: 66
+					Height: 50
+					Background: dialog3
+				Background@STATS_TEXT_BACKGROUND:
+					X: 0
+					Y: 97
+					Width: 240
+					Height: 79
+					Background: dialog3
+				Sprite@STATS_PORTRAIT:
+					X: 29
+					Y: 15
+					Width: 64
+					Height: 48
+					Palette: knight
+				# Repair toggle (FIRE 188) for your own damaged buildings and vehicles.
+				Button@STATS_REPAIR:
+					X: 134
+					Y: 4
+					Width: 50
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@ICON:
+							X: 1
+							Y: 1
+							Width: 48
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 48
+							Height: 48
+							Color: 00000090
+				# Sell (FIRE 189) for your own buildings.
+				Button@STATS_SELL:
+					X: 188
+					Y: 4
+					Width: 50
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@ICON:
+							X: 1
+							Y: 1
+							Width: 48
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 48
+							Height: 48
+							Color: 00000090
+				Label@STATS_COUNT:
+					X: 132
+					Y: 58
+					Width: 108
+					Height: 18
+					Align: Center
+					Contrast: true
+				Label@STATS_NAME:
+					X: 6
+					Y: 99
+					Width: 230
+					Height: 18
+					Font: Bold
+					Contrast: true
+				Label@STATS_LINE_1:
+					X: 6
+					Y: 117
+					Width: 230
+					Height: 14
+					Font: Small
+					Contrast: true
+				Label@STATS_LINE_2:
+					X: 6
+					Y: 131
+					Width: 230
+					Height: 14
+					Font: Small
+					Contrast: true
+				Label@STATS_LINE_3:
+					X: 6
+					Y: 145
+					Width: 230
+					Height: 14
+					Font: Small
+					Contrast: true
+				Label@STATS_LINE_4:
+					X: 6
+					Y: 159
+					Width: 230
+					Height: 14
+					Font: Small
+					Contrast: true
+		Label@TRAINING_TITLE:
+			X: WINDOW_WIDTH - 242
+			Y: 600
+			Width: 192
+			Height: 24
+			Font: Bold
+			Align: Center
+			Contrast: true
+		# Grey frames and training icons share the build palette's 2-column grid (buttons at X 29/97,
+		# 68 x 52 steps); each 64x48 icon sits 1 px inside its 66x50 frame.
+		Container@PRODUCTION_BACKGROUND:
+			X: WINDOW_WIDTH - 213
+			Y: 630
+			Children:
+				Background@ICON_TEMPLATE:
+					Width: 66
+					Height: 50
+					Background: dialog3
+		ProductionPalette@PRODUCTION_PALETTE:
+			IconSize: 64, 48
+			IconMargin: 4, 4
+			Columns: 2
+			# Must be set with 2 columns: the engine default (int.MaxValue) times Columns overflows to a
+			# negative icon count and the palette draws no buttons at all.
+			MaxIconRowOffset: 10
+			X: WINDOW_WIDTH - 212
+			Y: 631
+			Width: 132
+			TooltipContainer: TOOLTIP_CONTAINER
+			TooltipTemplate: PRODUCTION_TOOLTIP
+			ReadyText: production-palette.ready
+			HoldText: production-palette.hold
+			ClockPalette: knight
+		Container@BUILD_PALETTE:
+			Logic: BuilderPaletteLogic
+			X: WINDOW_WIDTH - 242
+			Y: 630
+			Width: 192
+			Height: 364
+			Children:
+				Label@BUILD_TITLE:
+					Y: -30
+					Width: 192
+					Height: 24
+					Font: Bold
+					Align: Center
+					Contrast: true
+				Button@BUILD_SLOT_0:
+					X: 29
+					Y: 0
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_1:
+					X: 97
+					Y: 0
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_2:
+					X: 29
+					Y: 52
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_3:
+					X: 97
+					Y: 52
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_4:
+					X: 29
+					Y: 104
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_5:
+					X: 97
+					Y: 104
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_6:
+					X: 29
+					Y: 156
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_7:
+					X: 97
+					Y: 156
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_8:
+					X: 29
+					Y: 208
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_9:
+					X: 97
+					Y: 208
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_10:
+					X: 29
+					Y: 260
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_11:
+					X: 97
+					Y: 260
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@BUILD_SLOT_12:
+					X: 29
+					Y: 312
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@PORTRAIT:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+		# Portraits of the units aboard the selected transport, in the build palette's grid.
+		Container@CARGO_PANEL:
+			X: WINDOW_WIDTH - 242
+			Y: 600
+			Width: 192
+			Height: 230
+			Children:
+				Label@CARGO_EMPTY:
+					Width: 192
+					Height: 24
+					Align: Center
+					Contrast: true
+				Container@CARGO_ROWS:
+					Width: 192
+					Height: 230
+					Children:
+						Background@CARGO_SLOT_TEMPLATE:
+							Width: 66
+							Height: 50
+							Background: dialog3
+							Children:
+								Sprite@PORTRAIT:
+									X: 1
+									Y: 1
+									Width: 64
+									Height: 48
+									Palette: knight
+
+		Container@SPELL_PANEL:
+			X: WINDOW_WIDTH - 242
+			Y: 600
+			Width: 192
+			Height: 222
+			Children:
+				Label@SPELL_TITLE:
+					Width: 192
+					Height: 24
+					Font: Bold
+					Align: Center
+					Contrast: true
+				Label@SPELL_MANA:
+					Y: 24
+					Width: 192
+					Height: 20
+					Align: Center
+					Contrast: true
+				Button@SPELL_BUTTON:
+					X: 29
+					Y: 50
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@ICON:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@SPELL_BUTTON_2:
+					X: 97
+					Y: 50
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@ICON:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Button@SPELL_BUTTON_3:
+					X: 63
+					Y: 102
+					Width: 66
+					Height: 50
+					TooltipContainer: TOOLTIP_CONTAINER
+					Children:
+						Sprite@ICON:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 1
+							Y: 1
+							Width: 64
+							Height: 48
+							Color: 00000090
+				Label@SPELL_STATUS:
+					Y: 106
+					Width: 192
+					Height: 20
+					Align: Center
+					Contrast: true
+				Label@SPELL_CANCEL:
+					Y: 126
+					Width: 192
+					Height: 20
+					Font: Small
+					Align: Center
+					Contrast: true

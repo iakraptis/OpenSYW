@@ -1,0 +1,35 @@
+MapFormat: 12
+
+RequiresMod: syw
+
+Title: OpenSY Shellmap
+
+Author: OpenSY
+
+Tileset: SYW
+
+MapSize: 34,34
+
+Bounds: 1,1,32,32
+
+Visibility: Shellmap
+
+Categories: Maps
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+
+Actors:
+
+Rules:
+	world:
+		MusicPlaylist:
+			BackgroundMusic: menumus

@@ -1,0 +1,109 @@
+rice:
+	Defaults:
+		Filename: art/resources/rice.png
+		Length: 4
+	r0c0:
+		Start: 0
+	r0c1:
+		Start: 4
+	r0c2:
+		Start: 8
+	r0c3:
+		Start: 12
+	r0c4:
+		Start: 16
+	r1c0:
+		Start: 20
+	r1c1:
+		Start: 24
+	r1c2:
+		Start: 28
+	r1c3:
+		Start: 32
+	r1c4:
+		Start: 36
+	r2c0:
+		Start: 40
+	r2c1:
+		Start: 44
+	r2c2:
+		Start: 48
+	r2c3:
+		Start: 52
+	r2c4:
+		Start: 56
+	r3c0:
+		Start: 60
+	r3c1:
+		Start: 64
+	r3c2:
+		Start: 68
+	r3c3:
+		Start: 72
+	r3c4:
+		Start: 76
+	r4c0:
+		Start: 80
+	r4c1:
+		Start: 84
+	r4c2:
+		Start: 88
+	r4c3:
+		Start: 92
+	r4c4:
+		Start: 96
+
+potato:
+	Defaults:
+		Filename: art/resources/potato.png
+		Length: 4
+	r0c0:
+		Start: 0
+	r0c1:
+		Start: 4
+	r0c2:
+		Start: 8
+	r0c3:
+		Start: 12
+	r0c4:
+		Start: 16
+	r1c0:
+		Start: 20
+	r1c1:
+		Start: 24
+	r1c2:
+		Start: 28
+	r1c3:
+		Start: 32
+	r1c4:
+		Start: 36
+	r2c0:
+		Start: 40
+	r2c1:
+		Start: 44
+	r2c2:
+		Start: 48
+	r2c3:
+		Start: 52
+	r2c4:
+		Start: 56
+	r3c0:
+		Start: 60
+	r3c1:
+		Start: 64
+	r3c2:
+		Start: 68
+	r3c3:
+		Start: 72
+	r3c4:
+		Start: 76
+	r4c0:
+		Start: 80
+	r4c1:
+		Start: 84
+	r4c2:
+		Start: 88
+	r4c3:
+		Start: 92
+	r4c4:
+		Start: 96

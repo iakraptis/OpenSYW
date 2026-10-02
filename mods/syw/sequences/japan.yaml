@@ -1,0 +1,600 @@
+# Japanese faction sprites, exported by SYWtoORA/tools/japan_export.py (unit_icon_export.py and
+# building_portrait_export.py for icons and portraits).
+
+jpeasant:
+	icon:
+		Filename: art/icons/units/jpeasant.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/jpeasant/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/jpeasant/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/jpeasant/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	loaded-walk:
+		Filename: art/units/jpeasant/loaded-walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	loaded-stand:
+		Filename: art/units/jpeasant/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	loaded-idle:
+		Filename: art/units/jpeasant/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	harvest:
+		Filename: art/units/jpeasant/harvest.png
+		Length: 4
+		Tick: 200
+	die1:
+		Filename: art/units/jpeasant/death.png
+		Length: 4
+		Tick: 150
+
+jbull:
+	icon:
+		Filename: art/icons/units/jbull.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/jbull/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/jbull/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/jbull/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	loaded-walk:
+		Filename: art/units/jbull/loaded-walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	loaded-stand:
+		Filename: art/units/jbull/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	loaded-idle:
+		Filename: art/units/jbull/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	harvest:
+		Filename: art/units/jbull/harvest.png
+		Length: 4
+		Tick: 200
+	die1:
+		Filename: art/units/jbull/death.png
+		Length: 4
+		Tick: 150
+
+jfootman:
+	icon:
+		Filename: art/icons/units/jfootman.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/jfootman/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/jfootman/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/jfootman/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	attack:
+		Filename: art/units/jfootman/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/jfootman/death.png
+		Length: 4
+		Tick: 150
+
+jarcher:
+	icon:
+		Filename: art/icons/units/jarcher.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/jarcher/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/jarcher/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/jarcher/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/jarcher/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/jarcher/death.png
+		Length: 4
+		Tick: 150
+
+jgunner:
+	icon:
+		Filename: art/icons/units/jgunner.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/jgunner/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/jgunner/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/jgunner/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/jgunner/shoot.png
+		Facings: 8
+		Length: 2
+		Tick: 120
+	die1:
+		Filename: art/units/jgunner/death.png
+		Length: 4
+		Tick: 150
+
+priest:
+	icon:
+		Filename: art/icons/units/priest.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/priest/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/priest/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/priest/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/priest/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/priest/death.png
+		Length: 4
+		Tick: 150
+
+witch:
+	icon:
+		Filename: art/icons/units/witch.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/witch/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/witch/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/witch/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/witch/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/witch/death.png
+		Length: 4
+		Tick: 150
+
+general:
+	icon:
+		Filename: art/icons/units/general.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/general/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/general/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/general/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/general/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/general/death.png
+		Length: 6
+		Tick: 150
+
+thief:
+	icon:
+		Filename: art/icons/units/thief.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/thief/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/thief/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/thief/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	die1:
+		Filename: art/units/thief/death.png
+		Length: 4
+		Tick: 150
+
+armoredcar:
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	idle:
+		Filename: art/units/armoredcar/body.png
+		Facings: 8
+		Length: 1
+		Stride: 2
+	move:
+		Filename: art/units/armoredcar/body.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+	turret:
+		Filename: art/units/armoredcar/turret.png
+		Facings: 16
+		Length: 1
+	icon:
+		Filename: art/icons/units/armoredcar.png
+		Offset: 0,0
+
+jcannonship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/jcannonship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/jcannonship.png
+
+arrowship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/arrowship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/arrowship.png
+
+submarine:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/submarine/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/submarine.png
+
+torpedo:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/torpedo/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/torpedo.png
+
+jtransporter:
+	idle:
+		Filename: art/units/jtransporter/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/jtransporter.png
+
+bomber:
+	idle:
+		Filename: art/units/bomber/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/bomber.png
+
+jfighter:
+	idle:
+		Filename: art/units/jfighter/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/jfighter.png
+
+jhq:
+	underconstruction:
+		Filename: art/buildings/jheadquarters/underconstruction.png
+	idle:
+		Filename: art/buildings/jheadquarters/idle.png
+	damaged-idle:
+		Filename: art/buildings/jheadquarters/damaged-idle.png
+
+jbarracks:
+	underconstruction:
+		Filename: art/buildings/jbarracks/underconstruction.png
+	idle:
+		Filename: art/buildings/jbarracks/idle.png
+	damaged-idle:
+		Filename: art/buildings/jbarracks/damaged-idle.png
+	# Flags on the three roofs (MOUSE 84-87, building_effects_export.py). The pole foot (frame pixel 29,30) sits on each
+	# roof ridge: sprite pixels (40,15), (64,35) and (36,53). Staggered start frames so they don't wave in sync.
+	flag1:
+		Filename: art/effects/buildings/jflag.png
+		Frames: 0, 1, 2, 3
+		Length: 4
+		Tick: 150
+		Offset: -21, -47
+		ZOffset: 1024
+	flag2:
+		Filename: art/effects/buildings/jflag.png
+		Frames: 1, 2, 3, 0
+		Length: 4
+		Tick: 150
+		Offset: 3, -27
+		ZOffset: 1024
+	flag3:
+		Filename: art/effects/buildings/jflag.png
+		Frames: 2, 3, 0, 1
+		Length: 4
+		Tick: 150
+		Offset: -25, -9
+		ZOffset: 1024
+
+jmill:
+	underconstruction:
+		Filename: art/buildings/jmill/underconstruction.png
+	idle:
+	# Turning windmill: 4 whole-building frames from BUILD1 80-131.
+		Filename: art/buildings/jmill/idle.png
+		Length: 4
+		Tick: 150
+	damaged-idle:
+		Filename: art/buildings/jmill/damaged-idle.png
+
+jbeacon:
+	underconstruction:
+		Filename: art/buildings/jbeacon/underconstruction.png
+	idle:
+		Filename: art/buildings/jbeacon/idle.png
+	damaged-idle:
+		Filename: art/buildings/jbeacon/damaged-idle.png
+	# The Korean Beacon Mound's chimney smoke; the bottom of the 32x64 cloud sits on the tower opening at sprite pixel (28,11).
+	smoke:
+		Filename: art/effects/buildings/chimney.png
+		Length: 8
+		Tick: 120
+		Offset: -20, -69
+		ZOffset: 1024
+
+jheavyarms:
+	underconstruction:
+		Filename: art/buildings/jheavyarms/underconstruction.png
+	idle:
+		Filename: art/buildings/jheavyarms/idle.png
+	damaged-idle:
+		Filename: art/buildings/jheavyarms/damaged-idle.png
+
+jstable:
+	underconstruction:
+		Filename: art/buildings/jstable/underconstruction.png
+	idle:
+		Filename: art/buildings/jstable/idle.png
+	damaged-idle:
+		Filename: art/buildings/jstable/damaged-idle.png
+
+jbarracks2:
+	underconstruction:
+		Filename: art/buildings/jbarracks2/underconstruction.png
+	idle:
+		Filename: art/buildings/jbarracks2/idle.png
+	damaged-idle:
+		Filename: art/buildings/jbarracks2/damaged-idle.png
+
+airport:
+	underconstruction:
+		Filename: art/buildings/airport/underconstruction.png
+	idle:
+		Filename: art/buildings/airport/idle.png
+	damaged-idle:
+		Filename: art/buildings/airport/damaged-idle.png
+
+jtemple:
+	underconstruction:
+		Filename: art/buildings/jtemple/underconstruction.png
+	idle:
+		Filename: art/buildings/jtemple/idle.png
+	damaged-idle:
+		Filename: art/buildings/jtemple/damaged-idle.png
+
+witchhouse:
+	underconstruction:
+		Filename: art/buildings/witchhouse/underconstruction.png
+	idle:
+		Filename: art/buildings/witchhouse/idle.png
+	damaged-idle:
+		Filename: art/buildings/witchhouse/damaged-idle.png
+
+jarrowtower:
+	underconstruction:
+		Filename: art/buildings/jarrowtower/underconstruction.png
+	idle:
+		Filename: art/buildings/jarrowtower/idle.png
+	damaged-idle:
+		Filename: art/buildings/jarrowtower/damaged-idle.png
+
+jcannontower:
+	underconstruction:
+		Filename: art/buildings/jcannontower/underconstruction.png
+	idle:
+		Filename: art/buildings/jcannontower/idle.png
+	damaged-idle:
+		Filename: art/buildings/jcannontower/damaged-idle.png
+
+jshipyard:
+	underconstruction:
+		Filename: art/buildings/jshipyard/underconstruction.png
+	idle:
+		Filename: art/buildings/jshipyard/idle.png
+	damaged-idle:
+		Filename: art/buildings/jshipyard/damaged-idle.png
+
+building-portraits:
+	jhq:
+		Filename: art/portraits/buildings/jhq.png
+	jbarracks:
+		Filename: art/portraits/buildings/jbarracks.png
+	jmill:
+		Filename: art/portraits/buildings/jmill.png
+	jbeacon:
+		Filename: art/portraits/buildings/jbeacon.png
+	jheavyarms:
+		Filename: art/portraits/buildings/jheavyarms.png
+	jstable:
+		Filename: art/portraits/buildings/jstable.png
+	jbarracks2:
+		Filename: art/portraits/buildings/jbarracks2.png
+	airport:
+		Filename: art/portraits/buildings/airport.png
+	jtemple:
+		Filename: art/portraits/buildings/jtemple.png
+	witchhouse:
+		Filename: art/portraits/buildings/witchhouse.png
+	jarrowtower:
+		Filename: art/portraits/buildings/jarrowtower.png
+	jcannontower:
+		Filename: art/portraits/buildings/jcannontower.png
+	jshipyard:
+		Filename: art/portraits/buildings/jshipyard.png
+
+unit-portraits:
+	jpeasant:
+		Filename: art/portraits/units/jpeasant.png
+	jbull:
+		Filename: art/portraits/units/jbull.png
+	jfootman:
+		Filename: art/portraits/units/jfootman.png
+	jarcher:
+		Filename: art/portraits/units/jarcher.png
+	jgunner:
+		Filename: art/portraits/units/jgunner.png
+	priest:
+		Filename: art/portraits/units/priest.png
+	witch:
+		Filename: art/portraits/units/witch.png
+	general:
+		Filename: art/portraits/units/general.png
+	thief:
+		Filename: art/portraits/units/thief.png
+	armoredcar:
+		Filename: art/portraits/units/armoredcar.png
+	jcannon:
+		Filename: art/portraits/units/jcannon.png
+	jcannonship:
+		Filename: art/portraits/units/jcannonship.png
+	arrowship:
+		Filename: art/portraits/units/arrowship.png
+	submarine:
+		Filename: art/portraits/units/submarine.png
+	torpedo:
+		Filename: art/portraits/units/torpedo.png
+	jtransporter:
+		Filename: art/portraits/units/jtransporter.png
+	bomber:
+		Filename: art/portraits/units/bomber.png
+	jfighter:
+		Filename: art/portraits/units/jfighter.png
+
+# The Bomber's falling bomb (MOUSE 63).
+bomber-bomb:
+	idle:
+		Filename: art/effects/bomb.png

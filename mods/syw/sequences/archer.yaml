@@ -1,0 +1,178 @@
+# Same 8-facing-from-5-source-directions approach as peasant.yaml: N, NW, W,
+# SW, S are real source frames; NE = mirrored NW, E = mirrored W,
+# SE = mirrored SW. Facing order (index 0..7) is OpenRA's Facings: 8
+# convention: N, NW, W, SW, S, SE, E, NE (see peasant.yaml for the derivation).
+# Archer additionally has an "attack" animation (same 5-direction layout) and
+# a single non-directional 3-frame death animation - both confirmed by the
+# user from ARCHER.SPR: walk 0-19, attack 20-39, death 41-43 (frame 40 is an
+# unidentified extra single frame, not used here).
+archer:
+	icon:
+		Filename: art/icons/units/archer.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Facings: 8
+		Length: 4
+		Tick: 110
+		Combine:
+			0:
+				Filename: art/units/archer/dir/walk-north.png
+				Start: 0
+				Length: 4
+			1:
+				Filename: art/units/archer/dir/walk-northwest.png
+				Start: 0
+				Length: 4
+			2:
+				Filename: art/units/archer/dir/walk-west.png
+				Start: 0
+				Length: 4
+			3:
+				Filename: art/units/archer/dir/walk-southwest.png
+				Start: 0
+				Length: 4
+			4:
+				Filename: art/units/archer/dir/walk-south.png
+				Start: 0
+				Length: 4
+			5:
+				Filename: art/units/archer/dir/walk-southwest.png
+				Start: 0
+				Length: 4
+				FlipX: true
+			6:
+				Filename: art/units/archer/dir/walk-west.png
+				Start: 0
+				Length: 4
+				FlipX: true
+			7:
+				Filename: art/units/archer/dir/walk-northwest.png
+				Start: 0
+				Length: 4
+				FlipX: true
+	stand:
+		Facings: 8
+		Length: 1
+		Tick: 200
+		Combine:
+			0:
+				Filename: art/units/archer/dir/walk-north.png
+				Start: 0
+				Length: 1
+			1:
+				Filename: art/units/archer/dir/walk-northwest.png
+				Start: 0
+				Length: 1
+			2:
+				Filename: art/units/archer/dir/walk-west.png
+				Start: 0
+				Length: 1
+			3:
+				Filename: art/units/archer/dir/walk-southwest.png
+				Start: 0
+				Length: 1
+			4:
+				Filename: art/units/archer/dir/walk-south.png
+				Start: 0
+				Length: 1
+			5:
+				Filename: art/units/archer/dir/walk-southwest.png
+				Start: 0
+				Length: 1
+				FlipX: true
+			6:
+				Filename: art/units/archer/dir/walk-west.png
+				Start: 0
+				Length: 1
+				FlipX: true
+			7:
+				Filename: art/units/archer/dir/walk-northwest.png
+				Start: 0
+				Length: 1
+				FlipX: true
+	idle:
+		Facings: 8
+		Length: 1
+		Tick: 200
+		Combine:
+			0:
+				Filename: art/units/archer/dir/walk-north.png
+				Start: 0
+				Length: 1
+			1:
+				Filename: art/units/archer/dir/walk-northwest.png
+				Start: 0
+				Length: 1
+			2:
+				Filename: art/units/archer/dir/walk-west.png
+				Start: 0
+				Length: 1
+			3:
+				Filename: art/units/archer/dir/walk-southwest.png
+				Start: 0
+				Length: 1
+			4:
+				Filename: art/units/archer/dir/walk-south.png
+				Start: 0
+				Length: 1
+			5:
+				Filename: art/units/archer/dir/walk-southwest.png
+				Start: 0
+				Length: 1
+				FlipX: true
+			6:
+				Filename: art/units/archer/dir/walk-west.png
+				Start: 0
+				Length: 1
+				FlipX: true
+			7:
+				Filename: art/units/archer/dir/walk-northwest.png
+				Start: 0
+				Length: 1
+				FlipX: true
+	shoot:
+		Facings: 8
+		Length: 4
+		Tick: 120
+		Combine:
+			0:
+				Filename: art/units/archer/dir/attack-north.png
+				Start: 0
+				Length: 4
+			1:
+				Filename: art/units/archer/dir/attack-northwest.png
+				Start: 0
+				Length: 4
+			2:
+				Filename: art/units/archer/dir/attack-west.png
+				Start: 0
+				Length: 4
+			3:
+				Filename: art/units/archer/dir/attack-southwest.png
+				Start: 0
+				Length: 4
+			4:
+				Filename: art/units/archer/dir/attack-south.png
+				Start: 0
+				Length: 4
+			5:
+				Filename: art/units/archer/dir/attack-southwest.png
+				Start: 0
+				Length: 4
+				FlipX: true
+			6:
+				Filename: art/units/archer/dir/attack-west.png
+				Start: 0
+				Length: 4
+				FlipX: true
+			7:
+				Filename: art/units/archer/dir/attack-northwest.png
+				Start: 0
+				Length: 4
+				FlipX: true
+	die1:
+		Filename: art/units/archer/dir/die.png
+		Length: 3
+		Tick: 150

@@ -1,0 +1,155 @@
+General:
+	Name: SYW
+	Id: SYW
+	EditorTemplateOrder: Terrain
+	Palette:
+
+Terrain:
+	TerrainType@Water:
+		Type: Water
+		Color: 285F82
+		TargetTypes: Water
+	TerrainType@Crops:
+		Type: Crops
+		Color: 48A8C8
+		TargetTypes: Ground
+	TerrainType@Clear:
+		Type: Clear
+		Color: 65754B
+
+Templates:
+	Template@255:
+		Id: 255
+		Images: tilesets/syw/syw.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Clear
+
+	Template@256:
+		Id: 256
+		Images: tilesets/syw/water-00.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@257:
+		Id: 257
+		Images: tilesets/syw/water-01.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@258:
+		Id: 258
+		Images: tilesets/syw/water-02.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@259:
+		Id: 259
+		Images: tilesets/syw/water-03.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@260:
+		Id: 260
+		Images: tilesets/syw/water-04.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@261:
+		Id: 261
+		Images: tilesets/syw/water-05.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@262:
+		Id: 262
+		Images: tilesets/syw/water-06.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@263:
+		Id: 263
+		Images: tilesets/syw/water-07.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@264:
+		Id: 264
+		Images: tilesets/syw/water-08.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@265:
+		Id: 265
+		Images: tilesets/syw/water-09.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@266:
+		Id: 266
+		Images: tilesets/syw/water-10.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@267:
+		Id: 267
+		Images: tilesets/syw/water-11.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@268:
+		Id: 268
+		Images: tilesets/syw/water-12.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@269:
+		Id: 269
+		Images: tilesets/syw/water-13.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@270:
+		Id: 270
+		Images: tilesets/syw/water-14.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water
+
+	Template@271:
+		Id: 271
+		Images: tilesets/syw/water-15.png
+		Size: 1,1
+		Categories: Terrain
+		Tiles:
+			0: Water

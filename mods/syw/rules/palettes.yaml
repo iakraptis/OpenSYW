@@ -1,0 +1,47 @@
+^palettes:
+	ShroudPalette@shroud:
+		Name: shroud
+	ShroudPalette@fog:
+		Name: fog
+		Fog: true
+	# TANK index 2 is the projected shadow mask, not painted pink material.
+	PaletteFromFile@vehicles:
+		Name: vehicle-knight
+		Filename: palettes/Knight.pal
+		ShadowIndex: 2
+	PlayerColorPalette@vehicles:
+		BasePalette: vehicle-knight
+		BaseName: vehicle-player
+		RemapIndex: 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191
+	PaletteFromFile@knight:
+		Name: knight
+		Filename: palettes/Knight.pal
+	# `chrome` and `effect` are hardcoded default palette names all over the
+	# engine's built-in widgets and traits (ProductionPaletteWidget's
+	# NotBuildablePalette/ClockPalette, Armament.MuzzlePalette,
+	# Bullet.Palette/TrailPalette, WithDeathAnimation.CrushedSequencePalette,
+	# ...) - stock mods (e.g. cnc) always define both, backed by their real
+	# game palette. Defining them the same way here means none of those
+	# defaults need a one-off per-trait override anymore.
+	PaletteFromFile@chrome:
+		Name: chrome
+		Filename: palettes/Knight.pal
+		AllowModifiers: false
+	PaletteFromFile@effect:
+		Name: effect
+		Filename: palettes/Knight.pal
+	# Indices 176-191 are the blue team-color shading ramp in Knight.pal -
+	# the original game's own reserved band, exactly matching the range the
+	# stock C&C palette uses for the same purpose. Only those indices get
+	# recolored per player; everything else renders as painted - including
+	# the separate, similar-looking desaturated blue-gray ramp at 160-175
+	# (stone/material shading, confirmed NOT team color) which must stay out
+	# of this list.
+	PlayerColorPalette@player:
+		BasePalette: knight
+		RemapIndex: 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191
+	ColorPickerPalette@colorpicker:
+		Name: colorpicker
+		BasePalette: knight
+		RemapIndex: 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191
+		AllowModifiers: false

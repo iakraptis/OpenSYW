@@ -1,0 +1,680 @@
+# Flattened from the stock cnc mod's ^Building/^SelectableBuilding base chain
+# (engine/mods/cnc/rules/defaults.yaml), trimmed of traits that need audio,
+# weapon, or economy assets we don't have yet (SoundOnDamageTransition,
+# WithMakeAnimation, Sellable, ...).
+# Shared by all 3x3 Korea buildings - see hq/barracks below.
+^syw-building:
+	# ^ExistsInWorld
+	AppearsOnRadar:
+	UpdatesPlayerStatistics:
+	CombatDebugOverlay:
+	GivesExperience:
+		PlayerExperienceModifier: 1
+	ScriptTriggers:
+	RenderDebugState:
+	# Repair button (stats panel): +1000 HP every second until fully healed; a full repair costs
+	# 50% of the building's price, charged per step. Stops if the owner runs out of money.
+	RepairableBuilding:
+		RepairPercent: 50
+		RepairInterval: 25
+		RepairStep: 1000
+	# Sell button (stats panel), like C&C: refunds 50% of the value, scaled by remaining health.
+	# Unlike C&C, no infantry spawn from a sold building. The button sells directly, so no sell cursor.
+	Sellable:
+		RequiresCondition: !constructing
+		RefundPercent: 50
+		Cursor: default
+	# Conquest victory: every building must be destroyed, like C&C.
+	MustBeDestroyed:
+		RequiredForShortGame: true
+
+	# ^SpriteActor - buildings don't rotate, fixed single facing
+	BodyOrientation:
+		QuantizedFacings: 1
+
+	# ^PlayerHandicaps
+	HandicapFirepowerMultiplier:
+	HandicapDamageMultiplier:
+	HandicapProductionTimeMultiplier:
+
+	# ^SelectableBuilding
+	Selectable:
+		Priority: 2
+	SelectionDecorations:
+
+	# ^Building
+	CaptureManager:
+	Capturable:
+		Types: building
+	Huntable:
+	OwnerLostAction:
+		Action: Kill
+	Targetable:
+		TargetTypes: Ground, C4, Structure
+	Armor:
+		Type: Wood
+	HitShape:
+		UseTargetableCellsOffsets: true
+		Type: Rectangle
+			TopLeft: -1536, -1536
+			BottomRight: 1536, 1536
+	Building:
+		Dimensions: 3,3
+		Footprint: xxx xxx xxx
+		TerrainTypes: Clear
+	WithSpriteBody:
+		RequiresCondition: !constructing
+	WithIdleOverlay@SCAFFOLD:
+		Image: scaffold-medium
+		Sequence: underconstruction
+		RequiresCondition: constructing && !construction-structure
+	WithIdleOverlay@CONSTRUCTION:
+		Sequence: underconstruction
+		RequiresCondition: constructing && construction-structure
+	# All building types share the two construction stages. Map-placed
+	# starting buildings have no UnderConstructionInit and start finished.
+	UnderConstruction:
+		Duration: 500
+	FrozenUnderFog:
+	FireWarheadsOnDeath:
+		Weapon: KoreanBuildingExplosion
+		EmptyWeapon: KoreanBuildingExplosion
+	RevealsShroud:
+		Range: 6c0
+	MapEditorData:
+		Categories: Building
+
+hq:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: hq
+	Health:
+		HP: 108000
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: actor-hq.name
+	Buildable:
+		Queue: PeasantBuild
+		BuildPaletteOrder: 5
+		Icon: idle
+		IconPalette: knight
+	# Workers unloading here stay with their owner when the building is captured (stock DockHost would hand them over).
+	KeepDockedWorkersOnCapture:
+	Refinery:
+		UseStorage: false
+	DockHost:
+		Type: Unload
+		DockOffset: -1c0, 2c0, 0
+		RequiresCondition: !constructing
+	ProvidesPrerequisite:
+		Prerequisite: hq
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Workers.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Workers.Korea
+	ProductionBar:
+		ProductionType: Workers.Korea
+
+barracks:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: barracks
+	Health:
+		HP: 81000
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-barracks.name
+	Buildable:
+		Queue: PeasantBuild
+		BuildPaletteOrder: 10
+		Icon: idle
+		IconPalette: knight
+	# UnderConstruction.Duration: 500 is inherited from ^syw-building - no override needed.
+	# Without this, TechTree.Update() never runs (it's only triggered by an
+	# actor with ProvidesPrerequisite or BuildLimit>0 being added to the
+	# world), so the Archer's watcher registers but is never evaluated and
+	# silently stays "not buildable" forever - no error, no crash, just an
+	# empty/disabled palette icon.
+	ProvidesPrerequisite:
+		Prerequisite: barracks
+		RequiresCondition: !constructing
+	# Waving flags (MOUSE 80-82) on the three tent poles, once finished.
+	WithIdleOverlay@FLAG1:
+		Sequence: flag1
+		Palette: knight
+		RequiresCondition: !constructing
+	WithIdleOverlay@FLAG2:
+		Sequence: flag2
+		Palette: knight
+		RequiresCondition: !constructing
+	WithIdleOverlay@FLAG3:
+		Sequence: flag3
+		Palette: knight
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Infantry.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Infantry.Korea
+		Group: Infantry
+	ProductionBar:
+		ProductionType: Infantry.Korea
+
+mill:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: mill
+	Health:
+		HP: 67500
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-mill.name
+	# Workers unloading here stay with their owner when the building is captured (stock DockHost would hand them over).
+	KeepDockedWorkersOnCapture:
+	Refinery:
+		UseStorage: false
+	# Four drop-off points (each dock serves one worker at a time): two south, one west, one east.
+	DockHost@SOUTHWEST:
+		Type: Unload
+		DockOffset: -1c0, 2c0, 0
+		RequiresCondition: !constructing
+	DockHost@SOUTHEAST:
+		Type: Unload
+		DockOffset: 1c0, 2c0, 0
+		RequiresCondition: !constructing
+	DockHost@WEST:
+		Type: Unload
+		DockOffset: -2c0, 0, 0
+		RequiresCondition: !constructing
+	DockHost@EAST:
+		Type: Unload
+		DockOffset: 2c0, 0, 0
+		RequiresCondition: !constructing
+	Buildable:
+		Queue: PeasantBuild
+		BuildPaletteOrder: 20
+		Icon: idle
+		IconPalette: knight
+	UnderConstruction:
+		Duration: 400
+	ProvidesPrerequisite:
+		Prerequisite: mill
+		RequiresCondition: !constructing
+
+beaconmound:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: beaconmound
+	Health:
+		HP: 67500
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: actor-beaconmound.name
+	Buildable:
+		Prerequisites: mill
+		Queue: PeasantBuild
+		BuildPaletteOrder: 30
+		Icon: idle
+		IconPalette: knight
+	UnderConstruction:
+		Duration: 400
+
+	ProvidesPrerequisite:
+		Prerequisite: beaconmound
+		RequiresCondition: !constructing
+	ProvidesRadar:
+		RequiresCondition: !constructing
+	# Chimney smoke (MOUSE 0-7 over 20-27), only once the building is finished.
+	WithIdleOverlay@SMOKE:
+		Sequence: smoke
+		Palette: knight
+		RequiresCondition: !constructing
+
+heavyarmsworkshop:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: heavyarmsworkshop
+	Health:
+		HP: 81000
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-heavyarmsworkshop.name
+	Buildable:
+		Queue: PeasantBuild
+		Prerequisites: beaconmound
+		BuildPaletteOrder: 40
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: heavyarmsworkshop
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Vehicles.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Vehicles.Korea
+		Group: Vehicles
+	ProductionBar:
+		ProductionType: Vehicles.Korea
+
+planeworks:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: planeworks
+	Health:
+		# Provisional durability, matching the Heavy Arms Workshop.
+		HP: 81000
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: actor-planeworks.name
+	Buildable:
+		Queue: PeasantBuild
+		# Requires the completed advanced barracks.
+		Prerequisites: barracks2
+		BuildPaletteOrder: 50
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: planeworks
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Aircraft.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Aircraft.Korea
+		Group: Aircraft
+	ProductionBar:
+		ProductionType: Aircraft.Korea
+
+
+barracks2:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: barracks2
+	Health:
+		# Provisional durability, matching Barracks.
+		HP: 81000
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-barracks2.name
+	Buildable:
+		Queue: PeasantBuild
+		Prerequisites: heavyarmsworkshop
+		BuildPaletteOrder: 45
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: barracks2
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: AdvancedInfantry.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: AdvancedInfantry.Korea
+		Group: Infantry
+	ProductionBar:
+		ProductionType: AdvancedInfantry.Korea
+
+temple:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: temple
+	Health:
+		# Provisional durability, matching Barracks.
+		HP: 81000
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-temple.name
+	Buildable:
+		Queue: PeasantBuild
+		Prerequisites: barracks2
+		BuildPaletteOrder: 60
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: temple
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Temple.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Temple.Korea
+		Group: Infantry
+	ProductionBar:
+		ProductionType: Temple.Korea
+
+shamanhouse:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: shamanhouse
+	Health:
+		# Provisional durability, matching Barracks.
+		HP: 81000
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: actor-shamanhouse.name
+	Buildable:
+		Queue: PeasantBuild
+		Prerequisites: temple
+		BuildPaletteOrder: 70
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: shamanhouse
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Shaman.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Shaman.Korea
+		Group: Infantry
+	ProductionBar:
+		ProductionType: Shaman.Korea
+
+stable:
+	Inherits: ^syw-building
+	RenderSprites:
+		Image: stable
+	Health:
+		# Provisional durability, matching Barracks.
+		HP: 81000
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: actor-stable.name
+	Buildable:
+		Queue: PeasantBuild
+		Prerequisites: heavyarmsworkshop
+		BuildPaletteOrder: 80
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: stable
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Cavalry.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Cavalry.Korea
+		Group: Infantry
+	ProductionBar:
+		ProductionType: Cavalry.Korea
+
+# Compact towers share capture and construction behavior with other buildings.
+^syw-tower:
+	Inherits: ^syw-building
+	Building:
+		Dimensions: 2,2
+		Footprint: xx xx
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1024, -1024
+			BottomRight: 1024, 1024
+	WithIdleOverlay@SCAFFOLD:
+		Image: scaffold-small
+	RevealsShroud:
+		Range: 12c0
+	Armament:
+		LocalOffset: 0,0,1024
+		MuzzlePalette: knight
+		RequiresCondition: !constructing
+	AttackOmni:
+		RequiresCondition: !constructing
+	AutoTarget:
+		ScanRadius: 12
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+
+arrowtower:
+	Inherits: ^syw-tower
+	Armor:
+		Type: Concrete
+	RenderSprites:
+		Image: arrowtower
+	Health:
+		# Provisional building durability.
+		HP: 67500
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-arrowtower.name
+	Buildable:
+		Queue: PeasantBuild
+		BuildPaletteOrder: 90
+		Icon: idle
+		IconPalette: knight
+	Armament:
+		Weapon: TowerBow
+
+cannontower:
+	Inherits: ^syw-tower
+	Armor:
+		Type: Concrete
+	RenderSprites:
+		Image: cannontower
+	Health:
+		# Provisional building durability.
+		HP: 67500
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: actor-cannontower.name
+	Buildable:
+		Queue: PeasantBuild
+		BuildPaletteOrder: 100
+		Icon: idle
+		IconPalette: knight
+	Armament:
+		Weapon: CannonTowerShot
+
+
+shipyard:
+	Inherits: ^syw-building
+	# Sits on the coastline: footprint mixes land and water (at least 3 water cells), reachable by a
+	# builder over land, with at least one exit on open water. See CoastalBuilding.cs.
+	CoastalBuilding:
+	Building:
+		TerrainTypes: Water, Clear
+	Targetable:
+		TargetTypes: Ground, Water, C4, Structure
+	RenderSprites:
+		Image: shipyard
+	Health:
+		# Provisional durability.
+		HP: 81000
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-shipyard.name
+	Buildable:
+		Queue: PeasantBuild
+		BuildPaletteOrder: 110
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: shipyard
+		RequiresCondition: !constructing
+	Exit@EAST:
+		ExitCell: 3,1
+	Exit@WEST:
+		ExitCell: -1,1
+	Exit@NORTH:
+		ExitCell: 1,-1
+	Exit@SOUTH:
+		ExitCell: 1,3
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		Produces: Naval.Korea
+		RequiresCondition: !constructing
+	ProductionQueue:
+		Type: Naval.Korea
+		Group: Ships
+	ProductionBar:
+		ProductionType: Naval.Korea

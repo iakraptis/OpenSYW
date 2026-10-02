@@ -1,0 +1,63 @@
+MapFormat: 12
+
+RequiresMod: syw
+
+Title: Test: Naval and air
+
+Author: OpenSY
+
+Tileset: SYW
+
+MapSize: 66,66
+
+Bounds: 1,1,64,64
+
+Visibility: MissionSelector
+
+Categories: Test
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+		Enemies: Multi0, Multi1
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		LockFaction: True
+		Faction: japan
+		Enemies: Creeps, Multi1
+	PlayerReference@Multi1:
+		Name: Multi1
+		Faction: korea
+		Enemies: Creeps, Multi0
+
+Actors:
+	Spawn0: mpspawn
+		Owner: Multi0
+		Location: 62,62
+
+Rules:
+	player:
+		# Scripted actors appear after the first victory check; conquest is tested in capture-victory-test.
+		-ConquestVictoryConditions:
+		# Fog off and map explored, so visibility checks only measure stealth.
+		Shroud:
+			FogCheckboxEnabled: False
+			FogCheckboxLocked: True
+			ExploredMapCheckboxEnabled: True
+			ExploredMapCheckboxLocked: True
+	world:
+		-SpawnStartingUnits:
+		LuaScript:
+			Scripts: testlib.lua, test.lua
+		# 5x speed: the whole suite runs in a few minutes.
+		MapOptions:
+			GameSpeed: test
+			GameSpeedDropdownLocked: true

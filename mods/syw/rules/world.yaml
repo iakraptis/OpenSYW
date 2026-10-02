@@ -1,0 +1,152 @@
+^baseworld:
+	Inherits: ^palettes
+	ActorMap:
+	AlwaysVisible:
+	ControlGroups:
+	Faction@Random:
+		InternalName: Random
+		Name: faction-random.name
+		RandomFactionMembers: korea, japan
+		Description: faction-random.description
+	Faction@korea:
+		InternalName: korea
+		Name: faction-korea.name
+		Description: faction-korea.description
+	Faction@japan:
+		InternalName: japan
+		Name: faction-japan.name
+		Description: faction-japan.description
+	LoadWidgetAtGameStart:
+	MusicPlaylist:
+	ScreenMap:
+	Selection:
+	TerrainRenderer:
+	ShroudRenderer:
+		ShroudVariants: typea, typeb, typec, typed
+		FogVariants: typea, typeb, typec, typed
+		OverrideFullShroud: full
+		OverrideFullFog: full
+	# Template 1733 is FIELD3's bare field block top-left (Field33 frame 133, see original_map_export.py).
+	FieldResourceRenderer:
+		FieldTemplateOrigin: 1733
+		ResourceTypes:
+			Potato:
+				Image: potato
+				Sequences: r0c0, r0c1, r0c2, r0c3, r0c4, r1c0, r1c1, r1c2, r1c3, r1c4, r2c0, r2c1, r2c2, r2c3, r2c4, r3c0, r3c1, r3c2, r3c3, r3c4, r4c0, r4c1, r4c2, r4c3, r4c4
+				Palette: knight
+				Name: resource-potato
+			Rice:
+				Image: rice
+				Sequences: r0c0, r0c1, r0c2, r0c3, r0c4, r1c0, r1c1, r1c2, r1c3, r1c4, r2c0, r2c1, r2c2, r2c3, r2c4, r3c0, r3c1, r3c2, r3c3, r3c4, r4c0, r4c1, r4c2, r4c3, r4c4
+				Palette: knight
+				Name: resource-rice
+	Locomotor@WHEELED:
+		Name: wheeled
+		Crushes: crate, mine
+		TerrainSpeeds:
+			Clear: 100
+			Crops: 80
+	Locomotor@NAVAL:
+		Name: naval
+		TerrainSpeeds:
+			Water: 100
+	Locomotor@FOOT:
+		Name: foot
+		Crushes: crate, mine
+		TerrainSpeeds:
+			Clear: 100
+			Crops: 100
+
+world:
+	Inherits: ^baseworld
+	ResourceLayer:
+		ResourceTypes:
+			Potato:
+				ResourceIndex: 1
+				TerrainType: Crops
+				AllowedTerrainTypes: Clear
+				MaxDensity: 12
+			Rice:
+				ResourceIndex: 2
+				TerrainType: Crops
+				AllowedTerrainTypes: Clear
+				MaxDensity: 12
+	# Provisional rate (user-set): +1 density every 3750 ticks (~150 s) when dry, so an emptied
+	# cell regrows in 12 steps (~30 minutes). Rain speeds growth by half (every 2500 ticks, ~100 s).
+	RegrowsResources:
+		ResourceType: Potato
+		Interval: 3750
+		RainGrowthPercent: 150
+	# Small chance of rain: a 6% roll every 1500 ticks (60 s) while dry, showers last 1-2 minutes.
+	RainController:
+		CheckInterval: 1500
+		Chance: 6
+		Duration: 1500, 3000
+		StartNotification: notification-rain-start
+		StopNotification: notification-rain-stop
+	# Rain streaks (based on C&C gdi06), faded in and out by the RainController condition.
+	WeatherOverlay:
+		RequiresCondition: raining
+		# Fade over 100 ticks (4 s) so the rain starts and stops with its messages (default 1000 = 40 s).
+		FadeInTicks: 100
+		FadeOutTicks: 100
+		ChangingWindLevel: true
+		InstantWindChanges: false
+		UseSquares: false
+		ScatterDirection: 0, 0
+		Gravity: 15, 25
+		SwingOffset: 0, 0
+		SwingSpeed: 0, 0
+		SwingAmplitude: 0, 0
+		ParticleColors: 6070A0, 5868A0, 506090, 485888
+		LineTailAlphaValue: 150
+		ParticleSize: 1, 1
+	ResourceClaimLayer:
+	ColorPickerManager:
+		PreviewActor: peasant.colorpicker
+	CreateMapPlayers:
+	CustomTerrainDebugOverlay:
+	DebugVisualizations:
+	# Required by ConquestVictoryConditions. Short game (buildings only) defaults off, so every
+	# enemy unit and building must be destroyed; the lobby can still enable it.
+	MapOptions:
+		ShortGameCheckboxEnabled: false
+		TechLevelDropdownVisible: false
+	MapStartingLocations:
+	SpawnMapActors:
+	SpawnStartingUnits:
+	# Japanese Torpedoes only take attack-move orders (AttackMoveOnly).
+	RejectMoveOrders:
+	PathFinder:
+	BuildingInfluence:
+	StartingUnits@Korea:
+		BaseActor: peasant
+		Factions: korea
+		ClassName: options-starting-units.unlabeled
+	StartingUnits@Japan:
+		BaseActor: jpeasant
+		Factions: japan
+		ClassName: options-starting-units.unlabeled
+
+editorworld:
+	Inherits: ^baseworld
+	EditorResourceLayer:
+		ResourceTypes:
+			Potato:
+				ResourceIndex: 1
+				TerrainType: Crops
+				AllowedTerrainTypes: Clear
+				MaxDensity: 12
+			Rice:
+				ResourceIndex: 2
+				TerrainType: Crops
+				AllowedTerrainTypes: Clear
+				MaxDensity: 12
+	BuildableTerrainOverlay:
+		AllowedTerrainTypes:
+		Palette:
+	EditorActionManager:
+	EditorActorLayer:
+	EditorCursorLayer:
+	MarkerLayerOverlay:
+	TerrainGeometryOverlay:

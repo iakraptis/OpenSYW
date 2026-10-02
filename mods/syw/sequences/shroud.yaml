@@ -1,0 +1,14 @@
+shroud:
+	Defaults:
+		Filename: art/shroud/shadow.png
+		Length: 12
+	typea:
+	typeb:
+		Start: 12
+	typec:
+		Start: 24
+	typed:
+		Start: 36
+	full:
+		Filename: art/shroud/fullshroud.png
+		Length: 1

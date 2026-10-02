@@ -1,0 +1,26 @@
+patrolship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/patrolship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/patrolship.png
+
+cannonship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/cannonship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/cannonship.png
+
+transportship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/transportship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/transportship.png

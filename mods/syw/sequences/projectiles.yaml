@@ -1,0 +1,208 @@
+# Arrow projectile, from FIRE.SPR frames 80-88 (user-identified): a 9-frame
+# half-circle sweep S -> SSW -> SW -> WSW -> W -> WNW -> NW -> NNW -> N (180,
+# stepping 22.5 each). The other 7 of a 16-point compass (the east side) are
+# built by mirroring (FlipX) - S and N sit on the mirror axis and need no
+# duplicate. Facing order/index below is OpenRA's Facings: 16 convention
+# (same derivation as peasant.yaml's Facings: 8, just twice the resolution):
+# starts at North (index 0), increases counter-clockwise, step = 1024/16 = 64.
+arrow:
+	idle:
+		Facings: 16
+		Combine:
+			0:
+				Filename: art/effects/arrow/dir.png
+				Start: 8
+				Length: 1
+			1:
+				Filename: art/effects/arrow/dir.png
+				Start: 7
+				Length: 1
+			2:
+				Filename: art/effects/arrow/dir.png
+				Start: 6
+				Length: 1
+			3:
+				Filename: art/effects/arrow/dir.png
+				Start: 5
+				Length: 1
+			4:
+				Filename: art/effects/arrow/dir.png
+				Start: 4
+				Length: 1
+			5:
+				Filename: art/effects/arrow/dir.png
+				Start: 3
+				Length: 1
+			6:
+				Filename: art/effects/arrow/dir.png
+				Start: 2
+				Length: 1
+			7:
+				Filename: art/effects/arrow/dir.png
+				Start: 1
+				Length: 1
+			8:
+				Filename: art/effects/arrow/dir.png
+				Start: 0
+				Length: 1
+			9:
+				Filename: art/effects/arrow/dir.png
+				Start: 1
+				Length: 1
+				FlipX: true
+			10:
+				Filename: art/effects/arrow/dir.png
+				Start: 2
+				Length: 1
+				FlipX: true
+			11:
+				Filename: art/effects/arrow/dir.png
+				Start: 3
+				Length: 1
+				FlipX: true
+			12:
+				Filename: art/effects/arrow/dir.png
+				Start: 4
+				Length: 1
+				FlipX: true
+			13:
+				Filename: art/effects/arrow/dir.png
+				Start: 5
+				Length: 1
+				FlipX: true
+			14:
+				Filename: art/effects/arrow/dir.png
+				Start: 6
+				Length: 1
+				FlipX: true
+			15:
+				Filename: art/effects/arrow/dir.png
+				Start: 7
+				Length: 1
+				FlipX: true
+
+# Musket and gun bullet: FIRE 140-148 (user-identified 140 S, 147 NNW), re-centred, with the east side mirrored,
+# already in OpenRA facing order (SYWtoORA/tools/musket_bullet_export.py).
+musket-bullet:
+	idle:
+		Filename: art/effects/musket-bullet.png
+		Facings: 16
+
+# One sprite per direction: FIRE 0-8, with mirrored east-side facings.
+firecar-missile:
+	idle:
+		Facings: 16
+		Length: 1
+		Combine:
+			0:
+				Filename: art/units/firecar/missile.png
+				Start: 8
+				Length: 1
+			1:
+				Filename: art/units/firecar/missile.png
+				Start: 7
+				Length: 1
+			2:
+				Filename: art/units/firecar/missile.png
+				Start: 6
+				Length: 1
+			3:
+				Filename: art/units/firecar/missile.png
+				Start: 5
+				Length: 1
+			4:
+				Filename: art/units/firecar/missile.png
+				Start: 4
+				Length: 1
+			5:
+				Filename: art/units/firecar/missile.png
+				Start: 3
+				Length: 1
+			6:
+				Filename: art/units/firecar/missile.png
+				Start: 2
+				Length: 1
+			7:
+				Filename: art/units/firecar/missile.png
+				Start: 1
+				Length: 1
+			8:
+				Filename: art/units/firecar/missile.png
+				Start: 0
+				Length: 1
+			9:
+				Filename: art/units/firecar/missile.png
+				Start: 1
+				Length: 1
+				FlipX: true
+			10:
+				Filename: art/units/firecar/missile.png
+				Start: 2
+				Length: 1
+				FlipX: true
+			11:
+				Filename: art/units/firecar/missile.png
+				Start: 3
+				Length: 1
+				FlipX: true
+			12:
+				Filename: art/units/firecar/missile.png
+				Start: 4
+				Length: 1
+				FlipX: true
+			13:
+				Filename: art/units/firecar/missile.png
+				Start: 5
+				Length: 1
+				FlipX: true
+			14:
+				Filename: art/units/firecar/missile.png
+				Start: 6
+				Length: 1
+				FlipX: true
+			15:
+				Filename: art/units/firecar/missile.png
+				Start: 7
+				Length: 1
+				FlipX: true
+
+# Newest puff is small; older puffs expand farther behind the missile.
+missile-trail:
+	idle:
+		Filename: art/effects/missile-trail/trail.png
+		Length: 3
+		Tick: 80
+
+# Cannon-shell blast: original EXP.SPR 2x2-tile explosion, 15 frames (tools/explosion_export.py).
+# EXP.SPR explosions (explosion_export.py, SYWtoORA/docs/formats/exp.md).
+explosion:
+	# C: dust burst - building destruction.
+	building:
+		Filename: art/effects/building-explosion.png
+		Length: 13
+		Tick: 80
+		ZOffset: 511
+	# B: flash and smoke - vehicle destruction.
+	vehicle:
+		Filename: art/effects/vehicle-explosion.png
+		Length: 16
+		Tick: 80
+		ZOffset: 511
+	# D1: medium dust burst - cannon shell impacts.
+	cannon-impact:
+		Filename: art/effects/cannon-impact.png
+		Length: 13
+		Tick: 60
+		ZOffset: 511
+	# D2: small dust burst - rocket impacts.
+	rocket-impact:
+		Filename: art/effects/rocket-impact.png
+		Length: 13
+		Tick: 60
+		ZOffset: 511
+	# A: fire blast - Bomber bombs and the Torpedo blast.
+	cannon:
+		Filename: art/effects/cannon-explosion.png
+		Length: *
+		Tick: 60
+		ZOffset: 511

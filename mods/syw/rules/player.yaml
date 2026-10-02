@@ -1,0 +1,34 @@
+^baseplayer:
+	AlwaysVisible:
+	Shroud:
+		FogCheckboxEnabled: true
+		ExploredMapCheckboxEnabled: false
+
+player:
+	Inherits: ^baseplayer
+	PlayerRadarTerrain:
+	DeveloperMode:
+	PlayerStatistics:
+	FrozenActorLayer:
+	# Bots are defined in rules/ai.yaml.
+	# Harvested crops are converted directly to cash at HQs and Mills.
+	# Provisional: rice is worth double, like Red Alert's gems vs ore.
+	PlayerResources:
+		DefaultCash: 5000
+		ResourceValues:
+			Potato: 25
+			Rice: 50
+	TechTree:
+	# Conquest victory like C&C: a player loses when all their units and buildings are destroyed,
+	# and wins when every enemy has lost. The game then ends with the victory/defeat screen.
+	MissionObjectives:
+		WinTextNotification: notification-victory
+		LoseTextNotification: notification-defeat
+	ConquestVictoryConditions:
+	# Receives the RepairBuilding order sent by the repair button.
+	AllyRepair:
+	# Lets map scripts react to players winning or losing (Trigger.OnPlayerWon/Lost), as in C&C.
+	ScriptTriggers:
+
+editorplayer:
+	Inherits: ^baseplayer

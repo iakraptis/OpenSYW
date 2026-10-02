@@ -1,0 +1,18 @@
+fighter:
+	idle:
+		Filename: art/units/fighter/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/fighter.png
+transporter:
+	idle:
+		Filename: art/units/transporter/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/transporter.png

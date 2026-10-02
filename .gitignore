@@ -1,0 +1,72 @@
+user.config
+engine
+
+# Visual Studio
+Release
+bin
+obj
+*.ncb
+*.vcproj*
+*.suo
+*.user
+*.sln.cache
+*.manifest
+*.CodeAnalysisLog.xml
+*.lastcodeanalysissucceeded
+_ReSharper.*/
+/.vs
+
+# Visual Studio Code
+/.vscode/settings.json
+
+# backup files by various editors
+*~
+*.orig
+\#*
+.*.sw?
+
+# Monodevelop
+*.pidb
+*.userprefs
+
+# Mac OS X
+.DS_Store
+
+# SublimeText
+*.sublime-project
+*.sublime-workspace
+
+# NUnit
+/TestResult.xml
+/lib/
+
+# Support directory
+/Support
+
+# IntelliJ files
+.idea
+
+# Assets from the original Seven Years War are never committed; they are generated from the player's own copy.
+mods/syw/art/*
+!mods/syw/art/shroud/
+!mods/syw/art/resources/
+mods/syw/art/resources/*
+!mods/syw/art/resources/README.md
+mods/syw/chrome/assets/sidebar.png
+mods/syw/chrome/assets/title.png
+mods/syw/chrome/assets/menu-fire-*.png
+mods/syw/cursors/assets/cursors.png
+mods/syw/cursors/assets/cursors.json
+mods/syw/palettes/
+mods/syw/music/*.wav
+mods/syw/tilesets/field3/
+mods/syw/maps/kmulti1/
+mods/syw/maps/bot-test/
+mods/syw/maps/ffa-spectate/
+mods/syw/maps/local-*/
+
+# Test output
+test-results/
+gathering-test-support/
+*-stdout.txt
+*-stderr.txt

@@ -1,0 +1,134 @@
+# Shared naval movement/rendering; ship balance remains provisional.
+^syw-ship:
+	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
+	AttackMove:
+	# Repair button (stats panel): +500 HP every second until fully healed; a full repair costs
+	# 50% of the unit's price, charged per step. Stops if the owner runs out of money.
+	RepairableBuilding:
+		RepairPercent: 50
+		RepairInterval: 25
+		RepairStep: 500
+	AppearsOnRadar:
+	UpdatesPlayerStatistics:
+	GivesExperience:
+	ScriptTriggers:
+	BodyOrientation:
+	QuantizeFacingsFromSequence:
+		Sequence: idle
+	Selectable:
+		Priority: 10
+		Bounds: 1792, 1792
+	SelectionDecorations:
+	Huntable:
+	OwnerLostAction:
+		Action: Kill
+	HitShape:
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 7c0
+	Mobile:
+		Locomotor: naval
+		Speed: 65
+		TurnSpeed: 32
+	Targetable:
+		TargetTypes: Water, Ship
+	HiddenUnderFog:
+	MustBeDestroyed:
+	# Destruction effect (EXP.SPR group B, flash and smoke); visual only.
+	FireWarheadsOnDeath:
+		Weapon: VehicleExplosion
+		EmptyWeapon: VehicleExplosion
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		PlayerPalette: vehicle-player
+	WithFacingSpriteBody:
+	# Smokes below 50% health (FIRE 130-137).
+	GrantConditionOnDamageState@SMOKE:
+		Condition: damage-smoke
+		ValidDamageStates: Heavy, Critical
+	WithIdleOverlay@DAMAGESMOKE:
+		Image: damage-smoke
+		Sequence: loop
+		Palette: knight
+		RequiresCondition: damage-smoke
+	Buildable:
+		Queue: Naval.Korea
+		Prerequisites: shipyard
+		Icon: icon
+		IconPalette: knight
+	MapEditorData:
+		Categories: Ships
+
+patrolship:
+	Inherits: ^syw-ship
+	Armor:
+		Type: Light
+	RenderSprites:
+		Image: patrolship
+	Health:
+		HP: 53550
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: actor-patrolship.name
+	Buildable:
+		BuildPaletteOrder: 10
+	Armament:
+		Weapon: PatrolShipBow
+		LocalOffset: 0,0,512
+		MuzzlePalette: knight
+	AttackFrontal:
+		FacingTolerance: 128
+	AutoTarget:
+		ScanRadius: 7
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Water, Air
+		ValidRelationships: Enemy
+
+# Cannon ship is the Turtle Ship of the Korean roster.
+cannonship:
+	Inherits: ^syw-ship
+	RenderSprites:
+		Image: cannonship
+	Health:
+		HP: 45900
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: actor-cannonship.name
+	Buildable:
+		BuildPaletteOrder: 20
+	Mobile:
+		Speed: 50
+	RevealsShroud:
+		Range: 10c0
+	Armament:
+		Weapon: CannonShipShot
+		LocalOffset: 0,0,512
+		MuzzlePalette: knight
+	AttackFrontal:
+		FacingTolerance: 128
+	AutoTarget:
+		ScanRadius: 10
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Water
+		ValidRelationships: Enemy
+
+transportship:
+	Inherits: ^syw-ship
+	RenderSprites:
+		Image: transportship
+	Health:
+		HP: 45900
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-transportship.name
+	Buildable:
+		BuildPaletteOrder: 30
+	Cargo:
+		Types: Infantry, Vehicle
+		MaxWeight: 8
+		AfterUnloadDelay: 10
+		UnloadTerrainTypes: Water

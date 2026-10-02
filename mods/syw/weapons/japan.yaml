@@ -1,0 +1,144 @@
+# Japanese weapons. Values follow SYWtoORA/proposedJapan.md: the Korean live value scaled by the Japan/Korea ratio
+# recovered from syw.exe, with the user's weaker Footman.
+
+# Footman (user change): 4,000 instead of Korea's 4,500.
+JapaneseSword:
+	Inherits: Sword
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+
+# Gunner: power 60 vs Korea's 50, range 6 vs 5.
+JapaneseMusket:
+	Inherits: Musket
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+
+# Armored Car: one bullet (musket profile) of power 60 every 25 original ticks (33), range 7.
+ArmoredCarGun:
+	Inherits: Musket
+	ReloadDelay: 33
+	Range: 7c0
+	ValidTargets: Ground, Air
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+		ValidTargets: Ground, Air
+
+# General: melee cavalry, power 60, cooldown 15 (20 ticks).
+GeneralSword:
+	Inherits: Sword
+	ReloadDelay: 20
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+
+# Arrow Ship: the Patrol Ship's arrows at range 7.
+ArrowShipBow:
+	Inherits: PatrolShipBow
+	Range: 7c0
+
+# Bomber: flies over the target and drops 3 bombs one after the other, 5 ticks apart (2026-10-01, user design; the
+# original drops 6), power 90 each, with the cannon-type splash, then reloads. The bomber's three LocalOffsets place
+# them across its wings. Range 1 cell, so it must be nearly overhead; cooldown 100 (133 ticks).
+BomberBombs:
+	ReloadDelay: 133
+	Burst: 3
+	BurstDelays: 5
+	Range: 1c0
+	ValidTargets: Ground, Water
+	# Falls from the Bomber to the ground below it (MOUSE 63).
+	Projectile: GravityBomb
+		Image: bomber-bomb
+		Palette: knight
+		Shadow: true
+	Warhead@Damage: SpreadDamage
+		Spread: 512
+		Falloff: 100, 100, 50, 25, 0
+		Damage: 9000
+		ValidTargets: Ground, Water
+		ValidRelationships: Enemy, Neutral
+		Versus:
+			None: 50
+			Light: 100
+			Heavy: 150
+			Wood: 150
+			Concrete: 150
+		DamageTypes: DefaultDeath
+	Warhead@Explosion: CreateEffect
+		Image: explosion
+		Explosions: cannon
+		ExplosionPalette: knight
+		ValidTargets: Ground, Water
+
+# Torpedo: a short-range targeting "weapon" that triggers the self-destruct (like RA's demolition truck).
+TorpedoTargeting:
+	ValidTargets: Water
+	Range: 1c256
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@1Dam: TargetDamage
+		Damage: 0
+		ValidTargets: Water
+
+# Torpedo blast: power 1,500 (x100), class 4 heavy splash over the 3x3 cells around it.
+TorpedoBlast:
+	Warhead@Damage: SpreadDamage
+		Spread: 1c512
+		Falloff: 100, 100, 0
+		Damage: 150000
+		ValidTargets: Ground, Water
+		Versus:
+			None: 150
+			Light: 150
+			Heavy: 150
+			Wood: 150
+			Concrete: 150
+		DamageTypes: DefaultDeath
+	Warhead@Explosion: CreateEffect
+		Image: explosion
+		Explosions: cannon
+		ExplosionPalette: knight
+		ValidTargets: Ground, Water
+
+# Witch Earthquake: power 105 (x100) over the 5x5 cells around the target cell.
+Earthquake:
+	ValidTargets: Ground, Water
+	Range: 6c0
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@Damage: SpreadDamage
+		Spread: 2c512
+		Falloff: 100, 100, 0
+		Damage: 10500
+		ValidTargets: Ground, Water
+		Versus:
+			None: 100
+			Light: 100
+			Heavy: 100
+			Wood: 100
+			Concrete: 100
+		DamageTypes: DefaultDeath
+	# FIRE96 0-7.
+	Warhead@Explosion: CreateEffect
+		Image: earthquake
+		Explosions: quake
+		ExplosionPalette: knight
+		ValidTargets: Ground, Water
+
+# Towers shoot guns (class 1) instead of arrows. Arrow Tower: power 70 vs 60, cooldown 80 vs 85.
+JapanTowerGun:
+	Inherits: Musket
+	ReloadDelay: 25
+	Range: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 4100
+
+# Cannon Tower: the Korean shot and range, with the gun damage profile.
+JapanCannonTowerShot:
+	Inherits: CannonTowerShot
+	Warhead@Damage: SpreadDamage
+		Versus:
+			None: 150
+			Light: 100
+			Heavy: 60
+			Wood: 40
+			Concrete: 25

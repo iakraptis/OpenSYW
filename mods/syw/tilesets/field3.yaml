@@ -1,0 +1,3955 @@
+General:
+	Name: SYW Grassland
+	Id: FIELD3
+	EditorTemplateOrder: Land, Dirt, Field, Water, Bridge, Cliff, Rock, Border
+	Palette:
+
+Terrain:
+	TerrainType@Clear:
+		Type: Clear
+		TargetTypes: Ground
+		Color: 65754B
+	TerrainType@Water:
+		Type: Water
+		TargetTypes: Water
+		Color: 285F82
+	TerrainType@Rock:
+		Type: Rock
+		TargetTypes: Ground
+		Color: 6E6A60
+	TerrainType@Cliff:
+		Type: Cliff
+		TargetTypes: Ground
+		Color: 7A5230
+	TerrainType@Crops:
+		Type: Crops
+		TargetTypes: Ground
+		Color: 8A6A3A
+
+Templates:
+	Template@1999:
+		Id: 1999
+		Images: tilesets/field3/border.png
+		Frames: 0
+		Size: 1,1
+		Categories: Border
+		Tiles:
+			0: Clear
+				MinColor: 000000
+				MaxColor: 000000
+
+	Template@1000:
+		Id: 1000
+		Images: tilesets/field3/field31.png
+		Frames: 0
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 323449
+				MaxColor: 323449
+
+	Template@1001:
+		Id: 1001
+		Images: tilesets/field3/field31.png
+		Frames: 1
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2A3232
+				MaxColor: 2A3232
+
+	Template@1002:
+		Id: 1002
+		Images: tilesets/field3/field31.png
+		Frames: 2
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2F2F49
+				MaxColor: 2F2F49
+
+	Template@1003:
+		Id: 1003
+		Images: tilesets/field3/field31.png
+		Frames: 3
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 32314D
+				MaxColor: 32314D
+
+	Template@1004:
+		Id: 1004
+		Images: tilesets/field3/field31.png
+		Frames: 4
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2A342F
+				MaxColor: 2A342F
+
+	Template@1005:
+		Id: 1005
+		Images: tilesets/field3/field31.png
+		Frames: 5
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2D3041
+				MaxColor: 2D3041
+
+	Template@1006:
+		Id: 1006
+		Images: tilesets/field3/field31.png
+		Frames: 6
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 282A13
+				MaxColor: 282A13
+
+	Template@1007:
+		Id: 1007
+		Images: tilesets/field3/field31.png
+		Frames: 7
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2C2921
+				MaxColor: 2C2921
+
+	Template@1008:
+		Id: 1008
+		Images: tilesets/field3/field31.png
+		Frames: 8
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 312D15
+				MaxColor: 312D15
+
+	Template@1009:
+		Id: 1009
+		Images: tilesets/field3/field31.png
+		Frames: 9
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2B2A12
+				MaxColor: 2B2A12
+
+	Template@1010:
+		Id: 1010
+		Images: tilesets/field3/field31.png
+		Frames: 10
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 302D26
+				MaxColor: 302D26
+
+	Template@1011:
+		Id: 1011
+		Images: tilesets/field3/field31.png
+		Frames: 11
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2F3217
+				MaxColor: 2F3217
+
+	Template@1020:
+		Id: 1020
+		Images: tilesets/field3/field31.png
+		Frames: 20
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 303132
+				MaxColor: 303132
+
+	Template@1021:
+		Id: 1021
+		Images: tilesets/field3/field31.png
+		Frames: 21
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1022:
+		Id: 1022
+		Images: tilesets/field3/field31.png
+		Frames: 22
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2D2B27
+				MaxColor: 2D2B27
+
+	Template@1023:
+		Id: 1023
+		Images: tilesets/field3/field31.png
+		Frames: 23
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 343130
+				MaxColor: 343130
+
+	Template@1024:
+		Id: 1024
+		Images: tilesets/field3/field31.png
+		Frames: 24
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 283417
+				MaxColor: 283417
+
+	Template@1025:
+		Id: 1025
+		Images: tilesets/field3/field31.png
+		Frames: 25
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2A281F
+				MaxColor: 2A281F
+
+	Template@1026:
+		Id: 1026
+		Images: tilesets/field3/field31.png
+		Frames: 26
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2D291F
+				MaxColor: 2D291F
+
+	Template@1027:
+		Id: 1027
+		Images: tilesets/field3/field31.png
+		Frames: 27
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313161
+				MaxColor: 313161
+
+	Template@1028:
+		Id: 1028
+		Images: tilesets/field3/field31.png
+		Frames: 28
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 323233
+				MaxColor: 323233
+
+	Template@1029:
+		Id: 1029
+		Images: tilesets/field3/field31.png
+		Frames: 29
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2E2C26
+				MaxColor: 2E2C26
+
+	Template@1030:
+		Id: 1030
+		Images: tilesets/field3/field31.png
+		Frames: 30
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 303160
+				MaxColor: 303160
+
+	Template@1031:
+		Id: 1031
+		Images: tilesets/field3/field31.png
+		Frames: 31
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 363132
+				MaxColor: 363132
+
+	Template@1040:
+		Id: 1040
+		Images: tilesets/field3/field31.png
+		Frames: 40
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 342F45
+				MaxColor: 342F45
+
+	Template@1041:
+		Id: 1041
+		Images: tilesets/field3/field31.png
+		Frames: 41
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 323029
+				MaxColor: 323029
+
+	Template@1042:
+		Id: 1042
+		Images: tilesets/field3/field31.png
+		Frames: 42
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2B2A3D
+				MaxColor: 2B2A3D
+
+	Template@1043:
+		Id: 1043
+		Images: tilesets/field3/field31.png
+		Frames: 43
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 362D41
+				MaxColor: 362D41
+
+	Template@1044:
+		Id: 1044
+		Images: tilesets/field3/field31.png
+		Frames: 44
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 322D23
+				MaxColor: 322D23
+
+	Template@1045:
+		Id: 1045
+		Images: tilesets/field3/field31.png
+		Frames: 45
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2C2936
+				MaxColor: 2C2936
+
+	Template@1046:
+		Id: 1046
+		Images: tilesets/field3/field31.png
+		Frames: 46
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2C2C17
+				MaxColor: 2C2C17
+
+	Template@1047:
+		Id: 1047
+		Images: tilesets/field3/field31.png
+		Frames: 47
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2F3130
+				MaxColor: 2F3130
+
+	Template@1048:
+		Id: 1048
+		Images: tilesets/field3/field31.png
+		Frames: 48
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 32331B
+				MaxColor: 32331B
+
+	Template@1049:
+		Id: 1049
+		Images: tilesets/field3/field31.png
+		Frames: 49
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2F2F17
+				MaxColor: 2F2F17
+
+	Template@1050:
+		Id: 1050
+		Images: tilesets/field3/field31.png
+		Frames: 50
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 3A332D
+				MaxColor: 3A332D
+
+	Template@1051:
+		Id: 1051
+		Images: tilesets/field3/field31.png
+		Frames: 51
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 303217
+				MaxColor: 303217
+
+	Template@1061:
+		Id: 1061
+		Images: tilesets/field3/field31.png
+		Frames: 61
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 303044
+				MaxColor: 303044
+
+	Template@1062:
+		Id: 1062
+		Images: tilesets/field3/field31.png
+		Frames: 62
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313161
+				MaxColor: 313161
+
+	Template@1065:
+		Id: 1065
+		Images: tilesets/field3/field31.png
+		Frames: 65
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2A2D2A
+				MaxColor: 2A2D2A
+
+	Template@1066:
+		Id: 1066
+		Images: tilesets/field3/field31.png
+		Frames: 66
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 303144
+				MaxColor: 303144
+
+	Template@1067:
+		Id: 1067
+		Images: tilesets/field3/field31.png
+		Frames: 67
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 29321D
+				MaxColor: 29321D
+
+	Template@1080:
+		Id: 1080
+		Images: tilesets/field3/field31.png
+		Frames: 80
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 283015
+				MaxColor: 283015
+
+	Template@1081:
+		Id: 1081
+		Images: tilesets/field3/field31.png
+		Frames: 81
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2D3219
+				MaxColor: 2D3219
+
+	Template@1082:
+		Id: 1082
+		Images: tilesets/field3/field31.png
+		Frames: 82
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 30303E
+				MaxColor: 30303E
+
+	Template@1084:
+		Id: 1084
+		Images: tilesets/field3/field31.png
+		Frames: 84
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 323261
+				MaxColor: 323261
+
+	Template@1085:
+		Id: 1085
+		Images: tilesets/field3/field31.png
+		Frames: 85
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 333241
+				MaxColor: 333241
+
+	Template@1087:
+		Id: 1087
+		Images: tilesets/field3/field31.png
+		Frames: 87
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 293014
+				MaxColor: 293014
+
+	Template@1088:
+		Id: 1088
+		Images: tilesets/field3/field31.png
+		Frames: 88
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2E2C36
+				MaxColor: 2E2C36
+
+	Template@1100:
+		Id: 1100
+		Images: tilesets/field3/field31.png
+		Frames: 100
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 31303F
+				MaxColor: 31303F
+
+	Template@1101:
+		Id: 1101
+		Images: tilesets/field3/field31.png
+		Frames: 101
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273017
+				MaxColor: 273017
+
+	Template@1102:
+		Id: 1102
+		Images: tilesets/field3/field31.png
+		Frames: 102
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2B3119
+				MaxColor: 2B3119
+
+	Template@1104:
+		Id: 1104
+		Images: tilesets/field3/field31.png
+		Frames: 104
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 383242
+				MaxColor: 383242
+
+	Template@1105:
+		Id: 1105
+		Images: tilesets/field3/field31.png
+		Frames: 105
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2B2F17
+				MaxColor: 2B2F17
+
+	Template@1106:
+		Id: 1106
+		Images: tilesets/field3/field31.png
+		Frames: 106
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 262F15
+				MaxColor: 262F15
+
+	Template@1107:
+		Id: 1107
+		Images: tilesets/field3/field31.png
+		Frames: 107
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2F2D3C
+				MaxColor: 2F2D3C
+
+	Template@1108:
+		Id: 1108
+		Images: tilesets/field3/field31.png
+		Frames: 108
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 323261
+				MaxColor: 323261
+
+	Template@1120:
+		Id: 1120
+		Images: tilesets/field3/field31.png
+		Frames: 120
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313161
+				MaxColor: 313161
+
+	Template@1121:
+		Id: 1121
+		Images: tilesets/field3/field31.png
+		Frames: 121
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 363141
+				MaxColor: 363141
+
+	Template@1122:
+		Id: 1122
+		Images: tilesets/field3/field31.png
+		Frames: 122
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2A3219
+				MaxColor: 2A3219
+
+	Template@1123:
+		Id: 1123
+		Images: tilesets/field3/field31.png
+		Frames: 123
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313161
+				MaxColor: 313161
+
+	Template@1124:
+		Id: 1124
+		Images: tilesets/field3/field31.png
+		Frames: 124
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313160
+				MaxColor: 313160
+
+	Template@1125:
+		Id: 1125
+		Images: tilesets/field3/field31.png
+		Frames: 125
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 272E14
+				MaxColor: 272E14
+
+	Template@1126:
+		Id: 1126
+		Images: tilesets/field3/field31.png
+		Frames: 126
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2F2B3A
+				MaxColor: 2F2B3A
+
+	Template@1128:
+		Id: 1128
+		Images: tilesets/field3/field31.png
+		Frames: 128
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 3A402F
+				MaxColor: 3A402F
+
+	Template@1129:
+		Id: 1129
+		Images: tilesets/field3/field31.png
+		Frames: 129
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 2F3921
+				MaxColor: 2F3921
+
+	Template@1137:
+		Id: 1137
+		Images: tilesets/field3/field31.png
+		Frames: 137
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 302D3A
+				MaxColor: 302D3A
+
+	Template@1140:
+		Id: 1140
+		Images: tilesets/field3/field31.png
+		Frames: 140
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 323261
+				MaxColor: 323261
+
+	Template@1141:
+		Id: 1141
+		Images: tilesets/field3/field31.png
+		Frames: 141
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313160
+				MaxColor: 313160
+
+	Template@1142:
+		Id: 1142
+		Images: tilesets/field3/field31.png
+		Frames: 142
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 302E40
+				MaxColor: 302E40
+
+	Template@1143:
+		Id: 1143
+		Images: tilesets/field3/field31.png
+		Frames: 143
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313161
+				MaxColor: 313161
+
+	Template@1144:
+		Id: 1144
+		Images: tilesets/field3/field31.png
+		Frames: 144
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313160
+				MaxColor: 313160
+
+	Template@1146:
+		Id: 1146
+		Images: tilesets/field3/field31.png
+		Frames: 146
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313160
+				MaxColor: 313160
+
+	Template@1149:
+		Id: 1149
+		Images: tilesets/field3/field31.png
+		Frames: 149
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 60625C
+				MaxColor: 60625C
+
+	Template@1150:
+		Id: 1150
+		Images: tilesets/field3/field31.png
+		Frames: 150
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 3A412F
+				MaxColor: 3A412F
+
+	Template@1157:
+		Id: 1157
+		Images: tilesets/field3/field31.png
+		Frames: 157
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 313160
+				MaxColor: 313160
+
+	Template@1160:
+		Id: 1160
+		Images: tilesets/field3/field31.png
+		Frames: 160
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 263417
+				MaxColor: 263417
+
+	Template@1161:
+		Id: 1161
+		Images: tilesets/field3/field31.png
+		Frames: 161
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1162:
+		Id: 1162
+		Images: tilesets/field3/field31.png
+		Frames: 162
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 263417
+				MaxColor: 263417
+
+	Template@1163:
+		Id: 1163
+		Images: tilesets/field3/field31.png
+		Frames: 163
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1164:
+		Id: 1164
+		Images: tilesets/field3/field31.png
+		Frames: 164
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 263316
+				MaxColor: 263316
+
+	Template@1166:
+		Id: 1166
+		Images: tilesets/field3/field31.png
+		Frames: 166
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 3A3A65
+				MaxColor: 3A3A65
+
+	Template@1167:
+		Id: 1167
+		Images: tilesets/field3/field31.png
+		Frames: 167
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 65656C
+				MaxColor: 65656C
+
+	Template@1168:
+		Id: 1168
+		Images: tilesets/field3/field31.png
+		Frames: 168
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 797979
+				MaxColor: 797979
+
+	Template@1170:
+		Id: 1170
+		Images: tilesets/field3/field31.png
+		Frames: 170
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 757574
+				MaxColor: 757574
+
+	Template@1171:
+		Id: 1171
+		Images: tilesets/field3/field31.png
+		Frames: 171
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 383D2F
+				MaxColor: 383D2F
+
+	Template@1180:
+		Id: 1180
+		Images: tilesets/field3/field31.png
+		Frames: 180
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1181:
+		Id: 1181
+		Images: tilesets/field3/field31.png
+		Frames: 181
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 263417
+				MaxColor: 263417
+
+	Template@1182:
+		Id: 1182
+		Images: tilesets/field3/field31.png
+		Frames: 182
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1183:
+		Id: 1183
+		Images: tilesets/field3/field31.png
+		Frames: 183
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 283418
+				MaxColor: 283418
+
+	Template@1184:
+		Id: 1184
+		Images: tilesets/field3/field31.png
+		Frames: 184
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 253416
+				MaxColor: 253416
+
+	Template@1185:
+		Id: 1185
+		Images: tilesets/field3/field31.png
+		Frames: 185
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 4E504F
+				MaxColor: 4E504F
+
+	Template@1186:
+		Id: 1186
+		Images: tilesets/field3/field31.png
+		Frames: 186
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 6C6C72
+				MaxColor: 6C6C72
+
+	Template@1187:
+		Id: 1187
+		Images: tilesets/field3/field31.png
+		Frames: 187
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 727272
+				MaxColor: 727272
+
+	Template@1188:
+		Id: 1188
+		Images: tilesets/field3/field31.png
+		Frames: 188
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 646464
+				MaxColor: 646464
+
+	Template@1190:
+		Id: 1190
+		Images: tilesets/field3/field31.png
+		Frames: 190
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 40404A
+				MaxColor: 40404A
+
+	Template@1191:
+		Id: 1191
+		Images: tilesets/field3/field31.png
+		Frames: 191
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 2D2C45
+				MaxColor: 2D2C45
+
+	Template@1200:
+		Id: 1200
+		Images: tilesets/field3/field31.png
+		Frames: 200
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 253316
+				MaxColor: 253316
+
+	Template@1201:
+		Id: 1201
+		Images: tilesets/field3/field31.png
+		Frames: 201
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1202:
+		Id: 1202
+		Images: tilesets/field3/field31.png
+		Frames: 202
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 253416
+				MaxColor: 253416
+
+	Template@1203:
+		Id: 1203
+		Images: tilesets/field3/field31.png
+		Frames: 203
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 253116
+				MaxColor: 253116
+
+	Template@1204:
+		Id: 1204
+		Images: tilesets/field3/field31.png
+		Frames: 204
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 263317
+				MaxColor: 263317
+
+	Template@1205:
+		Id: 1205
+		Images: tilesets/field3/field31.png
+		Frames: 205
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 454A39
+				MaxColor: 454A39
+
+	Template@1206:
+		Id: 1206
+		Images: tilesets/field3/field31.png
+		Frames: 206
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 6D6E6C
+				MaxColor: 6D6E6C
+
+	Template@1207:
+		Id: 1207
+		Images: tilesets/field3/field31.png
+		Frames: 207
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 646363
+				MaxColor: 646363
+
+	Template@1208:
+		Id: 1208
+		Images: tilesets/field3/field31.png
+		Frames: 208
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 747474
+				MaxColor: 747474
+
+	Template@1209:
+		Id: 1209
+		Images: tilesets/field3/field31.png
+		Frames: 209
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 3A3946
+				MaxColor: 3A3946
+
+	Template@1210:
+		Id: 1210
+		Images: tilesets/field3/field31.png
+		Frames: 210
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2B2B58
+				MaxColor: 2B2B58
+
+	Template@1220:
+		Id: 1220
+		Images: tilesets/field3/field31.png
+		Frames: 220
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 253416
+				MaxColor: 253416
+
+	Template@1221:
+		Id: 1221
+		Images: tilesets/field3/field31.png
+		Frames: 221
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 253416
+				MaxColor: 253416
+
+	Template@1222:
+		Id: 1222
+		Images: tilesets/field3/field31.png
+		Frames: 222
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 273318
+				MaxColor: 273318
+
+	Template@1223:
+		Id: 1223
+		Images: tilesets/field3/field31.png
+		Frames: 223
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 283418
+				MaxColor: 283418
+
+	Template@1224:
+		Id: 1224
+		Images: tilesets/field3/field31.png
+		Frames: 224
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 283418
+				MaxColor: 283418
+
+	Template@1226:
+		Id: 1226
+		Images: tilesets/field3/field31.png
+		Frames: 226
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 383F2D
+				MaxColor: 383F2D
+
+	Template@1227:
+		Id: 1227
+		Images: tilesets/field3/field31.png
+		Frames: 227
+		Size: 1,1
+		Categories: Bridge
+		Tiles:
+			0: Clear
+				MinColor: 6D6D6C
+				MaxColor: 6D6D6C
+
+	Template@1228:
+		Id: 1228
+		Images: tilesets/field3/field31.png
+		Frames: 228
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 363642
+				MaxColor: 363642
+
+	Template@1229:
+		Id: 1229
+		Images: tilesets/field3/field31.png
+		Frames: 229
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2C2C5A
+				MaxColor: 2C2C5A
+
+	Template@1247:
+		Id: 1247
+		Images: tilesets/field3/field31.png
+		Frames: 247
+		Size: 1,1
+		Categories: Land
+		Tiles:
+			0: Clear
+				MinColor: 40413D
+				MaxColor: 40413D
+
+	Template@1248:
+		Id: 1248
+		Images: tilesets/field3/field31.png
+		Frames: 248
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 2C2C50
+				MaxColor: 2C2C50
+
+	Template@1301:
+		Id: 1301
+		Images: tilesets/field3/field32.png
+		Frames: 1
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1302:
+		Id: 1302
+		Images: tilesets/field3/field32.png
+		Frames: 2
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 494224
+				MaxColor: 494224
+
+	Template@1303:
+		Id: 1303
+		Images: tilesets/field3/field32.png
+		Frames: 3
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 5C472A
+				MaxColor: 5C472A
+
+	Template@1304:
+		Id: 1304
+		Images: tilesets/field3/field32.png
+		Frames: 4
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 503F23
+				MaxColor: 503F23
+
+	Template@1305:
+		Id: 1305
+		Images: tilesets/field3/field32.png
+		Frames: 5
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 584327
+				MaxColor: 584327
+
+	Template@1306:
+		Id: 1306
+		Images: tilesets/field3/field32.png
+		Frames: 6
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4F3A21
+				MaxColor: 4F3A21
+
+	Template@1307:
+		Id: 1307
+		Images: tilesets/field3/field32.png
+		Frames: 7
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 363219
+				MaxColor: 363219
+
+	Template@1308:
+		Id: 1308
+		Images: tilesets/field3/field32.png
+		Frames: 8
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 283318
+				MaxColor: 283318
+
+	Template@1309:
+		Id: 1309
+		Images: tilesets/field3/field32.png
+		Frames: 9
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 283318
+				MaxColor: 283318
+
+	Template@1310:
+		Id: 1310
+		Images: tilesets/field3/field32.png
+		Frames: 10
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 74502C
+				MaxColor: 74502C
+
+	Template@1311:
+		Id: 1311
+		Images: tilesets/field3/field32.png
+		Frames: 11
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 74502C
+				MaxColor: 74502C
+
+	Template@1312:
+		Id: 1312
+		Images: tilesets/field3/field32.png
+		Frames: 12
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 724E2A
+				MaxColor: 724E2A
+
+	Template@1313:
+		Id: 1313
+		Images: tilesets/field3/field32.png
+		Frames: 13
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 724E2A
+				MaxColor: 724E2A
+
+	Template@1314:
+		Id: 1314
+		Images: tilesets/field3/field32.png
+		Frames: 14
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2A
+				MaxColor: 734F2A
+
+	Template@1315:
+		Id: 1315
+		Images: tilesets/field3/field32.png
+		Frames: 15
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1318:
+		Id: 1318
+		Images: tilesets/field3/field32.png
+		Frames: 18
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 74502C
+				MaxColor: 74502C
+
+	Template@1319:
+		Id: 1319
+		Images: tilesets/field3/field32.png
+		Frames: 19
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 74502C
+				MaxColor: 74502C
+
+	Template@1320:
+		Id: 1320
+		Images: tilesets/field3/field32.png
+		Frames: 20
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1321:
+		Id: 1321
+		Images: tilesets/field3/field32.png
+		Frames: 21
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4F4325
+				MaxColor: 4F4325
+
+	Template@1322:
+		Id: 1322
+		Images: tilesets/field3/field32.png
+		Frames: 22
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4F3C22
+				MaxColor: 4F3C22
+
+	Template@1323:
+		Id: 1323
+		Images: tilesets/field3/field32.png
+		Frames: 23
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1324:
+		Id: 1324
+		Images: tilesets/field3/field32.png
+		Frames: 24
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1325:
+		Id: 1325
+		Images: tilesets/field3/field32.png
+		Frames: 25
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1326:
+		Id: 1326
+		Images: tilesets/field3/field32.png
+		Frames: 26
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 263317
+				MaxColor: 263317
+
+	Template@1327:
+		Id: 1327
+		Images: tilesets/field3/field32.png
+		Frames: 27
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 463920
+				MaxColor: 463920
+
+	Template@1328:
+		Id: 1328
+		Images: tilesets/field3/field32.png
+		Frames: 28
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 372F16
+				MaxColor: 372F16
+
+	Template@1329:
+		Id: 1329
+		Images: tilesets/field3/field32.png
+		Frames: 29
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273318
+				MaxColor: 273318
+
+	Template@1330:
+		Id: 1330
+		Images: tilesets/field3/field32.png
+		Frames: 30
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1331:
+		Id: 1331
+		Images: tilesets/field3/field32.png
+		Frames: 31
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 724E2A
+				MaxColor: 724E2A
+
+	Template@1332:
+		Id: 1332
+		Images: tilesets/field3/field32.png
+		Frames: 32
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1333:
+		Id: 1333
+		Images: tilesets/field3/field32.png
+		Frames: 33
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3C3A1C
+				MaxColor: 3C3A1C
+
+	Template@1334:
+		Id: 1334
+		Images: tilesets/field3/field32.png
+		Frames: 34
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 443C1D
+				MaxColor: 443C1D
+
+	Template@1335:
+		Id: 1335
+		Images: tilesets/field3/field32.png
+		Frames: 35
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 473F1F
+				MaxColor: 473F1F
+
+	Template@1336:
+		Id: 1336
+		Images: tilesets/field3/field32.png
+		Frames: 36
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3E3B1D
+				MaxColor: 3E3B1D
+
+	Template@1338:
+		Id: 1338
+		Images: tilesets/field3/field32.png
+		Frames: 38
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1339:
+		Id: 1339
+		Images: tilesets/field3/field32.png
+		Frames: 39
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1340:
+		Id: 1340
+		Images: tilesets/field3/field32.png
+		Frames: 40
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 443E21
+				MaxColor: 443E21
+
+	Template@1341:
+		Id: 1341
+		Images: tilesets/field3/field32.png
+		Frames: 41
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 533C23
+				MaxColor: 533C23
+
+	Template@1342:
+		Id: 1342
+		Images: tilesets/field3/field32.png
+		Frames: 42
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 263216
+				MaxColor: 263216
+
+	Template@1343:
+		Id: 1343
+		Images: tilesets/field3/field32.png
+		Frames: 43
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1344:
+		Id: 1344
+		Images: tilesets/field3/field32.png
+		Frames: 44
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 423D20
+				MaxColor: 423D20
+
+	Template@1345:
+		Id: 1345
+		Images: tilesets/field3/field32.png
+		Frames: 45
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3D381C
+				MaxColor: 3D381C
+
+	Template@1346:
+		Id: 1346
+		Images: tilesets/field3/field32.png
+		Frames: 46
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1347:
+		Id: 1347
+		Images: tilesets/field3/field32.png
+		Frames: 47
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 263217
+				MaxColor: 263217
+
+	Template@1348:
+		Id: 1348
+		Images: tilesets/field3/field32.png
+		Frames: 48
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4E381F
+				MaxColor: 4E381F
+
+	Template@1349:
+		Id: 1349
+		Images: tilesets/field3/field32.png
+		Frames: 49
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 312813
+				MaxColor: 312813
+
+	Template@1351:
+		Id: 1351
+		Images: tilesets/field3/field32.png
+		Frames: 51
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1352:
+		Id: 1352
+		Images: tilesets/field3/field32.png
+		Frames: 52
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 453E1F
+				MaxColor: 453E1F
+
+	Template@1353:
+		Id: 1353
+		Images: tilesets/field3/field32.png
+		Frames: 53
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 564423
+				MaxColor: 564423
+
+	Template@1354:
+		Id: 1354
+		Images: tilesets/field3/field32.png
+		Frames: 54
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 443D1E
+				MaxColor: 443D1E
+
+	Template@1355:
+		Id: 1355
+		Images: tilesets/field3/field32.png
+		Frames: 55
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 463E1F
+				MaxColor: 463E1F
+
+	Template@1356:
+		Id: 1356
+		Images: tilesets/field3/field32.png
+		Frames: 56
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4E3F1F
+				MaxColor: 4E3F1F
+
+	Template@1357:
+		Id: 1357
+		Images: tilesets/field3/field32.png
+		Frames: 57
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 413C1E
+				MaxColor: 413C1E
+
+	Template@1358:
+		Id: 1358
+		Images: tilesets/field3/field32.png
+		Frames: 58
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 724E2A
+				MaxColor: 724E2A
+
+	Template@1359:
+		Id: 1359
+		Images: tilesets/field3/field32.png
+		Frames: 59
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1360:
+		Id: 1360
+		Images: tilesets/field3/field32.png
+		Frames: 60
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4E4124
+				MaxColor: 4E4124
+
+	Template@1361:
+		Id: 1361
+		Images: tilesets/field3/field32.png
+		Frames: 61
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 2A3016
+				MaxColor: 2A3016
+
+	Template@1362:
+		Id: 1362
+		Images: tilesets/field3/field32.png
+		Frames: 62
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1363:
+		Id: 1363
+		Images: tilesets/field3/field32.png
+		Frames: 63
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 263217
+				MaxColor: 263217
+
+	Template@1364:
+		Id: 1364
+		Images: tilesets/field3/field32.png
+		Frames: 64
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4A4022
+				MaxColor: 4A4022
+
+	Template@1365:
+		Id: 1365
+		Images: tilesets/field3/field32.png
+		Frames: 65
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3B341B
+				MaxColor: 3B341B
+
+	Template@1367:
+		Id: 1367
+		Images: tilesets/field3/field32.png
+		Frames: 67
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 2B3217
+				MaxColor: 2B3217
+
+	Template@1368:
+		Id: 1368
+		Images: tilesets/field3/field32.png
+		Frames: 68
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 34361B
+				MaxColor: 34361B
+
+	Template@1369:
+		Id: 1369
+		Images: tilesets/field3/field32.png
+		Frames: 69
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 302814
+				MaxColor: 302814
+
+	Template@1370:
+		Id: 1370
+		Images: tilesets/field3/field32.png
+		Frames: 70
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2B
+				MaxColor: 734F2B
+
+	Template@1371:
+		Id: 1371
+		Images: tilesets/field3/field32.png
+		Frames: 71
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 433C1D
+				MaxColor: 433C1D
+
+	Template@1372:
+		Id: 1372
+		Images: tilesets/field3/field32.png
+		Frames: 72
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4A4020
+				MaxColor: 4A4020
+
+	Template@1373:
+		Id: 1373
+		Images: tilesets/field3/field32.png
+		Frames: 73
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 2E3419
+				MaxColor: 2E3419
+
+	Template@1374:
+		Id: 1374
+		Images: tilesets/field3/field32.png
+		Frames: 74
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 343719
+				MaxColor: 343719
+
+	Template@1375:
+		Id: 1375
+		Images: tilesets/field3/field32.png
+		Frames: 75
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3A391B
+				MaxColor: 3A391B
+
+	Template@1376:
+		Id: 1376
+		Images: tilesets/field3/field32.png
+		Frames: 76
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1377:
+		Id: 1377
+		Images: tilesets/field3/field32.png
+		Frames: 77
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4A3F1F
+				MaxColor: 4A3F1F
+
+	Template@1378:
+		Id: 1378
+		Images: tilesets/field3/field32.png
+		Frames: 78
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 483F20
+				MaxColor: 483F20
+
+	Template@1379:
+		Id: 1379
+		Images: tilesets/field3/field32.png
+		Frames: 79
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 734F2A
+				MaxColor: 734F2A
+
+	Template@1380:
+		Id: 1380
+		Images: tilesets/field3/field32.png
+		Frames: 80
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4F4225
+				MaxColor: 4F4225
+
+	Template@1381:
+		Id: 1381
+		Images: tilesets/field3/field32.png
+		Frames: 81
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 283116
+				MaxColor: 283116
+
+	Template@1382:
+		Id: 1382
+		Images: tilesets/field3/field32.png
+		Frames: 82
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 423D20
+				MaxColor: 423D20
+
+	Template@1383:
+		Id: 1383
+		Images: tilesets/field3/field32.png
+		Frames: 83
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 554527
+				MaxColor: 554527
+
+	Template@1384:
+		Id: 1384
+		Images: tilesets/field3/field32.png
+		Frames: 84
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 473820
+				MaxColor: 473820
+
+	Template@1385:
+		Id: 1385
+		Images: tilesets/field3/field32.png
+		Frames: 85
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 47381F
+				MaxColor: 47381F
+
+	Template@1386:
+		Id: 1386
+		Images: tilesets/field3/field32.png
+		Frames: 86
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 312D15
+				MaxColor: 312D15
+
+	Template@1387:
+		Id: 1387
+		Images: tilesets/field3/field32.png
+		Frames: 87
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 2C3016
+				MaxColor: 2C3016
+
+	Template@1388:
+		Id: 1388
+		Images: tilesets/field3/field32.png
+		Frames: 88
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3F391E
+				MaxColor: 3F391E
+
+	Template@1389:
+		Id: 1389
+		Images: tilesets/field3/field32.png
+		Frames: 89
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 312715
+				MaxColor: 312715
+
+	Template@1390:
+		Id: 1390
+		Images: tilesets/field3/field32.png
+		Frames: 90
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3F3B1D
+				MaxColor: 3F3B1D
+
+	Template@1391:
+		Id: 1391
+		Images: tilesets/field3/field32.png
+		Frames: 91
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 504222
+				MaxColor: 504222
+
+	Template@1392:
+		Id: 1392
+		Images: tilesets/field3/field32.png
+		Frames: 92
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 303821
+				MaxColor: 303821
+
+	Template@1393:
+		Id: 1393
+		Images: tilesets/field3/field32.png
+		Frames: 93
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 353824
+				MaxColor: 353824
+
+	Template@1394:
+		Id: 1394
+		Images: tilesets/field3/field32.png
+		Frames: 94
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3F3B1C
+				MaxColor: 3F3B1C
+
+	Template@1395:
+		Id: 1395
+		Images: tilesets/field3/field32.png
+		Frames: 95
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 493E1E
+				MaxColor: 493E1E
+
+	Template@1397:
+		Id: 1397
+		Images: tilesets/field3/field32.png
+		Frames: 97
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1398:
+		Id: 1398
+		Images: tilesets/field3/field32.png
+		Frames: 98
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4B4020
+				MaxColor: 4B4020
+
+	Template@1399:
+		Id: 1399
+		Images: tilesets/field3/field32.png
+		Frames: 99
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3F3C1D
+				MaxColor: 3F3C1D
+
+	Template@1400:
+		Id: 1400
+		Images: tilesets/field3/field32.png
+		Frames: 100
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 493E22
+				MaxColor: 493E22
+
+	Template@1401:
+		Id: 1401
+		Images: tilesets/field3/field32.png
+		Frames: 101
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 32361A
+				MaxColor: 32361A
+
+	Template@1402:
+		Id: 1402
+		Images: tilesets/field3/field32.png
+		Frames: 102
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3C3B1E
+				MaxColor: 3C3B1E
+
+	Template@1403:
+		Id: 1403
+		Images: tilesets/field3/field32.png
+		Frames: 103
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4D4225
+				MaxColor: 4D4225
+
+	Template@1404:
+		Id: 1404
+		Images: tilesets/field3/field32.png
+		Frames: 104
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4D3D23
+				MaxColor: 4D3D23
+
+	Template@1405:
+		Id: 1405
+		Images: tilesets/field3/field32.png
+		Frames: 105
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 503B22
+				MaxColor: 503B22
+
+	Template@1406:
+		Id: 1406
+		Images: tilesets/field3/field32.png
+		Frames: 106
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3B2E17
+				MaxColor: 3B2E17
+
+	Template@1407:
+		Id: 1407
+		Images: tilesets/field3/field32.png
+		Frames: 107
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 312F15
+				MaxColor: 312F15
+
+	Template@1408:
+		Id: 1408
+		Images: tilesets/field3/field32.png
+		Frames: 108
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 46361C
+				MaxColor: 46361C
+
+	Template@1409:
+		Id: 1409
+		Images: tilesets/field3/field32.png
+		Frames: 109
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 2F2312
+				MaxColor: 2F2312
+
+	Template@1410:
+		Id: 1410
+		Images: tilesets/field3/field32.png
+		Frames: 110
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 413B1E
+				MaxColor: 413B1E
+
+	Template@1411:
+		Id: 1411
+		Images: tilesets/field3/field32.png
+		Frames: 111
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3F3B1D
+				MaxColor: 3F3B1D
+
+	Template@1412:
+		Id: 1412
+		Images: tilesets/field3/field32.png
+		Frames: 112
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3E3B1C
+				MaxColor: 3E3B1C
+
+	Template@1413:
+		Id: 1413
+		Images: tilesets/field3/field32.png
+		Frames: 113
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 453C1D
+				MaxColor: 453C1D
+
+	Template@1414:
+		Id: 1414
+		Images: tilesets/field3/field32.png
+		Frames: 114
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 554221
+				MaxColor: 554221
+
+	Template@1415:
+		Id: 1415
+		Images: tilesets/field3/field32.png
+		Frames: 115
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 57401F
+				MaxColor: 57401F
+
+	Template@1416:
+		Id: 1416
+		Images: tilesets/field3/field32.png
+		Frames: 116
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 443B1C
+				MaxColor: 443B1C
+
+	Template@1417:
+		Id: 1417
+		Images: tilesets/field3/field32.png
+		Frames: 117
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 323619
+				MaxColor: 323619
+
+	Template@1418:
+		Id: 1418
+		Images: tilesets/field3/field32.png
+		Frames: 118
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 413D1E
+				MaxColor: 413D1E
+
+	Template@1419:
+		Id: 1419
+		Images: tilesets/field3/field32.png
+		Frames: 119
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 443C1D
+				MaxColor: 443C1D
+
+	Template@1420:
+		Id: 1420
+		Images: tilesets/field3/field32.png
+		Frames: 120
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 574529
+				MaxColor: 574529
+
+	Template@1421:
+		Id: 1421
+		Images: tilesets/field3/field32.png
+		Frames: 121
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 503F25
+				MaxColor: 503F25
+
+	Template@1422:
+		Id: 1422
+		Images: tilesets/field3/field32.png
+		Frames: 122
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1423:
+		Id: 1423
+		Images: tilesets/field3/field32.png
+		Frames: 123
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 283318
+				MaxColor: 283318
+
+	Template@1424:
+		Id: 1424
+		Images: tilesets/field3/field32.png
+		Frames: 124
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 44381D
+				MaxColor: 44381D
+
+	Template@1425:
+		Id: 1425
+		Images: tilesets/field3/field32.png
+		Frames: 125
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 362D15
+				MaxColor: 362D15
+
+	Template@1426:
+		Id: 1426
+		Images: tilesets/field3/field32.png
+		Frames: 126
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 243016
+				MaxColor: 243016
+
+	Template@1427:
+		Id: 1427
+		Images: tilesets/field3/field32.png
+		Frames: 127
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273218
+				MaxColor: 273218
+
+	Template@1428:
+		Id: 1428
+		Images: tilesets/field3/field32.png
+		Frames: 128
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 50361C
+				MaxColor: 50361C
+
+	Template@1429:
+		Id: 1429
+		Images: tilesets/field3/field32.png
+		Frames: 129
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 2B1F11
+				MaxColor: 2B1F11
+
+	Template@1430:
+		Id: 1430
+		Images: tilesets/field3/field32.png
+		Frames: 130
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3E3B1E
+				MaxColor: 3E3B1E
+
+	Template@1431:
+		Id: 1431
+		Images: tilesets/field3/field32.png
+		Frames: 131
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 413D1F
+				MaxColor: 413D1F
+
+	Template@1432:
+		Id: 1432
+		Images: tilesets/field3/field32.png
+		Frames: 132
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3D3A1C
+				MaxColor: 3D3A1C
+
+	Template@1433:
+		Id: 1433
+		Images: tilesets/field3/field32.png
+		Frames: 133
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 423C1D
+				MaxColor: 423C1D
+
+	Template@1434:
+		Id: 1434
+		Images: tilesets/field3/field32.png
+		Frames: 134
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 503F1E
+				MaxColor: 503F1E
+
+	Template@1435:
+		Id: 1435
+		Images: tilesets/field3/field32.png
+		Frames: 135
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 5A4321
+				MaxColor: 5A4321
+
+	Template@1436:
+		Id: 1436
+		Images: tilesets/field3/field32.png
+		Frames: 136
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4B3F1F
+				MaxColor: 4B3F1F
+
+	Template@1437:
+		Id: 1437
+		Images: tilesets/field3/field32.png
+		Frames: 137
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 39391B
+				MaxColor: 39391B
+
+	Template@1438:
+		Id: 1438
+		Images: tilesets/field3/field32.png
+		Frames: 138
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 413C1E
+				MaxColor: 413C1E
+
+	Template@1439:
+		Id: 1439
+		Images: tilesets/field3/field32.png
+		Frames: 139
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 423A1C
+				MaxColor: 423A1C
+
+	Template@1440:
+		Id: 1440
+		Images: tilesets/field3/field32.png
+		Frames: 140
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 493E22
+				MaxColor: 493E22
+
+	Template@1441:
+		Id: 1441
+		Images: tilesets/field3/field32.png
+		Frames: 141
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 67462C
+				MaxColor: 67462C
+
+	Template@1442:
+		Id: 1442
+		Images: tilesets/field3/field32.png
+		Frames: 142
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4C3D22
+				MaxColor: 4C3D22
+
+	Template@1443:
+		Id: 1443
+		Images: tilesets/field3/field32.png
+		Frames: 143
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1444:
+		Id: 1444
+		Images: tilesets/field3/field32.png
+		Frames: 144
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 36371B
+				MaxColor: 36371B
+
+	Template@1445:
+		Id: 1445
+		Images: tilesets/field3/field32.png
+		Frames: 145
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 363419
+				MaxColor: 363419
+
+	Template@1447:
+		Id: 1447
+		Images: tilesets/field3/field32.png
+		Frames: 147
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 533D22
+				MaxColor: 533D22
+
+	Template@1448:
+		Id: 1448
+		Images: tilesets/field3/field32.png
+		Frames: 148
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 492B18
+				MaxColor: 492B18
+
+	Template@1449:
+		Id: 1449
+		Images: tilesets/field3/field32.png
+		Frames: 149
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 2D2412
+				MaxColor: 2D2412
+
+	Template@1450:
+		Id: 1450
+		Images: tilesets/field3/field32.png
+		Frames: 150
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3D3B1D
+				MaxColor: 3D3B1D
+
+	Template@1451:
+		Id: 1451
+		Images: tilesets/field3/field32.png
+		Frames: 151
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 534322
+				MaxColor: 534322
+
+	Template@1452:
+		Id: 1452
+		Images: tilesets/field3/field32.png
+		Frames: 152
+		Size: 1,1
+		Categories: Rock
+		Tiles:
+			0: Rock
+				MinColor: 3A4033
+				MaxColor: 3A4033
+
+	Template@1453:
+		Id: 1453
+		Images: tilesets/field3/field32.png
+		Frames: 153
+		Size: 1,1
+		Categories: Rock
+		Tiles:
+			0: Rock
+				MinColor: 2E342B
+				MaxColor: 2E342B
+
+	Template@1454:
+		Id: 1454
+		Images: tilesets/field3/field32.png
+		Frames: 154
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3D391B
+				MaxColor: 3D391B
+
+	Template@1455:
+		Id: 1455
+		Images: tilesets/field3/field32.png
+		Frames: 155
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 423A1B
+				MaxColor: 423A1B
+
+	Template@1456:
+		Id: 1456
+		Images: tilesets/field3/field32.png
+		Frames: 156
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 263217
+				MaxColor: 263217
+
+	Template@1457:
+		Id: 1457
+		Images: tilesets/field3/field32.png
+		Frames: 157
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1458:
+		Id: 1458
+		Images: tilesets/field3/field32.png
+		Frames: 158
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4C3F20
+				MaxColor: 4C3F20
+
+	Template@1459:
+		Id: 1459
+		Images: tilesets/field3/field32.png
+		Frames: 159
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3C3A1C
+				MaxColor: 3C3A1C
+
+	Template@1461:
+		Id: 1461
+		Images: tilesets/field3/field32.png
+		Frames: 161
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 47331D
+				MaxColor: 47331D
+
+	Template@1462:
+		Id: 1462
+		Images: tilesets/field3/field32.png
+		Frames: 162
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 634129
+				MaxColor: 634129
+
+	Template@1463:
+		Id: 1463
+		Images: tilesets/field3/field32.png
+		Frames: 163
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 554327
+				MaxColor: 554327
+
+	Template@1464:
+		Id: 1464
+		Images: tilesets/field3/field32.png
+		Frames: 164
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 39381D
+				MaxColor: 39381D
+
+	Template@1465:
+		Id: 1465
+		Images: tilesets/field3/field32.png
+		Frames: 165
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 473B20
+				MaxColor: 473B20
+
+	Template@1466:
+		Id: 1466
+		Images: tilesets/field3/field32.png
+		Frames: 166
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 4E3E23
+				MaxColor: 4E3E23
+
+	Template@1467:
+		Id: 1467
+		Images: tilesets/field3/field32.png
+		Frames: 167
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 51321E
+				MaxColor: 51321E
+
+	Template@1468:
+		Id: 1468
+		Images: tilesets/field3/field32.png
+		Frames: 168
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 302310
+				MaxColor: 302310
+
+	Template@1469:
+		Id: 1469
+		Images: tilesets/field3/field32.png
+		Frames: 169
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 263217
+				MaxColor: 263217
+
+	Template@1470:
+		Id: 1470
+		Images: tilesets/field3/field32.png
+		Frames: 170
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 2C361D
+				MaxColor: 2C361D
+
+	Template@1471:
+		Id: 1471
+		Images: tilesets/field3/field32.png
+		Frames: 171
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4C4020
+				MaxColor: 4C4020
+
+	Template@1472:
+		Id: 1472
+		Images: tilesets/field3/field32.png
+		Frames: 172
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 494021
+				MaxColor: 494021
+
+	Template@1473:
+		Id: 1473
+		Images: tilesets/field3/field32.png
+		Frames: 173
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273317
+				MaxColor: 273317
+
+	Template@1474:
+		Id: 1474
+		Images: tilesets/field3/field32.png
+		Frames: 174
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 343719
+				MaxColor: 343719
+
+	Template@1475:
+		Id: 1475
+		Images: tilesets/field3/field32.png
+		Frames: 175
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 313619
+				MaxColor: 313619
+
+	Template@1476:
+		Id: 1476
+		Images: tilesets/field3/field32.png
+		Frames: 176
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273318
+				MaxColor: 273318
+
+	Template@1477:
+		Id: 1477
+		Images: tilesets/field3/field32.png
+		Frames: 177
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 463D1E
+				MaxColor: 463D1E
+
+	Template@1478:
+		Id: 1478
+		Images: tilesets/field3/field32.png
+		Frames: 178
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 504222
+				MaxColor: 504222
+
+	Template@1482:
+		Id: 1482
+		Images: tilesets/field3/field32.png
+		Frames: 182
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 45381F
+				MaxColor: 45381F
+
+	Template@1483:
+		Id: 1483
+		Images: tilesets/field3/field32.png
+		Frames: 183
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 5D3D26
+				MaxColor: 5D3D26
+
+	Template@1484:
+		Id: 1484
+		Images: tilesets/field3/field32.png
+		Frames: 184
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 50311F
+				MaxColor: 50311F
+
+	Template@1485:
+		Id: 1485
+		Images: tilesets/field3/field32.png
+		Frames: 185
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 5F3E27
+				MaxColor: 5F3E27
+
+	Template@1486:
+		Id: 1486
+		Images: tilesets/field3/field32.png
+		Frames: 186
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 553522
+				MaxColor: 553522
+
+	Template@1487:
+		Id: 1487
+		Images: tilesets/field3/field32.png
+		Frames: 187
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 382715
+				MaxColor: 382715
+
+	Template@1488:
+		Id: 1488
+		Images: tilesets/field3/field32.png
+		Frames: 188
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273217
+				MaxColor: 273217
+
+	Template@1489:
+		Id: 1489
+		Images: tilesets/field3/field32.png
+		Frames: 189
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 373E2B
+				MaxColor: 373E2B
+
+	Template@1490:
+		Id: 1490
+		Images: tilesets/field3/field32.png
+		Frames: 190
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 40423A
+				MaxColor: 40423A
+
+	Template@1491:
+		Id: 1491
+		Images: tilesets/field3/field32.png
+		Frames: 191
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 2C331F
+				MaxColor: 2C331F
+
+	Template@1492:
+		Id: 1492
+		Images: tilesets/field3/field32.png
+		Frames: 192
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 423D1E
+				MaxColor: 423D1E
+
+	Template@1493:
+		Id: 1493
+		Images: tilesets/field3/field32.png
+		Frames: 193
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 554423
+				MaxColor: 554423
+
+	Template@1494:
+		Id: 1494
+		Images: tilesets/field3/field32.png
+		Frames: 194
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 443B1C
+				MaxColor: 443B1C
+
+	Template@1495:
+		Id: 1495
+		Images: tilesets/field3/field32.png
+		Frames: 195
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 423C1D
+				MaxColor: 423C1D
+
+	Template@1496:
+		Id: 1496
+		Images: tilesets/field3/field32.png
+		Frames: 196
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 4A4020
+				MaxColor: 4A4020
+
+	Template@1497:
+		Id: 1497
+		Images: tilesets/field3/field32.png
+		Frames: 197
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 534222
+				MaxColor: 534222
+
+	Template@1502:
+		Id: 1502
+		Images: tilesets/field3/field32.png
+		Frames: 202
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 283318
+				MaxColor: 283318
+
+	Template@1503:
+		Id: 1503
+		Images: tilesets/field3/field32.png
+		Frames: 203
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3F301B
+				MaxColor: 3F301B
+
+	Template@1504:
+		Id: 1504
+		Images: tilesets/field3/field32.png
+		Frames: 204
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3D2C18
+				MaxColor: 3D2C18
+
+	Template@1505:
+		Id: 1505
+		Images: tilesets/field3/field32.png
+		Frames: 205
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 3E2E1A
+				MaxColor: 3E2E1A
+
+	Template@1506:
+		Id: 1506
+		Images: tilesets/field3/field32.png
+		Frames: 206
+		Size: 1,1
+		Categories: Cliff
+		Tiles:
+			0: Cliff
+				MinColor: 322814
+				MaxColor: 322814
+
+	Template@1507:
+		Id: 1507
+		Images: tilesets/field3/field32.png
+		Frames: 207
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 283217
+				MaxColor: 283217
+
+	Template@1511:
+		Id: 1511
+		Images: tilesets/field3/field32.png
+		Frames: 211
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 293519
+				MaxColor: 293519
+
+	Template@1512:
+		Id: 1512
+		Images: tilesets/field3/field32.png
+		Frames: 212
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 273318
+				MaxColor: 273318
+
+	Template@1513:
+		Id: 1513
+		Images: tilesets/field3/field32.png
+		Frames: 213
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3C3B1C
+				MaxColor: 3C3B1C
+
+	Template@1514:
+		Id: 1514
+		Images: tilesets/field3/field32.png
+		Frames: 214
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 473E1F
+				MaxColor: 473E1F
+
+	Template@1515:
+		Id: 1515
+		Images: tilesets/field3/field32.png
+		Frames: 215
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 483E1F
+				MaxColor: 483E1F
+
+	Template@1516:
+		Id: 1516
+		Images: tilesets/field3/field32.png
+		Frames: 216
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3F3C1D
+				MaxColor: 3F3C1D
+
+	Template@1733:
+		Id: 1733
+		Images: tilesets/field3/field33.png
+		Frames: 133
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 624727
+				MaxColor: 624727
+
+	Template@1734:
+		Id: 1734
+		Images: tilesets/field3/field33.png
+		Frames: 134
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 463D1F
+				MaxColor: 463D1F
+
+	Template@1735:
+		Id: 1735
+		Images: tilesets/field3/field33.png
+		Frames: 135
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 4B3F20
+				MaxColor: 4B3F20
+
+	Template@1736:
+		Id: 1736
+		Images: tilesets/field3/field33.png
+		Frames: 136
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 413B1D
+				MaxColor: 413B1D
+
+	Template@1737:
+		Id: 1737
+		Images: tilesets/field3/field33.png
+		Frames: 137
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 654929
+				MaxColor: 654929
+
+	Template@1753:
+		Id: 1753
+		Images: tilesets/field3/field33.png
+		Frames: 153
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 483D1F
+				MaxColor: 483D1F
+
+	Template@1754:
+		Id: 1754
+		Images: tilesets/field3/field33.png
+		Frames: 154
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 734F2D
+				MaxColor: 734F2D
+
+	Template@1755:
+		Id: 1755
+		Images: tilesets/field3/field33.png
+		Frames: 155
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 734E2E
+				MaxColor: 734E2E
+
+	Template@1756:
+		Id: 1756
+		Images: tilesets/field3/field33.png
+		Frames: 156
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 704E2D
+				MaxColor: 704E2D
+
+	Template@1757:
+		Id: 1757
+		Images: tilesets/field3/field33.png
+		Frames: 157
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 3D391C
+				MaxColor: 3D391C
+
+	Template@1773:
+		Id: 1773
+		Images: tilesets/field3/field33.png
+		Frames: 173
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 574424
+				MaxColor: 574424
+
+	Template@1774:
+		Id: 1774
+		Images: tilesets/field3/field33.png
+		Frames: 174
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 734F2E
+				MaxColor: 734F2E
+
+	Template@1775:
+		Id: 1775
+		Images: tilesets/field3/field33.png
+		Frames: 175
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 734F2E
+				MaxColor: 734F2E
+
+	Template@1776:
+		Id: 1776
+		Images: tilesets/field3/field33.png
+		Frames: 176
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 74502F
+				MaxColor: 74502F
+
+	Template@1777:
+		Id: 1777
+		Images: tilesets/field3/field33.png
+		Frames: 177
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 524222
+				MaxColor: 524222
+
+	Template@1793:
+		Id: 1793
+		Images: tilesets/field3/field33.png
+		Frames: 193
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 4E4122
+				MaxColor: 4E4122
+
+	Template@1794:
+		Id: 1794
+		Images: tilesets/field3/field33.png
+		Frames: 194
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 734E2D
+				MaxColor: 734E2D
+
+	Template@1795:
+		Id: 1795
+		Images: tilesets/field3/field33.png
+		Frames: 195
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 734E2E
+				MaxColor: 734E2E
+
+	Template@1796:
+		Id: 1796
+		Images: tilesets/field3/field33.png
+		Frames: 196
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 724F2E
+				MaxColor: 724F2E
+
+	Template@1797:
+		Id: 1797
+		Images: tilesets/field3/field33.png
+		Frames: 197
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 433D1F
+				MaxColor: 433D1F
+
+	Template@1813:
+		Id: 1813
+		Images: tilesets/field3/field33.png
+		Frames: 213
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 624627
+				MaxColor: 624627
+
+	Template@1814:
+		Id: 1814
+		Images: tilesets/field3/field33.png
+		Frames: 214
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 4D4020
+				MaxColor: 4D4020
+
+	Template@1815:
+		Id: 1815
+		Images: tilesets/field3/field33.png
+		Frames: 215
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 5A4626
+				MaxColor: 5A4626
+
+	Template@1816:
+		Id: 1816
+		Images: tilesets/field3/field33.png
+		Frames: 216
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 4B4021
+				MaxColor: 4B4021
+
+	Template@1817:
+		Id: 1817
+		Images: tilesets/field3/field33.png
+		Frames: 217
+		Size: 1,1
+		Categories: Field
+		Tiles:
+			0: Clear
+				MinColor: 65492A
+				MaxColor: 65492A
+
+	Template@1820:
+		Id: 1820
+		Images: tilesets/field3/field33.png
+		Frames: 220
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 36354B
+				MaxColor: 36354B
+
+	Template@1821:
+		Id: 1821
+		Images: tilesets/field3/field33.png
+		Frames: 221
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 373E3A
+				MaxColor: 373E3A
+
+	Template@1822:
+		Id: 1822
+		Images: tilesets/field3/field33.png
+		Frames: 222
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 35364D
+				MaxColor: 35364D
+
+	Template@1823:
+		Id: 1823
+		Images: tilesets/field3/field33.png
+		Frames: 223
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 3A3C53
+				MaxColor: 3A3C53
+
+	Template@1824:
+		Id: 1824
+		Images: tilesets/field3/field33.png
+		Frames: 224
+		Size: 1,1
+		Categories: Rock
+		Tiles:
+			0: Rock
+				MinColor: 3E4140
+				MaxColor: 3E4140
+
+	Template@1825:
+		Id: 1825
+		Images: tilesets/field3/field33.png
+		Frames: 225
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 39394D
+				MaxColor: 39394D
+
+	Template@1842:
+		Id: 1842
+		Images: tilesets/field3/field33.png
+		Frames: 242
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 313430
+				MaxColor: 313430
+
+	Template@1843:
+		Id: 1843
+		Images: tilesets/field3/field33.png
+		Frames: 243
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3F4149
+				MaxColor: 3F4149
+
+	Template@1845:
+		Id: 1845
+		Images: tilesets/field3/field33.png
+		Frames: 245
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 32372A
+				MaxColor: 32372A
+
+	Template@1860:
+		Id: 1860
+		Images: tilesets/field3/field33.png
+		Frames: 260
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 3B3A53
+				MaxColor: 3B3A53
+
+	Template@1861:
+		Id: 1861
+		Images: tilesets/field3/field33.png
+		Frames: 261
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 424544
+				MaxColor: 424544
+
+	Template@1862:
+		Id: 1862
+		Images: tilesets/field3/field33.png
+		Frames: 262
+		Size: 1,1
+		Categories: Dirt
+		Tiles:
+			0: Clear
+				MinColor: 3C3B4C
+				MaxColor: 3C3B4C
+
+	Template@1863:
+		Id: 1863
+		Images: tilesets/field3/field33.png
+		Frames: 263
+		Size: 1,1
+		Categories: Water
+		Tiles:
+			0: Water
+				MinColor: 39364E
+				MaxColor: 39364E
+
+	Template@1864:
+		Id: 1864
+		Images: tilesets/field3/field33.png
+		Frames: 264
+		Size: 1,1
+		Categories: Rock
+		Tiles:
+			0: Rock
+				MinColor: 3E403D
+				MaxColor: 3E403D
+
+	Template@1865:
+		Id: 1865
+		Images: tilesets/field3/field33.png
+		Frames: 265
+		Size: 1,1
+		Categories: Rock
+		Tiles:
+			0: Rock
+				MinColor: 3A3948
+				MaxColor: 3A3948

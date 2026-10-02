@@ -1,0 +1,275 @@
+# Balance: damage = original attack power x100 (same scale as HP = original HP x100);
+# armor matchups use Versus tables; no flat unit defense reduction. ReloadDelay =
+# original cooldown threshold x4/3 ticks (Archer 20 -> 27), after two user-requested 1.5x
+# speed-ups; the Footman's animation-bound Sword gets the same factor (40 -> 18). See tools/ghidra/KoreanUnitStats.md.
+# Visual-only destruction effect; shared by all Korean buildings and towers.
+KoreanBuildingExplosion:
+	Warhead@Effect: CreateEffect
+		Image: explosion
+		Explosions: building
+		ExplosionPalette: knight
+		ImpactActors: false
+		ValidTargets: Ground, Water
+
+# Visual-only destruction effect for vehicles (EXP.SPR group B, flash and smoke).
+VehicleExplosion:
+	Warhead@Effect: CreateEffect
+		Image: explosion
+		Explosions: vehicle
+		ExplosionPalette: knight
+		ImpactActors: false
+		ValidTargets: Ground, Water
+
+Bow:
+	ReloadDelay: 27
+	Range: 5c0
+	ValidTargets: Ground, GroundActor
+	Projectile: Bullet
+		Speed: 400
+		Image: arrow
+		Sequences: idle
+		Palette: knight
+		TrailPalette: knight
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 100
+		Damage: 3500
+		ValidTargets: Ground, GroundActor
+		Versus:
+			None: 100
+			Light: 125
+			Heavy: 25
+			Wood: 35
+			Concrete: 15
+		DamageTypes: DefaultDeath
+
+# Gunner's weapon, also the base of every gun (Japanese Gunner, Armored Car, Japanese Arrow Tower).
+# The bullet is FIRE 140-148 (2026-09-30, user-identified); fast, so the hit lands almost at once.
+Musket:
+	ReloadDelay: 40
+	Range: 5c0
+	ValidTargets: Ground, GroundActor
+	Projectile: Bullet
+		Speed: 700
+		Image: musket-bullet
+		Sequences: idle
+		Palette: knight
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 100
+		Damage: 5000
+		ValidTargets: Ground, GroundActor
+		Versus:
+			None: 150
+			Light: 100
+			Heavy: 60
+			Wood: 40
+			Concrete: 25
+		DamageTypes: DefaultDeath
+
+# Footman's melee weapon. InstantHit at melee range - the swing itself is
+# shown by the attack animation, so no separate projectile sprite is needed.
+Sword:
+	ReloadDelay: 18
+	Range: 1c256
+	ValidTargets: Ground, GroundActor
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 100
+		Damage: 4500
+		ValidTargets: Ground, GroundActor
+		Versus:
+			None: 75
+			Light: 75
+			Heavy: 150
+			Wood: 150
+			Concrete: 150
+		DamageTypes: DefaultDeath
+
+# Single-sprite missile: FIRE.SPR frames 0-8.
+# Power 50 split over a two-missile volley. Each missile explodes with area damage:
+# full within 1 cell of impact, then 50% to 1.5 cells and 25% to 2 cells; enemies/neutrals only.
+# Inherited by FighterRockets and CannonShot.
+FireCarRockets:
+	# Two shots 5 ticks apart; original cooldown 70.
+	ReloadDelay: 93
+	Burst: 2
+	BurstDelays: 5
+	Range: 7c0
+	ValidTargets: Ground, Air
+	Projectile: Bullet
+		Speed: 500
+		Image: firecar-missile
+		Sequences: idle
+		Palette: knight
+		TrailPalette: knight
+		TrailImage: missile-trail
+		TrailSequences: idle
+		TrailInterval: 1
+		TrailDelay: 1
+		Blockable: false
+	Warhead@Damage: SpreadDamage
+		Spread: 512
+		Falloff: 100, 100, 50, 25, 0
+		Damage: 2500
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy, Neutral
+		Versus:
+			None: 125
+			Light: 100
+			Heavy: 75
+			Wood: 75
+			Concrete: 50
+		DamageTypes: DefaultDeath
+	# Rocket impact: EXP.SPR D2, the small dust burst.
+	Warhead@Explosion: CreateEffect
+		Image: explosion
+		Explosions: rocket-impact
+		ExplosionPalette: knight
+		ValidTargets: Ground, Water, Air
+
+# One stronger shot at longer range, ground-only at acquisition AND impact.
+# Shell speed, area damage and explosion come from FireCarRockets.
+CannonShot:
+	Inherits: FireCarRockets
+	ReloadDelay: 147
+	Burst: 1
+	Range: 10c0
+	ValidTargets: Ground
+	Warhead@Damage: SpreadDamage
+		Damage: 8000
+		ValidTargets: Ground
+		Versus:
+			None: 50
+			Light: 100
+			Heavy: 150
+			Wood: 150
+			Concrete: 150
+	# Cannon shell impact: EXP.SPR D1, the medium dust burst.
+	Warhead@Explosion: CreateEffect
+		Explosions: cannon-impact
+		ValidTargets: Ground, Water
+
+# Monk fireball: initial stock damage approximation, not original spell mechanics.
+MonkFireball:
+	ReloadDelay: 33
+	Range: 5c0
+	ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 300
+		Image: monk-fireball
+		Sequences: idle
+		Palette: knight
+		TrailPalette: knight
+		Blockable: false
+	Warhead@Damage: SpreadDamage
+		Spread: 100
+		Damage: 6000
+		ValidTargets: Ground
+		Versus:
+			None: 100
+			Light: 100
+			Heavy: 75
+			Wood: 100
+			Concrete: 50
+		DamageTypes: DefaultDeath
+
+# Stock medic-style healing, limited to one wounded allied infantry target.
+MonkHeal:
+	TargetActorCenter: true
+	ReloadDelay: 80
+	Range: 4c0
+	ValidTargets: Heal
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@Heal: TargetDamage
+		# Monk power 60 on the x100 scale; the original heal amount is not verified.
+		Damage: -6000
+		ValidTargets: Heal
+		ValidRelationships: Ally
+
+# Sky strike at the target using original RAIN frame 281.
+# One-shots any infantry (toughest: Footman/Commander 26,775 HP), with headroom.
+ShamanLightning:
+	TargetActorCenter: true
+	ReloadDelay: 50
+	Range: 8c0
+	ValidTargets: Ground
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@SkyStrike: CreateEffect
+		Image: shaman-lightning
+		Explosions: strike
+		ExplosionPalette: knight
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+	Warhead@Damage: SpreadDamage
+		Spread: 1
+		Damage: 30000
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+		Versus:
+			None: 100
+			Light: 100
+			Heavy: 100
+			Wood: 100
+			Concrete: 100
+		DamageTypes: DefaultDeath
+
+# Provisional mine balance, separate from original game research.
+MinerMineExplosion:
+	Warhead@Damage: SpreadDamage
+		Spread: 512
+		Damage: 12000
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+		Versus:
+			None: 75
+			Light: 125
+			Heavy: 150
+			Wood: 50
+			Concrete: 50
+		DamageTypes: DefaultDeath
+
+TowerBow:
+	Inherits: Bow
+	Range: 7c0
+
+CannonTowerShot:
+	Inherits: CannonShot
+	# Cannon range 10 cells x 1.10.
+	Range: 11c0
+
+# Patrol Ship: arrows with naval and air target support; power 50, cooldown 35.
+PatrolShipBow:
+	Inherits: Bow
+	ReloadDelay: 47
+	Range: 6c0
+	ValidTargets: Ground, Water, Air
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: Ground, Water, Air
+
+# Turtle Ship: power 75, cooldown 110.
+CannonShipShot:
+	Inherits: CannonShot
+	Range: 8c0
+	ValidTargets: Ground, Water
+	Warhead@Damage: SpreadDamage
+		Damage: 7500
+		ValidTargets: Ground, Water
+
+# Commander: power 50, cooldown 18 -> 24, range 6.
+CommanderBow:
+	Inherits: Bow
+	ReloadDelay: 24
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+# Fighter: Fire Car rockets with power 50, cooldown 90 -> 120, range 6.
+FighterRockets:
+	Inherits: FireCarRockets
+	ReloadDelay: 120
+	Range: 6c0
