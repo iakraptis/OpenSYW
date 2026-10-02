@@ -64,6 +64,7 @@ mods/syw/maps/kmulti1/
 mods/syw/maps/bot-test/
 mods/syw/maps/ffa-spectate/
 mods/syw/maps/local-*/
+mods/syw/install-manifest.txt
 
 # Test output
 test-results/

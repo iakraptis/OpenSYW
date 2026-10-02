@@ -1,0 +1,110 @@
+MapFormat: 12
+
+RequiresMod: syw
+
+Title: Spectate: 6 bots, Korea vs Japan (Korea Multi 1)
+
+Author: OpenSY
+
+Tileset: FIELD3
+
+MapSize: 122,122
+
+Bounds: 1,1,120,120
+
+Visibility: Lobby
+
+Categories: Spectate
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+	# The lobby can't start with only spectators, so the human slot is a non-combatant watcher.
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		LockFaction: True
+		NonCombatant: True
+		Faction: korea
+	PlayerReference@KoreaNorthWest:
+		Name: KoreaNorthWest
+		Bot: korean
+		Faction: korea
+		Color: E02020
+		Enemies: JapanNorthEast, KoreaWest, JapanCentre, KoreaSouth, JapanSouthEast
+	PlayerReference@JapanNorthEast:
+		Name: JapanNorthEast
+		Bot: japanese
+		Faction: japan
+		Color: 2060F0
+		Enemies: KoreaNorthWest, KoreaWest, JapanCentre, KoreaSouth, JapanSouthEast
+	PlayerReference@KoreaWest:
+		Name: KoreaWest
+		Bot: korean
+		Faction: korea
+		Color: 20C040
+		Enemies: KoreaNorthWest, JapanNorthEast, JapanCentre, KoreaSouth, JapanSouthEast
+	PlayerReference@JapanCentre:
+		Name: JapanCentre
+		Bot: japanese
+		Faction: japan
+		Color: F0D020
+		Enemies: KoreaNorthWest, JapanNorthEast, KoreaWest, KoreaSouth, JapanSouthEast
+	PlayerReference@KoreaSouth:
+		Name: KoreaSouth
+		Bot: korean
+		Faction: korea
+		Color: B040E0
+		Enemies: KoreaNorthWest, JapanNorthEast, KoreaWest, JapanCentre, JapanSouthEast
+	PlayerReference@JapanSouthEast:
+		Name: JapanSouthEast
+		Bot: japanese
+		Faction: japan
+		Color: F08020
+		Enemies: KoreaNorthWest, JapanNorthEast, KoreaWest, JapanCentre, KoreaSouth
+
+Actors:
+	WatchSpawn: mpspawn
+		Owner: Multi0
+		Location: 14,114
+	KoreaNorthWestHQ: hq
+		Owner: KoreaNorthWest
+		Location: 3,3
+	JapanNorthEastHQ: jhq
+		Owner: JapanNorthEast
+		Location: 114,3
+	KoreaWestHQ: hq
+		Owner: KoreaWest
+		Location: 3,49
+	JapanCentreHQ: jhq
+		Owner: JapanCentre
+		Location: 77,33
+	KoreaSouthHQ: hq
+		Owner: KoreaSouth
+		Location: 60,81
+	JapanSouthEastHQ: jhq
+		Owner: JapanSouthEast
+		Location: 113,115
+
+Rules:
+	player:
+		# Watch the whole map: fog off, everything explored.
+		Shroud:
+			FogCheckboxEnabled: False
+			FogCheckboxLocked: True
+			ExploredMapCheckboxEnabled: True
+			ExploredMapCheckboxLocked: True
+	world:
+		# The HQs are placed above; the watcher gets no starting units.
+		-SpawnStartingUnits:
+		# Fastest speed, locked.
+		MapOptions:
+			GameSpeed: fastest
+			GameSpeedDropdownLocked: true

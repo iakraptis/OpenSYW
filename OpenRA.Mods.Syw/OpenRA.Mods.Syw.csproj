@@ -22,4 +22,9 @@
 		</None>
 	</ItemGroup>
 
+	<!-- Our own files for the maps the asset installer builds on converted original maps (AssetInstaller/Maps.cs). -->
+	<ItemGroup>
+		<EmbeddedResource Include="AssetInstaller/MapTemplates/**/*" LogicalName="MapTemplates/%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
 </Project>

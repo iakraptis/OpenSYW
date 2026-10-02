@@ -1,3 +1,28 @@
+# OpenSY
+
+A remake of Seven Years War (Korea vs Japan) on the [OpenRA](https://github.com/OpenRA/OpenRA) engine.
+
+## Installing the game assets
+
+This repository contains no art, music or maps from the original game. You need your own copy of Seven Years War;
+the installer converts its files into the mod.
+
+1. Build the mod once: `make.cmd` (Windows) or `make` (Linux / macOS).
+2. Run the installer, pointing it at the original game folder (the one holding `syw.exe`, `FNT1`, `fst`, `cusmap`
+   and `Ani`):
+   - Windows: `install-assets.cmd C:\Games\SYWAR`
+   - Linux / macOS: `./install-assets.sh ~/Games/SYWAR`
+
+   Without a folder it looks for `SYWAR` next to this repository.
+3. Start the game with `launch-game.cmd` or `launch-game.sh`.
+
+The converted files are written into `mods/syw` and are ignored by git. Run the installer again after updating the
+mod. Options: `--list` shows the stages, `--only units,chrome` runs some of them, and `--write-yaml` updates the few
+generated YAML files kept in the repository (the FIELD3 tileset, crop sequences, cursors and menu fire regions). The
+converter is `OpenRA.Mods.Syw/AssetInstaller`; `mods/syw/install-manifest.txt` lists every file it wrote.
+
+## Development environment
+
 This repository contains a bare development environment for creating a new mod/game on the [OpenRA](https://github.com/OpenRA/OpenRA) engine.
 
 These scripts and support files wrap and automatically manage a copy of the OpenRA game engine and common files during development, and generates Windows installers, macOS .app bundles, and Linux [AppImages](https://appimage.org/) for distribution.

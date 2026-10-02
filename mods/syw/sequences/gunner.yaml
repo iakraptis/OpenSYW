@@ -1,8 +1,6 @@
-# Same 8-facing-from-5-source-directions approach as peasant.yaml/
-# archer.yaml. Confirmed from ARCHER.SPR frames 96-129 (user-identified as
-# the Gunner unit): walk 96-115 (5 directions x 4, same S/SW/W/NW/N layout
-# as Peasant/Archer), attack 116-125 (5 directions x 2 - a shorter aim
-# cycle than Archer's 4), death 126-129 (4 frames, non-directional).
+# ARCHER.SPR frames 96-129 (user-identified as the Gunner): walk 96-115 (S, SW, W, NW, N x 4), attack 116-125
+# (5 directions x 2, a shorter aim cycle than the Archer's), death 126-129. Sheets come from --install-assets
+# (AssetInstaller/Units.cs): 8 facings in OpenRA order (N, NW, W, SW, S, SE, E, NE), the eastern ones mirrored.
 gunner:
 	icon:
 		Filename: art/icons/units/gunner.png
@@ -10,168 +8,28 @@ gunner:
 		Offset: [0, -10, 10]
 		Scale: 0.85
 	walk:
+		Filename: art/units/gunner/walk.png
 		Facings: 8
 		Length: 4
 		Tick: 110
-		Combine:
-			0:
-				Filename: art/units/gunner/dir/walk-north.png
-				Start: 0
-				Length: 4
-			1:
-				Filename: art/units/gunner/dir/walk-northwest.png
-				Start: 0
-				Length: 4
-			2:
-				Filename: art/units/gunner/dir/walk-west.png
-				Start: 0
-				Length: 4
-			3:
-				Filename: art/units/gunner/dir/walk-southwest.png
-				Start: 0
-				Length: 4
-			4:
-				Filename: art/units/gunner/dir/walk-south.png
-				Start: 0
-				Length: 4
-			5:
-				Filename: art/units/gunner/dir/walk-southwest.png
-				Start: 0
-				Length: 4
-				FlipX: true
-			6:
-				Filename: art/units/gunner/dir/walk-west.png
-				Start: 0
-				Length: 4
-				FlipX: true
-			7:
-				Filename: art/units/gunner/dir/walk-northwest.png
-				Start: 0
-				Length: 4
-				FlipX: true
 	stand:
+		Filename: art/units/gunner/walk.png
 		Facings: 8
 		Length: 1
+		Stride: 4
 		Tick: 200
-		Combine:
-			0:
-				Filename: art/units/gunner/dir/walk-north.png
-				Start: 0
-				Length: 1
-			1:
-				Filename: art/units/gunner/dir/walk-northwest.png
-				Start: 0
-				Length: 1
-			2:
-				Filename: art/units/gunner/dir/walk-west.png
-				Start: 0
-				Length: 1
-			3:
-				Filename: art/units/gunner/dir/walk-southwest.png
-				Start: 0
-				Length: 1
-			4:
-				Filename: art/units/gunner/dir/walk-south.png
-				Start: 0
-				Length: 1
-			5:
-				Filename: art/units/gunner/dir/walk-southwest.png
-				Start: 0
-				Length: 1
-				FlipX: true
-			6:
-				Filename: art/units/gunner/dir/walk-west.png
-				Start: 0
-				Length: 1
-				FlipX: true
-			7:
-				Filename: art/units/gunner/dir/walk-northwest.png
-				Start: 0
-				Length: 1
-				FlipX: true
 	idle:
+		Filename: art/units/gunner/walk.png
 		Facings: 8
 		Length: 1
+		Stride: 4
 		Tick: 200
-		Combine:
-			0:
-				Filename: art/units/gunner/dir/walk-north.png
-				Start: 0
-				Length: 1
-			1:
-				Filename: art/units/gunner/dir/walk-northwest.png
-				Start: 0
-				Length: 1
-			2:
-				Filename: art/units/gunner/dir/walk-west.png
-				Start: 0
-				Length: 1
-			3:
-				Filename: art/units/gunner/dir/walk-southwest.png
-				Start: 0
-				Length: 1
-			4:
-				Filename: art/units/gunner/dir/walk-south.png
-				Start: 0
-				Length: 1
-			5:
-				Filename: art/units/gunner/dir/walk-southwest.png
-				Start: 0
-				Length: 1
-				FlipX: true
-			6:
-				Filename: art/units/gunner/dir/walk-west.png
-				Start: 0
-				Length: 1
-				FlipX: true
-			7:
-				Filename: art/units/gunner/dir/walk-northwest.png
-				Start: 0
-				Length: 1
-				FlipX: true
 	shoot:
+		Filename: art/units/gunner/shoot.png
 		Facings: 8
 		Length: 2
 		Tick: 120
-		Combine:
-			0:
-				Filename: art/units/gunner/dir/attack-north.png
-				Start: 0
-				Length: 2
-			1:
-				Filename: art/units/gunner/dir/attack-northwest.png
-				Start: 0
-				Length: 2
-			2:
-				Filename: art/units/gunner/dir/attack-west.png
-				Start: 0
-				Length: 2
-			3:
-				Filename: art/units/gunner/dir/attack-southwest.png
-				Start: 0
-				Length: 2
-			4:
-				Filename: art/units/gunner/dir/attack-south.png
-				Start: 0
-				Length: 2
-			5:
-				Filename: art/units/gunner/dir/attack-southwest.png
-				Start: 0
-				Length: 2
-				FlipX: true
-			6:
-				Filename: art/units/gunner/dir/attack-west.png
-				Start: 0
-				Length: 2
-				FlipX: true
-			7:
-				Filename: art/units/gunner/dir/attack-northwest.png
-				Start: 0
-				Length: 2
-				FlipX: true
 	die1:
-		FilenamePattern: art/units/gunner/death/frame_0{0}.png
-			Start: 126
-			Count: 4
+		Filename: art/units/gunner/death.png
 		Length: 4
 		Tick: 150

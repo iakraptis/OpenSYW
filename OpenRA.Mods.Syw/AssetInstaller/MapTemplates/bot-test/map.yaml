@@ -1,0 +1,74 @@
+MapFormat: 12
+
+RequiresMod: syw
+
+Title: Test: Korean bot vs Japanese bot (Korea Multi 1)
+
+Author: OpenSY
+
+Tileset: FIELD3
+
+MapSize: 122,122
+
+Bounds: 1,1,120,120
+
+Visibility: MissionSelector
+
+Categories: Test
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		LockFaction: True
+		NonCombatant: True
+		Faction: korea
+	PlayerReference@North:
+		Name: North
+		Bot: japanese
+		Faction: japan
+		Enemies: South
+	PlayerReference@South:
+		Name: South
+		Bot: korean
+		Faction: korea
+		Enemies: North
+
+Actors:
+	Spawn0: mpspawn
+		Owner: Multi0
+		Location: 14,114
+	NorthHQ: jhq
+		Owner: North
+		Location: 114,3
+	SouthHQ: hq
+		Owner: South
+		Location: 77,33
+
+Rules:
+	player:
+		# Scripted actors appear after the first victory check; conquest is tested in capture-victory-test.
+		-ConquestVictoryConditions:
+		# Fog off and map explored, so visibility checks only measure stealth.
+		Shroud:
+			FogCheckboxEnabled: False
+			FogCheckboxLocked: True
+			ExploredMapCheckboxEnabled: True
+			ExploredMapCheckboxLocked: True
+	world:
+		-SpawnStartingUnits:
+		LuaScript:
+			Scripts: testlib.lua, test.lua
+		# 5x speed: the whole suite runs in a few minutes.
+		MapOptions:
+			GameSpeed: test
+			GameSpeedDropdownLocked: true
