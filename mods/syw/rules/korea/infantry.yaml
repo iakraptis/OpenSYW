@@ -51,6 +51,8 @@ kcommander:
 		Weapon: CommanderBow
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Air
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
 	Buildable:
 		Queue: Cavalry.Korea
 	Tooltip:
@@ -97,8 +99,10 @@ kshaman:
 		PauseOnCondition: mana < 90 || !casting-lightning
 		MuzzlePalette: knight
 		FireDelay: 6
+	# The mana condition gates Lightning above (the Witch's spells read the pool directly and need no condition).
 	AmmoPool@MANA:
 		Armaments: secondary
+		AmmoCondition: mana
 	AttackFrontal@LIGHTNING:
 		Armaments: secondary
 		RequiresCondition: casting-lightning

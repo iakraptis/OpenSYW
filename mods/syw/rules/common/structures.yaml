@@ -119,8 +119,15 @@
 	AutoTarget:
 		ScanRadius: 12
 	AutoTargetPriority@COMBAT:
-		ValidTargets: Ground
+		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 
 ^hq:
 	Inherits: ^syw-building
@@ -140,7 +147,7 @@
 	KeepDockedWorkersOnCapture:
 	Refinery:
 		UseStorage: false
-	DockHost:
+	BlockableDockHost:
 		Type: Unload
 		DockOffset: -1c0, 2c0, 0
 		RequiresCondition: !constructing
@@ -253,20 +260,21 @@
 	KeepDockedWorkersOnCapture:
 	Refinery:
 		UseStorage: false
-	# Four drop-off points (each dock serves one worker at a time): two south, one west, one east.
-	DockHost@SOUTHWEST:
+	# Four drop-off points (each dock serves one worker at a time): two south, one west, one east. A dock covered by
+	# another building is skipped (BlockableDockHost), so workers use the free ones.
+	BlockableDockHost@SOUTHWEST:
 		Type: Unload
 		DockOffset: -1c0, 2c0, 0
 		RequiresCondition: !constructing
-	DockHost@SOUTHEAST:
+	BlockableDockHost@SOUTHEAST:
 		Type: Unload
 		DockOffset: 1c0, 2c0, 0
 		RequiresCondition: !constructing
-	DockHost@WEST:
+	BlockableDockHost@WEST:
 		Type: Unload
 		DockOffset: -2c0, 0, 0
 		RequiresCondition: !constructing
-	DockHost@EAST:
+	BlockableDockHost@EAST:
 		Type: Unload
 		DockOffset: 2c0, 0, 0
 		RequiresCondition: !constructing

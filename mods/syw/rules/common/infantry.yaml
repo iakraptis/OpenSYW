@@ -200,8 +200,16 @@ resource-chest:
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AutoTarget:
-		ScanRadius: 4
+		ScanRadius: 5
+		InitialStance: AttackAnything
 	Buildable:
 		BuildPaletteOrder: 5
 		Icon: icon
@@ -234,8 +242,16 @@ resource-chest:
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AutoTarget:
-		ScanRadius: 4
+		ScanRadius: 5
+		InitialStance: AttackAnything
 	Buildable:
 		BuildPaletteOrder: 10
 		Icon: icon
@@ -267,8 +283,16 @@ resource-chest:
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AutoTarget:
-		ScanRadius: 4
+		ScanRadius: 5
+		InitialStance: AttackAnything
 	Buildable:
 		Prerequisites: beaconmound
 		BuildPaletteOrder: 20
@@ -312,8 +336,16 @@ resource-chest:
 		FacingTolerance: 0
 	AutoTargetPriority@COMBAT:
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AutoTarget:
-		ScanRadius: 4
+		ScanRadius: 6
+		InitialStance: AttackAnything
 	Buildable:
 		Prerequisites: stable
 		BuildPaletteOrder: 10
@@ -431,11 +463,18 @@ resource-chest:
 		RequiresCondition: mana >= 30
 		ValidTargets: Heal
 		ValidRelationships: Ally
-		Priority: 2
+		Priority: 3
 	AutoTargetPriority@COMBAT:
-		ValidTargets: Ground
+		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
 		Priority: 1
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AttackFrontal:
 		FacingTolerance: 0
 		# Silent: AttackVoiceByTarget says vheal for a heal, vattack for a fireball.
@@ -443,6 +482,7 @@ resource-chest:
 	AttackVoiceByTarget:
 	AutoTarget:
 		ScanRadius: 5
+		InitialStance: AttackAnything
 	Buildable:
 		Prerequisites: temple
 		BuildPaletteOrder: 20
@@ -474,7 +514,6 @@ resource-chest:
 		Name: mana
 		Ammo: 100
 		InitialAmmo: 100
-		AmmoCondition: mana
 	ReloadAmmoPool@MANA:
 		AmmoPool: mana
 		# Uniform 100-mana pools: 1 mana every 10 ticks (2.5/second), the same recharge
@@ -493,14 +532,22 @@ resource-chest:
 		Margin: 0, 4
 		RequiresSelection: true
 	AutoTargetPriority@COMBAT:
-		ValidTargets: Ground
+		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
 		Priority: 1
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AttackFrontal:
 		Armaments: primary
 		FacingTolerance: 0
 	AutoTarget:
 		ScanRadius: 5
+		InitialStance: AttackAnything
 	Buildable:
 		Prerequisites: shamanhouse
 		BuildPaletteOrder: 20

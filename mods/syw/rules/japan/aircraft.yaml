@@ -34,6 +34,9 @@ jbomber:
 		LocalOffset: 0,-256,0, 0,0,0, 0,256,0
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground
+	# Bombs are slow and short ranged: hit whatever ground target is closest rather than chasing units.
+	-AutoTargetPriority@UNITS:
+	-PreferUnitTargets:
 	Buildable:
 		Queue: Aircraft.Japan
 		BuildPaletteOrder: 30

@@ -10,6 +10,8 @@ player:
 	DeveloperMode:
 	PlayerStatistics:
 	FrozenActorLayer:
+	# Stores the camera position in a save game, so loading it returns to the same view.
+	GameSaveViewportManager:
 	# Bots are defined in rules/ai.yaml.
 	# Harvested crops are converted directly to cash at HQs and Mills.
 	# Provisional: rice is worth double, like Red Alert's gems vs ore.

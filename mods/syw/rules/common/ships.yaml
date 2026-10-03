@@ -87,9 +87,17 @@
 		FacingTolerance: 128
 	AutoTarget:
 		ScanRadius: 7
+		InitialStance: AttackAnything
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Water, Air
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Ship, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 
 # Cannon ship is the Turtle Ship of the Korean roster.
 ^cannonship:
@@ -113,9 +121,17 @@
 		FacingTolerance: 128
 	AutoTarget:
 		ScanRadius: 10
+		InitialStance: AttackAnything
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Water
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Ship
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 
 ^transportship:
 	Inherits: ^syw-ship
