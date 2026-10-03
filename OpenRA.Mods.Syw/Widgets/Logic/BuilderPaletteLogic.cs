@@ -1,6 +1,6 @@
 #region Copyright & License Information
 /*
- * Part of the OpenSY "Seven Years War" mod.
+ * Part of the OpenSYW "Seven Years War" mod.
  */
 #endregion
 

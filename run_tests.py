@@ -1,4 +1,4 @@
-"""OpenSY test suite runner: build, YAML check, then every automated test map in sequence.
+"""OpenSYW test suite runner: build, YAML check, then every automated test map in sequence.
 
 Usage (from the repository root):
   python run_tests.py                 # build + check-yaml + all maps

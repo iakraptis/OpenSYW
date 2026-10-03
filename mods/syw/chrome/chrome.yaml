@@ -4,7 +4,8 @@
 ^Glyphs:
 	Image: chrome/assets/glyphs.png
 
-# OpenSY logo (in-game menu, save loading) and load screen stripe, drawn by SYWtoORA/tools/chrome_export.py.
+# OpenSYW logo (in-game menu, save loading; redrawn for the OpenSYW name) and load screen stripe
+# (drawn by SYWtoORA/tools/chrome_export.py).
 ^LoadScreen:
 	Image: chrome/assets/logo.png
 

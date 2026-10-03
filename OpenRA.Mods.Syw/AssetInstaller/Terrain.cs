@@ -6,7 +6,8 @@ using System.Text;
 
 namespace OpenRA.Mods.Syw.AssetInstaller
 {
-	// The FIELD3 tileset (the original grassland tiles), the converted Korea Multi 1 map and the crop resources.
+	// The FIELD3 tileset (the original grassland tiles), the converted Korea Multi 1 map (titled Fighter) and the crop
+	// resources.
 	// Formats: SYWtoORA/docs/formats/map.md and stg.md. Each .map cell is (tile id, variant); the game draws global
 	// frame variant * 256 + tile id of the three 300-frame sheets FIELD31, FIELD32 and Field33 loaded back to back.
 	// Field33 holds six 5x5 farm blocks with identical outlines (crop growth stages); crop cells are drawn as the bare
@@ -76,7 +77,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		// Original maps: (map, title, start moves requested by the user keyed by the original start, 0-based).
 		static readonly (string Name, string Title, Dictionary<(int, int), (int, int)> StartMoves)[] Maps =
 		{
-			("kmulti1", "Korea Multi 1", new() { [(113, 116)] = (113, 115) }),
+			("kmulti1", "Fighter", new() { [(113, 116)] = (113, 115) }),
 		};
 
 		sealed record Template(int Id, string Sheet, int Frame, string TerrainType, string Category, string Color);
@@ -346,7 +347,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			var yaml = new List<string>
 			{
 				"MapFormat: 12", "", "RequiresMod: syw", "", $"Title: {title}", "",
-				$"Author: OpenSY (converted from original SYW {name})", "", "Tileset: FIELD3", "",
+				$"Author: OpenSYW (converted from original SYW {name})", "", "Tileset: FIELD3", "",
 				$"MapSize: {sizeW},{sizeH}", "", $"Bounds: 1,1,{w},{h}", "", "Visibility: Lobby", "",
 				"Categories: Conquest", "", "Players:",
 				"\tPlayerReference@Neutral:", "\t\tName: Neutral", "\t\tOwnsWorld: True", "\t\tNonCombatant: True",

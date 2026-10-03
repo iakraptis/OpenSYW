@@ -1,6 +1,6 @@
-# OpenSY
+# OpenSYW
 
-A remake of Seven Years War RTS (1997) on the [OpenRA](https://github.com/OpenRA/OpenRA) engine.
+A remake of Seven Years War RTS (1997) on the [OpenRA](https://github.com/OpenRA/OpenRA) engine. It is not a 100% adaptation of the original mechanics, lots of things have been modernized.
 
 ## Installing the game assets
 
