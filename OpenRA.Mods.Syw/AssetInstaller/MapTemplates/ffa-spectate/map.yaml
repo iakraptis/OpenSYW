@@ -2,7 +2,7 @@ MapFormat: 12
 
 RequiresMod: syw
 
-Title: Spectate: 6 bots, Korea vs Japan (Fighter)
+Title: Spectate: 3 Hard vs 3 Medium Generals (Fighter)
 
 Author: OpenSYW
 
@@ -35,37 +35,37 @@ Players:
 		Faction: korea
 	PlayerReference@KoreaNorthWest:
 		Name: KoreaNorthWest
-		Bot: korean
+		Bot: hard
 		Faction: korea
 		Color: E02020
 		Enemies: JapanNorthEast, KoreaWest, JapanCentre, KoreaSouth, JapanSouthEast
 	PlayerReference@JapanNorthEast:
 		Name: JapanNorthEast
-		Bot: japanese
+		Bot: hard
 		Faction: japan
 		Color: 2060F0
 		Enemies: KoreaNorthWest, KoreaWest, JapanCentre, KoreaSouth, JapanSouthEast
 	PlayerReference@KoreaWest:
 		Name: KoreaWest
-		Bot: korean
+		Bot: medium
 		Faction: korea
 		Color: 20C040
 		Enemies: KoreaNorthWest, JapanNorthEast, JapanCentre, KoreaSouth, JapanSouthEast
 	PlayerReference@JapanCentre:
 		Name: JapanCentre
-		Bot: japanese
+		Bot: medium
 		Faction: japan
 		Color: F0D020
 		Enemies: KoreaNorthWest, JapanNorthEast, KoreaWest, KoreaSouth, JapanSouthEast
 	PlayerReference@KoreaSouth:
 		Name: KoreaSouth
-		Bot: korean
+		Bot: hard
 		Faction: korea
 		Color: B040E0
 		Enemies: KoreaNorthWest, JapanNorthEast, KoreaWest, JapanCentre, JapanSouthEast
 	PlayerReference@JapanSouthEast:
 		Name: JapanSouthEast
-		Bot: japanese
+		Bot: medium
 		Faction: japan
 		Color: F08020
 		Enemies: KoreaNorthWest, JapanNorthEast, KoreaWest, JapanCentre, KoreaSouth
