@@ -1,5 +1,7 @@
 # Flying dragon: stock hovering aircraft behavior; movement is provisional.
 fighter:
+	# Sees one cell less at night (DayNightCycle).
+	NightVisionPenalty:
 	Voiced:
 		VoiceSet: MachineVoice
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.

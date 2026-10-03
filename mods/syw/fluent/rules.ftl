@@ -3,6 +3,8 @@ notification-victory = Victory! All enemy units and buildings have been destroye
 notification-defeat = Defeat! All your units and buildings have been destroyed.
 notification-rain-start = It started raining. Potatoes grow faster.
 notification-rain-stop = The rain has stopped.
+notification-night = Night falls. Units see less far.
+notification-day = Day breaks.
 options-game-speed-test = Test (5x, AI matches)
 
 bot-korean =

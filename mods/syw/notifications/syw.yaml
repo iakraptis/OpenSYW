@@ -22,8 +22,7 @@ Speech:
 Sounds:
 	DefaultVariant: .wav
 	Notifications:
-		# A chat message arrived.
-		ChatLine: message
+		ChatLine:
 		ClickDisabledSound:
 		# Any menu or panel button.
 		ClickSound: menu

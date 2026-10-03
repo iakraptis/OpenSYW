@@ -77,6 +77,18 @@ world:
 		ResourceType: Potato
 		Interval: 3750
 		RainGrowthPercent: 150
+	# Day and night: 6 min day, 30 s dusk, 3 min night, 30 s dawn. At night the screen is tinted blue and every
+	# unit and building sees one cell less (NightVisionPenalty). Owl at nightfall, hen at daybreak.
+	TintPostProcessEffect:
+	DayNightCycle:
+		DayLength: 9000
+		NightLength: 4500
+		TransitionLength: 750
+		NightTint: 0.55, 0.6, 0.85
+		NightSound: owl.wav
+		DaySound: hen.wav
+		NightNotification: notification-night
+		DayNotification: notification-day
 	# Small chance of rain: a 6% roll every 1500 ticks (60 s) while dry, showers last 1-2 minutes.
 	RainController:
 		CheckInterval: 1500

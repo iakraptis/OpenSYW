@@ -3,6 +3,8 @@
 # weapon or economy assets we don't have yet (WithMakeAnimation, ...).
 # Shared by all 3x3 Korea buildings - see hq/barracks below.
 ^syw-building:
+	# Sees one cell less at night (DayNightCycle).
+	NightVisionPenalty:
 	# ^ExistsInWorld
 	AppearsOnRadar:
 	UpdatesPlayerStatistics:

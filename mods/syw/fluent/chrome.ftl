@@ -1,3 +1,6 @@
+## Main menu
+label-mainmenu-title = OpenSYW
+
 ## Shroud
 checkbox-fog-of-war =
     .label = Fog of War
