@@ -16,7 +16,9 @@
 	DeathSounds:
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
 	AttackMove:
-		Voice: Move
+		Voice: Attack
+	# The Stop button and hotkey say vstop.
+	StopOrderVoice:
 	# ^ExistsInWorld
 	AppearsOnRadar:
 	UpdatesPlayerStatistics:

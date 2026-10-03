@@ -10,7 +10,9 @@
 		VoiceSet: MachineVoice
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
 	AttackMove:
-		Voice: Move
+		Voice: Attack
+	# The Stop button and hotkey say vstop.
+	StopOrderVoice:
 	# Repair button (stats panel): +500 HP every second until fully healed; a full repair costs
 	# 50% of the unit's price, charged per step. Stops if the owner runs out of money.
 	RepairableBuilding:

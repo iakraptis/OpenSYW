@@ -10,6 +10,7 @@ WorkerVoice:
 		Select: vyes01
 		Move: vmove
 		Attack: vattack
+		Stop: vstop
 		Action: vattack
 		Harvest: vharvest
 		Build: vbuild
@@ -23,6 +24,7 @@ InfantryVoice:
 		Select: vyes02
 		Move: vmove
 		Attack: vattack
+		Stop: vstop
 		Action: vattack
 		Heal: vheal
 		MassHeal: vmassheal
@@ -37,6 +39,7 @@ CaptainVoice:
 		Select: vyes03
 		Move: vmove
 		Attack: vattack
+		Stop: vstop
 		Action: vattack
 		Die: scream1, scream2, scream3
 
@@ -47,6 +50,7 @@ FemaleVoice:
 		Select: vwyes01
 		Move: vmove
 		Attack: vattack
+		Stop: vstop
 		Action: vattack
 		Thunder: vthunder
 		Earthquake: vearth
@@ -61,5 +65,6 @@ MachineVoice:
 		Select:
 		Move: vmove
 		Attack: vattack
+		Stop: vstop
 		Action: vattack
 		Unload: vrideout

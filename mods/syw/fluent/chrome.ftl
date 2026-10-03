@@ -1,3 +1,12 @@
+## Command bar
+button-command-attack =
+    .tooltip = Attack
+    .tooltipdesc = Selected units attack: click an enemy, or click the ground to march there and fight anything on the way.
+
+button-command-stop =
+    .tooltip = Stop
+    .tooltipdesc = Selected units stop what they are doing.
+
 ## Main menu
 label-mainmenu-title = OpenSYW
 

@@ -51,7 +51,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		{
 			("heal", 195), ("lightning", 197), ("minefield", 202), ("mine", 276), ("transform", 199),
 			("massheal", 196), ("repair", 188), ("sell", 189), ("disturb", 191), ("earthquake", 198),
-			("bewilder", 200), ("detectmines", 205),
+			("bewilder", 200), ("detectmines", 205), ("attack", 186), ("stop", 184),
 		};
 
 		// PORTRAIT.SPR frames. Japanese buildings are the Korean frame + 40, Japanese units sit at 50-69.
