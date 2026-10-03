@@ -32,7 +32,7 @@ Bow:
 	Report: arrow1.wav
 	ReloadDelay: 27
 	Range: 5c0
-	ValidTargets: Ground, GroundActor
+	ValidTargets: Ground, GroundActor, Air
 	Projectile: Bullet
 		Speed: 400
 		Image: arrow
@@ -43,7 +43,7 @@ Bow:
 	Warhead@1Dam: SpreadDamage
 		Spread: 100
 		Damage: 3500
-		ValidTargets: Ground, GroundActor
+		ValidTargets: Ground, GroundActor, Air
 		Versus:
 			None: 100
 			Light: 125
@@ -58,7 +58,7 @@ Musket:
 	Report: gun1.wav, gun2.wav, gun3.wav
 	ReloadDelay: 40
 	Range: 5c0
-	ValidTargets: Ground, GroundActor
+	ValidTargets: Ground, GroundActor, Air
 	Projectile: Bullet
 		Speed: 700
 		Image: musket-bullet
@@ -68,7 +68,7 @@ Musket:
 	Warhead@1Dam: SpreadDamage
 		Spread: 100
 		Damage: 5000
-		ValidTargets: Ground, GroundActor
+		ValidTargets: Ground, GroundActor, Air
 		Versus:
 			None: 150
 			Light: 100
@@ -170,7 +170,7 @@ MonkFireball:
 	Report: buda1.wav
 	ReloadDelay: 33
 	Range: 5c0
-	ValidTargets: Ground
+	ValidTargets: Ground, Air
 	Projectile: Bullet
 		Speed: 300
 		Image: monk-fireball
@@ -181,7 +181,7 @@ MonkFireball:
 	Warhead@Damage: SpreadDamage
 		Spread: 100
 		Damage: 6000
-		ValidTargets: Ground
+		ValidTargets: Ground, Air
 		Versus:
 			None: 100
 			Light: 100
@@ -211,19 +211,19 @@ ShamanLightning:
 	TargetActorCenter: true
 	ReloadDelay: 50
 	Range: 8c0
-	ValidTargets: Ground
+	ValidTargets: Ground, Air
 	Projectile: InstantHit
 		Blockable: false
 	Warhead@SkyStrike: CreateEffect
 		Image: shaman-lightning
 		Explosions: strike
 		ExplosionPalette: knight
-		ValidTargets: Ground
+		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
 	Warhead@Damage: SpreadDamage
 		Spread: 1
 		Damage: 30000
-		ValidTargets: Ground
+		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
 		Versus:
 			None: 100

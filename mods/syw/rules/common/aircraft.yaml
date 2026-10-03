@@ -83,8 +83,16 @@
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Air
 		ValidRelationships: Enemy
+	AutoTargetPriority@UNITS:
+		ValidTargets: Infantry, Vehicle, Air
+		ValidRelationships: Enemy
+		Priority: 2
+	# Enemy units outrank buildings (Priority 2 over COMBAT's 1); PreferUnitTargets also drops a building it is
+	# already hitting when a unit comes in range.
+	PreferUnitTargets:
 	AutoTarget:
 		ScanRadius: 7
+		InitialStance: AttackAnything
 	Buildable:
 		Prerequisites: planeworks
 		BuildPaletteOrder: 10
@@ -103,6 +111,8 @@
 	-Armament:
 	-AttackAircraft:
 	-AutoTargetPriority@COMBAT:
+	-AutoTargetPriority@UNITS:
+	-PreferUnitTargets:
 	-AutoTarget:
 	Health:
 		HP: 38250
