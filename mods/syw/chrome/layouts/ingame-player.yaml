@@ -9,6 +9,78 @@ Container@PLAYER_WIDGETS:
 			Background: sidebar-panel
 		MenuButton@OPTIONS_BUTTON:
 			Key: escape
+		# Unit commands, a row in the sidebar under the selection panel: Attack (attack-move: click a target or area;
+		# hotkey A) and Stop (hotkey S). Shown only while own units are selected (UnitCommandsVisibilityLogic);
+		# CommandBarLogic issues the orders. The panels below start 56 px lower to make room.
+		Container@COMMAND_BAR:
+			Logic: CommandBarLogic, UnitCommandsVisibilityLogic
+				HighlightOnButtonPress: True
+			X: WINDOW_WIDTH - 200
+			Y: 592
+			Width: 106
+			Height: 52
+			Children:
+				WorldButton@ATTACK_MOVE:
+					Width: 52
+					Height: 52
+					Key: AttackMove
+					TooltipText: button-command-attack.tooltip
+					TooltipDesc: button-command-attack.tooltipdesc
+					TooltipContainer: TOOLTIP_CONTAINER
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
+					Children:
+						# CommandBarLogic needs a chrome Image named ICON; ours is a game sprite, so that one stays hidden.
+						Image@ICON:
+							ImageCollection: production-icons
+							ImageName: infantry
+							Visible: false
+						Sprite@COMMAND_ICON:
+							Logic: SequenceIconLogic
+								Image: spell-icons
+								Sequence: attack
+							X: 2
+							Y: 2
+							Width: 48
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 2
+							Y: 2
+							Width: 48
+							Height: 48
+							Color: 00000090
+				WorldButton@STOP:
+					X: 54
+					Width: 52
+					Height: 52
+					Key: Stop
+					TooltipText: button-command-stop.tooltip
+					TooltipDesc: button-command-stop.tooltipdesc
+					TooltipContainer: TOOLTIP_CONTAINER
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
+					Children:
+						# CommandBarLogic needs a chrome Image named ICON; ours is a game sprite, so that one stays hidden.
+						Image@ICON:
+							ImageCollection: production-icons
+							ImageName: infantry
+							Visible: false
+						Sprite@COMMAND_ICON:
+							Logic: SequenceIconLogic
+								Image: spell-icons
+								Sequence: stop
+							X: 2
+							Y: 2
+							Width: 48
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 2
+							Y: 2
+							Width: 48
+							Height: 48
+							Color: 00000090
 		WorldLabelWithTooltip@CASH:
 			Logic: IngameCashCounterLogic
 			X: WINDOW_WIDTH - 280
@@ -146,7 +218,7 @@ Container@PLAYER_WIDGETS:
 					Contrast: true
 		Label@TRAINING_TITLE:
 			X: WINDOW_WIDTH - 242
-			Y: 600
+			Y: 656
 			Width: 192
 			Height: 24
 			Font: Bold
@@ -156,7 +228,7 @@ Container@PLAYER_WIDGETS:
 		# 68 x 52 steps); each 64x48 icon sits 1 px inside its 66x50 frame.
 		Container@PRODUCTION_BACKGROUND:
 			X: WINDOW_WIDTH - 213
-			Y: 630
+			Y: 686
 			Children:
 				Background@ICON_TEMPLATE:
 					Width: 66
@@ -170,7 +242,7 @@ Container@PLAYER_WIDGETS:
 			# negative icon count and the palette draws no buttons at all.
 			MaxIconRowOffset: 10
 			X: WINDOW_WIDTH - 212
-			Y: 631
+			Y: 687
 			Width: 132
 			TooltipContainer: TOOLTIP_CONTAINER
 			TooltipTemplate: PRODUCTION_TOOLTIP
@@ -180,7 +252,7 @@ Container@PLAYER_WIDGETS:
 		Container@BUILD_PALETTE:
 			Logic: BuilderPaletteLogic
 			X: WINDOW_WIDTH - 242
-			Y: 630
+			Y: 686
 			Width: 192
 			Height: 364
 			Children:
@@ -441,7 +513,7 @@ Container@PLAYER_WIDGETS:
 		# Portraits of the units aboard the selected transport, in the build palette's grid.
 		Container@CARGO_PANEL:
 			X: WINDOW_WIDTH - 242
-			Y: 600
+			Y: 656
 			Width: 192
 			Height: 230
 			Children:
@@ -468,7 +540,7 @@ Container@PLAYER_WIDGETS:
 
 		Container@SPELL_PANEL:
 			X: WINDOW_WIDTH - 242
-			Y: 600
+			Y: 656
 			Width: 192
 			Height: 222
 			Children:

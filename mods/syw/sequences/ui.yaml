@@ -16,6 +16,11 @@ mana-pips:
 
 # Spell buttons from FIRE.SPR 188/189/191/195/196/197/198/199/200/202/205/276 (SYWtoORA/tools/spell_icon_export.py).
 spell-icons:
+	# Command bar (FIRE 186 sword, 184 stop).
+	attack:
+		Filename: art/icons/spells/attack.png
+	stop:
+		Filename: art/icons/spells/stop.png
 	heal:
 		Filename: art/icons/spells/heal.png
 	lightning:
