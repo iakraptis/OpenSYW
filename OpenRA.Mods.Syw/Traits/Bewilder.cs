@@ -16,10 +16,22 @@ namespace OpenRA.Mods.Syw.Traits
 		[Desc("Chance (percent) that the unit changes sides. The mana is spent either way.")]
 		public readonly int SuccessPercent = 80;
 
+		[NotificationReference("Speech")]
+		[Desc("Played to the caster's owner when the unit changes sides.")]
+		public readonly string SuccessNotification = "BewilderSuccess";
+
+		[NotificationReference("Speech")]
+		[Desc("Played to the caster's owner when the spell fails.")]
+		public readonly string FailureNotification = "BewilderFailure";
+
+		[VoiceReference]
+		[Desc("Voice played when the Bewilderment spell is ordered.")]
+		public readonly string Voice = "Betray";
+
 		public override object Create(ActorInitializer init) => new Bewilder(this);
 	}
 
-	public class Bewilder : IResolveOrder, IUnitTargetSpell
+	public class Bewilder : IResolveOrder, IOrderVoice, IUnitTargetSpell
 	{
 		public const string OrderId = "SywBewilder";
 		public readonly BewilderInfo Info;
@@ -35,6 +47,11 @@ namespace OpenRA.Mods.Syw.Traits
 		public bool ValidTarget(Actor self, Actor target) => target != null && target != self && !target.IsDead &&
 			!target.Disposed && target.IsInWorld && self.Owner.RelationshipWith(target.Owner) == PlayerRelationship.Enemy &&
 			(target.Info.HasTraitInfo<MobileInfo>() || target.Info.HasTraitInfo<AircraftInfo>());
+
+		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
+		{
+			return order.OrderString == OrderId ? Info.Voice : null;
+		}
 
 		public void ResolveOrder(Actor self, Order order)
 		{
@@ -79,11 +96,15 @@ namespace OpenRA.Mods.Syw.Traits
 						return;
 
 					Mana(self).TakeAmmo(self, spell.Info.ManaCost);
-					if (w.SharedRandom.Next(100) < spell.Info.SuccessPercent)
+					var success = w.SharedRandom.Next(100) < spell.Info.SuccessPercent;
+					if (success)
 					{
 						target.CancelActivity();
 						target.ChangeOwner(self.Owner);
 					}
+
+					Game.Sound.PlayNotification(w.Map.Rules, self.Owner, "Speech",
+						success ? spell.Info.SuccessNotification : spell.Info.FailureNotification, self.Owner.Faction.InternalName);
 				});
 
 				return true;

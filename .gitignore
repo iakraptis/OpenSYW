@@ -59,6 +59,7 @@ mods/syw/cursors/assets/cursors.png
 mods/syw/cursors/assets/cursors.json
 mods/syw/palettes/
 mods/syw/music/*.wav
+mods/syw/audio/
 mods/syw/tilesets/field3/
 mods/syw/maps/kmulti1/
 mods/syw/maps/bot-test/

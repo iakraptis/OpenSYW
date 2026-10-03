@@ -24,10 +24,14 @@ namespace OpenRA.Mods.Syw.Traits
 		[Desc("Actor types (from the Rules) this unit is allowed to construct.")]
 		public readonly HashSet<string> Types = new();
 
+		[VoiceReference]
+		[Desc("Voice played when this unit is ordered to build or to resume a site.")]
+		public readonly string Voice = "Build";
+
 		public override object Create(ActorInitializer init) { return new Builder(this); }
 	}
 
-	public class Builder : IIssueOrder, IResolveOrder, ITick
+	public class Builder : IIssueOrder, IResolveOrder, IOrderVoice, ITick
 	{
 		public const string OrderID = "SywBuildAt";
 		public const string ResumeOrderID = "SywResumeBuild";
@@ -67,6 +71,11 @@ namespace OpenRA.Mods.Syw.Traits
 		Order IIssueOrder.IssueOrder(Actor self, IOrderTargeter order, in Target target, bool queued)
 		{
 			return order.OrderID == ResumeOrderID ? new Order(order.OrderID, self, target, queued) : null;
+		}
+
+		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
+		{
+			return order.OrderString == OrderID || order.OrderString == ResumeOrderID ? Info.Voice : null;
 		}
 
 		void IResolveOrder.ResolveOrder(Actor self, Order order)

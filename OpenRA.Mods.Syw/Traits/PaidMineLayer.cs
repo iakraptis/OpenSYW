@@ -15,11 +15,15 @@ namespace OpenRA.Mods.Syw.Traits
 		public readonly int CreditCost = 100;
 		[Desc("Mines laid by one minefield order, in a straight line centred on the target cell.")]
 		public readonly int LineLength = 3;
+		[VoiceReference]
+		[Desc("Voice played when a mine or a minefield is ordered.")]
+		public readonly string Voice = "Mine";
+
 		public override object Create(ActorInitializer init) => new PaidMineLayer(this);
 	}
 
 	// A single synchronized transaction: failed/cancelled placement spends nothing.
-	public class PaidMineLayer : IResolveOrder
+	public class PaidMineLayer : IResolveOrder, IOrderVoice
 	{
 		public const string OrderId = "SywLayMine";
 		public const string LineOrderId = "SywLayMineLine";
@@ -58,6 +62,11 @@ namespace OpenRA.Mods.Syw.Traits
 			var mobile = self.Trait<Mobile>();
 			return LineCells(center, orientation).All(c => self.World.Map.Contains(c) && mobile.CanStayInCell(c) &&
 				self.World.ActorMap.GetActorsAt(c).All(a => a == self));
+		}
+
+		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
+		{
+			return order.OrderString == OrderId || order.OrderString == LineOrderId ? Info.Voice : null;
 		}
 
 		public void ResolveOrder(Actor self, Order order)

@@ -132,6 +132,7 @@ armoredcar:
 		Weapon: ArmoredCarGun
 	# 2026-09-29 (user design): carries up to 5 infantry like a transport; deploy to unload.
 	Cargo:
+		UnloadVoice: Unload
 		Types: Infantry
 		MaxWeight: 5
 		AfterUnloadDelay: 10

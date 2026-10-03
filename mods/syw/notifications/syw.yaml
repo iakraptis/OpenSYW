@@ -1,5 +1,29 @@
-Sounds:
+# Announcer lines from the original game, installed into audio/ (install-assets --only audio).
+Speech:
+	DefaultVariant: .wav
 	Notifications:
-		ChatLine:
+		# A train button was pressed (ProductionQueue QueuedAudio): infantry and workers.
+		Training: vtrain
+		# A vehicle, aircraft or ship was queued.
+		Making: vmake
+		# Training or production was cancelled (ProductionQueue CancelledAudio).
+		Cancelled: vcancel
+		# The repair button was pressed (RepairableBuilding).
+		Repairing: vrepair
+		# The sell button was pressed (Sellable).
+		Selling: vsell
+		# End of the game (MissionObjectives).
+		Win: win
+		Lose: lose
+		# The Witch's Bewilderment took the unit, or failed (Bewilder).
+		BewilderSuccess: success1
+		BewilderFailure: failure1
+
+Sounds:
+	DefaultVariant: .wav
+	Notifications:
+		# A chat message arrived.
+		ChatLine: message
 		ClickDisabledSound:
-		ClickSound:
+		# Any menu or panel button.
+		ClickSound: menu

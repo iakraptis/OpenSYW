@@ -4,8 +4,13 @@
 # combat/weapon/veterancy/tiberium-specific traits we don't have assets for yet.
 # Shared by all Korea infantry - see peasant/archer below.
 ^syw-infantry:
+	Voiced:
+		VoiceSet: InfantryVoice
+	# Death scream from the unit's voice set (Die).
+	DeathSounds:
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.
 	AttackMove:
+		Voice: Move
 	# ^ExistsInWorld
 	AppearsOnRadar:
 	UpdatesPlayerStatistics:
@@ -45,6 +50,7 @@
 	RevealsShroud:
 		Range: 5c0
 	Mobile:
+		Voice: Move
 		AlwaysTurnInPlace: true
 		Locomotor: foot
 		Speed: 55
@@ -57,6 +63,7 @@
 		Condition: wounded
 		ValidDamageStates: Light, Medium, Heavy, Critical
 	Passenger:
+		Voice: Move
 		CargoType: Infantry
 		Weight: 1
 	HiddenUnderFog:
@@ -69,6 +76,8 @@
 
 peasant:
 	Inherits: ^syw-infantry
+	Voiced:
+		VoiceSet: WorkerVoice
 	RenderSprites:
 		Image: peasant
 	Health:
@@ -91,6 +100,7 @@ peasant:
 	DropsChestWhenLoaded:
 		Chest: resource-chest
 	Harvester:
+		HarvestVoice: Harvest
 		Resources: Potato, Rice
 		SearchOnCreation: false
 		BaleLoadDelay: 20
@@ -101,6 +111,7 @@ peasant:
 		Resources: Potato, Rice
 	# Hovering the HQ or Mill with nothing to unload showed the struck-out hand, although the order still works.
 	DockClientManager:
+		Voice: Harvest
 		EnterBlockedCursor: enter
 	Buildable:
 		Queue: Workers.Korea
@@ -334,6 +345,9 @@ monk:
 		Priority: 1
 	AttackFrontal:
 		FacingTolerance: 0
+		# Silent: AttackVoiceByTarget says vheal for a heal, vattack for a fireball.
+		Voice:
+	AttackVoiceByTarget:
 	AutoTarget:
 		ScanRadius: 5
 	Buildable:
@@ -350,6 +364,8 @@ monk:
 
 shaman:
 	Inherits: ^syw-infantry
+	Voiced:
+		VoiceSet: FemaleVoice
 	RevealsShroud:
 		Range: 8c0
 	RenderSprites:
@@ -434,6 +450,8 @@ shaman:
 
 commander:
 	Inherits: ^syw-infantry
+	Voiced:
+		VoiceSet: CaptainVoice
 	Armor:
 		Type: Light
 	RenderSprites:
@@ -495,6 +513,7 @@ occupier:
 		CrushedPaletteIsPlayerPalette: true
 	CaptureManager:
 	Captures:
+		Voice: Conquer
 		CaptureTypes: building
 		ValidRelationships: Enemy, Neutral
 		SabotageThreshold: 0

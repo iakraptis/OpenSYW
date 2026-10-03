@@ -24,10 +24,14 @@ namespace OpenRA.Mods.Syw.Traits
 			WeaponInfo = rules.Weapons[Weapon.ToLowerInvariant()];
 		}
 
+		[VoiceReference]
+		[Desc("Voice played when the Earthquake spell is ordered.")]
+		public readonly string Voice = "Earthquake";
+
 		public override object Create(ActorInitializer init) => new EarthquakeSpell(this);
 	}
 
-	public class EarthquakeSpell : IResolveOrder
+	public class EarthquakeSpell : IResolveOrder, IOrderVoice
 	{
 		public const string OrderId = "SywEarthquake";
 		public readonly EarthquakeSpellInfo Info;
@@ -38,6 +42,11 @@ namespace OpenRA.Mods.Syw.Traits
 		static AmmoPool Mana(Actor self) => self.TraitsImplementing<AmmoPool>().First(p => p.Info.Name == "mana");
 
 		public bool CanCast(Actor self) => !self.IsDead && self.IsInWorld && Mana(self).CurrentAmmoCount >= Info.ManaCost;
+
+		string IOrderVoice.VoicePhraseForOrder(Actor self, Order order)
+		{
+			return order.OrderString == OrderId ? Info.Voice : null;
+		}
 
 		public void ResolveOrder(Actor self, Order order)
 		{

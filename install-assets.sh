@@ -1,5 +1,5 @@
 #!/bin/sh
-# Converts the art, palettes, music and maps of an original Seven Years War folder into the mod.
+# Converts the art, palettes, music, sounds and maps of an original Seven Years War folder into the mod.
 #   ./install-assets.sh [GAME_FOLDER] [--only STAGE,...] [--write-yaml] [--list]
 # GAME_FOLDER defaults to a SYWAR folder next to this repository. Run `make` first so the engine is built.
 set -e

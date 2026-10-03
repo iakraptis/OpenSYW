@@ -22,7 +22,9 @@ player:
 	# Conquest victory like C&C: a player loses when all their units and buildings are destroyed,
 	# and wins when every enemy has lost. The game then ends with the victory/defeat screen.
 	MissionObjectives:
+		WinNotification: Win
 		WinTextNotification: notification-victory
+		LoseNotification: Lose
 		LoseTextNotification: notification-defeat
 	ConquestVictoryConditions:
 	# Receives the RepairBuilding order sent by the repair button.

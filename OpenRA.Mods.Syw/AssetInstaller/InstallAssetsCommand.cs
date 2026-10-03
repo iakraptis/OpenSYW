@@ -8,7 +8,7 @@ using System.Text;
 namespace OpenRA.Mods.Syw.AssetInstaller
 {
 	// utility.cmd --install-assets [GAME_FOLDER] [--out FOLDER] [--only STAGE,...] [--write-yaml] [--list]
-	// Converts the art, palettes, music and maps from an original Seven Years War folder into the mod. GAME_FOLDER
+	// Converts the art, palettes, music, sounds and maps from an original Seven Years War folder into the mod. GAME_FOLDER
 	// defaults to a SYWAR folder next to the repository; the output goes into mods/syw (its generated paths are
 	// gitignored) unless --out is given.
 	sealed class InstallAssetsCommand : IUtilityCommand

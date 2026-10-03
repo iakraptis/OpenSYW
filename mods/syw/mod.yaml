@@ -7,6 +7,8 @@ FileSystem: DefaultFileSystem
 	Packages:
 		^EngineDir
 		$syw: syw
+		# Sounds and voices written by the asset installer; optional so the mod still loads before it has run.
+		~syw|audio
 		^EngineDir|mods/common: common
 
 MapFolders:
