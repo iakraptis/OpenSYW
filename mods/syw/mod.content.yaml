@@ -16,12 +16,22 @@ Rules:
 	syw|rules/player.yaml
 	syw|rules/ai.yaml
 	syw|rules/world.yaml
-	syw|rules/infantry.yaml
-	syw|rules/structures.yaml
-	syw|rules/vehicles.yaml
-	syw|rules/aircraft.yaml
-	syw|rules/ships.yaml
-	syw|rules/japan.yaml
+	# Shared bases and per-unit templates, then each faction's actors.
+	syw|rules/common/infantry.yaml
+	syw|rules/common/vehicles.yaml
+	syw|rules/common/aircraft.yaml
+	syw|rules/common/ships.yaml
+	syw|rules/common/structures.yaml
+	syw|rules/korea/infantry.yaml
+	syw|rules/korea/vehicles.yaml
+	syw|rules/korea/aircraft.yaml
+	syw|rules/korea/ships.yaml
+	syw|rules/korea/structures.yaml
+	syw|rules/japan/infantry.yaml
+	syw|rules/japan/vehicles.yaml
+	syw|rules/japan/aircraft.yaml
+	syw|rules/japan/ships.yaml
+	syw|rules/japan/structures.yaml
 	syw|rules/objects.yaml
 
 Sequences:

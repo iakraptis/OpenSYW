@@ -1,0 +1,114 @@
+# Japanese actors (j prefix). Each inherits its ^template from common/ and adds only what is Japanese.
+
+# Japanese faction. Every actor inherits its Korean counterpart and overrides only what differs: art, production
+# queue (*.Japan), name, and the values from SYWtoORA/proposedJapan.md (Korean live value x the Japan/Korea ratio
+# recovered from syw.exe, plus the user's weaker Footman and Fighter). Japanese buildings provide the same
+# prerequisite names as the Korean ones (barracks, beaconmound, ...), so shared prerequisites work for both.
+# Art: SYWtoORA/tools/japan_export.py.
+
+# ---------------------------------------------------------------- Infantry
+
+jpeasant:
+	Inherits: ^peasant
+	RenderSprites:
+		Image: jpeasant
+	Buildable:
+		Queue: Workers.Japan
+	Builder:
+		Types: jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, jairport, jtemple, jwitchhouse, jstable, jarrowtower, jcannontower, jshipyard
+
+jbull:
+	Inherits: ^bull
+	RenderSprites:
+		Image: jbull
+	Buildable:
+		Queue: Workers.Japan
+
+# User change: weaker than Korea's Footman (26,775 HP, 4,500 damage).
+jfootman:
+	Inherits: ^footman
+	RenderSprites:
+		Image: jfootman
+	Health:
+		HP: 22950
+	Armament:
+		Weapon: JapaneseSword
+	Buildable:
+		Queue: Infantry.Japan
+
+jarcher:
+	Inherits: ^archer
+	RenderSprites:
+		Image: jarcher
+	Buildable:
+		Queue: Infantry.Japan
+
+# Japan advantage: +20% damage and +1 range at the same price.
+jgunner:
+	Inherits: ^gunner
+	RenderSprites:
+		Image: jgunner
+	Armament:
+		Weapon: JapaneseMusket
+	Buildable:
+		Queue: Infantry.Japan
+
+# Melee cavalry (Korea's Commander uses a bow).
+jgeneral:
+	Inherits: ^commander
+	RenderSprites:
+		Image: general
+	Armament:
+		Weapon: GeneralSword
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+	Buildable:
+		Queue: Cavalry.Japan
+	Tooltip:
+		Name: actor-general.name
+
+jthief:
+	Inherits: ^occupier
+	RenderSprites:
+		Image: thief
+	Buildable:
+		Queue: AdvancedInfantry.Japan
+	Tooltip:
+		Name: actor-thief.name
+
+# The Monk's spells: Heal, Mass Heal and Disturb (user decision, 2026-09-29; the original Priest had Detect mine).
+jpriest:
+	Inherits: ^monk
+	RenderSprites:
+		Image: priest
+	Buildable:
+		Queue: Temple.Japan
+	Tooltip:
+		Name: actor-priest.name
+
+# Earthquake and Bewilderment instead of Lightning and Transform.
+jwitch:
+	Inherits: ^shaman
+	RenderSprites:
+		Image: witch
+	AmmoPool@MANA:
+		Armaments: none
+	Buildable:
+		Queue: Shaman.Japan
+	Tooltip:
+		Name: actor-witch.name
+	# The Shaman's fireball, without the Lightning casting gate.
+	Armament@FIREBALL:
+		Name: primary
+		Weapon: MonkFireball
+		MuzzlePalette: knight
+		FireDelay: 6
+	# Earthquake (FIRE 198): power 105 over the 5x5 cells around a ground target.
+	EarthquakeSpell:
+		Weapon: Earthquake
+		ManaCost: 60
+	# Bewilderment (FIRE 200): an enemy unit within 5 cells changes sides (80%).
+	Bewilder:
+		ManaCost: 60
+		Range: 5c0
+		SuccessPercent: 80

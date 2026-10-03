@@ -74,19 +74,19 @@ Actors:
 	WatchSpawn: mpspawn
 		Owner: Multi0
 		Location: 14,114
-	KoreaNorthWestHQ: hq
+	KoreaNorthWestHQ: khq
 		Owner: KoreaNorthWest
 		Location: 3,3
 	JapanNorthEastHQ: jhq
 		Owner: JapanNorthEast
 		Location: 114,3
-	KoreaWestHQ: hq
+	KoreaWestHQ: khq
 		Owner: KoreaWest
 		Location: 3,49
 	JapanCentreHQ: jhq
 		Owner: JapanCentre
 		Location: 77,33
-	KoreaSouthHQ: hq
+	KoreaSouthHQ: khq
 		Owner: KoreaSouth
 		Location: 60,81
 	JapanSouthEastHQ: jhq

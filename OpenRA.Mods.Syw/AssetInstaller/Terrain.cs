@@ -364,7 +364,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 
 			// The original HQ is centred on the start; OpenRA puts the base actor's top-left there unless offset.
 			c.WriteText($"maps/{name}/starting-hq.yaml",
-				"world:\n\tStartingUnits@Korea:\n\t\tBaseActor: hq\n\t\tBaseActorOffset: -1,-1\n" +
+				"world:\n\tStartingUnits@Korea:\n\t\tBaseActor: khq\n\t\tBaseActorOffset: -1,-1\n" +
 				"\tStartingUnits@Japan:\n\t\tBaseActor: jhq\n\t\tBaseActorOffset: -1,-1\n");
 		}
 

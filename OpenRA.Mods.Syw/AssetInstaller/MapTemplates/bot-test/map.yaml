@@ -35,22 +35,22 @@ Players:
 	PlayerReference@North:
 		Name: North
 		Bot: medium
-		Faction: japan
+		Faction: korea
 		Enemies: South
 	PlayerReference@South:
 		Name: South
 		Bot: medium
-		Faction: korea
+		Faction: japan
 		Enemies: North
 
 Actors:
 	Spawn0: mpspawn
 		Owner: Multi0
 		Location: 14,114
-	NorthHQ: jhq
+	NorthHQ: khq
 		Owner: North
 		Location: 114,3
-	SouthHQ: hq
+	SouthHQ: jhq
 		Owner: South
 		Location: 77,33
 

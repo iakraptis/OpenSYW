@@ -1,6 +1,6 @@
 -- Spells, both factions. The local player (Multi0) owns the casters; Multi1 is the enemy.
 -- Panel: each caster shows its spell buttons with icons. Then every spell is cast once.
-Panels = { { "monk", 3 }, { "priest", 3 }, { "shaman", 2 }, { "witch", 2 }, { "miner", 2 } }
+Panels = { { "kmonk", 3 }, { "jpriest", 3 }, { "kshaman", 2 }, { "jwitch", 2 }, { "kminer", 2 } }
 
 Unit = function(type, owner, x, y, holdFire)
     local a = Actor.Create(type, true, { Owner = owner, Location = CPos.New(x, y) })
@@ -25,7 +25,7 @@ WorldLoaded = function()
     end
 
     -- Heal (automatic) for both healers.
-    for _, h in ipairs({ { "monk", "footman", 4 }, { "priest", "jfootman", 10 } }) do
+    for _, h in ipairs({ { "kmonk", "kfootman", 4 }, { "jpriest", "jfootman", 10 } }) do
         Unit(h[1], me, 4, h[3], false)
         local patient = Unit(h[2], me, 5, h[3], true)
         Later(2, function()
@@ -36,7 +36,7 @@ WorldLoaded = function()
     end
 
     -- Mass Heal (needs full mana, uses all of it).
-    for _, h in ipairs({ { "monk", "footman", 16 }, { "priest", "jfootman", 22 } }) do
+    for _, h in ipairs({ { "kmonk", "kfootman", 16 }, { "jpriest", "jfootman", 22 } }) do
         local caster = Unit(h[1], me, 4, h[3], true)
         local a = Unit(h[2], me, 5, h[3], true)
         local b = Unit(h[2], me, 6, h[3] + 1, true)
@@ -52,7 +52,7 @@ WorldLoaded = function()
     end
 
     -- Disturb (Korean Monk): reveals a hidden enemy mine for a while.
-    local monk = Unit("monk", me, 20, 4, true)
+    local monk = Unit("kmonk", me, 20, 4, true)
     local mine = Unit("syw-mine", enemy, 22, 4, false)
     Later(5, function()
         Check(not SywTest.Visible(mine, me), "enemy mine is hidden before Disturb")
@@ -63,7 +63,7 @@ WorldLoaded = function()
     end)
 
     -- Disturb (Japanese Priest, same spell as the Monk): reveals a hidden enemy mine in range, not one beyond it.
-    local priest = Unit("priest", me, 20, 10, true)
+    local priest = Unit("jpriest", me, 20, 10, true)
     local near = Unit("syw-mine", enemy, 22, 10, false)
     local far = Unit("syw-mine", enemy, 30, 10, false)
     Later(5, function()
@@ -74,31 +74,31 @@ WorldLoaded = function()
     end)
 
     -- Lightning (Korean Shaman): kills an enemy infantry unit.
-    local shaman = Unit("shaman", me, 20, 16, true)
-    local victim = Unit("footman", enemy, 24, 16, true)
+    local shaman = Unit("kshaman", me, 20, 16, true)
+    local victim = Unit("kfootman", enemy, 24, 16, true)
     Later(5, function()
         SywTest.OrderOn(shaman, "SywCastLightning", victim)
         WaitFor("Lightning kills an enemy Footman", 200, function() return victim.IsDead end)
     end)
 
     -- Transform (Korean Shaman): one of your Peasants becomes another infantry unit.
-    local shaman2 = Unit("shaman", me, 20, 22, true)
-    local peasant = Unit("peasant", me, 21, 22, true)
+    local shaman2 = Unit("kshaman", me, 20, 22, true)
+    local peasant = Unit("kpeasant", me, 21, 22, true)
     Later(5, function()
         local spot = peasant.CenterPosition
         SywTest.OrderOn(shaman2, "SywTransform", peasant)
         WaitFor("Transform turns the Peasant into another unit", 200, function()
             if not peasant.IsDead then return false end
             for _, a in ipairs(Map.ActorsInCircle(spot, WDist.FromCells(1))) do
-                if a.Owner == me and a ~= shaman2 and a.Type ~= "peasant" then return true end
+                if a.Owner == me and a ~= shaman2 and a.Type ~= "kpeasant" then return true end
             end
             return false
         end)
     end)
 
     -- Earthquake (Japanese Witch): damages an enemy at a ground target.
-    local witch = Unit("witch", me, 4, 28, true)
-    local quakeTarget = Unit("footman", enemy, 8, 28, true)
+    local witch = Unit("jwitch", me, 4, 28, true)
+    local quakeTarget = Unit("kfootman", enemy, 8, 28, true)
     Later(5, function()
         SywTest.OrderAt(witch, "SywEarthquake", CPos.New(8, 28))
         WaitFor("Earthquake damages an enemy at the target", 200, function()
@@ -107,16 +107,16 @@ WorldLoaded = function()
     end)
 
     -- Bewilderment (Japanese Witch): an enemy unit changes sides.
-    local witch2 = Unit("witch", me, 4, 34, true)
-    local convert = Unit("footman", enemy, 7, 34, true)
+    local witch2 = Unit("jwitch", me, 4, 34, true)
+    local convert = Unit("kfootman", enemy, 7, 34, true)
     Later(5, function()
         SywTest.OrderOn(witch2, "SywBewilder", convert)
         WaitFor("Bewilderment takes over an enemy unit", 200, function() return convert.Owner == me end)
     end)
 
     -- Miner: a single mine at its feet, then a 3-mine line.
-    local miner = Unit("miner", me, 20, 28, true)
-    local miner2 = Unit("miner", me, 20, 40, true)
+    local miner = Unit("kminer", me, 20, 28, true)
+    local miner2 = Unit("kminer", me, 20, 40, true)
     Later(5, function()
         local cash = me.Cash
         local mana = SywTest.Mana(miner)

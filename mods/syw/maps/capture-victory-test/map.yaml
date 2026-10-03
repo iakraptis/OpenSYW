@@ -45,19 +45,19 @@ Actors:
 	MyHQ: jhq
 		Owner: Multi0
 		Location: 4,4
-	MyThief: thief
+	MyThief: jthief
 		Owner: Multi0
 		Location: 10,20
-	MyOccupier: occupier
+	MyOccupier: koccupier
 		Owner: Multi0
 		Location: 10,26
-	EnemyBarracks: barracks
+	EnemyBarracks: kbarracks
 		Owner: Multi1
 		Location: 16,19
 	EnemyMill: jmill
 		Owner: Multi1
 		Location: 16,25
-	EnemyFootman: footman
+	EnemyFootman: kfootman
 		Owner: Multi1
 		Location: 28,40
 

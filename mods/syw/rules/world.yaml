@@ -122,7 +122,7 @@ world:
 		ParticleSize: 1, 1
 	ResourceClaimLayer:
 	ColorPickerManager:
-		PreviewActor: peasant.colorpicker
+		PreviewActor: kpeasant.colorpicker
 	CreateMapPlayers:
 	CustomTerrainDebugOverlay:
 	DebugVisualizations:
@@ -139,7 +139,7 @@ world:
 	PathFinder:
 	BuildingInfluence:
 	StartingUnits@Korea:
-		BaseActor: peasant
+		BaseActor: kpeasant
 		Factions: korea
 		ClassName: options-starting-units.unlabeled
 	StartingUnits@Japan:

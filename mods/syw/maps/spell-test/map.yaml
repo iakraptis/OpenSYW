@@ -62,6 +62,6 @@ Rules:
 			GameSpeed: test
 			GameSpeedDropdownLocked: true
 	# Deterministic: Bewilderment always succeeds here (80% in the game).
-	witch:
+	jwitch:
 		Bewilder:
 			SuccessPercent: 100

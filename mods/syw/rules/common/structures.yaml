@@ -1,3 +1,7 @@
+# Shared by both factions: the family bases (^syw-*) and one ^template per unit or building. A template holds what
+# the Korean and Japanese versions have in common; each faction's actor (korea/, japan/) adds its own image,
+# production queue, name and the values that differ.
+
 # Flattened from the stock cnc mod's ^Building/^SelectableBuilding base chain
 # (engine/mods/cnc/rules/defaults.yaml), trimmed of traits that need
 # weapon or economy assets we don't have yet (WithMakeAnimation, ...).
@@ -92,10 +96,35 @@
 	MapEditorData:
 		Categories: Building
 
-hq:
+# Compact towers share capture and construction behavior with other buildings.
+^syw-tower:
+	Inherits: ^syw-building
+	Building:
+		Dimensions: 2,2
+		Footprint: xx xx
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1024, -1024
+			BottomRight: 1024, 1024
+	WithIdleOverlay@SCAFFOLD:
+		Image: scaffold-small
+	RevealsShroud:
+		Range: 12c0
+	Armament:
+		LocalOffset: 0,0,1024
+		MuzzlePalette: knight
+		RequiresCondition: !constructing
+	AttackOmni:
+		RequiresCondition: !constructing
+	AutoTarget:
+		ScanRadius: 12
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+
+^hq:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: hq
 	Health:
 		HP: 108000
 	Valued:
@@ -138,19 +167,15 @@ hq:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Workers.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Training
 		CancelledAudio: Cancelled
-		Type: Workers.Korea
 	ProductionBar:
-		ProductionType: Workers.Korea
 
-barracks:
+^barracks:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: barracks
 	Health:
 		HP: 81000
 	Valued:
@@ -204,20 +229,20 @@ barracks:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Infantry.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Training
 		CancelledAudio: Cancelled
-		Type: Infantry.Korea
 		Group: Infantry
 	ProductionBar:
-		ProductionType: Infantry.Korea
 
-mill:
+^mill:
 	Inherits: ^syw-building
+	# All building types share the two construction stages. Map-placed
+	# starting buildings have no UnderConstructionInit and start finished.
+	UnderConstruction:
+		Duration: 400
 	RenderSprites:
-		Image: mill
 	Health:
 		HP: 67500
 	Valued:
@@ -250,30 +275,28 @@ mill:
 		BuildPaletteOrder: 20
 		Icon: idle
 		IconPalette: knight
-	UnderConstruction:
-		Duration: 400
 	ProvidesPrerequisite:
 		Prerequisite: mill
 		RequiresCondition: !constructing
 
-beaconmound:
+^beaconmound:
 	Inherits: ^syw-building
+	# All building types share the two construction stages. Map-placed
+	# starting buildings have no UnderConstructionInit and start finished.
+	UnderConstruction:
+		Duration: 400
 	RenderSprites:
-		Image: beaconmound
 	Health:
 		HP: 67500
 	Valued:
 		Cost: 1100
 	Tooltip:
-		Name: actor-beaconmound.name
 	Buildable:
 		Prerequisites: mill
 		Queue: PeasantBuild
 		BuildPaletteOrder: 30
 		Icon: idle
 		IconPalette: knight
-	UnderConstruction:
-		Duration: 400
 
 	ProvidesPrerequisite:
 		Prerequisite: beaconmound
@@ -286,16 +309,14 @@ beaconmound:
 		Palette: knight
 		RequiresCondition: !constructing
 
-heavyarmsworkshop:
+^heavyarmsworkshop:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: heavyarmsworkshop
 	Health:
 		HP: 81000
 	Valued:
 		Cost: 1000
 	Tooltip:
-		Name: actor-heavyarmsworkshop.name
 	Buildable:
 		Queue: PeasantBuild
 		Prerequisites: beaconmound
@@ -325,72 +346,16 @@ heavyarmsworkshop:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Vehicles.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Making
 		CancelledAudio: Cancelled
-		Type: Vehicles.Korea
 		Group: Vehicles
 	ProductionBar:
-		ProductionType: Vehicles.Korea
 
-planeworks:
+^barracks2:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: planeworks
-	Health:
-		# Provisional durability, matching the Heavy Arms Workshop.
-		HP: 81000
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: actor-planeworks.name
-	Buildable:
-		Queue: PeasantBuild
-		# Requires the completed advanced barracks.
-		Prerequisites: barracks2
-		BuildPaletteOrder: 50
-		Icon: idle
-		IconPalette: knight
-	ProvidesPrerequisite:
-		Prerequisite: planeworks
-		RequiresCondition: !constructing
-	# Bottom exit is preferred; the side/top exits are used when it is blocked
-	# (e.g. by another building placed directly below).
-	Exit@1:
-		SpawnOffset: 0,0,0
-		ExitCell: 1,3
-		Priority: 2
-	Exit@WEST:
-		SpawnOffset: 0,0,0
-		ExitCell: -1,1
-	Exit@EAST:
-		SpawnOffset: 0,0,0
-		ExitCell: 3,1
-	Exit@NORTH:
-		SpawnOffset: 0,0,0
-		ExitCell: 1,-1
-	# Rally point: select the building and right-click the ground; trained units walk there.
-	RallyPoint:
-		Cursor: move
-		CirclesSequence: flag
-	Production:
-		Produces: Aircraft.Korea
-		RequiresCondition: !constructing
-	ProductionQueue:
-		QueuedAudio: Making
-		CancelledAudio: Cancelled
-		Type: Aircraft.Korea
-		Group: Aircraft
-	ProductionBar:
-		ProductionType: Aircraft.Korea
-
-
-barracks2:
-	Inherits: ^syw-building
-	RenderSprites:
-		Image: barracks2
 	Health:
 		# Provisional durability, matching Barracks.
 		HP: 81000
@@ -427,20 +392,62 @@ barracks2:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: AdvancedInfantry.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Training
 		CancelledAudio: Cancelled
-		Type: AdvancedInfantry.Korea
 		Group: Infantry
 	ProductionBar:
-		ProductionType: AdvancedInfantry.Korea
 
-temple:
+^planeworks:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: temple
+	Health:
+		# Provisional durability, matching the Heavy Arms Workshop.
+		HP: 81000
+	Valued:
+		Cost: 1500
+	Tooltip:
+	Buildable:
+		Queue: PeasantBuild
+		# Requires the completed advanced barracks.
+		Prerequisites: barracks2
+		BuildPaletteOrder: 50
+		Icon: idle
+		IconPalette: knight
+	ProvidesPrerequisite:
+		Prerequisite: planeworks
+		RequiresCondition: !constructing
+	# Bottom exit is preferred; the side/top exits are used when it is blocked
+	# (e.g. by another building placed directly below).
+	Exit@1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,3
+		Priority: 2
+	Exit@WEST:
+		SpawnOffset: 0,0,0
+		ExitCell: -1,1
+	Exit@EAST:
+		SpawnOffset: 0,0,0
+		ExitCell: 3,1
+	Exit@NORTH:
+		SpawnOffset: 0,0,0
+		ExitCell: 1,-1
+	# Rally point: select the building and right-click the ground; trained units walk there.
+	RallyPoint:
+		Cursor: move
+		CirclesSequence: flag
+	Production:
+		RequiresCondition: !constructing
+	ProductionQueue:
+		QueuedAudio: Making
+		CancelledAudio: Cancelled
+		Group: Aircraft
+	ProductionBar:
+
+^temple:
+	Inherits: ^syw-building
+	RenderSprites:
 	Health:
 		# Provisional durability, matching Barracks.
 		HP: 81000
@@ -477,27 +484,22 @@ temple:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Temple.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Training
 		CancelledAudio: Cancelled
-		Type: Temple.Korea
 		Group: Infantry
 	ProductionBar:
-		ProductionType: Temple.Korea
 
-shamanhouse:
+^shamanhouse:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: shamanhouse
 	Health:
 		# Provisional durability, matching Barracks.
 		HP: 81000
 	Valued:
 		Cost: 1300
 	Tooltip:
-		Name: actor-shamanhouse.name
 	Buildable:
 		Queue: PeasantBuild
 		Prerequisites: temple
@@ -527,20 +529,16 @@ shamanhouse:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Shaman.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Training
 		CancelledAudio: Cancelled
-		Type: Shaman.Korea
 		Group: Infantry
 	ProductionBar:
-		ProductionType: Shaman.Korea
 
-stable:
+^stable:
 	Inherits: ^syw-building
 	RenderSprites:
-		Image: stable
 	Health:
 		# Provisional durability, matching Barracks.
 		HP: 81000
@@ -577,48 +575,18 @@ stable:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Cavalry.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Training
 		CancelledAudio: Cancelled
-		Type: Cavalry.Korea
 		Group: Infantry
 	ProductionBar:
-		ProductionType: Cavalry.Korea
 
-# Compact towers share capture and construction behavior with other buildings.
-^syw-tower:
-	Inherits: ^syw-building
-	Building:
-		Dimensions: 2,2
-		Footprint: xx xx
-	HitShape:
-		Type: Rectangle
-			TopLeft: -1024, -1024
-			BottomRight: 1024, 1024
-	WithIdleOverlay@SCAFFOLD:
-		Image: scaffold-small
-	RevealsShroud:
-		Range: 12c0
-	Armament:
-		LocalOffset: 0,0,1024
-		MuzzlePalette: knight
-		RequiresCondition: !constructing
-	AttackOmni:
-		RequiresCondition: !constructing
-	AutoTarget:
-		ScanRadius: 12
-	AutoTargetPriority@COMBAT:
-		ValidTargets: Ground
-		ValidRelationships: Enemy
-
-arrowtower:
+^arrowtower:
 	Inherits: ^syw-tower
 	Armor:
 		Type: Concrete
 	RenderSprites:
-		Image: arrowtower
 	Health:
 		# Provisional building durability.
 		HP: 67500
@@ -631,15 +599,12 @@ arrowtower:
 		BuildPaletteOrder: 90
 		Icon: idle
 		IconPalette: knight
-	Armament:
-		Weapon: TowerBow
 
-cannontower:
+^cannontower:
 	Inherits: ^syw-tower
 	Armor:
 		Type: Concrete
 	RenderSprites:
-		Image: cannontower
 	Health:
 		# Provisional building durability.
 		HP: 67500
@@ -652,21 +617,17 @@ cannontower:
 		BuildPaletteOrder: 100
 		Icon: idle
 		IconPalette: knight
-	Armament:
-		Weapon: CannonTowerShot
 
-
-shipyard:
+^shipyard:
 	Inherits: ^syw-building
+	Targetable:
+		TargetTypes: Ground, Water, C4, Structure
+	Building:
+		TerrainTypes: Water, Clear
 	# Sits on the coastline: footprint mixes land and water (at least 3 water cells), reachable by a
 	# builder over land, with at least one exit on open water. See CoastalBuilding.cs.
 	CoastalBuilding:
-	Building:
-		TerrainTypes: Water, Clear
-	Targetable:
-		TargetTypes: Ground, Water, C4, Structure
 	RenderSprites:
-		Image: shipyard
 	Health:
 		# Provisional durability.
 		HP: 81000
@@ -695,12 +656,9 @@ shipyard:
 		Cursor: move
 		CirclesSequence: flag
 	Production:
-		Produces: Naval.Korea
 		RequiresCondition: !constructing
 	ProductionQueue:
 		QueuedAudio: Making
 		CancelledAudio: Cancelled
-		Type: Naval.Korea
 		Group: Ships
 	ProductionBar:
-		ProductionType: Naval.Korea

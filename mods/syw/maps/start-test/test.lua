@@ -8,9 +8,9 @@ WorldLoaded = function()
     me.Cash = 20000
     ko.Cash = 20000
     jhq = Actor.Create("jhq", true, { Owner = me, Location = CPos.New(4, 4) })
-    khq = Actor.Create("hq", true, { Owner = ko, Location = CPos.New(4, 40) })
+    khq = Actor.Create("khq", true, { Owner = ko, Location = CPos.New(4, 40) })
     -- A Korean HQ owned by the local player, to check the Korean panel through the same UI.
-    myKorean = Actor.Create("hq", true, { Owner = me, Location = CPos.New(20, 4) })
+    myKorean = Actor.Create("khq", true, { Owner = me, Location = CPos.New(20, 4) })
 
     Later(5, function() SywTest.Select(jhq) end)
     Later(15, function()
@@ -21,9 +21,9 @@ WorldLoaded = function()
     end)
     Later(25, function()
         local panel = Split(SywTest.TrainingPanel(), "|")
-        Check(Contains(Split(panel[2] or "", ","), "peasant") and tonumber(panel[3]) > 0, "Korean HQ panel draws the Korean Peasant button (" .. SywTest.TrainingPanel() .. ")")
+        Check(Contains(Split(panel[2] or "", ","), "kpeasant") and tonumber(panel[3]) > 0, "Korean HQ panel draws the Korean Peasant button (" .. SywTest.TrainingPanel() .. ")")
         TrainAndGather(me, jhq, "jpeasant")
-        TrainAndGather(ko, khq, "peasant")
+        TrainAndGather(ko, khq, "kpeasant")
     end)
     FinishWhenDone("START", 4000)
 end
@@ -43,8 +43,8 @@ TrainAndGather = function(player, hq, peasant)
 end
 
 TrainBull = function(player, hq)
-    local bull = hq.Type == "jhq" and "jbull" or "bull"
-    local workshop = hq.Type == "jhq" and "jheavyarms" or "heavyarmsworkshop"
+    local bull = hq.Type == "jhq" and "jbull" or "kbull"
+    local workshop = hq.Type == "jhq" and "jheavyarms" or "kheavyarmsworkshop"
     hq.Build({ bull })
     Later(10, function()
         Check(not hq.IsProducing(bull), bull .. " can't be trained without " .. workshop)

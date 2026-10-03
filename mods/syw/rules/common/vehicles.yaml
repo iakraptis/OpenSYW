@@ -1,3 +1,7 @@
+# Shared by both factions: the family bases (^syw-*) and one ^template per unit or building. A template holds what
+# the Korean and Japanese versions have in common; each faction's actor (korea/, japan/) adds its own image,
+# production queue, name and the values that differ.
+
 # Vehicle chassis and turret use stock OpenRA traits. Timing/speed are initial
 # gameplay values; original dynamic armor/depletion and splash are not ported.
 ^syw-vehicle:
@@ -87,41 +91,34 @@
 		CargoType: Vehicle
 		Weight: 2
 
-firecar:
+^firecar:
 	Inherits: ^syw-vehicle
 	Armor:
 		Type: Light
-	RenderSprites:
-		Image: firecar
-	Health:
-		HP: 32513
-	Armament:
-		Weapon: FireCarRockets
 	Buildable:
 		BuildPaletteOrder: 10
+	Health:
+		HP: 32513
 	Valued:
-		Cost: 1200
 	Tooltip:
-		Name: actor-firecar.name
 
 # Original Cannon uses TANK 52-74.
-cannon:
+^cannon:
 	Inherits: ^syw-vehicle
-	RenderSprites:
-		Image: cannon
-	Health:
-		HP: 34425
-	Mobile:
-		Speed: 50
 	RevealsShroud:
 		Range: 10c0
+	Mobile:
+		Speed: 50
+	RenderSprites:
+		Image: cannon
 	Armament:
 		Weapon: CannonShot
 	AutoTarget:
 		ScanRadius: 10
 	Buildable:
 		BuildPaletteOrder: 20
+	Health:
+		HP: 34425
 	Valued:
-		Cost: 1400
 	Tooltip:
 		Name: actor-cannon.name

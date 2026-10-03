@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Mods.Common;
+using OpenRA.Mods.Common.Pathfinder;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Traits;
 
@@ -13,10 +14,10 @@ namespace OpenRA.Mods.Syw.Traits
 	public class PeasantBaseBuilderBotModuleInfo : ConditionalTraitInfo
 	{
 		[Desc("Units with the Builder trait the AI may use.")]
-		public readonly HashSet<string> BuilderTypes = new() { "peasant" };
+		public readonly HashSet<string> BuilderTypes = new() { "kpeasant", "jpeasant" };
 
 		[Desc("Buildings the base is centred on (the first one found is used).")]
-		public readonly HashSet<string> BaseCenterTypes = new() { "hq" };
+		public readonly HashSet<string> BaseCenterTypes = new() { "khq", "jhq" };
 
 		[Desc("Desired share of each building type in the base (relative weights). Types not listed are never built.")]
 		public readonly Dictionary<string, int> BuildingFractions = new();
@@ -40,18 +41,23 @@ namespace OpenRA.Mods.Syw.Traits
 		[Desc("How many of the nearest valid sites to choose from at random.")]
 		public readonly int SiteChoices = 6;
 
+		[Desc("If above 0, a ResourceBuildingTypes site must be at most this many steps' walk from its crop field (over",
+			"passable ground, around cliffs and buildings), and the nearest walk wins. Keeps drop-offs off the far side of a",
+			"cliff, where every load would walk around it. 0 picks any free site near the field.")]
+		public readonly int MaxDropOffWalk = 0;
+
 		[Desc("Economy first: no new buildings until the AI owns at least this many of HarvesterTypes.")]
 		public readonly int MinimumHarvesters = 4;
 
 		[Desc("Units counted for MinimumHarvesters.")]
-		public readonly HashSet<string> HarvesterTypes = new() { "peasant", "bull" };
+		public readonly HashSet<string> HarvesterTypes = new() { "kpeasant", "kbull", "jpeasant", "jbull" };
 
 		[Desc("Cash kept back after paying for a building, so unit production (workers) never starves.")]
 		public readonly int CashReserve = 500;
 
 		[Desc("Drop-off buildings (like C&C refineries): placed next to the crop field nearest the base instead of",
 			"around the base centre.")]
-		public readonly HashSet<string> ResourceBuildingTypes = new() { "mill" };
+		public readonly HashSet<string> ResourceBuildingTypes = new() { "kmill", "jmill" };
 
 		[Desc("How far from the base to look for crop fields for ResourceBuildingTypes, in cells.")]
 		public readonly int ResourceSearchRadius = 30;
@@ -153,9 +159,11 @@ namespace OpenRA.Mods.Syw.Traits
 						places = guarded.Select(g => (g, Info.DefenseMinRadius, Info.DefenseMaxRadius));
 				}
 
+				var dropOff = Info.ResourceBuildingTypes.Contains(type) && Info.MaxDropOffWalk > 0;
 				var site = places
 					.Select(p => (Builder: NearestBuilder(free, p.Center), Place: p))
-					.Select(c => (Cell: FindSite(c.Builder, actorInfo, c.Place.Center, c.Place.Min, c.Place.Max), c.Builder))
+					.Select(c => (Cell: dropOff ? FindDropOffSite(c.Builder, actorInfo, c.Place.Center, c.Place.Max)
+						: FindSite(c.Builder, actorInfo, c.Place.Center, c.Place.Min, c.Place.Max), c.Builder))
 					.FirstOrDefault(c => c.Cell != null);
 
 				if (site.Cell == null)
@@ -300,6 +308,68 @@ namespace OpenRA.Mods.Syw.Traits
 			}
 
 			return valid.Count == 0 ? null : valid.Random(world.LocalRandom);
+		}
+
+		// The drop-off site within maxRadius of the field with the shortest walk from the field to a cell beside it, if
+		// that walk is at most MaxDropOffWalk steps.
+		CPos? FindDropOffSite(Actor builder, ActorInfo actorInfo, CPos field, int maxRadius)
+		{
+			var locomotor = builder.TraitOrDefault<Mobile>()?.Locomotor;
+			if (locomotor == null)
+				return FindSite(builder, actorInfo, field, 1, maxRadius);
+
+			var steps = WalkSteps(locomotor, field, maxRadius + Info.MaxDropOffWalk);
+			var buildingInfo = actorInfo.TraitInfo<BuildingInfo>();
+			CPos? best = null;
+			var bestWalk = int.MaxValue;
+			foreach (var cell in world.Map.FindTilesInAnnulus(field, 1, maxRadius))
+			{
+				if (!CoastalBuilding.CanPlace(world, builder, actorInfo, buildingInfo, cell) || !Clear(buildingInfo, cell))
+					continue;
+
+				var footprint = buildingInfo.Tiles(cell).ToHashSet();
+				var walk = footprint.SelectMany(c => CVec.Directions.Select(d => c + d))
+					.Where(n => !footprint.Contains(n) && steps.ContainsKey(n))
+					.Select(n => steps[n]).DefaultIfEmpty(int.MaxValue).Min();
+
+				if (walk <= Info.MaxDropOffWalk && walk < bestWalk)
+				{
+					best = cell;
+					bestWalk = walk;
+				}
+			}
+
+			return best;
+		}
+
+		// Steps a worker needs from start to each cell within limit steps, walking over passable terrain and around
+		// buildings (trees included).
+		Dictionary<CPos, int> WalkSteps(Locomotor locomotor, CPos start, int limit)
+		{
+			var steps = new Dictionary<CPos, int> { [start] = 0 };
+			var queue = new Queue<CPos>();
+			queue.Enqueue(start);
+			while (queue.Count > 0)
+			{
+				var cell = queue.Dequeue();
+				var next = steps[cell] + 1;
+				if (next > limit)
+					continue;
+
+				foreach (var d in CVec.Directions)
+				{
+					var n = cell + d;
+					if (steps.ContainsKey(n) || !world.Map.Contains(n)
+						|| locomotor.MovementCostForCell(n) == PathGraph.MovementCostForUnreachableCell
+						|| world.ActorMap.GetActorsAt(n).Any(a => a.TraitOrDefault<Building>() != null))
+						continue;
+
+					steps[n] = next;
+					queue.Enqueue(n);
+				}
+			}
+
+			return steps;
 		}
 
 		// Keeps Spacing free cells around the footprint (no other buildings) and never covers crop fields. Map objects

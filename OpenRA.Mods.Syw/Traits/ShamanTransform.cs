@@ -15,7 +15,7 @@ namespace OpenRA.Mods.Syw.Traits
 		public readonly WDist Range = new(1536);
 
 		[ActorReference]
-		public readonly string[] TargetActors = { "peasant" };
+		public readonly string[] TargetActors = { "kpeasant" };
 
 		[ActorReference]
 		[Desc("One of these is picked at random (synced) for each cast.")]

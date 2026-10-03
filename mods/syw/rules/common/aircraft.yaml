@@ -1,5 +1,9 @@
+# Shared by both factions: the family bases (^syw-*) and one ^template per unit or building. A template holds what
+# the Korean and Japanese versions have in common; each faction's actor (korea/, japan/) adds its own image,
+# production queue, name and the values that differ.
+
 # Flying dragon: stock hovering aircraft behavior; movement is provisional.
-fighter:
+^fighter:
 	# Sees one cell less at night (DayNightCycle).
 	NightVisionPenalty:
 	Voiced:
@@ -32,7 +36,6 @@ fighter:
 		Action: Kill
 	HitShape:
 	Health:
-		HP: 22950
 	Armor:
 		Type: Light
 	RevealsShroud:
@@ -41,7 +44,7 @@ fighter:
 	Aircraft:
 		Voice: Move
 		CruiseAltitude: 1536
-		Speed: 90
+		Speed: 100
 		TurnSpeed: 32
 		CanHover: true
 		CanSlide: true
@@ -57,7 +60,6 @@ fighter:
 		Weapon: VehicleExplosion
 		EmptyWeapon: VehicleExplosion
 	RenderSprites:
-		Image: fighter
 		PlayerPalette: vehicle-player
 	WithFacingSpriteBody:
 	# Smokes below 50% health (FIRE 130-137).
@@ -82,7 +84,6 @@ fighter:
 	AutoTarget:
 		ScanRadius: 7
 	Buildable:
-		Queue: Aircraft.Korea
 		Prerequisites: planeworks
 		BuildPaletteOrder: 10
 		Icon: icon
@@ -95,14 +96,12 @@ fighter:
 		Categories: Aircraft
 
 # Unarmed air transport. Capacity is provisional until original behavior is recovered.
-transporter:
-	Inherits: fighter
+^transporter:
+	Inherits: ^fighter
 	-Armament:
 	-AttackAircraft:
-	-AutoTarget:
 	-AutoTargetPriority@COMBAT:
-	RenderSprites:
-		Image: transporter
+	-AutoTarget:
 	Health:
 		HP: 38250
 	Aircraft:
@@ -112,6 +111,10 @@ transporter:
 		AirborneCondition: airborne
 	Targetable:
 		RequiresCondition: airborne
+	Buildable:
+		BuildPaletteOrder: 20
+	Tooltip:
+		Name: actor-transporter.name
 	Targetable@LANDED:
 		TargetTypes: Ground, Vehicle
 		RequiresCondition: !airborne
@@ -121,9 +124,3 @@ transporter:
 		MaxWeight: 8
 		AfterUnloadDelay: 10
 		UnloadTerrainTypes: Clear, Crops
-	Buildable:
-		BuildPaletteOrder: 20
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: actor-transporter.name

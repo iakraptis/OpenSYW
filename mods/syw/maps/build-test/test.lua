@@ -7,8 +7,8 @@ WorldLoaded = function()
     me.Cash = 20000
     ko.Cash = 20000
     BuildAndTrain(me, "jpeasant", "jbarracks", "jfootman", CPos.New(8, 6), CPos.New(4, 4))
-    BuildAndTrain(ko, "peasant", "barracks", "footman", CPos.New(8, 40), CPos.New(4, 38))
-    AbandonAndResume(ko, "peasant", "mill", CPos.New(44, 48), CPos.New(56, 44), CPos.New(56, 52))
+    BuildAndTrain(ko, "kpeasant", "kbarracks", "kfootman", CPos.New(8, 40), CPos.New(4, 38))
+    AbandonAndResume(ko, "kpeasant", "kmill", CPos.New(44, 48), CPos.New(56, 44), CPos.New(56, 52))
     FinishWhenDone("BUILD", 4000)
 end
 
