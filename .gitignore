@@ -60,8 +60,14 @@ mods/syw/cursors/assets/cursors.json
 mods/syw/palettes/
 mods/syw/music/*.wav
 mods/syw/audio/
+mods/syw/tilesets/field1/
+mods/syw/tilesets/field2/
 mods/syw/tilesets/field3/
+# The converted original skirmish maps (cusmap/*.map).
 mods/syw/maps/kmulti1/
+mods/syw/maps/cmulti1/
+mods/syw/maps/multi*/
+mods/syw/maps/pmulti*/
 mods/syw/maps/bot-test/
 mods/syw/maps/ffa-spectate/
 mods/syw/maps/local-*/

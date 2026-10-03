@@ -43,7 +43,8 @@ SoundFormats: Wav
 
 TerrainFormat: DefaultTerrain
 
-SpriteSequenceFormat: DefaultSpriteSequence
+# Tileset-specific so dirt and snow maps can use their own crop art (sequences/resources.yaml TilesetFilenames).
+SpriteSequenceFormat: TilesetSpecificSpriteSequence
 
 DefaultOrderGenerator: UnitOrderGenerator
 
