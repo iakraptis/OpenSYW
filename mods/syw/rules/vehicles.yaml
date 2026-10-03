@@ -1,6 +1,8 @@
 # Vehicle chassis and turret use stock OpenRA traits. Timing/speed are initial
 # gameplay values; original dynamic armor/depletion and splash are not ported.
 ^syw-vehicle:
+	# Sees one cell less at night (DayNightCycle).
+	NightVisionPenalty:
 	Voiced:
 		VoiceSet: MachineVoice
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.

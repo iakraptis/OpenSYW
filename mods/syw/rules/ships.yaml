@@ -1,5 +1,7 @@
 # Shared naval movement/rendering; ship balance remains provisional.
 ^syw-ship:
+	# Sees one cell less at night (DayNightCycle).
+	NightVisionPenalty:
 	Voiced:
 		VoiceSet: MachineVoice
 	# Attack-move (A key for players; the AI squads move with it), as on every C&C unit.

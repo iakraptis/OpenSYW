@@ -4,6 +4,8 @@
 # combat/weapon/veterancy/tiberium-specific traits we don't have assets for yet.
 # Shared by all Korea infantry - see peasant/archer below.
 ^syw-infantry:
+	# Sees one cell less at night (DayNightCycle).
+	NightVisionPenalty:
 	Voiced:
 		VoiceSet: InfantryVoice
 	# Death scream from the unit's voice set (Die).
