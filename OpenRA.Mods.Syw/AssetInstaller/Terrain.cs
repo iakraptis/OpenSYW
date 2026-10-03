@@ -6,12 +6,17 @@ using System.Text;
 
 namespace OpenRA.Mods.Syw.AssetInstaller
 {
-	// The FIELD3 tileset (the original grassland tiles), the converted Korea Multi 1 map (titled Fighter) and the crop
-	// resources.
-	// Formats: SYWtoORA/docs/formats/map.md and stg.md. Each .map cell is (tile id, variant); the game draws global
-	// frame variant * 256 + tile id of the three 300-frame sheets FIELD31, FIELD32 and Field33 loaded back to back.
-	// Field33 holds six 5x5 farm blocks with identical outlines (crop growth stages); crop cells are drawn as the bare
-	// block and carry a Rice or Potato resource, which FieldResourceRenderer draws on top.
+	// The three terrain tilesets, every original skirmish map (cusmap/*.map) and the crop resources, all from the game's
+	// own data (research: SYWtoORA/docs/formats/map.md "Tile attributes", stg.md, tools/auto_map_export.py):
+	// - A map's terrain set is its header's 4th uint32 (syw.exe loads the header to 0x57fe28, so it lands on the set
+	//   selector 0x57fe34 that LoadMapTile reads): 0 = Field1x (dirt), 1 = Field2x (snow), 2 = FIELD3x (grass).
+	// - A cell (tile id, variant) draws frame variant * 256 + tile id of the set's three 300-frame sheets back to back.
+	// - Passability: each terrain .spr keeps a 300-entry uint32 attribute table after its 16-byte header, from which the
+	//   game fills its movement grid (0x419750): 0 and 256 walkable, 2 blocked, 4 and 512 water, 10-13 crop fields
+	//   (10 ripe rice, 11 -> 12 -> 13 growing potatoes).
+	// - Starts, title and map objects come from the .stg.
+	// Crop cells are drawn as the matching cell of the bare field block and carry a Rice or Potato resource, which
+	// FieldResourceRenderer draws on top.
 	public static class Terrain
 	{
 		const int Columns = 20;
@@ -19,53 +24,30 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		const int Tile = 32;
 		const int VariantStride = 256;
 		const int ResourceDensity = 12;
+		const int BorderId = 1999;
 
 		// Map preview colour of cells blocked by trees and other map objects.
 		const string TreePreviewColor = "1E4A18";
 
-		static readonly string[] Sheets = { "field31", "field32", "field33" };
-		static readonly Dictionary<string, string> SheetFiles = new() { ["field31"] = "FIELD31", ["field32"] = "FIELD32", ["field33"] = "Field33.spr" };
-		static readonly Dictionary<string, int> TemplateBase = new() { ["field31"] = 1000, ["field32"] = 1300, ["field33"] = 1600, ["border"] = 1999 };
-		static readonly (string Sheet, int Frame) BorderKey = ("border", 0);
-
-		static readonly HashSet<int> BridgeFrames = new() { 149, 167, 168, 170, 171, 185, 186, 187, 188, 190, 191, 205, 206, 207, 208, 209, 227 };
-
-		// Impassable cliff pieces, confirmed in the real game as kmulti1 variant-1 ids (FIELD32 frame = id - 44).
-		static readonly HashSet<int> CliffFrames = new[]
+		// (OpenRA tileset id, name, the three sheets: (output name, SPR file)). Template ids are 1000 + sheet * 300 + frame
+		// in every set, so FieldResourceRenderer's FieldTemplateOrigin (1733, the bare field block) fits all of them.
+		static readonly (int Id, string Name, (string Name, string File)[] Sheets)[] Sets =
 		{
-			46, 47, 48, 49, 50, 51, 65, 66, 71, 72, 84, 85, 92, 93, 104, 108, 109, 113, 124, 126, 127, 128, 132, 133, 144, 145,
-			146, 147, 148, 149, 150, 152, 153, 164, 165, 168, 169, 172, 173, 184, 185, 186, 191, 192, 193, 205, 206, 207, 210,
-			211, 212, 226, 227, 228, 229, 230, 231, 247, 248, 249, 250
-		}.Select(i => i - 44).ToHashSet();
-
-		static readonly HashSet<int> WellFrames = new[] { 196, 197 }.Select(i => i - 44).ToHashSet();
-
-		// Shoreline pieces confirmed non-walkable although under half water (FIELD31 frame = id).
-		static readonly HashSet<int> ShoreWaterFrames = new() { 20, 22, 23, 26, 31, 44, 47, 50, 166, 229 };
-
-		// Shore rock formations, blocked for ships and land units (Field33 frame = variant-3 id + 168).
-		static readonly HashSet<int> ShoreRockFrames = new[] { 56, 96, 97 }.Select(i => i + 168).ToHashSet();
-
-		// Confirmed walkable despite looking like stone.
-		static readonly HashSet<int> WalkableFrames = new[] { 234 }.Select(i => i - 44).ToHashSet();
-
-		// Field33 5x5 blocks by top-left (row, col): the crop, or null for the bare field.
-		static readonly Dictionary<(int Row, int Col), string> FieldBlocks = new()
-		{
-			[(0, 1)] = "rice",
-			[(0, 7)] = "rice",
-			[(0, 13)] = "potato",
-			[(6, 1)] = "potato",
-			[(6, 7)] = "potato",
-			[(6, 13)] = null
+			(1, "Dirt", new[] { ("field11", "Field11.spr"), ("field12", "Field12.spr"), ("field13", "Field13.spr") }),
+			(2, "Snow", new[] { ("field21", "Field21.spr"), ("field22", "Field22.spr"), ("field23", "Field23.spr") }),
+			(3, "Grassland", new[] { ("field31", "FIELD31.SPR"), ("field32", "FIELD32.SPR"), ("field33", "Field33.spr") }),
 		};
 
+		// The six 5x5 field blocks of the third sheet: crop values cover their 21-cell diamonds.
+		static readonly int[] BlockRows = { 0, 6 };
+		static readonly int[] BlockCols = { 1, 7, 13 };
 		static readonly (int Row, int Col) BareFieldBlock = (6, 13);
+
 		static readonly Dictionary<string, byte> ResourceIndex = new() { ["potato"] = 1, ["rice"] = 2 };
 		static readonly Dictionary<string, string> CropPreviewColors = new() { ["potato"] = "8A6A3A", ["rice"] = "D8B040" };
 
-		// Crop sheets: (young block, ripe block) top-left in Field33; four density frames per position: young, young,
-		// ripe, ripe (OpenRA picks the frame from density, so a full cell is ripe and a regrowing one starts young).
+		// Crop sheets: (young block, ripe block) top-left in the third sheet; four density frames per position: young,
+		// young, ripe, ripe (OpenRA picks the frame from density, so a full cell is ripe and a regrowing one starts young).
 		static readonly (string Crop, (int Row, int Col) Young, (int Row, int Col) Ripe)[] Crops =
 		{
 			("rice", (0, 1), (0, 7)), ("potato", (6, 7), (6, 1))
@@ -77,135 +59,150 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			("Cliff", "Ground", "7A5230"), ("Crops", "Ground", "8A6A3A"),
 		};
 
-		// Original maps: (map, title, start moves requested by the user keyed by the original start, 0-based).
-		static readonly (string Name, string Title, Dictionary<(int, int), (int, int)> StartMoves)[] Maps =
-		{
-			("kmulti1", "Fighter", new() { [(113, 116)] = (113, 115) }),
-		};
+		sealed record Template(int Id, string Sheet, int Frame, int Attribute, string TerrainType, string Category, string Color);
 
-		sealed record Template(int Id, string Sheet, int Frame, string TerrainType, string Category, string Color);
+		sealed record SetData(int Id, string Name, (string Name, string File)[] Sheets, Template[] Templates, IndexedImage[][] Frames);
 
 		public static void Export(InstallContext c)
 		{
-			var sheets = Sheets.ToDictionary(s => s, s => Enumerable.Range(0, FrameCount).Select(i => c.Spr(SheetFiles[s]).Frame(i)).ToArray());
-			foreach (var (name, frames) in sheets)
-				c.WriteRgba($"tilesets/field3/{name}.png", Columns * Tile, FrameCount / Columns * Tile,
-					SheetRgba(frames, c.Knight), FrameData(frames.Length));
+			var sets = Sets.Select(s => ExportTileset(c, s.Id, s.Name, s.Sheets)).ToDictionary(s => s.Id - 1);
+			ExportCrops(c, sets.Values);
+
+			var maps = c.Game.Files("cusmap").Where(f => f.EndsWith(".map", StringComparison.OrdinalIgnoreCase))
+				.Select(f => Path.GetFileNameWithoutExtension(f).ToLowerInvariant()).ToList();
+			foreach (var name in maps)
+				ConvertMap(c, name, sets);
+		}
+
+		static SetData ExportTileset(InstallContext c, int id, string name, (string Name, string File)[] sheets)
+		{
+			var frames = sheets.Select(s => Enumerable.Range(0, FrameCount).Select(i => c.Spr(s.File).Frame(i)).ToArray()).ToArray();
+			var templates = new List<Template>();
+			for (var s = 0; s < sheets.Length; s++)
+			{
+				c.WriteRgba($"tilesets/field{id}/{sheets[s].Name}.png", Columns * Tile, FrameCount / Columns * Tile,
+					SheetRgba(frames[s], c.Knight), FrameData(FrameCount));
+
+				var attributes = Attributes(c.Game.Read($"FNT1/{sheets[s].File}"));
+				for (var f = 0; f < FrameCount; f++)
+				{
+					var terrain = TerrainOf(s, attributes[f]);
+					var category = terrain is "Water" or "Rock" or "Cliff" ? terrain
+						: IsCrop(attributes[f]) ? "Field" : attributes[f] == 256 ? "Shore" : s == 0 ? "Land" : "Dirt";
+					var rgb = frames[s][f].Pixels.Select(p => c.Knight.Colors[p]).ToArray();
+					templates.Add(new Template(TemplateId(s, f), sheets[s].Name, f, attributes[f], terrain, category, AverageColor(rgb, Tile, Tile)));
+				}
+			}
 
 			var border = new byte[Tile * Tile * 4];
 			for (var i = 3; i < border.Length; i += 4)
 				border[i] = 255;
 
-			c.WriteRgba("tilesets/field3/border.png", Columns * Tile, Tile, Pad(border, Tile, Columns * Tile), FrameData(1));
-
-			var templates = new SortedDictionary<(string Sheet, int Frame), Template>(Comparer<(string Sheet, int Frame)>.Create((a, b) =>
-				string.CompareOrdinal(a.Sheet, b.Sheet) != 0 ? string.CompareOrdinal(a.Sheet, b.Sheet) : a.Frame.CompareTo(b.Frame)));
-
-			foreach (var (name, title, moves) in Maps)
-			{
-				var (width, height, cells) = ReadMap(c.Game.Read($"cusmap/{name}.map"));
-				var stage = c.Game.Read($"cusmap/{name}.stg");
-				var starts = ReadStarts(stage);
-				var objects = MapObjects.Read(stage);
-				var keys = new (string Sheet, int Frame)[height, width];
-				var crops = new Dictionary<(int X, int Y), string>();
-				for (var y = 0; y < height; y++)
-					for (var x = 0; x < width; x++)
-					{
-						var (sheet, frame) = SourceFrame(cells[y, x].Variant, cells[y, x].TileId);
-						var block = FieldBlock(sheet, frame);
-						if (block != null)
-						{
-							var crop = FieldBlocks[block.Value.Block];
-							if (crop != null)
-								crops[(x, y)] = crop;
-
-							frame = (BareFieldBlock.Row + block.Value.Row) * Columns + BareFieldBlock.Col + block.Value.Col;
-						}
-
-						keys[y, x] = (sheet, frame);
-					}
-
-				foreach (var key in keys.Cast<(string, int)>().Append(BorderKey))
-					if (!templates.ContainsKey(key))
-						templates[key] = MakeTemplate(key, key == BorderKey ? null : sheets[key.Item1][key.Item2], c.Knight);
-
-				var start = starts[0];
-				var land = Reachable(keys, templates, start, width, height);
-				var cut = starts.FindAll(s => !land.Contains(s));
-				if (cut.Count > 0)
-					throw new InvalidDataException($"{name}: starts not connected over land: {string.Join(", ", cut)}");
-
-				WriteMap(c, name, title, keys, templates, crops, starts.ConvertAll(s => moves.TryGetValue(s, out var moved) ? moved : s), objects);
-			}
-
-			c.RepoYaml("tilesets/field3.yaml", TilesetYaml(templates.Values));
-			ExportCrops(c, sheets["field33"]);
+			c.WriteRgba($"tilesets/field{id}/border.png", Columns * Tile, Tile, Pad(border, Tile, Columns * Tile), FrameData(1));
+			c.RepoYaml($"tilesets/field{id}.yaml", TilesetYaml(id, name, templates));
+			return new SetData(id, name, sheets, templates.ToArray(), frames);
 		}
 
-		static (string Sheet, int Frame) SourceFrame(int variant, int tileId)
+		static int TemplateId(int sheet, int frame) => 1000 + sheet * FrameCount + frame;
+
+		static bool IsCrop(int attribute) => attribute is >= 10 and <= 13;
+
+		// The terrain .spr attribute table (spr.md's "reserved" block): one uint32 per frame after the 16-byte header.
+		static int[] Attributes(byte[] spr) => Enumerable.Range(0, FrameCount).Select(i => BitConverter.ToInt32(spr, 16 + 4 * i)).ToArray();
+
+		static string TerrainOf(int sheet, int attribute)
 		{
-			var index = variant * VariantStride + tileId;
-			return (Sheets[index / FrameCount], index % FrameCount);
+			if (attribute is 0 or 256 || IsCrop(attribute))
+				return "Clear";
+			if (attribute == 2)
+				return sheet == 1 ? "Cliff" : "Rock";
+			if (attribute is 4 or 512)
+				return "Water";
+
+			throw new InvalidDataException($"Unknown terrain attribute {attribute}.");
 		}
 
-		static ((int Row, int Col) Block, int Row, int Col)? FieldBlock(string sheet, int frame)
+		// The cell of the bare field block at the same position, for a frame inside one of the six field blocks.
+		static int? BareFrame(int frame)
 		{
-			if (sheet != "field33")
-				return null;
-
 			int row = frame / Columns, col = frame % Columns;
-			foreach (var (top, left) in FieldBlocks.Keys)
-				if (top <= row && row < top + 5 && left <= col && col < left + 5)
-					return ((top, left), row - top, col - left);
+			foreach (var top in BlockRows)
+				foreach (var left in BlockCols)
+					if (top <= row && row < top + 5 && left <= col && col < left + 5)
+						return (BareFieldBlock.Row + row - top) * Columns + BareFieldBlock.Col + col - left;
 
 			return null;
 		}
 
-		static Template MakeTemplate((string Sheet, int Frame) key, IndexedImage image, SywPalette palette)
+		static void ConvertMap(InstallContext c, string name, Dictionary<int, SetData> sets)
 		{
-			var (sheet, frame) = key;
-			if (image == null)
-				return new Template(TemplateBase[sheet] + frame, sheet, frame, "Clear", "Border", "000000");
+			var (width, height, terrainSet, cells) = ReadMap(c.Game.Read($"cusmap/{name}.map"));
+			var stage = c.Game.Read($"cusmap/{name}.stg");
+			if (!sets.TryGetValue(terrainSet, out var set))
+				throw new InvalidDataException($"{name}: unknown terrain set {terrainSet}.");
 
-			var rgb = Enumerable.Range(0, image.Pixels.Length).Select(i => palette.Colors[image.Pixels[i]]).ToArray();
-			var terrain = Classify(sheet, frame, rgb);
-			string category;
-			if (sheet == "field31" && BridgeFrames.Contains(frame))
-				category = "Bridge";
-			else if (FieldBlock(sheet, frame) != null)
-				category = "Field";
-			else if (terrain is "Water" or "Rock" or "Cliff")
-				category = terrain;
-			else
-				category = sheet == "field31" ? "Land" : "Dirt";
+			var keys = new Template[height, width];
+			var crops = new Dictionary<(int X, int Y), string>();
+			for (var y = 0; y < height; y++)
+				for (var x = 0; x < width; x++)
+				{
+					var index = cells[y, x].Variant * VariantStride + cells[y, x].TileId;
+					int sheet = index / FrameCount, frame = index % FrameCount;
+					var template = set.Templates[sheet * FrameCount + frame];
+					if (IsCrop(template.Attribute))
+					{
+						crops[(x, y)] = template.Attribute == 10 ? "rice" : "potato";
+						var bare = BareFrame(frame);
+						if (bare != null)
+							template = set.Templates[sheet * FrameCount + bare.Value];
+					}
 
-			return new Template(TemplateBase[sheet] + frame, sheet, frame, terrain, category, AverageColor(rgb, image.Width, image.Height));
+					keys[y, x] = template;
+				}
+
+			bool Inside((int X, int Y) p) => p.X >= 0 && p.Y >= 0 && p.X < width && p.Y < height;
+
+			// Objects: the game ignores cells outside the map, and some maps list objects past their edge (left over from
+			// the original editor). OpenRA needs the whole footprint on the map and one building per cell.
+			var objects = new List<(MapObjects.ObjectType Type, int X, int Y)>();
+			var taken = new HashSet<(int X, int Y)>();
+			foreach (var o in MapObjects.Read(stage))
+			{
+				var blocked = MapObjects.BlockedCells(new[] { o }).ToList();
+				if (blocked.All(Inside) && !blocked.Any(taken.Contains))
+				{
+					objects.Add(o);
+					taken.UnionWith(blocked);
+				}
+			}
+
+			bool Land((int X, int Y) p) => Inside(p) && keys[p.Y, p.X].TerrainType == "Clear" && !taken.Contains(p);
+
+			// Starts: a type 1 placement creates the player's HQ (0x420e70), a 3x3 centred on the start cell. The map keeps
+			// the start and the HQ gets BaseActorOffset -1,-1 (starting-hq.yaml). If OpenRA has no room for that 3x3,
+			// take the nearest start that does.
+			bool Fits((int X, int Y) p) => Enumerable.Range(-1, 3).All(i => Enumerable.Range(-1, 3).All(j => Land((p.X + i, p.Y + j))));
+			var ring = Enumerable.Range(-4, 9).SelectMany(dx => Enumerable.Range(-4, 9).Select(dy => (dx, dy)))
+				.OrderBy(d => Math.Abs(d.dx) + Math.Abs(d.dy)).ThenBy(d => d.dx).ThenBy(d => d.dy).ToList();
+			var starts = ReadStarts(stage).ConvertAll(s => Fits(s) ? s :
+				ring.Select(d => (s.X + d.dx, s.Y + d.dy)).Where(Fits).DefaultIfEmpty(s).First());
+
+			if (starts.Count > 0)
+			{
+				var land = Reachable(Land, starts[0]);
+				var cut = starts.FindAll(s => !land.Contains(s));
+				if (cut.Count > 0)
+					c.Warnings.Add($"{name}: starts {string.Join(", ", cut)} are not connected to {starts[0]} over land (a naval map?)");
+			}
+
+			WriteMap(c, name, Title(stage) ?? name, set.Id, keys, crops, starts, objects);
 		}
 
-		static string Classify(string sheet, int frame, Primitives.Color[] rgb)
+		// The map's name, kept in the .stg after the map file path ("cusmap\kmulti1.map", "Fighter").
+		static string Title(byte[] stage)
 		{
-			if (FieldBlock(sheet, frame) != null || (sheet == "field31" && BridgeFrames.Contains(frame)))
-				return "Clear";
-			if (sheet == "field33" && ShoreRockFrames.Contains(frame))
-				return "Rock";
-			if (sheet == "field31" && ShoreWaterFrames.Contains(frame))
-				return "Water";
-			if (sheet == "field32" && CliffFrames.Contains(frame))
-				return "Cliff";
-			if (sheet == "field32" && WellFrames.Contains(frame))
-				return "Rock";
-			if (sheet == "field32" && WalkableFrames.Contains(frame))
-				return "Clear";
-
-			// Otherwise by colour: mostly blue is water; outside FIELD31, a quarter grey is rock.
-			var blue = rgb.Count(p => p.B > p.R + 20 && p.B > p.G + 15) / (double)rgb.Length;
-			var gray = rgb.Count(p => Math.Max(p.R, Math.Max(p.G, p.B)) - Math.Min(p.R, Math.Min(p.G, p.B)) < 22
-				&& Math.Max(p.R, Math.Max(p.G, p.B)) > 85) / (double)rgb.Length;
-			if (blue >= 0.5)
-				return "Water";
-
-			return sheet != "field31" && gray >= 0.25 ? "Rock" : "Clear";
+			var text = Encoding.ASCII.GetString(stage, 0x2A40, 0x2A98 - 0x2A40);
+			return text.Split('\0').Select(s => s.Trim()).FirstOrDefault(s => s.Length >= 2 && !s.Contains('\\') && s.All(ch => ch >= 0x20 && ch < 0x7f));
 		}
 
 		// The colour a 1x1 box downscale gives (as Pillow computes it): each row averaged and rounded, then the rows.
@@ -229,8 +226,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			return $"{Channel(p => p.R):X2}{Channel(p => p.G):X2}{Channel(p => p.B):X2}";
 		}
 
-		static HashSet<(int X, int Y)> Reachable((string Sheet, int Frame)[,] keys, SortedDictionary<(string Sheet, int Frame), Template> templates,
-			(int X, int Y) start, int width, int height)
+		static HashSet<(int X, int Y)> Reachable(Func<(int X, int Y), bool> passable, (int X, int Y) start)
 		{
 			var seen = new HashSet<(int, int)> { start };
 			var queue = new Queue<(int X, int Y)>();
@@ -241,12 +237,11 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 				for (var dx = -1; dx <= 1; dx++)
 					for (var dy = -1; dy <= 1; dy++)
 					{
-						int nx = x + dx, ny = y + dy;
-						if ((dx != 0 || dy != 0) && nx >= 0 && ny >= 0 && nx < width && ny < height && !seen.Contains((nx, ny))
-							&& templates[keys[ny, nx]].TerrainType == "Clear")
+						var n = (x + dx, y + dy);
+						if ((dx != 0 || dy != 0) && !seen.Contains(n) && passable(n))
 						{
-							seen.Add((nx, ny));
-							queue.Enqueue((nx, ny));
+							seen.Add(n);
+							queue.Enqueue(n);
 						}
 					}
 			}
@@ -254,10 +249,10 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			return seen;
 		}
 
-		static (int Width, int Height, (int TileId, int Variant)[,] Cells) ReadMap(byte[] data)
+		static (int Width, int Height, int TerrainSet, (int TileId, int Variant)[,] Cells) ReadMap(byte[] data)
 		{
 			const int Header = 52;
-			int width = BitConverter.ToInt32(data, 0), height = BitConverter.ToInt32(data, 4);
+			int width = BitConverter.ToInt32(data, 0), height = BitConverter.ToInt32(data, 4), terrainSet = BitConverter.ToInt32(data, 12);
 			if (data.Length != Header + width * height * 4)
 				throw new InvalidDataException("Unexpected .map size.");
 
@@ -265,37 +260,29 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			for (var i = 0; i < width * height; i++)
 				cells[i / width, i % width] = (data[Header + 4 * i], data[Header + 4 * i + 1]);
 
-			return (width, height, cells);
+			return (width, height, terrainSet, cells);
 		}
 
-		// Player starts: the type 1 records of the .stg placement table (20-byte records from byte 3488, ending at the
-		// first run of 10 empty records).
+		// Player starts: the type 1 records of the .stg placement table (20-byte records x, y, type, owner, 0 from byte
+		// 3488, ending at the first empty record), in player slot order.
 		static List<(int X, int Y)> ReadStarts(byte[] data)
 		{
-			var starts = new List<(int, int)>();
-			var empty = 0;
-			for (var offset = 3488; offset + 20 <= data.Length; offset += 20)
+			var starts = new List<(int X, int Y, int Owner)>();
+			for (var offset = 3488; offset + 20 <= 0x2A40; offset += 20)
 			{
 				var values = Enumerable.Range(0, 5).Select(k => BitConverter.ToInt32(data, offset + 4 * k)).ToArray();
 				if (values.All(v => v == 0))
-				{
-					if (++empty >= 10)
-						break;
+					break;
 
-					continue;
-				}
-
-				empty = 0;
 				if (values[2] == 1)
-					starts.Add((values[0], values[1]));
+					starts.Add((values[0], values[1], values[3]));
 			}
 
-			return starts;
+			return starts.OrderBy(s => s.Owner).Select(s => (s.X, s.Y)).ToList();
 		}
 
-		static void WriteMap(InstallContext c, string name, string title, (string Sheet, int Frame)[,] keys,
-			SortedDictionary<(string Sheet, int Frame), Template> templates, Dictionary<(int X, int Y), string> crops, List<(int X, int Y)> starts,
-			List<(MapObjects.ObjectType Type, int X, int Y)> objects)
+		static void WriteMap(InstallContext c, string name, string title, int tileset, Template[,] keys,
+			Dictionary<(int X, int Y), string> crops, List<(int X, int Y)> starts, List<(MapObjects.ObjectType Type, int X, int Y)> objects)
 		{
 			// OpenRA needs a one-cell cordon around the playable area; it is filled with the black border tile.
 			int h = keys.GetLength(0), w = keys.GetLength(1);
@@ -316,7 +303,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 					for (var y = 0; y < sizeH; y++)
 					{
 						var inside = x >= 1 && x <= w && y >= 1 && y <= h;
-						writer.Write((ushort)templates[inside ? keys[y - 1, x - 1] : BorderKey].Id);
+						writer.Write((ushort)(inside ? keys[y - 1, x - 1].Id : BorderId));
 						writer.Write((byte)0);
 					}
 
@@ -341,7 +328,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 				for (var x = 0; x < w; x++)
 				{
 					var hex = trees.Contains((x, y)) ? TreePreviewColor :
-						crops.TryGetValue((x, y), out var crop) ? CropPreviewColors[crop] : templates[keys[y, x]].Color;
+						crops.TryGetValue((x, y), out var crop) ? CropPreviewColors[crop] : keys[y, x].Color;
 					var i = 4 * (y * w + x);
 					preview[i] = Convert.ToByte(hex[..2], 16);
 					preview[i + 1] = Convert.ToByte(hex.Substring(2, 2), 16);
@@ -355,7 +342,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			var yaml = new List<string>
 			{
 				"MapFormat: 12", "", "RequiresMod: syw", "", $"Title: {title}", "",
-				$"Author: OpenSYW (converted from original SYW {name})", "", "Tileset: FIELD3", "",
+				$"Author: OpenSYW (converted from original SYW {name})", "", $"Tileset: FIELD{tileset}", "",
 				$"MapSize: {sizeW},{sizeH}", "", $"Bounds: 1,1,{w},{h}", "", "Visibility: Lobby", "",
 				"Categories: Conquest", "", "Players:",
 				"\tPlayerReference@Neutral:", "\t\tName: Neutral", "\t\tOwnsWorld: True", "\t\tNonCombatant: True",
@@ -374,47 +361,68 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 
 			yaml.AddRange(new[] { "", "Rules: starting-hq.yaml" });
 			c.WriteText($"maps/{name}/map.yaml", string.Join("\n", yaml) + "\n");
+
+			// The original HQ is centred on the start; OpenRA puts the base actor's top-left there unless offset.
 			c.WriteText($"maps/{name}/starting-hq.yaml",
-				"world:\n\tStartingUnits@Korea:\n\t\tBaseActor: hq\n\tStartingUnits@Japan:\n\t\tBaseActor: jhq\n");
+				"world:\n\tStartingUnits@Korea:\n\t\tBaseActor: hq\n\t\tBaseActorOffset: -1,-1\n" +
+				"\tStartingUnits@Japan:\n\t\tBaseActor: jhq\n\t\tBaseActorOffset: -1,-1\n");
 		}
 
-		static string TilesetYaml(IEnumerable<Template> templates)
+		static string TilesetYaml(int id, string name, IEnumerable<Template> templates)
 		{
 			var lines = new List<string>
 			{
-				"General:", "\tName: SYW Grassland", "\tId: FIELD3",
-				"\tEditorTemplateOrder: Land, Dirt, Field, Water, Bridge, Cliff, Rock, Border", "\tPalette:", "", "Terrain:"
+				"# Generated by --install-assets (AssetInstaller/Terrain.cs) from the terrain sheets' own attribute tables.",
+				"General:", $"\tName: SYW {name}", $"\tId: FIELD{id}",
+				"\tEditorTemplateOrder: Land, Dirt, Shore, Field, Water, Cliff, Rock, Border", "\tPalette:", "", "Terrain:"
 			};
-			foreach (var (name, target, color) in TerrainTypes)
-				lines.AddRange(new[] { $"\tTerrainType@{name}:", $"\t\tType: {name}", $"\t\tTargetTypes: {target}", $"\t\tColor: {color}" });
+			foreach (var (type, target, color) in TerrainTypes)
+				lines.AddRange(new[] { $"\tTerrainType@{type}:", $"\t\tType: {type}", $"\t\tTargetTypes: {target}", $"\t\tColor: {color}" });
 
 			lines.AddRange(new[] { "", "Templates:" });
 			foreach (var t in templates)
 				lines.AddRange(new[]
 				{
-					$"\tTemplate@{t.Id}:", $"\t\tId: {t.Id}", $"\t\tImages: tilesets/field3/{t.Sheet}.png", $"\t\tFrames: {t.Frame}",
+					$"\tTemplate@{t.Id}:", $"\t\tId: {t.Id}", $"\t\tImages: tilesets/field{id}/{t.Sheet}.png", $"\t\tFrames: {t.Frame}",
 					"\t\tSize: 1,1", $"\t\tCategories: {t.Category}", "\t\tTiles:", $"\t\t\t0: {t.TerrainType}",
 					$"\t\t\t\tMinColor: {t.Color}", $"\t\t\t\tMaxColor: {t.Color}", ""
 				});
 
+			lines.AddRange(new[]
+			{
+				$"\tTemplate@{BorderId}:", $"\t\tId: {BorderId}", $"\t\tImages: tilesets/field{id}/border.png", "\t\tFrames: 0",
+				"\t\tSize: 1,1", "\t\tCategories: Border", "\t\tTiles:", "\t\t\t0: Clear", "\t\t\t\tMinColor: 000000",
+				"\t\t\t\tMaxColor: 000000", ""
+			});
+
 			return string.Join("\n", lines);
 		}
 
-		static void ExportCrops(InstallContext c, IndexedImage[] field33)
+		// Rice and potato sheets from each set's third sheet: the grassland art is the default, dirt and snow maps use
+		// their own (sequence TilesetFilenames).
+		static void ExportCrops(InstallContext c, IEnumerable<SetData> sets)
 		{
 			var yaml = new List<string>();
 			foreach (var (crop, young, ripe) in Crops)
 			{
-				var frames = new List<IndexedImage>();
-				for (var row = 0; row < 5; row++)
-					for (var col = 0; col < 5; col++)
-						foreach (var (blockRow, blockCol) in new[] { young, young, ripe, ripe })
-							frames.Add(field33[(blockRow + row) * Columns + blockCol + col]);
+				var files = new Dictionary<int, string>();
+				foreach (var set in sets)
+				{
+					var frames = new List<IndexedImage>();
+					for (var row = 0; row < 5; row++)
+						for (var col = 0; col < 5; col++)
+							foreach (var (blockRow, blockCol) in new[] { young, young, ripe, ripe })
+								frames.Add(set.Frames[2][(blockRow + row) * Columns + blockCol + col]);
 
-				var rows = (frames.Count + Columns - 1) / Columns;
-				c.WriteRgba($"art/resources/{crop}.png", Columns * Tile, rows * Tile, SheetRgba(frames, c.Knight), FrameData(frames.Count));
+					var file = set.Id == 3 ? $"art/resources/{crop}.png" : $"art/resources/{crop}-field{set.Id}.png";
+					var rows = (frames.Count + Columns - 1) / Columns;
+					c.WriteRgba(file, Columns * Tile, rows * Tile, SheetRgba(frames, c.Knight), FrameData(frames.Count));
+					files[set.Id] = file;
+				}
 
-				yaml.AddRange(new[] { $"{crop}:", "\tDefaults:", $"\t\tFilename: art/resources/{crop}.png", "\t\tLength: 4" });
+				yaml.AddRange(new[] { $"{crop}:", "\tDefaults:", $"\t\tFilename: {files[3]}", "\t\tTilesetFilenames:" });
+				yaml.AddRange(files.Where(f => f.Key != 3).Select(f => $"\t\t\tFIELD{f.Key}: {f.Value}"));
+				yaml.Add("\t\tLength: 4");
 				for (var row = 0; row < 5; row++)
 					for (var col = 0; col < 5; col++)
 						yaml.AddRange(new[] { $"\tr{row}c{col}:", $"\t\tStart: {(row * 5 + col) * 4}" });

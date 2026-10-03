@@ -14,7 +14,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			new("units", "Every unit's sprite sheets", Units.Export),
 			new("buildings", "Building states, animated idles and the scaffold", Buildings.Export),
 			new("effects", "Effects, projectiles, training and spell buttons, portraits", Effects.Export),
-			new("terrain", "FIELD3 tileset, the Fighter map (Korea Multi 1) and the crop resources", Terrain.Export),
+			new("terrain", "The dirt, snow and grassland tilesets, every skirmish map and the crop resources", Terrain.Export),
 			new("chrome", "Title screen, sidebar, main menu fire and mouse cursors", Chrome.Export),
 			new("objects", "Trees, Jangseung totems, brazier and flags from TREE.SPR (map objects)", MapObjects.Export),
 			new("audio", "Sound effects and voices from effect/ (silent placeholders skipped)", Audio.Export),

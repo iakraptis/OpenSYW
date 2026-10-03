@@ -1,6 +1,9 @@
 rice:
 	Defaults:
 		Filename: art/resources/rice.png
+		TilesetFilenames:
+			FIELD1: art/resources/rice-field1.png
+			FIELD2: art/resources/rice-field2.png
 		Length: 4
 	r0c0:
 		Start: 0
@@ -56,6 +59,9 @@ rice:
 potato:
 	Defaults:
 		Filename: art/resources/potato.png
+		TilesetFilenames:
+			FIELD1: art/resources/potato-field1.png
+			FIELD2: art/resources/potato-field2.png
 		Length: 4
 	r0c0:
 		Start: 0

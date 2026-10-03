@@ -50,6 +50,8 @@ Sequences:
 
 TileSets:
 	syw|tilesets/syw.yaml
+	syw|tilesets/field1.yaml
+	syw|tilesets/field2.yaml
 	syw|tilesets/field3.yaml
 
 Voices:
