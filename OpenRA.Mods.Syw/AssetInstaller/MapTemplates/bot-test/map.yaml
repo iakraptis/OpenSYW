@@ -34,12 +34,12 @@ Players:
 		Faction: korea
 	PlayerReference@North:
 		Name: North
-		Bot: japanese
+		Bot: medium
 		Faction: japan
 		Enemies: South
 	PlayerReference@South:
 		Name: South
-		Bot: korean
+		Bot: medium
 		Faction: korea
 		Enemies: North
 

@@ -67,16 +67,25 @@ namespace OpenRA.Mods.Syw.Traits
 		public readonly int DefenseMinRadius = 2;
 		public readonly int DefenseMaxRadius = 5;
 
+		[Desc("Tower build stages: a finished building of the key's type allows up to the value's number of",
+			"DefenseBuildingTypes in total (the highest applicable value counts). Until the bot owns any of them it builds",
+			"no towers; while it has fewer than allowed, towers come before anything else. Empty: towers follow their shares.")]
+		public readonly Dictionary<string, int> TowerSteps = new();
+
 		public override object Create(ActorInitializer init) { return new PeasantBaseBuilderBotModule(init.Self, this); }
 	}
 
 	public class PeasantBaseBuilderBotModule : ConditionalTrait<PeasantBaseBuilderBotModuleInfo>, IBotTick
 	{
+		// Crop field spots tried for a drop-off before giving up on that building type for this decision.
+		const int FieldCandidateCount = 12;
+
 		readonly World world;
 		readonly Player player;
 		PlayerResources resources;
 		TechTree techTree;
 		IResourceLayer resourceLayer;
+		IPathFinder pathFinder;
 		int ticks;
 
 		public PeasantBaseBuilderBotModule(Actor self, PeasantBaseBuilderBotModuleInfo info)
@@ -91,6 +100,7 @@ namespace OpenRA.Mods.Syw.Traits
 			resources = player.PlayerActor.Trait<PlayerResources>();
 			techTree = player.PlayerActor.Trait<TechTree>();
 			resourceLayer = world.WorldActor.TraitOrDefault<IResourceLayer>();
+			pathFinder = world.WorldActor.Trait<IPathFinder>();
 			base.Created(self);
 		}
 
@@ -130,32 +140,32 @@ namespace OpenRA.Mods.Syw.Traits
 				if (resources.GetCashAndResources() < cost + Info.CashReserve)
 					return;
 
-				var center = baseCenter;
-				var minRadius = Info.MinBaseRadius;
-				var maxRadius = Info.MaxBaseRadius;
-				if (Info.ResourceBuildingTypes.Contains(type) && NearestField(center) is CPos field)
+				// Where to look, in order: a drop-off beside a crop field (the nearest may have no room: trees and cliffs
+				// often edge the fields), a tower beside each guarded building from the least defended up (one may be
+				// boxed in by fields), anything else around the base.
+				IEnumerable<(CPos Center, int Min, int Max)> places = new[] { (baseCenter, Info.MinBaseRadius, Info.MaxBaseRadius) };
+				if (Info.ResourceBuildingTypes.Contains(type))
+					places = FieldCandidates(baseCenter, free[0]).Select(f => (f, 1, 6));
+				else if (Info.DefenseBuildingTypes.Contains(type))
 				{
-					center = field;
-					minRadius = 1;
-					maxRadius = 6;
-				}
-				else if (Info.DefenseBuildingTypes.Contains(type) && LeastDefended() is CPos guarded)
-				{
-					center = guarded;
-					minRadius = Info.DefenseMinRadius;
-					maxRadius = Info.DefenseMaxRadius;
+					var guarded = GuardedByFewestTowers();
+					if (guarded.Count > 0)
+						places = guarded.Select(g => (g, Info.DefenseMinRadius, Info.DefenseMaxRadius));
 				}
 
-				var builder = free.OrderBy(b => b.IsIdle ? 0 : 1).ThenBy(b => (b.Location - center).LengthSquared).First();
-				var cell = FindSite(builder, actorInfo, center, minRadius, maxRadius);
-				if (cell == null)
+				var site = places
+					.Select(p => (Builder: NearestBuilder(free, p.Center), Place: p))
+					.Select(c => (Cell: FindSite(c.Builder, actorInfo, c.Place.Center, c.Place.Min, c.Place.Max), c.Builder))
+					.FirstOrDefault(c => c.Cell != null);
+
+				if (site.Cell == null)
 				{
 					AIUtils.BotDebug("{0}: no site for {1}, trying the next building type.", player, type);
 					continue;
 				}
 
-				AIUtils.BotDebug("{0}: building {1} at {2}.", player, type, cell.Value);
-				bot.QueueOrder(new Order(Builder.OrderID, builder, Target.FromCell(world, cell.Value), false) { TargetString = type });
+				AIUtils.BotDebug("{0}: building {1} at {2}.", player, type, site.Cell.Value);
+				bot.QueueOrder(new Order(Builder.OrderID, site.Builder, Target.FromCell(world, site.Cell.Value), false) { TargetString = type });
 				return;
 			}
 		}
@@ -188,7 +198,7 @@ namespace OpenRA.Mods.Syw.Traits
 			int Count(string t) => counts.TryGetValue(t, out var n) ? n : 0;
 
 			// The type whose (count + 1) / weight is smallest is furthest below its desired share.
-			return Info.BuildingFractions
+			var byShare = Info.BuildingFractions
 				.Where(kv => kv.Value > 0 && builder.Info.Types.Contains(kv.Key) && world.Map.Rules.Actors.ContainsKey(kv.Key)
 					&& (!Info.BuildingLimits.TryGetValue(kv.Key, out var limit) || Count(kv.Key) < limit))
 				.Where(kv =>
@@ -200,6 +210,16 @@ namespace OpenRA.Mods.Syw.Traits
 				.ThenByDescending(kv => kv.Value)
 				.Select(kv => kv.Key)
 				.ToList();
+
+			if (Info.TowerSteps.Count == 0)
+				return byShare;
+
+			// Tower stages: no towers before the first step's building is finished; below the allowed number, towers
+			// first (GuardedByFewestTowers puts each beside the least defended Mill); at it, no more towers for now.
+			var allowed = Info.TowerSteps.Where(kv => FinishedCount(kv.Key) > 0).Select(kv => kv.Value).DefaultIfEmpty(0).Max();
+			var towers = Info.DefenseBuildingTypes.Sum(Count);
+			var others = byShare.Where(t => !Info.DefenseBuildingTypes.Contains(t));
+			return towers < allowed ? byShare.Where(Info.DefenseBuildingTypes.Contains).Concat(others).ToList() : others.ToList();
 		}
 
 		CPos BaseCenter(List<Actor> builders)
@@ -213,35 +233,56 @@ namespace OpenRA.Mods.Syw.Traits
 			return anyBuilding?.Location ?? builders[0].Location;
 		}
 
-		// The guarded building (a Mill) with the fewest of our towers around it, or null if there is none.
-		CPos? LeastDefended()
+		// Each guarded building (a Mill) by centre, with the number of our towers within 8 cells of it.
+		List<(CPos Center, int Towers)> GuardedTowers()
 		{
 			var towers = world.ActorsHavingTrait<Building>()
 				.Where(a => a.Owner == player && !a.IsDead && Info.DefenseBuildingTypes.Contains(a.Info.Name))
 				.Select(a => a.Location).ToList();
-			var guarded = world.ActorsHavingTrait<Building>()
+			return world.ActorsHavingTrait<Building>()
 				.Where(a => a.Owner == player && !a.IsDead && Info.DefendedBuildingTypes.Contains(a.Info.Name))
 				.Select(a => a.Location + new CVec(1, 1))
-				.OrderBy(c => towers.Count(t => (t - c).LengthSquared <= 64))
+				.Select(c => (c, towers.Count(t => (t - c).LengthSquared <= 64)))
 				.ToList();
-			return guarded.Count == 0 ? null : guarded[0];
 		}
 
-		// Nearest crop cell to the base that no other drop-off already serves.
-		CPos? NearestField(CPos center)
+		// Our buildings of a type that have finished construction.
+		int FinishedCount(string type) => world.ActorsHavingTrait<Building>()
+			.Count(a => a.Owner == player && !a.IsDead && a.Info.Name == type && (a.TraitOrDefault<UnderConstruction>()?.IsComplete ?? true));
+
+		// The centres of the guarded buildings, the one with the fewest towers around it first.
+		List<CPos> GuardedByFewestTowers() => GuardedTowers().OrderBy(g => g.Towers).Select(g => g.Center).ToList();
+
+		static Actor NearestBuilder(List<Actor> free, CPos center) =>
+			free.OrderBy(b => b.IsIdle ? 0 : 1).ThenBy(b => (b.Location - center).LengthSquared).First();
+
+		// Crop cells no drop-off serves yet and the Peasants can walk to (not across a river), nearest the base first,
+		// at most FieldCandidateCount of them and spread at least 4 cells apart so each try looks at a different part of
+		// a field (or another field).
+		IEnumerable<CPos> FieldCandidates(CPos center, Actor peasant)
 		{
 			if (resourceLayer == null)
-				return null;
+				yield break;
+
+			var locomotor = peasant.TraitOrDefault<Mobile>()?.Locomotor;
 
 			var dropOffs = world.ActorsHavingTrait<Building>()
 				.Where(a => a.Owner == player && !a.IsDead && Info.ResourceBuildingTypes.Contains(a.Info.Name))
 				.Select(a => a.Location).ToList();
 
+			var tried = new List<CPos>();
 			foreach (var cell in world.Map.FindTilesInCircle(center, Info.ResourceSearchRadius))
-				if (resourceLayer.GetResource(cell).Type != null && dropOffs.All(d => (d - cell).LengthSquared > 64))
-					return cell;
+			{
+				if (resourceLayer.GetResource(cell).Type == null || dropOffs.Any(d => (d - cell).LengthSquared <= 64)
+					|| tried.Any(t => (t - cell).LengthSquared < 16)
+					|| (locomotor != null && !pathFinder.PathExistsForLocomotor(locomotor, peasant.Location, cell)))
+					continue;
 
-			return null;
+				tried.Add(cell);
+				yield return cell;
+				if (tried.Count >= FieldCandidateCount)
+					yield break;
+			}
 		}
 
 		CPos? FindSite(Actor builder, ActorInfo actorInfo, CPos center, int minRadius, int maxRadius)
@@ -261,7 +302,8 @@ namespace OpenRA.Mods.Syw.Traits
 			return valid.Count == 0 ? null : valid.Random(world.LocalRandom);
 		}
 
-		// Keeps Spacing free cells around the footprint (no other buildings) and never covers crop fields.
+		// Keeps Spacing free cells around the footprint (no other buildings) and never covers crop fields. Map objects
+		// (trees, totems; buildings without health) block their own cells only: a site may stand next to a tree.
 		bool Clear(BuildingInfo info, CPos topLeft)
 		{
 			var footprint = info.Tiles(topLeft).ToList();
@@ -274,7 +316,7 @@ namespace OpenRA.Mods.Syw.Traits
 					for (var dy = -s; dy <= s; dy++)
 					{
 						var n = c + new CVec(dx, dy);
-						if (world.Map.Contains(n) && world.ActorMap.GetActorsAt(n).Any(a => a.TraitOrDefault<Building>() != null))
+						if (world.Map.Contains(n) && world.ActorMap.GetActorsAt(n).Any(a => a.TraitOrDefault<Building>() != null && a.Info.HasTraitInfo<HealthInfo>()))
 							return false;
 					}
 

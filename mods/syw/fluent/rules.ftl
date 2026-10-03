@@ -7,11 +7,11 @@ notification-night = Night falls. Units see less far.
 notification-day = Day breaks.
 options-game-speed-test = Test (5x, AI matches)
 
-bot-korean =
-    .name = Korean General
+bot-medium =
+    .name = Medium General
 
-bot-japanese =
-    .name = Japanese General
+bot-hard =
+    .name = Hard General
 
 ## world.yaml
 faction-random =

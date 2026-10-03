@@ -1,19 +1,29 @@
-# Korean AI, modelled on the C&C / Red Alert ModularBot setup. Stock modules handle units, harvesting,
+# The AI Generals, modelled on the C&C / Red Alert ModularBot setup. Stock modules handle units, harvesting,
 # squads, repairs and captures; PeasantBaseBuilderBotModule replaces the construction-yard base builder
-# because Korean buildings are placed by Peasants. The same modules play Japan: every list names both factions'
-# types, and each faction's Peasant only builds its own buildings. Both bot entries work for either faction.
+# because buildings are placed by Peasants. Each bot plays either faction: every list names both factions'
+# types, and each faction's Peasant only builds its own buildings. Its faction (Korea, Japan or Random) is
+# picked in the lobby like a human player's.
+#
+# Medium General: the original bot. Hard General: a stronger economy, staged towers at the Mills, larger attack
+# waves, and it defends the whole base (Mills included) when attacked.
 player:
-	ModularBot@Korean:
-		Name: bot-korean.name
-		Type: korean
-	ModularBot@Japanese:
-		Name: bot-japanese.name
-		Type: japanese
-	GrantConditionOnBotOwner@korean:
-		Condition: enable-korean-ai
-		Bots: korean, japanese
-	PeasantBaseBuilderBotModule@korean:
-		RequiresCondition: enable-korean-ai
+	ModularBot@Medium:
+		Name: bot-medium.name
+		Type: medium
+	ModularBot@Hard:
+		Name: bot-hard.name
+		Type: hard
+	GrantConditionOnBotOwner@medium:
+		Condition: enable-medium-ai
+		Bots: medium
+	GrantConditionOnBotOwner@hard:
+		Condition: enable-hard-ai
+		Bots: hard
+
+	# ------------------------------------------------------------------ Medium General
+
+	PeasantBaseBuilderBotModule@medium:
+		RequiresCondition: enable-medium-ai
 		BuilderTypes: peasant, jpeasant
 		BaseCenterTypes: hq, jhq
 		HarvesterTypes: peasant, bull, jpeasant, jbull
@@ -78,8 +88,8 @@ player:
 			airport: 1
 			jarrowtower: 4
 			jcannontower: 3
-	UnitBuilderBotModule@korean:
-		RequiresCondition: enable-korean-ai
+	UnitBuilderBotModule@medium:
+		RequiresCondition: enable-medium-ai
 		UnitQueues: Workers.Korea, Infantry.Korea, Vehicles.Korea, Aircraft.Korea, AdvancedInfantry.Korea, Temple.Korea, Shaman.Korea, Cavalry.Korea, Naval.Korea, Workers.Japan, Infantry.Japan, Vehicles.Japan, Aircraft.Japan, AdvancedInfantry.Japan, Temple.Japan, Shaman.Japan, Cavalry.Japan, Naval.Japan
 		UnitsToBuild:
 			# Workers first: a heavy weight until the limit below is reached.
@@ -122,12 +132,12 @@ player:
 			thief: 2
 			priest: 4
 			witch: 3
-	HarvesterBotModule@korean:
-		RequiresCondition: enable-korean-ai
+	HarvesterBotModule@medium:
+		RequiresCondition: enable-medium-ai
 		HarvesterTypes: peasant, bull, jpeasant, jbull
 		RefineryTypes: hq, mill, jhq, jmill
-	SquadManagerBotModule@korean:
-		RequiresCondition: enable-korean-ai
+	SquadManagerBotModule@medium:
+		RequiresCondition: enable-medium-ai
 		SquadSize: 10
 		ExcludeFromSquadsTypes: peasant, bull, occupier, miner, transporter, transportship, jpeasant, jbull, thief, jtransporter, submarine
 		ConstructionYardTypes: hq, jhq
@@ -135,9 +145,153 @@ player:
 		NavalUnitsTypes: patrolship, cannonship, jcannonship, arrowship, torpedo
 		NavalProductionTypes: shipyard, jshipyard
 		ProtectionTypes: hq, barracks, mill, beaconmound, heavyarmsworkshop, barracks2, planeworks, temple, shamanhouse, stable, arrowtower, cannontower, shipyard, peasant, bull, jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, airport, jtemple, witchhouse, jstable, jarrowtower, jcannontower, jshipyard, jpeasant, jbull
-	BuildingRepairBotModule@korean:
-		RequiresCondition: enable-korean-ai
-	CaptureManagerBotModule@korean:
-		RequiresCondition: enable-korean-ai
+	BuildingRepairBotModule@medium:
+		RequiresCondition: enable-medium-ai
+	CaptureManagerBotModule@medium:
+		RequiresCondition: enable-medium-ai
+		CapturingActorTypes: occupier, thief
+		CapturableActorTypes: hq, barracks, mill, beaconmound, heavyarmsworkshop, barracks2, planeworks, temple, shamanhouse, stable, arrowtower, cannontower, shipyard, jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, airport, jtemple, witchhouse, jstable, jarrowtower, jcannontower, jshipyard
+
+	# ------------------------------------------------------------------ Hard General
+
+	PeasantBaseBuilderBotModule@hard:
+		RequiresCondition: enable-hard-ai
+		BuilderTypes: peasant, jpeasant
+		BaseCenterTypes: hq, jhq
+		HarvesterTypes: peasant, bull, jpeasant, jbull
+		ResourceBuildingTypes: mill, jmill
+		DefenseBuildingTypes: arrowtower, cannontower, jarrowtower, jcannontower
+		DefendedBuildingTypes: mill, jmill
+		# Tower stages (total towers once the building is finished): none before the Barracks, then one tower right
+		# away, then up to six (about two per Mill) once the Heavy Arms Workshop or Barracks2 stands. Below the
+		# allowed number, towers come before other buildings; each goes beside the least defended Mill.
+		TowerSteps:
+			barracks: 1
+			jbarracks: 1
+			heavyarmsworkshop: 6
+			barracks2: 6
+			jheavyarms: 6
+			jbarracks2: 6
+		# Faster decisions and more building at once than Medium.
+		DecisionInterval: 40
+		MaxConcurrentConstructions: 3
+		MaxBaseRadius: 26
+		# A bigger workforce before the first building, and less cash held back.
+		MinimumHarvesters: 6
+		CashReserve: 300
+		BuildingFractions:
+			mill: 40
+			barracks: 20
+			beaconmound: 25
+			heavyarmsworkshop: 15
+			barracks2: 15
+			stable: 12
+			temple: 12
+			shamanhouse: 10
+			planeworks: 20
+			# Towers guard the Mills (least defended Mill first): a much larger share than Medium.
+			arrowtower: 18
+			cannontower: 14
+			jmill: 40
+			jbarracks: 20
+			jbeacon: 25
+			jheavyarms: 15
+			jbarracks2: 15
+			jstable: 12
+			jtemple: 12
+			witchhouse: 10
+			airport: 20
+			jarrowtower: 18
+			jcannontower: 14
+		BuildingLimits:
+			# A third Mill for a stronger economy, and two to three towers per Mill.
+			mill: 3
+			barracks: 2
+			beaconmound: 1
+			heavyarmsworkshop: 2
+			barracks2: 1
+			stable: 1
+			temple: 1
+			shamanhouse: 1
+			planeworks: 1
+			arrowtower: 8
+			cannontower: 6
+			jmill: 3
+			jbarracks: 2
+			jbeacon: 1
+			jheavyarms: 2
+			jbarracks2: 1
+			jstable: 1
+			jtemple: 1
+			witchhouse: 1
+			airport: 1
+			jarrowtower: 8
+			jcannontower: 6
+	UnitBuilderBotModule@hard:
+		RequiresCondition: enable-hard-ai
+		UnitQueues: Workers.Korea, Infantry.Korea, Vehicles.Korea, Aircraft.Korea, AdvancedInfantry.Korea, Temple.Korea, Shaman.Korea, Cavalry.Korea, Naval.Korea, Workers.Japan, Infantry.Japan, Vehicles.Japan, Aircraft.Japan, AdvancedInfantry.Japan, Temple.Japan, Shaman.Japan, Cavalry.Japan, Naval.Japan
+		UnitsToBuild:
+			peasant: 300
+			bull: 10
+			footman: 20
+			archer: 20
+			gunner: 15
+			firecar: 10
+			cannon: 10
+			commander: 10
+			fighter: 5
+			monk: 4
+			shaman: 4
+			occupier: 2
+			jpeasant: 300
+			jbull: 10
+			jfootman: 20
+			jarcher: 20
+			jgunner: 15
+			armoredcar: 10
+			jcannon: 10
+			general: 10
+			jfighter: 3
+			bomber: 2
+			priest: 4
+			witch: 4
+			thief: 2
+		UnitLimits:
+			# More workers to feed three Mills.
+			peasant: 14
+			bull: 3
+			occupier: 2
+			monk: 4
+			shaman: 3
+			jpeasant: 14
+			jbull: 3
+			thief: 2
+			priest: 4
+			witch: 3
+	HarvesterBotModule@hard:
+		RequiresCondition: enable-hard-ai
+		HarvesterTypes: peasant, bull, jpeasant, jbull
+		RefineryTypes: hq, mill, jhq, jmill
+	SquadManagerBotModule@hard:
+		RequiresCondition: enable-hard-ai
+		# Larger attack waves keep a garrison at home for longer and hit harder when they go.
+		SquadSize: 14
+		SquadSizeRandomBonus: 6
+		# Defence: when any protected actor is attacked, every combat unit within 35 cells of the HQ (the Mills at
+		# the crop fields included; Medium only looks 15 cells out) forms the protection squad, which scans a wider
+		# area around the attacker.
+		ProtectUnitScanRadius: 35
+		ProtectionScanRadius: 12
+		MaxBaseRadius: 30
+		ExcludeFromSquadsTypes: peasant, bull, occupier, miner, transporter, transportship, jpeasant, jbull, thief, jtransporter, submarine
+		ConstructionYardTypes: hq, jhq
+		AirUnitsTypes: fighter, jfighter, bomber
+		NavalUnitsTypes: patrolship, cannonship, jcannonship, arrowship, torpedo
+		NavalProductionTypes: shipyard, jshipyard
+		ProtectionTypes: hq, barracks, mill, beaconmound, heavyarmsworkshop, barracks2, planeworks, temple, shamanhouse, stable, arrowtower, cannontower, shipyard, peasant, bull, jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, airport, jtemple, witchhouse, jstable, jarrowtower, jcannontower, jshipyard, jpeasant, jbull
+	BuildingRepairBotModule@hard:
+		RequiresCondition: enable-hard-ai
+	CaptureManagerBotModule@hard:
+		RequiresCondition: enable-hard-ai
 		CapturingActorTypes: occupier, thief
 		CapturableActorTypes: hq, barracks, mill, beaconmound, heavyarmsworkshop, barracks2, planeworks, temple, shamanhouse, stable, arrowtower, cannontower, shipyard, jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, airport, jtemple, witchhouse, jstable, jarrowtower, jcannontower, jshipyard
