@@ -11,12 +11,12 @@ WorldLoaded = function()
     ko.Cash = 30000
 
     -- 1. Production.
-    local kyard = Actor.Create("shipyard", true, { Owner = ko, Location = CPos.New(34, 14) })
+    local kyard = Actor.Create("kshipyard", true, { Owner = ko, Location = CPos.New(34, 14) })
     local jyard = Actor.Create("jshipyard", true, { Owner = me, Location = CPos.New(34, 23) })
-    local kair = Actor.Create("planeworks", true, { Owner = ko, Location = CPos.New(4, 40) })
-    local jair = Actor.Create("airport", true, { Owner = me, Location = CPos.New(12, 40) })
+    local kair = Actor.Create("kplaneworks", true, { Owner = ko, Location = CPos.New(4, 40) })
+    local jair = Actor.Create("jairport", true, { Owner = me, Location = CPos.New(12, 40) })
     Later(5, function()
-        for _, p in ipairs({ { kyard, "patrolship" }, { jyard, "torpedo" }, { kair, "fighter" }, { jair, "bomber" } }) do
+        for _, p in ipairs({ { kyard, "kpatrolship" }, { jyard, "jtorpedo" }, { kair, "kfighter" }, { jair, "jbomber" } }) do
             local owner = p[1].Owner
             p[1].Build({ p[2] })
             WaitFor(p[1].Type .. " trains " .. p[2], 1500, function() return #owner.GetActorsByType(p[2]) > 0 end)
@@ -24,8 +24,8 @@ WorldLoaded = function()
     end)
 
     -- 2. The Submarine and the Torpedo are not hidden: the enemy sees them.
-    local sub = Actor.Create("submarine", true, { Owner = me, Location = CPos.New(56, 10) })
-    local visibleTorpedo = Actor.Create("torpedo", true, { Owner = me, Location = CPos.New(56, 14) })
+    local sub = Actor.Create("jsubmarine", true, { Owner = me, Location = CPos.New(56, 10) })
+    local visibleTorpedo = Actor.Create("jtorpedo", true, { Owner = me, Location = CPos.New(56, 14) })
     Later(80, function()
         Check(SywTest.Visible(sub, ko), "the Submarine is visible to the enemy")
         Check(SywTest.Visible(visibleTorpedo, ko), "the Torpedo is visible to the enemy")
@@ -33,9 +33,9 @@ WorldLoaded = function()
 
     -- 3. Torpedoes: attack-move only. One attack-moves past an enemy ship and rams it; one attack-moves to open
     -- water and explodes when it arrives.
-    local torpedo = Actor.Create("torpedo", true, { Owner = me, Location = CPos.New(40, 30) })
-    local prey = Actor.Create("cannonship", true, { Owner = ko, Location = CPos.New(44, 31) })
-    local runner = Actor.Create("torpedo", true, { Owner = me, Location = CPos.New(40, 20) })
+    local torpedo = Actor.Create("jtorpedo", true, { Owner = me, Location = CPos.New(40, 30) })
+    local prey = Actor.Create("kcannonship", true, { Owner = ko, Location = CPos.New(44, 31) })
+    local runner = Actor.Create("jtorpedo", true, { Owner = me, Location = CPos.New(40, 20) })
     Later(3, function() prey.Stance = "HoldFire" end)
     Later(60, function()
         Check(not torpedo.IsDead, "an idle Torpedo waits instead of hunting (enemy ship 4 cells away)")

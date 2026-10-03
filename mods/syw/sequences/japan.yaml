@@ -543,11 +543,11 @@ building-portraits:
 		Filename: art/portraits/buildings/jstable.png
 	jbarracks2:
 		Filename: art/portraits/buildings/jbarracks2.png
-	airport:
+	jairport:
 		Filename: art/portraits/buildings/airport.png
 	jtemple:
 		Filename: art/portraits/buildings/jtemple.png
-	witchhouse:
+	jwitchhouse:
 		Filename: art/portraits/buildings/witchhouse.png
 	jarrowtower:
 		Filename: art/portraits/buildings/jarrowtower.png
@@ -567,29 +567,29 @@ unit-portraits:
 		Filename: art/portraits/units/jarcher.png
 	jgunner:
 		Filename: art/portraits/units/jgunner.png
-	priest:
+	jpriest:
 		Filename: art/portraits/units/priest.png
-	witch:
+	jwitch:
 		Filename: art/portraits/units/witch.png
-	general:
+	jgeneral:
 		Filename: art/portraits/units/general.png
-	thief:
+	jthief:
 		Filename: art/portraits/units/thief.png
-	armoredcar:
+	jarmoredcar:
 		Filename: art/portraits/units/armoredcar.png
 	jcannon:
 		Filename: art/portraits/units/jcannon.png
 	jcannonship:
 		Filename: art/portraits/units/jcannonship.png
-	arrowship:
+	jarrowship:
 		Filename: art/portraits/units/arrowship.png
-	submarine:
+	jsubmarine:
 		Filename: art/portraits/units/submarine.png
-	torpedo:
+	jtorpedo:
 		Filename: art/portraits/units/torpedo.png
 	jtransporter:
 		Filename: art/portraits/units/jtransporter.png
-	bomber:
+	jbomber:
 		Filename: art/portraits/units/bomber.png
 	jfighter:
 		Filename: art/portraits/units/jfighter.png

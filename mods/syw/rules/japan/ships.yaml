@@ -1,0 +1,92 @@
+# Japanese actors (j prefix). Each inherits its ^template from common/ and adds only what is Japanese.
+
+# Japan advantage: cheaper than the Patrol Ship and 1 more range.
+jarrowship:
+	Inherits: ^patrolship
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		Image: arrowship
+	Buildable:
+		Queue: Naval.Japan
+		BuildPaletteOrder: 20
+	Health:
+		HP: 45900
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: actor-arrowship.name
+	Armament:
+		Weapon: ArrowShipBow
+
+# ---------------------------------------------------------------- Ships
+
+# Japan advantage: the Turtle Ship's stats for 1,300.
+jcannonship:
+	Inherits: ^cannonship
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		Image: jcannonship
+	Buildable:
+		Queue: Naval.Japan
+	Valued:
+		Cost: 1300
+
+# Japan's transport is a submarine: carries units.
+jsubmarine:
+	Inherits: ^transportship
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		Image: submarine
+	Buildable:
+		Queue: Naval.Japan
+	Health:
+		HP: 53550
+	Tooltip:
+		Name: actor-submarine.name
+
+# Japan only: a suicide boat. It rams an enemy ship, or reaches its attack-move destination, and explodes
+# (power 1,500, 3x3 splash).
+jtorpedo:
+	Inherits: ^syw-ship
+	RenderSprites:
+		Image: torpedo
+	Selectable:
+		Bounds: 1024, 1024
+	Health:
+		HP: 3825
+	RevealsShroud:
+		Range: 4c0
+	Armament:
+		Weapon: TorpedoTargeting
+	AttackFrontal:
+		FacingTolerance: 512
+	# Controls: attack-move only. Plain moves are refused (right-click needs force-move, which RejectMoveOrders then
+	# drops). On an attack-move it rams any enemy ship within 5 cells; if none, it explodes at the destination.
+	AttackMoveOnly:
+	GrantCondition@ATTACKMOVEONLY:
+		Condition: attack-move-only
+	Mobile:
+		RequireForceMoveCondition: attack-move-only
+	# AttackAnything lets an attack-move divert to enemies in scan range; no scanning while idle, so it never
+	# sets off on its own.
+	AutoTarget:
+		ScanRadius: 5
+		InitialStance: AttackAnything
+		ScanOnIdle: false
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Water
+		ValidRelationships: Enemy
+	GrantConditionOnAttack:
+		Condition: triggered
+	KillsSelf:
+		RequiresCondition: triggered
+	FireWarheadsOnDeath:
+		Weapon: TorpedoBlast
+		EmptyWeapon: TorpedoBlast
+	Buildable:
+		Queue: Naval.Japan
+		BuildPaletteOrder: 40
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: actor-torpedo.name

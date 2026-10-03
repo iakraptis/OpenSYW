@@ -1,0 +1,35 @@
+# Korean actors (k prefix). Each inherits its ^template from common/ and adds only what is Korean.
+
+kpatrolship:
+	Inherits: ^patrolship
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		Image: patrolship
+	Buildable:
+		BuildPaletteOrder: 10
+	Health:
+		HP: 53550
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: actor-patrolship.name
+	Armament:
+		Weapon: PatrolShipBow
+
+kcannonship:
+	Inherits: ^cannonship
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		Image: cannonship
+	Valued:
+		Cost: 2000
+
+ktransportship:
+	Inherits: ^transportship
+	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
+	RenderSprites:
+		Image: transportship
+	Health:
+		HP: 45900
+	Tooltip:
+		Name: actor-transportship.name

@@ -1,0 +1,247 @@
+# Korean actors (k prefix). Each inherits its ^template from common/ and adds only what is Korean.
+
+kpeasant:
+	Inherits: ^peasant
+	RenderSprites:
+		Image: peasant
+	Buildable:
+		Queue: Workers.Korea
+	Builder:
+		Types: khq, kbarracks, kmill, kbeaconmound, kheavyarmsworkshop, kbarracks2, kplaneworks, ktemple, kshamanhouse, kstable, karrowtower, kcannontower, kshipyard
+
+kbull:
+	Inherits: ^bull
+	RenderSprites:
+		Image: bull
+	Buildable:
+		Queue: Workers.Korea
+
+kfootman:
+	Inherits: ^footman
+	RenderSprites:
+		Image: footman
+	Health:
+		HP: 26775
+	Armament:
+		Weapon: Sword
+	Buildable:
+		Queue: Infantry.Korea
+
+karcher:
+	Inherits: ^archer
+	RenderSprites:
+		Image: archer
+	Buildable:
+		Queue: Infantry.Korea
+
+kgunner:
+	Inherits: ^gunner
+	RenderSprites:
+		Image: gunner
+	Armament:
+		Weapon: Musket
+	Buildable:
+		Queue: Infantry.Korea
+
+kcommander:
+	Inherits: ^commander
+	RenderSprites:
+		Image: commander
+	Armament:
+		Weapon: CommanderBow
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground, Air
+	Buildable:
+		Queue: Cavalry.Korea
+	Tooltip:
+		Name: actor-commander.name
+
+koccupier:
+	Inherits: ^occupier
+	RenderSprites:
+		Image: occupier
+	Buildable:
+		Queue: AdvancedInfantry.Korea
+	Tooltip:
+		Name: actor-occupier.name
+
+kmonk:
+	Inherits: ^monk
+	RenderSprites:
+		Image: monk
+	Buildable:
+		Queue: Temple.Korea
+	Tooltip:
+		Name: actor-monk.name
+
+kshaman:
+	Inherits: ^shaman
+	RenderSprites:
+		Image: shaman
+	ManualLightning:
+	# Transform (FIRE 199 button): one allied Peasant becomes a random infantry unit.
+	ShamanTransform:
+		ManaCost: 70
+		# Melee: adjacent cells, diagonals included.
+		Range: 1c512
+		Results: kfootman, karcher, kgunner, koccupier, kminer, kmonk, kshaman, kcommander
+	Armament:
+		Weapon: MonkFireball
+		RequiresCondition: !casting-lightning
+		MuzzlePalette: knight
+		FireDelay: 6
+	Armament@LIGHTNING:
+		Name: secondary
+		Weapon: ShamanLightning
+		AmmoUsage: 90
+		PauseOnCondition: mana < 90 || !casting-lightning
+		MuzzlePalette: knight
+		FireDelay: 6
+	AmmoPool@MANA:
+		Armaments: secondary
+	AttackFrontal@LIGHTNING:
+		Armaments: secondary
+		RequiresCondition: casting-lightning
+		FacingTolerance: 0
+	Buildable:
+		Queue: Shaman.Korea
+	Tooltip:
+		Name: actor-shaman.name
+
+kminer:
+	Inherits: ^syw-infantry
+	RenderSprites:
+		Image: miner
+	Health:
+		HP: 19125
+	WithInfantryBody:
+		StandSequences: idle, stand
+		MoveSequence: walk
+	WithDeathAnimation:
+		DeathSequence: die1
+		UseDeathTypeSuffix: false
+		CrushedSequencePalette: player
+		CrushedPaletteIsPlayerPalette: true
+	PaidMineLayer:
+		Mine: syw-mine-building
+		ManaCost: 30
+	AmmoPool@MANA:
+		Name: mana
+		Armaments: none
+		Ammo: 100
+		InitialAmmo: 100
+	ReloadAmmoPool@MANA:
+		AmmoPool: mana
+		# Uniform 100-mana pools: 1 mana every 10 ticks (2.5/second), the same recharge
+		# time per spell as the old 20-mana pool at 1 per 50 ticks.
+		Delay: 10
+		Count: 1
+		ResetOnFire: false
+	WithAmmoPipsDecoration@MANA:
+		AmmoPools: mana
+		PipCount: 10
+		Image: mana-pips
+		FullSequence: full
+		EmptySequence: empty
+		Palette: knight
+		Position: BottomLeft
+		Margin: 0, 4
+		RequiresSelection: true
+	Buildable:
+		Queue: AdvancedInfantry.Korea
+		Prerequisites: barracks2
+		BuildPaletteOrder: 20
+		Icon: icon
+		IconPalette: knight
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-miner.name
+
+syw-mine:
+	Armor:
+		Type: None
+	RenderSprites:
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	HiddenUnderFog:
+	Interactable:
+	Mine:
+		CrushClasses: mine
+		DetonateClasses: mine
+		AvoidFriendly: true
+		BlockFriendly: false
+	Health:
+		HP: 1000
+	Immobile:
+		OccupiesSpace: true
+	HitShape:
+	Targetable:
+		TargetTypes: Ground, Mine
+	Cloak:
+		# None keeps the friendly marker opaque; enemies still cannot see it.
+		CloakStyle: None
+		DetectionTypes: Mine
+		InitialDelay: 0
+		UncloakOn: None
+	FireWarheadsOnDeath:
+		Weapon: MinerMineExplosion
+		EmptyWeapon: MinerMineExplosion
+	Tooltip:
+		Name: actor-syw-mine.name
+	MapEditorData:
+		Categories: System
+
+# Mine while being laid (BUILD1 frame 200): cannot detonate, hidden from enemies like the
+# armed mine. After the build time it replaces itself with the armed syw-mine (frame 201).
+syw-mine-building:
+	Inherits: syw-mine
+	-Mine:
+	-FireWarheadsOnDeath:
+	KillsSelf:
+		# Provisional build time: 100 ticks (4 seconds).
+		Delay: 100
+	SpawnActorOnDeath:
+		Actor: syw-mine
+		SkipMakeAnimations: true
+
+kfootman.colorpicker:
+	Inherits: ^footman
+	-MapEditorData:
+	-Buildable:
+	RenderSprites:
+		Image: footman
+		Palette: colorpicker
+	Health:
+		HP: 26775
+	Armament:
+		Weapon: Sword
+
+kpeasant.colorpicker:
+	Inherits: ^peasant
+	-MapEditorData:
+	-Buildable:
+	RenderSprites:
+		Image: peasant
+		Palette: colorpicker
+	Builder:
+		Types: khq, kbarracks, kmill, kbeaconmound, kheavyarmsworkshop, kbarracks2, kplaneworks, ktemple, kshamanhouse, kstable, karrowtower, kcannontower, kshipyard
+
+karcher.colorpicker:
+	Inherits: ^archer
+	-MapEditorData:
+	-Buildable:
+	RenderSprites:
+		Image: archer
+		Palette: colorpicker
+
+kgunner.colorpicker:
+	Inherits: ^gunner
+	-MapEditorData:
+	-Buildable:
+	RenderSprites:
+		Image: gunner
+		Palette: colorpicker
+	Armament:
+		Weapon: Musket

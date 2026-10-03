@@ -1,3 +1,7 @@
+# Shared by both factions: the family bases (^syw-*) and one ^template per unit or building. A template holds what
+# the Korean and Japanese versions have in common; each faction's actor (korea/, japan/) adds its own image,
+# production queue, name and the values that differ.
+
 # Shared naval movement/rendering; ship balance remains provisional.
 ^syw-ship:
 	# Sees one cell less at night (DayNightCycle).
@@ -67,22 +71,14 @@
 	MapEditorData:
 		Categories: Ships
 
-patrolship:
+^patrolship:
 	Inherits: ^syw-ship
 	Armor:
 		Type: Light
-	RenderSprites:
-		Image: patrolship
 	Health:
-		HP: 53550
 	Valued:
-		Cost: 1300
 	Tooltip:
-		Name: actor-patrolship.name
-	Buildable:
-		BuildPaletteOrder: 10
 	Armament:
-		Weapon: PatrolShipBow
 		LocalOffset: 0,0,512
 		MuzzlePalette: knight
 	AttackFrontal:
@@ -94,22 +90,19 @@ patrolship:
 		ValidRelationships: Enemy
 
 # Cannon ship is the Turtle Ship of the Korean roster.
-cannonship:
+^cannonship:
 	Inherits: ^syw-ship
-	RenderSprites:
-		Image: cannonship
+	RevealsShroud:
+		Range: 10c0
+	Mobile:
+		Speed: 50
+	Buildable:
+		BuildPaletteOrder: 20
 	Health:
 		HP: 45900
 	Valued:
-		Cost: 2000
 	Tooltip:
 		Name: actor-cannonship.name
-	Buildable:
-		BuildPaletteOrder: 20
-	Mobile:
-		Speed: 50
-	RevealsShroud:
-		Range: 10c0
 	Armament:
 		Weapon: CannonShipShot
 		LocalOffset: 0,0,512
@@ -122,18 +115,14 @@ cannonship:
 		ValidTargets: Ground, Water
 		ValidRelationships: Enemy
 
-transportship:
+^transportship:
 	Inherits: ^syw-ship
-	RenderSprites:
-		Image: transportship
+	Buildable:
+		BuildPaletteOrder: 30
 	Health:
-		HP: 45900
 	Valued:
 		Cost: 1000
 	Tooltip:
-		Name: actor-transportship.name
-	Buildable:
-		BuildPaletteOrder: 30
 	Cargo:
 		UnloadVoice: Unload
 		Types: Infantry, Vehicle

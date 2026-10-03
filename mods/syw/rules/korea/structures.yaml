@@ -1,0 +1,132 @@
+# Korean actors (k prefix). Each inherits its ^template from common/ and adds only what is Korean.
+
+khq:
+	Inherits: ^hq
+	RenderSprites:
+		Image: hq
+	Production:
+		Produces: Workers.Korea
+	ProductionQueue:
+		Type: Workers.Korea
+	ProductionBar:
+		ProductionType: Workers.Korea
+
+kbarracks:
+	Inherits: ^barracks
+	RenderSprites:
+		Image: barracks
+	Production:
+		Produces: Infantry.Korea
+	ProductionQueue:
+		Type: Infantry.Korea
+	ProductionBar:
+		ProductionType: Infantry.Korea
+
+kmill:
+	Inherits: ^mill
+	RenderSprites:
+		Image: mill
+
+kbeaconmound:
+	Inherits: ^beaconmound
+	RenderSprites:
+		Image: beaconmound
+	Tooltip:
+		Name: actor-beaconmound.name
+
+kheavyarmsworkshop:
+	Inherits: ^heavyarmsworkshop
+	RenderSprites:
+		Image: heavyarmsworkshop
+	Tooltip:
+		Name: actor-heavyarmsworkshop.name
+	Production:
+		Produces: Vehicles.Korea
+	ProductionQueue:
+		Type: Vehicles.Korea
+	ProductionBar:
+		ProductionType: Vehicles.Korea
+
+kbarracks2:
+	Inherits: ^barracks2
+	RenderSprites:
+		Image: barracks2
+	Production:
+		Produces: AdvancedInfantry.Korea
+	ProductionQueue:
+		Type: AdvancedInfantry.Korea
+	ProductionBar:
+		ProductionType: AdvancedInfantry.Korea
+
+kplaneworks:
+	Inherits: ^planeworks
+	RenderSprites:
+		Image: planeworks
+	Tooltip:
+		Name: actor-planeworks.name
+	Production:
+		Produces: Aircraft.Korea
+	ProductionQueue:
+		Type: Aircraft.Korea
+	ProductionBar:
+		ProductionType: Aircraft.Korea
+
+ktemple:
+	Inherits: ^temple
+	RenderSprites:
+		Image: temple
+	Production:
+		Produces: Temple.Korea
+	ProductionQueue:
+		Type: Temple.Korea
+	ProductionBar:
+		ProductionType: Temple.Korea
+
+kshamanhouse:
+	Inherits: ^shamanhouse
+	RenderSprites:
+		Image: shamanhouse
+	Tooltip:
+		Name: actor-shamanhouse.name
+	Production:
+		Produces: Shaman.Korea
+	ProductionQueue:
+		Type: Shaman.Korea
+	ProductionBar:
+		ProductionType: Shaman.Korea
+
+kstable:
+	Inherits: ^stable
+	RenderSprites:
+		Image: stable
+	Production:
+		Produces: Cavalry.Korea
+	ProductionQueue:
+		Type: Cavalry.Korea
+	ProductionBar:
+		ProductionType: Cavalry.Korea
+
+karrowtower:
+	Inherits: ^arrowtower
+	Armament:
+		Weapon: TowerBow
+	RenderSprites:
+		Image: arrowtower
+
+kcannontower:
+	Inherits: ^cannontower
+	Armament:
+		Weapon: CannonTowerShot
+	RenderSprites:
+		Image: cannontower
+
+kshipyard:
+	Inherits: ^shipyard
+	RenderSprites:
+		Image: shipyard
+	Production:
+		Produces: Naval.Korea
+	ProductionQueue:
+		Type: Naval.Korea
+	ProductionBar:
+		ProductionType: Naval.Korea

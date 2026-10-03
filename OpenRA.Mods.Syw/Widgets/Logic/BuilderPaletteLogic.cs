@@ -90,11 +90,16 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 				var buildableInfo = actorInfo.TraitInfoOrDefault<BuildableInfo>();
 				var prereqsOk = buildableInfo == null || buildableInfo.Prerequisites.Length == 0 || techTree.HasPrerequisites(buildableInfo.Prerequisites);
 
+				// The building's own tooltip name, and its portrait (none rather than a crash if the art is missing).
+				var tooltipName = actorInfo.TraitInfos<TooltipInfo>().FirstOrDefault()?.Name;
+				var portrait = world.Map.Sequences.HasSequence("building-portraits", actorType)
+					? world.Map.Sequences.GetSequence("building-portraits", actorType).GetSprite(0) : null;
+
 				button.Visible = true;
 				button.GetText = () => "";
-				button.Get<SpriteWidget>("PORTRAIT").GetSprite = () => world.Map.Sequences.GetSequence("building-portraits", actorType).GetSprite(0);
+				button.Get<SpriteWidget>("PORTRAIT").GetSprite = () => portrait;
 				button.Get("DISABLED").IsVisible = () => button.IsDisabled();
-				button.GetTooltipText = () => $"{FluentProvider.GetMessage($"actor-{actorType}.name")} (${cost})";
+				button.GetTooltipText = () => $"{(tooltipName != null ? FluentProvider.GetMessage(tooltipName) : actorType)} (${cost})";
 				button.IsDisabled = () => !prereqsOk || playerResources.Cash + playerResources.Resources < cost || builder.IsBusy;
 				button.OnClick = () => StartBuild(actorType);
 			}

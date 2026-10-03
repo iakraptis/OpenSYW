@@ -145,31 +145,31 @@ cannontower:
 		Filename: art/buildings/cannontower/damaged-idle.png
 
 building-portraits:
-	hq:
+	khq:
 		Filename: art/portraits/buildings/hq.png
-	barracks:
+	kbarracks:
 		Filename: art/portraits/buildings/barracks.png
-	mill:
+	kmill:
 		Filename: art/portraits/buildings/mill.png
-	arrowtower:
+	karrowtower:
 		Filename: art/portraits/buildings/arrowtower.png
-	heavyarmsworkshop:
+	kheavyarmsworkshop:
 		Filename: art/portraits/buildings/heavyarmsworkshop.png
-	barracks2:
+	kbarracks2:
 		Filename: art/portraits/buildings/barracks2.png
-	planeworks:
+	kplaneworks:
 		Filename: art/portraits/buildings/planeworks.png
-	temple:
+	ktemple:
 		Filename: art/portraits/buildings/temple.png
-	beaconmound:
+	kbeaconmound:
 		Filename: art/portraits/buildings/beaconmound.png
-	stable:
+	kstable:
 		Filename: art/portraits/buildings/stable.png
-	shamanhouse:
+	kshamanhouse:
 		Filename: art/portraits/buildings/shamanhouse.png
-	cannontower:
+	kcannontower:
 		Filename: art/portraits/buildings/cannontower.png
-	shipyard:
+	kshipyard:
 		Filename: art/portraits/buildings/shipyard.png
 
 shipyard:
@@ -182,39 +182,39 @@ shipyard:
 
 # Unit portraits from PORTRAIT.SPR (tools/building_portrait_export.py), shown in the selection panel.
 unit-portraits:
-	peasant:
+	kpeasant:
 		Filename: art/portraits/units/peasant.png
-	archer:
+	karcher:
 		Filename: art/portraits/units/archer.png
-	gunner:
+	kgunner:
 		Filename: art/portraits/units/gunner.png
-	footman:
+	kfootman:
 		Filename: art/portraits/units/footman.png
-	firecar:
+	kfirecar:
 		Filename: art/portraits/units/firecar.png
-	cannon:
+	kcannon:
 		Filename: art/portraits/units/cannon.png
-	cannonship:
+	kcannonship:
 		Filename: art/portraits/units/cannonship.png
-	transportship:
+	ktransportship:
 		Filename: art/portraits/units/transportship.png
-	patrolship:
+	kpatrolship:
 		Filename: art/portraits/units/patrolship.png
-	occupier:
+	koccupier:
 		Filename: art/portraits/units/occupier.png
-	miner:
+	kminer:
 		Filename: art/portraits/units/miner.png
-	transporter:
+	ktransporter:
 		Filename: art/portraits/units/transporter.png
-	fighter:
+	kfighter:
 		Filename: art/portraits/units/fighter.png
-	monk:
+	kmonk:
 		Filename: art/portraits/units/monk.png
-	shaman:
+	kshaman:
 		Filename: art/portraits/units/shaman.png
-	commander:
+	kcommander:
 		Filename: art/portraits/units/commander.png
-	bull:
+	kbull:
 		Filename: art/portraits/units/bull.png
 	syw-mine:
 		Filename: art/portraits/units/syw-mine.png

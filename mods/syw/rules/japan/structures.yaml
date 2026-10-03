@@ -1,0 +1,135 @@
+# Japanese actors (j prefix). Each inherits its ^template from common/ and adds only what is Japanese.
+
+# ---------------------------------------------------------------- Buildings
+
+jhq:
+	Inherits: ^hq
+	RenderSprites:
+		Image: jhq
+	Production:
+		Produces: Workers.Japan
+	ProductionQueue:
+		Type: Workers.Japan
+	ProductionBar:
+		ProductionType: Workers.Japan
+
+jbarracks:
+	Inherits: ^barracks
+	RenderSprites:
+		Image: jbarracks
+	Production:
+		Produces: Infantry.Japan
+	ProductionQueue:
+		Type: Infantry.Japan
+	ProductionBar:
+		ProductionType: Infantry.Japan
+
+jmill:
+	Inherits: ^mill
+	RenderSprites:
+		Image: jmill
+
+jbeacon:
+	Inherits: ^beaconmound
+	RenderSprites:
+		Image: jbeacon
+	Tooltip:
+		Name: actor-jbeacon.name
+
+jheavyarms:
+	Inherits: ^heavyarmsworkshop
+	RenderSprites:
+		Image: jheavyarms
+	Tooltip:
+		Name: actor-jheavyarms.name
+	Production:
+		Produces: Vehicles.Japan
+	ProductionQueue:
+		Type: Vehicles.Japan
+	ProductionBar:
+		ProductionType: Vehicles.Japan
+
+jbarracks2:
+	Inherits: ^barracks2
+	RenderSprites:
+		Image: jbarracks2
+	Production:
+		Produces: AdvancedInfantry.Japan
+	ProductionQueue:
+		Type: AdvancedInfantry.Japan
+	ProductionBar:
+		ProductionType: AdvancedInfantry.Japan
+
+jairport:
+	Inherits: ^planeworks
+	RenderSprites:
+		Image: airport
+	Tooltip:
+		Name: actor-airport.name
+	Production:
+		Produces: Aircraft.Japan
+	ProductionQueue:
+		Type: Aircraft.Japan
+	ProductionBar:
+		ProductionType: Aircraft.Japan
+
+jtemple:
+	Inherits: ^temple
+	RenderSprites:
+		Image: jtemple
+	Production:
+		Produces: Temple.Japan
+	ProductionQueue:
+		Type: Temple.Japan
+	ProductionBar:
+		ProductionType: Temple.Japan
+
+jwitchhouse:
+	Inherits: ^shamanhouse
+	RenderSprites:
+		Image: witchhouse
+	Tooltip:
+		Name: actor-witchhouse.name
+	Production:
+		Produces: Shaman.Japan
+	ProductionQueue:
+		Type: Shaman.Japan
+	ProductionBar:
+		ProductionType: Shaman.Japan
+
+jstable:
+	Inherits: ^stable
+	RenderSprites:
+		Image: jstable
+	Production:
+		Produces: Cavalry.Japan
+	ProductionQueue:
+		Type: Cavalry.Japan
+	ProductionBar:
+		ProductionType: Cavalry.Japan
+
+# Towers shoot guns: strong against infantry and cavalry.
+jarrowtower:
+	Inherits: ^arrowtower
+	Armament:
+		Weapon: JapanTowerGun
+	RenderSprites:
+		Image: jarrowtower
+
+jcannontower:
+	Inherits: ^cannontower
+	Armament:
+		Weapon: JapanCannonTowerShot
+	RenderSprites:
+		Image: jcannontower
+
+jshipyard:
+	Inherits: ^shipyard
+	RenderSprites:
+		Image: jshipyard
+	Production:
+		Produces: Naval.Japan
+	ProductionQueue:
+		Type: Naval.Japan
+	ProductionBar:
+		ProductionType: Naval.Japan

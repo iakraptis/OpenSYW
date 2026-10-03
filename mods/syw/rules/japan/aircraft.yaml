@@ -1,0 +1,43 @@
+# Japanese actors (j prefix). Each inherits its ^template from common/ and adds only what is Japanese.
+
+# User change: weaker than Korea's Fighter (22,950 HP); same reload and price.
+jfighter:
+	Inherits: ^fighter
+	Health:
+		HP: 20655
+	RenderSprites:
+		Image: jfighter
+	Buildable:
+		Queue: Aircraft.Japan
+
+# ---------------------------------------------------------------- Aircraft
+
+jtransporter:
+	Inherits: ^transporter
+	RenderSprites:
+		Image: jtransporter
+	Buildable:
+		Queue: Aircraft.Japan
+	Valued:
+		Cost: 1600
+
+# Japan only: flies over the target and drops 6 bombs with cannon-type splash.
+jbomber:
+	Inherits: ^fighter
+	Health:
+		HP: 30600
+	RenderSprites:
+		Image: bomber
+	# One bomb from each offset (left wing, centre, right wing), so the burst lands side by side.
+	Armament:
+		Weapon: BomberBombs
+		LocalOffset: 0,-256,0, 0,0,0, 0,256,0
+	AutoTargetPriority@COMBAT:
+		ValidTargets: Ground
+	Buildable:
+		Queue: Aircraft.Japan
+		BuildPaletteOrder: 30
+	Valued:
+		Cost: 1700
+	Tooltip:
+		Name: actor-bomber.name

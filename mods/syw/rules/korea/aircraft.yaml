@@ -1,0 +1,19 @@
+# Korean actors (k prefix). Each inherits its ^template from common/ and adds only what is Korean.
+
+kfighter:
+	Inherits: ^fighter
+	Health:
+		HP: 22950
+	RenderSprites:
+		Image: fighter
+	Buildable:
+		Queue: Aircraft.Korea
+
+ktransporter:
+	Inherits: ^transporter
+	RenderSprites:
+		Image: transporter
+	Buildable:
+		Queue: Aircraft.Korea
+	Valued:
+		Cost: 1500

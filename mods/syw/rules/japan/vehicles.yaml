@@ -1,0 +1,36 @@
+# Japanese actors (j prefix). Each inherits its ^template from common/ and adds only what is Japanese.
+
+# ---------------------------------------------------------------- Vehicles
+
+# Gun car: one bullet per 33 ticks from a turret (Korea's Fire Car fires a 2-rocket volley per 93).
+jarmoredcar:
+	Inherits: ^firecar
+	RenderSprites:
+		Image: armoredcar
+	# TANK 26-35 has a forward roof mount, not a central pivot.
+	# At 0.85 sprite scale: about 10 screen px forward, 6 px above ground.
+	# Rotate the mount with the hull; the turret can still aim independently.
+	Turreted:
+		Offset: 320,0,192
+	Armament:
+		Weapon: ArmoredCarGun
+	Buildable:
+		Queue: Vehicles.Japan
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: actor-armoredcar.name
+	# 2026-09-29 (user design): carries up to 5 infantry like a transport; deploy to unload.
+	Cargo:
+		UnloadVoice: Unload
+		Types: Infantry
+		MaxWeight: 5
+		AfterUnloadDelay: 10
+
+# The same Cannon as Korea's, 200 more expensive.
+jcannon:
+	Inherits: ^cannon
+	Buildable:
+		Queue: Vehicles.Japan
+	Valued:
+		Cost: 1600

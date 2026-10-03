@@ -2,12 +2,12 @@
 -- aircraft. Each attacker holds fire and is ordered to attack only its own target, an unarmed Peasant owned by
 -- the neutral Creeps, so no neighbour can take the credit. Passes when every target has taken damage.
 Attackers = {
-    { "footman", "Multi1" }, { "archer", "Multi1" }, { "gunner", "Multi1" }, { "commander", "Multi1" },
-    { "firecar", "Multi1" }, { "cannon", "Multi1" }, { "fighter", "Multi1" }, { "monk", "Multi1" },
-    { "shaman", "Multi1" }, { "arrowtower", "Multi1" }, { "cannontower", "Multi1" },
-    { "jfootman", "Multi0" }, { "jarcher", "Multi0" }, { "jgunner", "Multi0" }, { "general", "Multi0" },
-    { "armoredcar", "Multi0" }, { "jcannon", "Multi0" }, { "jfighter", "Multi0" }, { "bomber", "Multi0" },
-    { "priest", "Multi0" }, { "witch", "Multi0" }, { "jarrowtower", "Multi0" }, { "jcannontower", "Multi0" }
+    { "kfootman", "Multi1" }, { "karcher", "Multi1" }, { "kgunner", "Multi1" }, { "kcommander", "Multi1" },
+    { "kfirecar", "Multi1" }, { "kcannon", "Multi1" }, { "kfighter", "Multi1" }, { "kmonk", "Multi1" },
+    { "kshaman", "Multi1" }, { "karrowtower", "Multi1" }, { "kcannontower", "Multi1" },
+    { "jfootman", "Multi0" }, { "jarcher", "Multi0" }, { "jgunner", "Multi0" }, { "jgeneral", "Multi0" },
+    { "jarmoredcar", "Multi0" }, { "jcannon", "Multi0" }, { "jfighter", "Multi0" }, { "jbomber", "Multi0" },
+    { "jpriest", "Multi0" }, { "jwitch", "Multi0" }, { "jarrowtower", "Multi0" }, { "jcannontower", "Multi0" }
 }
 
 -- Slots on land, at least 12 cells apart (the longest range is 11): west of the lake and along the south.
@@ -40,8 +40,8 @@ end
 DamageSmoke = function()
     local ko = Player.GetPlayer("Multi1")
     local units = {
-        Actor.Create("firecar", true, { Owner = ko, Location = CPos.New(60, 44) }),
-        Actor.Create("patrolship", true, { Owner = ko, Location = CPos.New(50, 20) }),
+        Actor.Create("kfirecar", true, { Owner = ko, Location = CPos.New(60, 44) }),
+        Actor.Create("kpatrolship", true, { Owner = ko, Location = CPos.New(50, 20) }),
         Actor.Create("jfighter", true, { Owner = Player.GetPlayer("Multi0"), Location = CPos.New(60, 40) })
     }
     Later(3, function()
@@ -67,7 +67,7 @@ RunWave = function(batch, second)
     for _, b in ipairs(batch) do
         if b.second == second then
             local attacker = Actor.Create(b.type, true, { Owner = b.owner, Location = b.slot })
-            local target = Actor.Create("peasant", true, { Owner = creeps, Location = CPos.New(b.slot.X + 4, b.slot.Y + 1) })
+            local target = Actor.Create("kpeasant", true, { Owner = creeps, Location = CPos.New(b.slot.X + 4, b.slot.Y + 1) })
             Later(3, function()
                 if attacker.HasProperty("Stance") then attacker.Stance = "HoldFire" end
                 attacker.Attack(target, true, true)

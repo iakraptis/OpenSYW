@@ -1,0 +1,17 @@
+# Korean actors (k prefix). Each inherits its ^template from common/ and adds only what is Korean.
+
+kfirecar:
+	Inherits: ^firecar
+	RenderSprites:
+		Image: firecar
+	Armament:
+		Weapon: FireCarRockets
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: actor-firecar.name
+
+kcannon:
+	Inherits: ^cannon
+	Valued:
+		Cost: 1400
