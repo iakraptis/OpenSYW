@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -37,9 +38,36 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 				foreach (var file in new[] { "map.bin", "map.png" })
 					c.WriteBytes($"maps/{name}/{file}", File.ReadAllBytes(c.OutputPath($"maps/{source}/{file}")));
 
+				AddObjects(c, name, source);
+
 				foreach (var (file, from) in shared)
 					c.WriteBytes($"maps/{name}/{file}", File.ReadAllBytes(Path.Combine(c.ModFolder, from)));
 			}
+		}
+
+		// The converted map's trees and other map objects (its Object* actors) belong to the terrain, so they go into
+		// every map built on it, at the top of the template's Actors section.
+		static void AddObjects(InstallContext c, string name, string source)
+		{
+			var baseLines = File.ReadAllLines(c.OutputPath($"maps/{source}/map.yaml"));
+			var objects = new List<string>();
+			for (var i = 0; i < baseLines.Length; i++)
+			{
+				if (!baseLines[i].StartsWith("\tObject", System.StringComparison.Ordinal))
+					continue;
+
+				objects.Add(baseLines[i]);
+				while (i + 1 < baseLines.Length && baseLines[i + 1].StartsWith("\t\t", System.StringComparison.Ordinal))
+					objects.Add(baseLines[++i]);
+			}
+
+			var lines = File.ReadAllLines(c.OutputPath($"maps/{name}/map.yaml")).ToList();
+			var actors = lines.IndexOf("Actors:");
+			if (actors < 0)
+				throw new InvalidDataException($"Map template {name} has no Actors section.");
+
+			lines.InsertRange(actors + 1, objects);
+			c.WriteText($"maps/{name}/map.yaml", string.Join("\n", lines) + "\n");
 		}
 	}
 }

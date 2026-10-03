@@ -192,3 +192,19 @@ actor-cannonship =
 
 actor-transportship =
     .name = Transport Ship
+
+## Map objects (rules/objects.yaml)
+actor-tree =
+    .name = Tree
+actor-thicket =
+    .name = Thicket
+actor-hut =
+    .name = Straw Hut
+actor-jangseung =
+    .name = Jangseung
+actor-firetable =
+    .name = Brazier
+actor-koreaflag =
+    .name = Korean Flag
+actor-japanflag =
+    .name = Japanese Flag

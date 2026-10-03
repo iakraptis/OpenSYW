@@ -20,6 +20,9 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		const int VariantStride = 256;
 		const int ResourceDensity = 12;
 
+		// Map preview colour of cells blocked by trees and other map objects.
+		const string TreePreviewColor = "1E4A18";
+
 		static readonly string[] Sheets = { "field31", "field32", "field33" };
 		static readonly Dictionary<string, string> SheetFiles = new() { ["field31"] = "FIELD31", ["field32"] = "FIELD32", ["field33"] = "Field33.spr" };
 		static readonly Dictionary<string, int> TemplateBase = new() { ["field31"] = 1000, ["field32"] = 1300, ["field33"] = 1600, ["border"] = 1999 };
@@ -101,7 +104,9 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			foreach (var (name, title, moves) in Maps)
 			{
 				var (width, height, cells) = ReadMap(c.Game.Read($"cusmap/{name}.map"));
-				var starts = ReadStarts(c.Game.Read($"cusmap/{name}.stg"));
+				var stage = c.Game.Read($"cusmap/{name}.stg");
+				var starts = ReadStarts(stage);
+				var objects = MapObjects.Read(stage);
 				var keys = new (string Sheet, int Frame)[height, width];
 				var crops = new Dictionary<(int X, int Y), string>();
 				for (var y = 0; y < height; y++)
@@ -131,7 +136,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 				if (cut.Count > 0)
 					throw new InvalidDataException($"{name}: starts not connected over land: {string.Join(", ", cut)}");
 
-				WriteMap(c, name, title, keys, templates, crops, starts.ConvertAll(s => moves.TryGetValue(s, out var moved) ? moved : s));
+				WriteMap(c, name, title, keys, templates, crops, starts.ConvertAll(s => moves.TryGetValue(s, out var moved) ? moved : s), objects);
 			}
 
 			c.RepoYaml("tilesets/field3.yaml", TilesetYaml(templates.Values));
@@ -289,7 +294,8 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		}
 
 		static void WriteMap(InstallContext c, string name, string title, (string Sheet, int Frame)[,] keys,
-			SortedDictionary<(string Sheet, int Frame), Template> templates, Dictionary<(int X, int Y), string> crops, List<(int X, int Y)> starts)
+			SortedDictionary<(string Sheet, int Frame), Template> templates, Dictionary<(int X, int Y), string> crops, List<(int X, int Y)> starts,
+			List<(MapObjects.ObjectType Type, int X, int Y)> objects)
 		{
 			// OpenRA needs a one-cell cordon around the playable area; it is filled with the black border tile.
 			int h = keys.GetLength(0), w = keys.GetLength(1);
@@ -329,11 +335,13 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 
 			c.WriteBytes($"maps/{name}/map.bin", bin.ToArray());
 
+			var trees = MapObjects.BlockedCells(objects).ToHashSet();
 			var preview = new byte[w * h * 4];
 			for (var y = 0; y < h; y++)
 				for (var x = 0; x < w; x++)
 				{
-					var hex = crops.TryGetValue((x, y), out var crop) ? CropPreviewColors[crop] : templates[keys[y, x]].Color;
+					var hex = trees.Contains((x, y)) ? TreePreviewColor :
+						crops.TryGetValue((x, y), out var crop) ? CropPreviewColors[crop] : templates[keys[y, x]].Color;
 					var i = 4 * (y * w + x);
 					preview[i] = Convert.ToByte(hex[..2], 16);
 					preview[i + 1] = Convert.ToByte(hex.Substring(2, 2), 16);
@@ -361,6 +369,8 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			yaml.AddRange(new[] { "", "Actors:" });
 			for (var i = 0; i < starts.Count; i++)
 				yaml.AddRange(new[] { $"\tActor{i}: mpspawn", "\t\tOwner: Neutral", $"\t\tLocation: {starts[i].X + 1},{starts[i].Y + 1}" });
+
+			yaml.AddRange(MapObjects.ActorYaml(objects));
 
 			yaml.AddRange(new[] { "", "Rules: starting-hq.yaml" });
 			c.WriteText($"maps/{name}/map.yaml", string.Join("\n", yaml) + "\n");

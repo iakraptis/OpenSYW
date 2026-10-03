@@ -22,10 +22,12 @@ Rules:
 	syw|rules/aircraft.yaml
 	syw|rules/ships.yaml
 	syw|rules/japan.yaml
+	syw|rules/objects.yaml
 
 Sequences:
 	syw|sequences/shroud.yaml
 	syw|sequences/resources.yaml
+	syw|sequences/objects.yaml
 	syw|sequences/peasant.yaml
 	syw|sequences/bull.yaml
 	syw|sequences/archer.yaml
