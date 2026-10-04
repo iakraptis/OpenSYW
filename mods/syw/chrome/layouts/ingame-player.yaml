@@ -1,5 +1,7 @@
 Container@PLAYER_WIDGETS:
-	Logic: MenuButtonsChromeLogic, SelectionStatsLogic, BuildingTrainingLogic, TransportCargoLogic, SpellPaletteLogic
+	# SidebarLayoutLogic fits the lower half of the sidebar to the window height (the Y values below are the layout
+	# for tall windows) and makes the palettes scroll when their rows do not fit.
+	Logic: MenuButtonsChromeLogic, SelectionStatsLogic, BuildingTrainingLogic, TransportCargoLogic, SpellPaletteLogic, SidebarLayoutLogic
 	Children:
 		LogicTicker@SIDEBAR_TICKER:
 		Background@SIDEBAR_BACKGROUND:
@@ -249,6 +251,31 @@ Container@PLAYER_WIDGETS:
 			ReadyText: production-palette.ready
 			HoldText: production-palette.hold
 			ClockPalette: knight
+		# Shown when the training palette has rows above / below (the mouse wheel scrolls it too).
+		Button@PRODUCTION_SCROLL_UP:
+			X: WINDOW_WIDTH - 76
+			Width: 20
+			Height: 22
+			Children:
+				Image@ICON:
+					X: 2
+					Y: 3
+					Width: 16
+					Height: 16
+					ImageCollection: scrollpanel-decorations
+					ImageName: up
+		Button@PRODUCTION_SCROLL_DOWN:
+			X: WINDOW_WIDTH - 76
+			Width: 20
+			Height: 22
+			Children:
+				Image@ICON:
+					X: 2
+					Y: 3
+					Width: 16
+					Height: 16
+					ImageCollection: scrollpanel-decorations
+					ImageName: down
 		Container@BUILD_PALETTE:
 			Logic: BuilderPaletteLogic
 			X: WINDOW_WIDTH - 242
@@ -256,6 +283,35 @@ Container@PLAYER_WIDGETS:
 			Width: 192
 			Height: 364
 			Children:
+				# First child, so the wheel turns the buttons above it ignore reach it.
+				MouseWheelArea@BUILD_SCROLL_AREA:
+					Width: 170
+					Height: PARENT_HEIGHT
+				Button@BUILD_SCROLL_UP:
+					Y: 2
+					X: 168
+					Width: 20
+					Height: 22
+					Children:
+						Image@ICON:
+							X: 2
+							Y: 3
+							Width: 16
+							Height: 16
+							ImageCollection: scrollpanel-decorations
+							ImageName: up
+				Button@BUILD_SCROLL_DOWN:
+					X: 168
+					Width: 20
+					Height: 22
+					Children:
+						Image@ICON:
+							X: 2
+							Y: 3
+							Width: 16
+							Height: 16
+							ImageCollection: scrollpanel-decorations
+							ImageName: down
 				Label@BUILD_TITLE:
 					Y: -30
 					Width: 192
