@@ -112,14 +112,14 @@ jstable:
 jarrowtower:
 	Inherits: ^arrowtower
 	Armament:
-		Weapon: JapanTowerGun
+		Weapon: JapaneseTowerGun
 	RenderSprites:
 		Image: jarrowtower
 
 jcannontower:
 	Inherits: ^cannontower
 	Armament:
-		Weapon: JapanCannonTowerShot
+		Weapon: JapaneseCannonTowerShot
 	RenderSprites:
 		Image: jcannontower
 

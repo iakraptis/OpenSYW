@@ -109,14 +109,14 @@ kstable:
 karrowtower:
 	Inherits: ^arrowtower
 	Armament:
-		Weapon: TowerBow
+		Weapon: KoreanTowerBow
 	RenderSprites:
 		Image: karrowtower
 
 kcannontower:
 	Inherits: ^cannontower
 	Armament:
-		Weapon: CannonTowerShot
+		Weapon: KoreanCannonTowerShot
 	RenderSprites:
 		Image: kcannontower
 

@@ -23,7 +23,7 @@ kfootman:
 	Health:
 		HP: 26775
 	Armament:
-		Weapon: Sword
+		Weapon: KoreanSword
 	Buildable:
 		Queue: Infantry.Korea
 
@@ -33,13 +33,15 @@ karcher:
 		Image: karcher
 	Buildable:
 		Queue: Infantry.Korea
+	Armament:
+		Weapon: KoreanBow
 
 kgunner:
 	Inherits: ^gunner
 	RenderSprites:
 		Image: kgunner
 	Armament:
-		Weapon: Musket
+		Weapon: KoreanMusket
 	Buildable:
 		Queue: Infantry.Korea
 
@@ -48,7 +50,7 @@ kcommander:
 	RenderSprites:
 		Image: kcommander
 	Armament:
-		Weapon: CommanderBow
+		Weapon: KoreanCommanderBow
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground, Air
 	AutoTargetPriority@UNITS:
@@ -75,6 +77,10 @@ kmonk:
 		Queue: Temple.Korea
 	Tooltip:
 		Name: actor-monk.name
+	Armament:
+		Weapon: KoreanFireball
+	Armament@HEAL:
+		Weapon: KoreanHeal
 
 kshaman:
 	Inherits: ^shaman
@@ -88,13 +94,13 @@ kshaman:
 		Range: 1c512
 		Results: kfootman, karcher, kgunner, koccupier, kminer, kmonk, kshaman, kcommander
 	Armament:
-		Weapon: MonkFireball
+		Weapon: KoreanFireball
 		RequiresCondition: !casting-lightning
 		MuzzlePalette: knight
 		FireDelay: 6
 	Armament@LIGHTNING:
 		Name: secondary
-		Weapon: ShamanLightning
+		Weapon: KoreanLightning
 		AmmoUsage: 90
 		PauseOnCondition: mana < 90 || !casting-lightning
 		MuzzlePalette: knight
@@ -190,8 +196,8 @@ syw-mine:
 		InitialDelay: 0
 		UncloakOn: None
 	FireWarheadsOnDeath:
-		Weapon: MinerMineExplosion
-		EmptyWeapon: MinerMineExplosion
+		Weapon: KoreanMineExplosion
+		EmptyWeapon: KoreanMineExplosion
 	Tooltip:
 		Name: actor-syw-mine.name
 	MapEditorData:
@@ -220,7 +226,7 @@ kfootman.colorpicker:
 	Health:
 		HP: 26775
 	Armament:
-		Weapon: Sword
+		Weapon: KoreanSword
 
 kpeasant.colorpicker:
 	Inherits: ^peasant
@@ -239,6 +245,8 @@ karcher.colorpicker:
 	RenderSprites:
 		Image: karcher
 		Palette: colorpicker
+	Armament:
+		Weapon: KoreanBow
 
 kgunner.colorpicker:
 	Inherits: ^gunner
@@ -248,4 +256,4 @@ kgunner.colorpicker:
 		Image: kgunner
 		Palette: colorpicker
 	Armament:
-		Weapon: Musket
+		Weapon: KoreanMusket

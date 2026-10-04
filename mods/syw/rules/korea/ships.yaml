@@ -14,7 +14,7 @@ kpatrolship:
 	Tooltip:
 		Name: actor-patrolship.name
 	Armament:
-		Weapon: PatrolShipBow
+		Weapon: KoreanPatrolShipBow
 
 kcannonship:
 	Inherits: ^cannonship
@@ -23,6 +23,8 @@ kcannonship:
 		Image: kcannonship
 	Valued:
 		Cost: 2000
+	Armament:
+		Weapon: KoreanCannonShipShot
 
 ktransportship:
 	Inherits: ^transportship

@@ -42,6 +42,8 @@ jarcher:
 		Image: jarcher
 	Buildable:
 		Queue: Infantry.Japan
+	Armament:
+		Weapon: JapaneseBow
 
 # Japan advantage: +20% damage and +1 range at the same price.
 jgunner:
@@ -59,7 +61,7 @@ jgeneral:
 	RenderSprites:
 		Image: jgeneral
 	Armament:
-		Weapon: GeneralSword
+		Weapon: JapaneseGeneralSword
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground
 	Buildable:
@@ -85,6 +87,10 @@ jpriest:
 		Queue: Temple.Japan
 	Tooltip:
 		Name: actor-priest.name
+	Armament:
+		Weapon: JapaneseFireball
+	Armament@HEAL:
+		Weapon: JapaneseHeal
 
 # Earthquake and Bewilderment instead of Lightning and Transform.
 jwitch:
@@ -100,12 +106,12 @@ jwitch:
 	# The Shaman's fireball, without the Lightning casting gate.
 	Armament@FIREBALL:
 		Name: primary
-		Weapon: MonkFireball
+		Weapon: JapaneseFireball
 		MuzzlePalette: knight
 		FireDelay: 6
 	# Earthquake (FIRE 198): power 105 over the 5x5 cells around a ground target.
 	EarthquakeSpell:
-		Weapon: Earthquake
+		Weapon: JapaneseEarthquake
 		ManaCost: 60
 	# Bewilderment (FIRE 200): an enemy unit within 5 cells changes sides (80%).
 	Bewilder:

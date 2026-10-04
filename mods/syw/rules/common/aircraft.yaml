@@ -74,7 +74,6 @@
 		Palette: knight
 		RequiresCondition: damage-smoke
 	Armament:
-		Weapon: FighterRockets
 		LocalOffset: 512,0,0
 		MuzzlePalette: knight
 	AttackAircraft:

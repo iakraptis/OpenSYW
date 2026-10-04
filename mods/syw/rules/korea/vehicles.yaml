@@ -5,7 +5,7 @@ kfirecar:
 	RenderSprites:
 		Image: kfirecar
 	Armament:
-		Weapon: FireCarRockets
+		Weapon: KoreanFireCarRockets
 	Valued:
 		Cost: 1200
 	Tooltip:
@@ -15,3 +15,5 @@ kcannon:
 	Inherits: ^cannon
 	Valued:
 		Cost: 1400
+	Armament:
+		Weapon: KoreanCannonShot

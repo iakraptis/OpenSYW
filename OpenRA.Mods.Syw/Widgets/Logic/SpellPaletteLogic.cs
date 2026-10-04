@@ -41,7 +41,9 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 		bool ValidCaster => caster != null && !caster.Disposed && !caster.IsDead && caster.IsInWorld && caster.Owner == world.LocalPlayer;
 		bool Targeting => world.OrderGenerator is SpellOrderGenerator || world.OrderGenerator is MineLineOrderGenerator ||
 			world.OrderGenerator is TransformOrderGenerator || world.OrderGenerator is GroundSpellOrderGenerator;
-		bool IsHeal => spell?.Info.Weapon == "MonkHeal";
+
+		// The heal weapon (Monk, Priest) is the one that targets the Heal target type; Lightning targets enemies.
+		bool IsHeal => spell != null && spell.Weapon.ValidTargets.Contains("Heal");
 		bool HasSecond => mineLayer != null || transform != null || bewilder != null || massHeal != null;
 		bool HasThird => disturb != null || detectMines != null;
 

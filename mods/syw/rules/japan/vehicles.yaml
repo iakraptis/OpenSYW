@@ -13,7 +13,7 @@ jarmoredcar:
 	Turreted:
 		Offset: 320,0,192
 	Armament:
-		Weapon: ArmoredCarGun
+		Weapon: JapaneseArmoredCarGun
 	Buildable:
 		Queue: Vehicles.Japan
 	Valued:
@@ -34,3 +34,5 @@ jcannon:
 		Queue: Vehicles.Japan
 	Valued:
 		Cost: 1600
+	Armament:
+		Weapon: JapaneseCannonShot

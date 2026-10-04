@@ -122,7 +122,6 @@
 	RenderSprites:
 		Image: cannon
 	Armament:
-		Weapon: CannonShot
 	AutoTarget:
 		ScanRadius: 10
 	Buildable:
