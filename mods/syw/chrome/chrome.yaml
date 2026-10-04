@@ -415,13 +415,23 @@ editor:
 		history: 136, 51, 16, 16
 		erase: 50, 187, 16, 16
 
-# Original FST side column (Pannel13), stitched to 1440 rows and doubled to 320x2880 by
-# SYWtoORA/tools/sidebar_panel_export.py, padded to 512x4096 (textures must be power-of-two). Sliced top/middle/bottom: the emblem and stat
-# boxes (596 rows) and the rocks (192 rows) stay fixed, the sandstone middle fills the rest.
+# Original FST side column (Pannel13), stitched to 1440 rows and doubled to 320x2880 by the asset installer
+# (AssetInstaller/Chrome.cs), padded to 512x4096 (textures must be power-of-two). Rows 0-396 hold the emblem, 396-596
+# the stat boxes (Chrome.cs SidebarEmblemEnd / SidebarBoxesEnd, doubled), then the sandstone middle and the rocks
+# (last 192 rows). The panel is the sandstone and the rocks; the emblem and the boxes are images on top of it, so the
+# boxes can follow the stats panel when SidebarLayoutLogic compacts the sidebar.
+# The top part is 192 rows of sandstone (hidden under the emblem): the engine draws the bottom part with the top
+# part's height (WidgetUtils.DrawPanel), so the two must be equal or the rocks are not drawn.
 sidebar-panel:
 	Image: chrome/assets/sidebar.png
-	PanelRegion: 0, 0, 0, 596, 320, 2092, 0, 192
+	PanelRegion: 0, 596, 0, 192, 320, 1900, 0, 192
 	PanelSides: Top, Center, Bottom
+
+sidebar-art:
+	Image: chrome/assets/sidebar.png
+	Regions:
+		emblem: 0, 0, 320, 396
+		boxes: 0, 396, 320, 200
 
 # Original SYW title screen (FST Title 640x480, padded to 1024x512 by SYWtoORA/tools/title_export.py),
 # stretched behind the main menu by the StretchedImage widget.

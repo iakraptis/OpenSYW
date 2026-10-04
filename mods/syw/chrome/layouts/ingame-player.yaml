@@ -1,5 +1,7 @@
 Container@PLAYER_WIDGETS:
-	Logic: MenuButtonsChromeLogic, SelectionStatsLogic, BuildingTrainingLogic, TransportCargoLogic, SpellPaletteLogic
+	# SidebarLayoutLogic fits the lower half of the sidebar to the window height (the Y values below are the layout
+	# for tall windows) and makes the palettes scroll when their rows do not fit.
+	Logic: MenuButtonsChromeLogic, SelectionStatsLogic, BuildingTrainingLogic, TransportCargoLogic, SpellPaletteLogic, SidebarLayoutLogic
 	Children:
 		LogicTicker@SIDEBAR_TICKER:
 		Background@SIDEBAR_BACKGROUND:
@@ -7,6 +9,21 @@ Container@PLAYER_WIDGETS:
 			Width: 320
 			Height: WINDOW_HEIGHT
 			Background: sidebar-panel
+		# The sidebar art over the plain panel: the emblem behind the radar and the stat boxes behind the stats panel.
+		# SidebarLayoutLogic moves the boxes with the stats panel and hides the emblem when the radar is hidden.
+		Image@SIDEBAR_EMBLEM:
+			X: WINDOW_WIDTH - 320
+			Width: 320
+			Height: 396
+			ImageCollection: sidebar-art
+			ImageName: emblem
+		Image@SIDEBAR_BOXES:
+			X: WINDOW_WIDTH - 320
+			Y: 396
+			Width: 320
+			Height: 200
+			ImageCollection: sidebar-art
+			ImageName: boxes
 		MenuButton@OPTIONS_BUTTON:
 			Key: escape
 		# Unit commands, a row in the sidebar under the selection panel: Attack (attack-move: click a target or area;
@@ -249,6 +266,31 @@ Container@PLAYER_WIDGETS:
 			ReadyText: production-palette.ready
 			HoldText: production-palette.hold
 			ClockPalette: knight
+		# Shown when the training palette has rows above / below (the mouse wheel scrolls it too).
+		Button@PRODUCTION_SCROLL_UP:
+			X: WINDOW_WIDTH - 76
+			Width: 20
+			Height: 22
+			Children:
+				Image@ICON:
+					X: 2
+					Y: 3
+					Width: 16
+					Height: 16
+					ImageCollection: scrollpanel-decorations
+					ImageName: up
+		Button@PRODUCTION_SCROLL_DOWN:
+			X: WINDOW_WIDTH - 76
+			Width: 20
+			Height: 22
+			Children:
+				Image@ICON:
+					X: 2
+					Y: 3
+					Width: 16
+					Height: 16
+					ImageCollection: scrollpanel-decorations
+					ImageName: down
 		Container@BUILD_PALETTE:
 			Logic: BuilderPaletteLogic
 			X: WINDOW_WIDTH - 242
@@ -256,6 +298,35 @@ Container@PLAYER_WIDGETS:
 			Width: 192
 			Height: 364
 			Children:
+				# First child, so the wheel turns the buttons above it ignore reach it.
+				MouseWheelArea@BUILD_SCROLL_AREA:
+					Width: 170
+					Height: PARENT_HEIGHT
+				Button@BUILD_SCROLL_UP:
+					Y: 2
+					X: 168
+					Width: 20
+					Height: 22
+					Children:
+						Image@ICON:
+							X: 2
+							Y: 3
+							Width: 16
+							Height: 16
+							ImageCollection: scrollpanel-decorations
+							ImageName: up
+				Button@BUILD_SCROLL_DOWN:
+					X: 168
+					Width: 20
+					Height: 22
+					Children:
+						Image@ICON:
+							X: 2
+							Y: 3
+							Width: 16
+							Height: 16
+							ImageCollection: scrollpanel-decorations
+							ImageName: down
 				Label@BUILD_TITLE:
 					Y: -30
 					Width: 192
