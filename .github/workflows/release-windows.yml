@@ -26,6 +26,12 @@ jobs:
         shell: pwsh
         run: ./make.cmd all
 
+      # The runner image no longer ships NSIS; Chocolatey is preinstalled and puts it in Program Files (x86)\NSIS,
+      # where package-windows.ps1 looks for it.
+      - name: Install NSIS
+        shell: pwsh
+        run: choco install nsis -y --no-progress
+
       - name: Package
         shell: pwsh
         run: |
