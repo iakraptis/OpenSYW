@@ -1,4 +1,7 @@
-hq:
+# Korean sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/korea).
+
+khq:
 	underconstruction:
 		Filename: art/buildings/headquarters/underconstruction.png
 	idle:
@@ -6,7 +9,7 @@ hq:
 	damaged-idle:
 		Filename: art/buildings/headquarters/damaged-idle.png
 
-barracks:
+kbarracks:
 	underconstruction:
 		Filename: art/buildings/barracks/underconstruction.png
 	idle:
@@ -37,7 +40,7 @@ barracks:
 		Offset: 7, -1
 		ZOffset: 1024
 
-mill:
+kmill:
 	underconstruction:
 		Filename: art/buildings/mill/underconstruction.png
 	# Waterfall and wheel animation: 3 full-building frames from BUILD5 240-248/260-268/280-288
@@ -49,7 +52,7 @@ mill:
 	damaged-idle:
 		Filename: art/buildings/mill/damaged-idle.png
 
-beaconmound:
+kbeaconmound:
 	underconstruction:
 		Filename: art/buildings/beaconmound/underconstruction.png
 	idle:
@@ -65,7 +68,7 @@ beaconmound:
 		Offset: 22, -69
 		ZOffset: 1024
 
-heavyarmsworkshop:
+kheavyarmsworkshop:
 	underconstruction:
 		Filename: art/buildings/heavyarmsworkshop/underconstruction.png
 	idle:
@@ -73,21 +76,7 @@ heavyarmsworkshop:
 	damaged-idle:
 		Filename: art/buildings/heavyarmsworkshop/damaged-idle.png
 
-planeworks:
-	underconstruction:
-		Filename: art/buildings/planeworks/underconstruction.png
-	idle:
-		Filename: art/buildings/planeworks/idle.png
-	damaged-idle:
-		Filename: art/buildings/planeworks/damaged-idle.png
-
-# Shared first construction stage; each building's own art supplies the second.
-# Original medium scaffolding consists of nine tiles stitched into one image.
-scaffold-medium:
-	underconstruction:
-		Filename: art/buildings/common/scaffold-medium.png
-
-barracks2:
+kbarracks2:
 	underconstruction:
 		Filename: art/buildings/barracks2/underconstruction.png
 	idle:
@@ -95,7 +84,15 @@ barracks2:
 	damaged-idle:
 		Filename: art/buildings/barracks2/damaged-idle.png
 
-temple:
+kplaneworks:
+	underconstruction:
+		Filename: art/buildings/planeworks/underconstruction.png
+	idle:
+		Filename: art/buildings/planeworks/idle.png
+	damaged-idle:
+		Filename: art/buildings/planeworks/damaged-idle.png
+
+ktemple:
 	underconstruction:
 		Filename: art/buildings/temple/underconstruction.png
 	# Flickering aura around the statue: 4 full-building frames from BUILD5 120-131/140-151/160-171
@@ -107,7 +104,7 @@ temple:
 	damaged-idle:
 		Filename: art/buildings/temple/damaged-idle.png
 
-shamanhouse:
+kshamanhouse:
 	underconstruction:
 		Filename: art/buildings/shamanhouse/underconstruction.png
 	idle:
@@ -115,7 +112,7 @@ shamanhouse:
 	damaged-idle:
 		Filename: art/buildings/shamanhouse/damaged-idle.png
 
-stable:
+kstable:
 	underconstruction:
 		Filename: art/buildings/stable/underconstruction.png
 	idle:
@@ -123,12 +120,7 @@ stable:
 	damaged-idle:
 		Filename: art/buildings/stable/damaged-idle.png
 
-scaffold-small:
-	underconstruction:
-		Filename: art/buildings/common/scaffold-medium.png
-		Scale: 0.6666667
-
-arrowtower:
+karrowtower:
 	underconstruction:
 		Filename: art/buildings/arrowtower/underconstruction.png
 	idle:
@@ -136,7 +128,7 @@ arrowtower:
 	damaged-idle:
 		Filename: art/buildings/arrowtower/damaged-idle.png
 
-cannontower:
+kcannontower:
 	underconstruction:
 		Filename: art/buildings/cannontower/underconstruction.png
 	idle:
@@ -144,79 +136,10 @@ cannontower:
 	damaged-idle:
 		Filename: art/buildings/cannontower/damaged-idle.png
 
-building-portraits:
-	khq:
-		Filename: art/portraits/buildings/hq.png
-	kbarracks:
-		Filename: art/portraits/buildings/barracks.png
-	kmill:
-		Filename: art/portraits/buildings/mill.png
-	karrowtower:
-		Filename: art/portraits/buildings/arrowtower.png
-	kheavyarmsworkshop:
-		Filename: art/portraits/buildings/heavyarmsworkshop.png
-	kbarracks2:
-		Filename: art/portraits/buildings/barracks2.png
-	kplaneworks:
-		Filename: art/portraits/buildings/planeworks.png
-	ktemple:
-		Filename: art/portraits/buildings/temple.png
-	kbeaconmound:
-		Filename: art/portraits/buildings/beaconmound.png
-	kstable:
-		Filename: art/portraits/buildings/stable.png
-	kshamanhouse:
-		Filename: art/portraits/buildings/shamanhouse.png
-	kcannontower:
-		Filename: art/portraits/buildings/cannontower.png
-	kshipyard:
-		Filename: art/portraits/buildings/shipyard.png
-
-shipyard:
+kshipyard:
 	underconstruction:
 		Filename: art/buildings/shipyard/underconstruction.png
 	idle:
 		Filename: art/buildings/shipyard/idle.png
 	damaged-idle:
 		Filename: art/buildings/shipyard/damaged-idle.png
-
-# Unit portraits from PORTRAIT.SPR (tools/building_portrait_export.py), shown in the selection panel.
-unit-portraits:
-	kpeasant:
-		Filename: art/portraits/units/peasant.png
-	karcher:
-		Filename: art/portraits/units/archer.png
-	kgunner:
-		Filename: art/portraits/units/gunner.png
-	kfootman:
-		Filename: art/portraits/units/footman.png
-	kfirecar:
-		Filename: art/portraits/units/firecar.png
-	kcannon:
-		Filename: art/portraits/units/cannon.png
-	kcannonship:
-		Filename: art/portraits/units/cannonship.png
-	ktransportship:
-		Filename: art/portraits/units/transportship.png
-	kpatrolship:
-		Filename: art/portraits/units/patrolship.png
-	koccupier:
-		Filename: art/portraits/units/occupier.png
-	kminer:
-		Filename: art/portraits/units/miner.png
-	ktransporter:
-		Filename: art/portraits/units/transporter.png
-	kfighter:
-		Filename: art/portraits/units/fighter.png
-	kmonk:
-		Filename: art/portraits/units/monk.png
-	kshaman:
-		Filename: art/portraits/units/shaman.png
-	kcommander:
-		Filename: art/portraits/units/commander.png
-	kbull:
-		Filename: art/portraits/units/bull.png
-	syw-mine:
-		Filename: art/portraits/units/syw-mine.png
-	syw-mine-building:
-		Filename: art/portraits/units/syw-mine-building.png

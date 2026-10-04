@@ -3,7 +3,7 @@
 khq:
 	Inherits: ^hq
 	RenderSprites:
-		Image: hq
+		Image: khq
 	Production:
 		Produces: Workers.Korea
 	ProductionQueue:
@@ -14,7 +14,7 @@ khq:
 kbarracks:
 	Inherits: ^barracks
 	RenderSprites:
-		Image: barracks
+		Image: kbarracks
 	Production:
 		Produces: Infantry.Korea
 	ProductionQueue:
@@ -25,19 +25,19 @@ kbarracks:
 kmill:
 	Inherits: ^mill
 	RenderSprites:
-		Image: mill
+		Image: kmill
 
 kbeaconmound:
 	Inherits: ^beaconmound
 	RenderSprites:
-		Image: beaconmound
+		Image: kbeaconmound
 	Tooltip:
 		Name: actor-beaconmound.name
 
 kheavyarmsworkshop:
 	Inherits: ^heavyarmsworkshop
 	RenderSprites:
-		Image: heavyarmsworkshop
+		Image: kheavyarmsworkshop
 	Tooltip:
 		Name: actor-heavyarmsworkshop.name
 	Production:
@@ -50,7 +50,7 @@ kheavyarmsworkshop:
 kbarracks2:
 	Inherits: ^barracks2
 	RenderSprites:
-		Image: barracks2
+		Image: kbarracks2
 	Production:
 		Produces: AdvancedInfantry.Korea
 	ProductionQueue:
@@ -61,7 +61,7 @@ kbarracks2:
 kplaneworks:
 	Inherits: ^planeworks
 	RenderSprites:
-		Image: planeworks
+		Image: kplaneworks
 	Tooltip:
 		Name: actor-planeworks.name
 	Production:
@@ -74,7 +74,7 @@ kplaneworks:
 ktemple:
 	Inherits: ^temple
 	RenderSprites:
-		Image: temple
+		Image: ktemple
 	Production:
 		Produces: Temple.Korea
 	ProductionQueue:
@@ -85,7 +85,7 @@ ktemple:
 kshamanhouse:
 	Inherits: ^shamanhouse
 	RenderSprites:
-		Image: shamanhouse
+		Image: kshamanhouse
 	Tooltip:
 		Name: actor-shamanhouse.name
 	Production:
@@ -98,7 +98,7 @@ kshamanhouse:
 kstable:
 	Inherits: ^stable
 	RenderSprites:
-		Image: stable
+		Image: kstable
 	Production:
 		Produces: Cavalry.Korea
 	ProductionQueue:
@@ -111,19 +111,19 @@ karrowtower:
 	Armament:
 		Weapon: TowerBow
 	RenderSprites:
-		Image: arrowtower
+		Image: karrowtower
 
 kcannontower:
 	Inherits: ^cannontower
 	Armament:
 		Weapon: CannonTowerShot
 	RenderSprites:
-		Image: cannontower
+		Image: kcannontower
 
 kshipyard:
 	Inherits: ^shipyard
 	RenderSprites:
-		Image: shipyard
+		Image: kshipyard
 	Production:
 		Produces: Naval.Korea
 	ProductionQueue:

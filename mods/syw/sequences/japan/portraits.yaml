@@ -1,0 +1,68 @@
+# Japanese sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/japan).
+
+building-portraits:
+	jhq:
+		Filename: art/portraits/buildings/jhq.png
+	jbarracks:
+		Filename: art/portraits/buildings/jbarracks.png
+	jmill:
+		Filename: art/portraits/buildings/jmill.png
+	jbeacon:
+		Filename: art/portraits/buildings/jbeacon.png
+	jheavyarms:
+		Filename: art/portraits/buildings/jheavyarms.png
+	jstable:
+		Filename: art/portraits/buildings/jstable.png
+	jbarracks2:
+		Filename: art/portraits/buildings/jbarracks2.png
+	jairport:
+		Filename: art/portraits/buildings/airport.png
+	jtemple:
+		Filename: art/portraits/buildings/jtemple.png
+	jwitchhouse:
+		Filename: art/portraits/buildings/witchhouse.png
+	jarrowtower:
+		Filename: art/portraits/buildings/jarrowtower.png
+	jcannontower:
+		Filename: art/portraits/buildings/jcannontower.png
+	jshipyard:
+		Filename: art/portraits/buildings/jshipyard.png
+
+unit-portraits:
+	jpeasant:
+		Filename: art/portraits/units/jpeasant.png
+	jbull:
+		Filename: art/portraits/units/jbull.png
+	jfootman:
+		Filename: art/portraits/units/jfootman.png
+	jarcher:
+		Filename: art/portraits/units/jarcher.png
+	jgunner:
+		Filename: art/portraits/units/jgunner.png
+	jpriest:
+		Filename: art/portraits/units/priest.png
+	jwitch:
+		Filename: art/portraits/units/witch.png
+	jgeneral:
+		Filename: art/portraits/units/general.png
+	jthief:
+		Filename: art/portraits/units/thief.png
+	jarmoredcar:
+		Filename: art/portraits/units/armoredcar.png
+	jcannon:
+		Filename: art/portraits/units/jcannon.png
+	jcannonship:
+		Filename: art/portraits/units/jcannonship.png
+	jarrowship:
+		Filename: art/portraits/units/arrowship.png
+	jsubmarine:
+		Filename: art/portraits/units/submarine.png
+	jtorpedo:
+		Filename: art/portraits/units/torpedo.png
+	jtransporter:
+		Filename: art/portraits/units/jtransporter.png
+	jbomber:
+		Filename: art/portraits/units/bomber.png
+	jfighter:
+		Filename: art/portraits/units/jfighter.png

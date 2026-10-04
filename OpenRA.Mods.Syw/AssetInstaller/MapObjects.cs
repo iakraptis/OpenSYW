@@ -132,7 +132,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			}
 
 			c.RepoYaml("rules/objects.yaml", RulesYaml());
-			c.RepoYaml("sequences/objects.yaml", SequencesYaml());
+			c.RepoYaml("sequences/common/objects.yaml", SequencesYaml());
 		}
 
 		static IndexedImage Picture(SprFile sprite, int first, int w, int h)

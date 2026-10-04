@@ -5,7 +5,7 @@ jarrowship:
 	Inherits: ^patrolship
 	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
 	RenderSprites:
-		Image: arrowship
+		Image: jarrowship
 	Buildable:
 		Queue: Naval.Japan
 		BuildPaletteOrder: 20
@@ -36,7 +36,7 @@ jsubmarine:
 	Inherits: ^transportship
 	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
 	RenderSprites:
-		Image: submarine
+		Image: jsubmarine
 	Buildable:
 		Queue: Naval.Japan
 	Health:
@@ -49,7 +49,7 @@ jsubmarine:
 jtorpedo:
 	Inherits: ^syw-ship
 	RenderSprites:
-		Image: torpedo
+		Image: jtorpedo
 	Selectable:
 		Bounds: 1024, 1024
 	Health:

@@ -1,9 +1,11 @@
+# Weapons both factions use, and the bases the faction weapons inherit from (korea.yaml, japan.yaml).
 # Balance: damage = original attack power x100 (same scale as HP = original HP x100);
 # armor matchups use Versus tables; no flat unit defense reduction. ReloadDelay =
 # original cooldown threshold x4/3 ticks (Archer 20 -> 27), after two user-requested 1.5x
 # speed-ups; the Footman's animation-bound Sword gets the same factor (40 -> 18). See tools/ghidra/KoreanUnitStats.md.
-# Visual-only destruction effect; shared by all Korean buildings and towers.
-KoreanBuildingExplosion:
+
+# Visual-only destruction effect of every building and tower, both factions.
+BuildingExplosion:
 	Warhead@Effect: CreateEffect
 		ImpactSounds: destroy1.wav
 		Image: explosion
@@ -165,6 +167,21 @@ CannonShot:
 		Explosions: cannon-impact
 		ValidTargets: Ground, Water
 
+# Turtle Ship: power 75, cooldown 110.
+CannonShipShot:
+	Inherits: CannonShot
+	Range: 8c0
+	ValidTargets: Ground, Water
+	Warhead@Damage: SpreadDamage
+		Damage: 7500
+		ValidTargets: Ground, Water
+
+# Fighter: Fire Car rockets with power 50, cooldown 90 -> 120, range 6.
+FighterRockets:
+	Inherits: FireCarRockets
+	ReloadDelay: 120
+	Range: 6c0
+
 # Monk fireball: initial stock damage approximation, not original spell mechanics.
 MonkFireball:
 	Report: buda1.wav
@@ -203,93 +220,3 @@ MonkHeal:
 		Damage: -6000
 		ValidTargets: Heal
 		ValidRelationships: Ally
-
-# Sky strike at the target using original RAIN frame 281.
-# One-shots any infantry (toughest: Footman/Commander 26,775 HP), with headroom.
-ShamanLightning:
-	Report: thunder1.wav
-	TargetActorCenter: true
-	ReloadDelay: 50
-	Range: 8c0
-	ValidTargets: Ground, Air
-	Projectile: InstantHit
-		Blockable: false
-	Warhead@SkyStrike: CreateEffect
-		Image: shaman-lightning
-		Explosions: strike
-		ExplosionPalette: knight
-		ValidTargets: Ground, Air
-		ValidRelationships: Enemy
-	Warhead@Damage: SpreadDamage
-		Spread: 1
-		Damage: 30000
-		ValidTargets: Ground, Air
-		ValidRelationships: Enemy
-		Versus:
-			None: 100
-			Light: 100
-			Heavy: 100
-			Wood: 100
-			Concrete: 100
-		DamageTypes: DefaultDeath
-
-# Provisional mine balance, separate from original game research.
-MinerMineExplosion:
-	Warhead@Sound: CreateEffect
-		ImpactSounds: exp1.wav
-		ImpactActors: false
-		ValidTargets: Ground
-	Warhead@Damage: SpreadDamage
-		Spread: 512
-		Damage: 12000
-		ValidTargets: Ground
-		ValidRelationships: Enemy
-		Versus:
-			None: 75
-			Light: 125
-			Heavy: 150
-			Wood: 50
-			Concrete: 50
-		DamageTypes: DefaultDeath
-
-TowerBow:
-	Inherits: Bow
-	Range: 7c0
-
-CannonTowerShot:
-	Inherits: CannonShot
-	# Cannon range 10 cells x 1.10.
-	Range: 11c0
-
-# Patrol Ship: arrows with naval and air target support; power 50, cooldown 35.
-PatrolShipBow:
-	Inherits: Bow
-	ReloadDelay: 47
-	Range: 6c0
-	ValidTargets: Ground, Water, Air
-	Warhead@1Dam: SpreadDamage
-		Damage: 5000
-		ValidTargets: Ground, Water, Air
-
-# Turtle Ship: power 75, cooldown 110.
-CannonShipShot:
-	Inherits: CannonShot
-	Range: 8c0
-	ValidTargets: Ground, Water
-	Warhead@Damage: SpreadDamage
-		Damage: 7500
-		ValidTargets: Ground, Water
-
-# Commander: power 50, cooldown 18 -> 24, range 6.
-CommanderBow:
-	Inherits: Bow
-	ReloadDelay: 24
-	Range: 6c0
-	Warhead@1Dam: SpreadDamage
-		Damage: 5000
-
-# Fighter: Fire Car rockets with power 50, cooldown 90 -> 120, range 6.
-FighterRockets:
-	Inherits: FireCarRockets
-	ReloadDelay: 120
-	Range: 6c0

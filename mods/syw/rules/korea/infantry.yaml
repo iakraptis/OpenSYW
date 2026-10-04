@@ -3,7 +3,7 @@
 kpeasant:
 	Inherits: ^peasant
 	RenderSprites:
-		Image: peasant
+		Image: kpeasant
 	Buildable:
 		Queue: Workers.Korea
 	Builder:
@@ -12,14 +12,14 @@ kpeasant:
 kbull:
 	Inherits: ^bull
 	RenderSprites:
-		Image: bull
+		Image: kbull
 	Buildable:
 		Queue: Workers.Korea
 
 kfootman:
 	Inherits: ^footman
 	RenderSprites:
-		Image: footman
+		Image: kfootman
 	Health:
 		HP: 26775
 	Armament:
@@ -30,14 +30,14 @@ kfootman:
 karcher:
 	Inherits: ^archer
 	RenderSprites:
-		Image: archer
+		Image: karcher
 	Buildable:
 		Queue: Infantry.Korea
 
 kgunner:
 	Inherits: ^gunner
 	RenderSprites:
-		Image: gunner
+		Image: kgunner
 	Armament:
 		Weapon: Musket
 	Buildable:
@@ -46,7 +46,7 @@ kgunner:
 kcommander:
 	Inherits: ^commander
 	RenderSprites:
-		Image: commander
+		Image: kcommander
 	Armament:
 		Weapon: CommanderBow
 	AutoTargetPriority@COMBAT:
@@ -61,7 +61,7 @@ kcommander:
 koccupier:
 	Inherits: ^occupier
 	RenderSprites:
-		Image: occupier
+		Image: koccupier
 	Buildable:
 		Queue: AdvancedInfantry.Korea
 	Tooltip:
@@ -70,7 +70,7 @@ koccupier:
 kmonk:
 	Inherits: ^monk
 	RenderSprites:
-		Image: monk
+		Image: kmonk
 	Buildable:
 		Queue: Temple.Korea
 	Tooltip:
@@ -79,7 +79,7 @@ kmonk:
 kshaman:
 	Inherits: ^shaman
 	RenderSprites:
-		Image: shaman
+		Image: kshaman
 	ManualLightning:
 	# Transform (FIRE 199 button): one allied Peasant becomes a random infantry unit.
 	ShamanTransform:
@@ -115,7 +115,7 @@ kshaman:
 kminer:
 	Inherits: ^syw-infantry
 	RenderSprites:
-		Image: miner
+		Image: kminer
 	Health:
 		HP: 19125
 	WithInfantryBody:
@@ -215,7 +215,7 @@ kfootman.colorpicker:
 	-MapEditorData:
 	-Buildable:
 	RenderSprites:
-		Image: footman
+		Image: kfootman
 		Palette: colorpicker
 	Health:
 		HP: 26775
@@ -227,7 +227,7 @@ kpeasant.colorpicker:
 	-MapEditorData:
 	-Buildable:
 	RenderSprites:
-		Image: peasant
+		Image: kpeasant
 		Palette: colorpicker
 	Builder:
 		Types: khq, kbarracks, kmill, kbeaconmound, kheavyarmsworkshop, kbarracks2, kplaneworks, ktemple, kshamanhouse, kstable, karrowtower, kcannontower, kshipyard
@@ -237,7 +237,7 @@ karcher.colorpicker:
 	-MapEditorData:
 	-Buildable:
 	RenderSprites:
-		Image: archer
+		Image: karcher
 		Palette: colorpicker
 
 kgunner.colorpicker:
@@ -245,7 +245,7 @@ kgunner.colorpicker:
 	-MapEditorData:
 	-Buildable:
 	RenderSprites:
-		Image: gunner
+		Image: kgunner
 		Palette: colorpicker
 	Armament:
 		Weapon: Musket

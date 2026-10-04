@@ -27,7 +27,7 @@ jbomber:
 	Health:
 		HP: 30600
 	RenderSprites:
-		Image: bomber
+		Image: jbomber
 	# One bomb from each offset (left wing, centre, right wing), so the burst lands side by side.
 	Armament:
 		Weapon: BomberBombs

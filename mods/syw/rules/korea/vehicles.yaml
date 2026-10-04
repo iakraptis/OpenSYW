@@ -3,7 +3,7 @@
 kfirecar:
 	Inherits: ^firecar
 	RenderSprites:
-		Image: firecar
+		Image: kfirecar
 	Armament:
 		Weapon: FireCarRockets
 	Valued:

@@ -1,3 +1,5 @@
+# Sprites both factions share.
+
 # UI-only images (not gameplay sprites). "clock" is the production-queue
 # progress overlay ProductionPaletteWidget always requires (hardcoded
 # default image name): a dimmed wedge for the time left, 48 frames drawn by
@@ -45,29 +47,3 @@ spell-icons:
 		Filename: art/icons/spells/repair.png
 	sell:
 		Filename: art/icons/spells/sell.png
-
-# Rally point marker: the TREE 264-267 banner (building_effects_export.py); its pole foot (frame pixel 3,31)
-# sits on the rally cell. The blue cloth uses the team-colour range.
-rallypoint:
-	flag:
-		Filename: art/effects/rally.png
-		Length: 4
-		Tick: 150
-		Offset: 13, -15
-		ZOffset: 2535
-
-# Smoke over vehicles, ships and aircraft below 50% health (FIRE 130-137, building_effects_export.py).
-damage-smoke:
-	loop:
-		Filename: art/effects/damage-smoke.png
-		Length: 8
-		Tick: 100
-		Offset: 0, -12
-		ZOffset: 1024
-
-# The Witch's Earthquake (FIRE96 0-7, 96x96: the 3x3 cells around the target).
-earthquake:
-	quake:
-		Filename: art/effects/earthquake.png
-		Length: 8
-		Tick: 80

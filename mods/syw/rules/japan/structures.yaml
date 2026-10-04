@@ -63,7 +63,7 @@ jbarracks2:
 jairport:
 	Inherits: ^planeworks
 	RenderSprites:
-		Image: airport
+		Image: jairport
 	Tooltip:
 		Name: actor-airport.name
 	Production:
@@ -87,7 +87,7 @@ jtemple:
 jwitchhouse:
 	Inherits: ^shamanhouse
 	RenderSprites:
-		Image: witchhouse
+		Image: jwitchhouse
 	Tooltip:
 		Name: actor-witchhouse.name
 	Production:

@@ -1,0 +1,56 @@
+# Sprites both factions share.
+
+# Cannon-shell blast: original EXP.SPR 2x2-tile explosion, 15 frames (tools/explosion_export.py).
+# EXP.SPR explosions (explosion_export.py, SYWtoORA/docs/formats/exp.md).
+explosion:
+	# C: dust burst - building destruction.
+	building:
+		Filename: art/effects/building-explosion.png
+		Length: 13
+		Tick: 80
+		ZOffset: 511
+	# B: flash and smoke - vehicle destruction.
+	vehicle:
+		Filename: art/effects/vehicle-explosion.png
+		Length: 16
+		Tick: 80
+		ZOffset: 511
+	# D1: medium dust burst - cannon shell impacts.
+	cannon-impact:
+		Filename: art/effects/cannon-impact.png
+		Length: 13
+		Tick: 60
+		ZOffset: 511
+	# D2: small dust burst - rocket impacts.
+	rocket-impact:
+		Filename: art/effects/rocket-impact.png
+		Length: 13
+		Tick: 60
+		ZOffset: 511
+	# A: fire blast - Bomber bombs and the Torpedo blast.
+	cannon:
+		Filename: art/effects/cannon-explosion.png
+		Length: *
+		Tick: 60
+		ZOffset: 511
+
+# Smoke over vehicles, ships and aircraft below 50% health (FIRE 130-137, building_effects_export.py).
+damage-smoke:
+	loop:
+		Filename: art/effects/damage-smoke.png
+		Length: 8
+		Tick: 100
+		Offset: 0, -12
+		ZOffset: 1024
+
+# The Witch's Earthquake (FIRE96 0-7, 96x96: the 3x3 cells around the target).
+earthquake:
+	quake:
+		Filename: art/effects/earthquake.png
+		Length: 8
+		Tick: 80
+
+# Chest dropped by a loaded Peasant on death (MOUSE 50).
+resource-chest:
+	idle:
+		Filename: art/effects/chest.png

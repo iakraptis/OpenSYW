@@ -5,14 +5,14 @@ kfighter:
 	Health:
 		HP: 22950
 	RenderSprites:
-		Image: fighter
+		Image: kfighter
 	Buildable:
 		Queue: Aircraft.Korea
 
 ktransporter:
 	Inherits: ^transporter
 	RenderSprites:
-		Image: transporter
+		Image: ktransporter
 	Buildable:
 		Queue: Aircraft.Korea
 	Valued:

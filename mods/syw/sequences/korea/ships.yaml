@@ -1,4 +1,7 @@
-patrolship:
+# Korean sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/korea).
+
+kpatrolship:
 	Defaults:
 		Scale: 0.85
 	idle:
@@ -7,7 +10,7 @@ patrolship:
 	icon:
 		Filename: art/icons/units/patrolship.png
 
-cannonship:
+kcannonship:
 	Defaults:
 		Scale: 0.85
 	idle:
@@ -16,7 +19,7 @@ cannonship:
 	icon:
 		Filename: art/icons/units/cannonship.png
 
-transportship:
+ktransportship:
 	Defaults:
 		Scale: 0.85
 	idle:
