@@ -78,3 +78,7 @@ test-results/
 gathering-test-support/
 *-stdout.txt
 *-stderr.txt
+
+# Release builds (packaging/windows/package-windows.ps1)
+/dist/
+packaging/windows/build/

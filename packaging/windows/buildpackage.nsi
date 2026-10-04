@@ -51,13 +51,18 @@ RequestExecutionLevel admin
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\${PACKAGING_WINDOWS_REGISTRY_KEY}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER "OpenRA"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "${PACKAGING_DISPLAY_NAME}"
 
 Var StartMenuFolder
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
+
+; Offer to start the game straight away (the first launch asks for the Seven Years War folder).
+!define MUI_FINISHPAGE_RUN "$INSTDIR\${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe"
+!define MUI_FINISHPAGE_RUN_TEXT "Run ${PACKAGING_DISPLAY_NAME}"
+!insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
@@ -93,7 +98,7 @@ Section "Game" GAME
 
 	SetOutPath "$INSTDIR"
 	File "${SRCDIR}\*.exe"
-	File "${SRCDIR}\*.dll.config"
+	File /nonfatal "${SRCDIR}\*.dll.config"
 	File "${SRCDIR}\*.dll"
 	File "${SRCDIR}\*.ico"
 	File "${SRCDIR}\*.deps.json"
@@ -131,7 +136,7 @@ SectionEnd
 
 Section "Desktop Shortcut" DESKTOPSHORTCUT
 	SetOutPath "$INSTDIR"
-	CreateShortCut "$DESKTOP\OpenRA - ${PACKAGING_DISPLAY_NAME}.lnk" "$INSTDIR\${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe" "" \
+	CreateShortCut "$DESKTOP\${PACKAGING_DISPLAY_NAME}.lnk" "$INSTDIR\${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe" "" \
 		"$INSTDIR\${PACKAGING_WINDOWS_LAUNCHER_NAME}.exe" "" "" "" ""
 SectionEnd
 
@@ -142,7 +147,7 @@ Section "-Uninstaller"
 	WriteUninstaller $INSTDIR\uninstaller.exe
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "DisplayName" "${PACKAGING_DISPLAY_NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "UninstallString" "$INSTDIR\uninstaller.exe"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "QuietUninstallString" "$\"$INSTDIR\uninstaller.exe$\" /S"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "InstallLocation" "$INSTDIR"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "DisplayIcon" "$INSTDIR\${MOD_ID}.ico"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PACKAGING_WINDOWS_REGISTRY_KEY}" "Publisher" "${PACKAGING_AUTHORS}"
@@ -194,7 +199,7 @@ Function ${UN}Clean
 	Delete "$SMPROGRAMS\$StartMenuFolder\${PACKAGING_DISPLAY_NAME}.lnk"
 	RMDir "$SMPROGRAMS\$StartMenuFolder"
 
-	Delete "$DESKTOP\OpenRA - ${PACKAGING_DISPLAY_NAME}.lnk"
+	Delete "$DESKTOP\${PACKAGING_DISPLAY_NAME}.lnk"
 	DeleteRegKey HKLM "Software\${PACKAGING_WINDOWS_REGISTRY_KEY}"
 FunctionEnd
 !macroend

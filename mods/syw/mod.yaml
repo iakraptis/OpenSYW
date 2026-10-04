@@ -3,16 +3,27 @@ Metadata:
 	Version: {DEV_VERSION}
 	WindowTitle: mod-windowtitle
 
-FileSystem: DefaultFileSystem
-	Packages:
+# The converted Seven Years War content (art, sounds, maps) lives in the player's support folder, written by the asset
+# installer (OpenRA.Mods.Syw/AssetInstaller; SywContent.Version must match the v1 below). When it is missing the game
+# opens the syw-content mod instead, which finds the original game and converts it.
+FileSystem: ContentInstallerFileSystem
+	SystemPackages:
 		^EngineDir
 		$syw: syw
-		# Sounds and voices written by the asset installer; optional so the mod still loads before it has run.
-		~syw|audio
 		^EngineDir|mods/common: common
+		~^SupportDir|Content/syw/v1/: content
+	ContentPackages:
+		content|audio
+	RequiredContentFiles:
+		# Written last by the installer: present only once a conversion has finished.
+		content|install-manifest.txt
+	ContentInstallerMod: syw-content
 
 MapFolders:
 	syw|maps: System
+	# The converted original maps, through the content package (a ^SupportDir path here would be skipped by the
+	# engine's map lint).
+	~content|maps: System
 
 Assemblies: OpenRA.Mods.Common.dll, OpenRA.Mods.Cnc.dll, OpenRA.Mods.Syw.dll
 

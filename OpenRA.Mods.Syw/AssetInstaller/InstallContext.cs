@@ -8,7 +8,8 @@ using OpenRA.Graphics;
 namespace OpenRA.Mods.Syw.AssetInstaller
 {
 	// Shared state for one install run: the game folder, the palettes, cached sprite sheets, and the output folder
-	// (normally mods/syw). Every file written goes through here so it lands in the manifest.
+	// (normally the player content folder, SywContent.Folder). Every file written goes through here so it lands in the
+	// manifest.
 	public sealed class InstallContext
 	{
 		public readonly GameFolder Game;
