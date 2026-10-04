@@ -1,0 +1,76 @@
+# Korean weapons. Same scale as common.yaml; the Japanese counterparts (japan.yaml) inherit from some of them.
+
+# Sky strike at the target using original RAIN frame 281.
+# One-shots any infantry (toughest: Footman/Commander 26,775 HP), with headroom.
+ShamanLightning:
+	Report: thunder1.wav
+	TargetActorCenter: true
+	ReloadDelay: 50
+	Range: 8c0
+	ValidTargets: Ground, Air
+	Projectile: InstantHit
+		Blockable: false
+	Warhead@SkyStrike: CreateEffect
+		Image: shaman-lightning
+		Explosions: strike
+		ExplosionPalette: knight
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+	Warhead@Damage: SpreadDamage
+		Spread: 1
+		Damage: 30000
+		ValidTargets: Ground, Air
+		ValidRelationships: Enemy
+		Versus:
+			None: 100
+			Light: 100
+			Heavy: 100
+			Wood: 100
+			Concrete: 100
+		DamageTypes: DefaultDeath
+
+# Provisional mine balance, separate from original game research.
+MinerMineExplosion:
+	Warhead@Sound: CreateEffect
+		ImpactSounds: exp1.wav
+		ImpactActors: false
+		ValidTargets: Ground
+	Warhead@Damage: SpreadDamage
+		Spread: 512
+		Damage: 12000
+		ValidTargets: Ground
+		ValidRelationships: Enemy
+		Versus:
+			None: 75
+			Light: 125
+			Heavy: 150
+			Wood: 50
+			Concrete: 50
+		DamageTypes: DefaultDeath
+
+TowerBow:
+	Inherits: Bow
+	Range: 7c0
+
+CannonTowerShot:
+	Inherits: CannonShot
+	# Cannon range 10 cells x 1.10.
+	Range: 11c0
+
+# Patrol Ship: arrows with naval and air target support; power 50, cooldown 35.
+PatrolShipBow:
+	Inherits: Bow
+	ReloadDelay: 47
+	Range: 6c0
+	ValidTargets: Ground, Water, Air
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: Ground, Water, Air
+
+# Commander: power 50, cooldown 18 -> 24, range 6.
+CommanderBow:
+	Inherits: Bow
+	ReloadDelay: 24
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000

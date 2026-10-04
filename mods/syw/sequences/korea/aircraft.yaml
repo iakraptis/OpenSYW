@@ -1,4 +1,7 @@
-fighter:
+# Korean sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/korea).
+
+kfighter:
 	idle:
 		Filename: art/units/fighter/flight.png
 		Facings: 8
@@ -7,7 +10,8 @@ fighter:
 		Scale: 0.85
 	icon:
 		Filename: art/icons/units/fighter.png
-transporter:
+
+ktransporter:
 	idle:
 		Filename: art/units/transporter/flight.png
 		Facings: 8

@@ -430,7 +430,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 				yaml.Add("");
 			}
 
-			c.RepoYaml("sequences/resources.yaml", string.Join("\n", yaml));
+			c.RepoYaml("sequences/common/resources.yaml", string.Join("\n", yaml));
 		}
 
 		// 32x32 frames on a sheet 20 frames wide, as RGBA.

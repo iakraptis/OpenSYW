@@ -1,0 +1,38 @@
+# Japanese sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/japan).
+
+jcannonship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/jcannonship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/jcannonship.png
+
+jarrowship:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/arrowship/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/arrowship.png
+
+jsubmarine:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/submarine/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/submarine.png
+
+jtorpedo:
+	Defaults:
+		Scale: 0.85
+	idle:
+		Filename: art/units/torpedo/body.png
+		Facings: 16
+	icon:
+		Filename: art/icons/units/torpedo.png

@@ -1,0 +1,32 @@
+# Japanese sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/japan).
+
+jfighter:
+	idle:
+		Filename: art/units/jfighter/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/jfighter.png
+
+jtransporter:
+	idle:
+		Filename: art/units/jtransporter/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/jtransporter.png
+
+jbomber:
+	idle:
+		Filename: art/units/bomber/flight.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+		Scale: 0.85
+	icon:
+		Filename: art/icons/units/bomber.png

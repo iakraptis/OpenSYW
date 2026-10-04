@@ -1,0 +1,360 @@
+# Korean sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/korea).
+
+# FARMER.SPR frames 0-47, the Bull layout: walk 0-19, loaded walk 20-39 (S, SW, W, NW, N x 4), harvest 40-43,
+# death 44-47. Sheets come from --install-assets (AssetInstaller/Units.cs): 8 facings in OpenRA order
+# (N, NW, W, SW, S, SE, E, NE), the eastern ones mirrored.
+kpeasant:
+	icon:
+		Filename: art/icons/units/peasant.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/peasant/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/peasant/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	idle:
+		Filename: art/units/peasant/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	die1:
+		Filename: art/units/peasant/death.png
+		Length: 4
+		Tick: 150
+	loaded-walk:
+		Filename: art/units/peasant/loaded-walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	loaded-stand:
+		Filename: art/units/peasant/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	loaded-idle:
+		Filename: art/units/peasant/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	harvest:
+		Filename: art/units/peasant/harvest.png
+		Length: 4
+		Tick: 200
+
+kbull:
+	icon:
+		Filename: art/icons/units/bull.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/bull/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/bull/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/bull/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	loaded-walk:
+		Filename: art/units/bull/loaded-walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	loaded-stand:
+		Filename: art/units/bull/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	loaded-idle:
+		Filename: art/units/bull/loaded-walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	harvest:
+		Filename: art/units/bull/harvest.png
+		Length: 4
+		Tick: 200
+	die1:
+		Filename: art/units/bull/death.png
+		Length: 4
+		Tick: 150
+
+# FOOTMAN.SPR shares ARCHER.SPR's layout: walk 0-19, attack 20-39 (S, SW, W, NW, N x 4), death 41-43 (frame 40
+# unused). Sheets come from --install-assets (AssetInstaller/Units.cs): 8 facings in OpenRA order
+# (N, NW, W, SW, S, SE, E, NE), the eastern ones mirrored.
+kfootman:
+	icon:
+		Filename: art/icons/units/footman.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/footman/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/footman/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	idle:
+		Filename: art/units/footman/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	attack:
+		Filename: art/units/footman/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/footman/death.png
+		Length: 3
+		Tick: 150
+
+# ARCHER.SPR frames 0-43 (user-confirmed): walk 0-19, attack 20-39 (S, SW, W, NW, N x 4), death 41-43 (frame 40 is an
+# unused extra). Sheets come from --install-assets (AssetInstaller/Units.cs): 8 facings in OpenRA order
+# (N, NW, W, SW, S, SE, E, NE), the eastern ones mirrored.
+karcher:
+	icon:
+		Filename: art/icons/units/archer.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/archer/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/archer/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	idle:
+		Filename: art/units/archer/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	shoot:
+		Filename: art/units/archer/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/archer/death.png
+		Length: 3
+		Tick: 150
+
+# ARCHER.SPR frames 96-129 (user-identified as the Gunner): walk 96-115 (S, SW, W, NW, N x 4), attack 116-125
+# (5 directions x 2, a shorter aim cycle than the Archer's), death 126-129. Sheets come from --install-assets
+# (AssetInstaller/Units.cs): 8 facings in OpenRA order (N, NW, W, SW, S, SE, E, NE), the eastern ones mirrored.
+kgunner:
+	icon:
+		Filename: art/icons/units/gunner.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/gunner/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/gunner/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	idle:
+		Filename: art/units/gunner/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+		Tick: 200
+	shoot:
+		Filename: art/units/gunner/shoot.png
+		Facings: 8
+		Length: 2
+		Tick: 120
+	die1:
+		Filename: art/units/gunner/death.png
+		Length: 4
+		Tick: 150
+
+kcommander:
+	icon:
+		Filename: art/icons/units/commander.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/commander/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/commander/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/commander/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/commander/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/commander/death.png
+		Length: 6
+		Tick: 150
+
+koccupier:
+	icon:
+		Filename: art/icons/units/occupier.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/occupier/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/occupier/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/occupier/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	die1:
+		Filename: art/units/occupier/death.png
+		Length: 4
+		Tick: 150
+
+kmonk:
+	icon:
+		Filename: art/icons/units/monk.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/monk/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/monk/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/monk/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/monk/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/monk/death.png
+		Length: 4
+		Tick: 150
+
+kshaman:
+	icon:
+		Filename: art/icons/units/shaman.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/shaman/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/shaman/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/shaman/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	shoot:
+		Filename: art/units/shaman/shoot.png
+		Facings: 8
+		Length: 4
+		Tick: 120
+	die1:
+		Filename: art/units/shaman/death.png
+		Length: 4
+		Tick: 150
+
+kminer:
+	icon:
+		Filename: art/icons/units/miner.png
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	walk:
+		Filename: art/units/miner/walk.png
+		Facings: 8
+		Length: 4
+		Tick: 110
+	stand:
+		Filename: art/units/miner/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	idle:
+		Filename: art/units/miner/walk.png
+		Facings: 8
+		Length: 1
+		Stride: 4
+	die1:
+		Filename: art/units/miner/death.png
+		Length: 4
+		Tick: 150
+
+syw-mine:
+	idle:
+		Filename: art/units/miner/mine.png
+
+syw-mine-building:
+	idle:
+		Filename: art/units/miner/mine-building.png

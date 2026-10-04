@@ -1,0 +1,22 @@
+# Sprites both factions share.
+
+# Shared first construction stage; each building's own art supplies the second.
+# Original medium scaffolding consists of nine tiles stitched into one image.
+scaffold-medium:
+	underconstruction:
+		Filename: art/buildings/common/scaffold-medium.png
+
+scaffold-small:
+	underconstruction:
+		Filename: art/buildings/common/scaffold-medium.png
+		Scale: 0.6666667
+
+# Rally point marker: the TREE 264-267 banner (building_effects_export.py); its pole foot (frame pixel 3,31)
+# sits on the rally cell. The blue cloth uses the team-colour range.
+rallypoint:
+	flag:
+		Filename: art/effects/rally.png
+		Length: 4
+		Tick: 150
+		Offset: 13, -15
+		ZOffset: 2535

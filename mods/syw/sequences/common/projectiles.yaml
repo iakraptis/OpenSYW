@@ -1,9 +1,11 @@
+# Sprites both factions share.
+
 # Arrow projectile, from FIRE.SPR frames 80-88 (user-identified): a 9-frame
 # half-circle sweep S -> SSW -> SW -> WSW -> W -> WNW -> NW -> NNW -> N (180,
 # stepping 22.5 each). The other 7 of a 16-point compass (the east side) are
 # built by mirroring (FlipX) - S and N sit on the mirror axis and need no
 # duplicate. Facing order/index below is OpenRA's Facings: 16 convention
-# (same derivation as peasant.yaml's Facings: 8, just twice the resolution):
+# (same derivation as the units' Facings: 8, just twice the resolution):
 # starts at North (index 0), increases counter-clockwise, step = 1024/16 = 64.
 arrow:
 	idle:
@@ -173,36 +175,21 @@ missile-trail:
 		Length: 3
 		Tick: 80
 
-# Cannon-shell blast: original EXP.SPR 2x2-tile explosion, 15 frames (tools/explosion_export.py).
-# EXP.SPR explosions (explosion_export.py, SYWtoORA/docs/formats/exp.md).
-explosion:
-	# C: dust burst - building destruction.
-	building:
-		Filename: art/effects/building-explosion.png
-		Length: 13
-		Tick: 80
-		ZOffset: 511
-	# B: flash and smoke - vehicle destruction.
-	vehicle:
-		Filename: art/effects/vehicle-explosion.png
-		Length: 16
-		Tick: 80
-		ZOffset: 511
-	# D1: medium dust burst - cannon shell impacts.
-	cannon-impact:
-		Filename: art/effects/cannon-impact.png
-		Length: 13
-		Tick: 60
-		ZOffset: 511
-	# D2: small dust burst - rocket impacts.
-	rocket-impact:
-		Filename: art/effects/rocket-impact.png
-		Length: 13
-		Tick: 60
-		ZOffset: 511
-	# A: fire blast - Bomber bombs and the Torpedo blast.
-	cannon:
-		Filename: art/effects/cannon-explosion.png
-		Length: *
-		Tick: 60
-		ZOffset: 511
+monk-fireball:
+	idle:
+		Filename: art/units/monk/fireball.png
+		Facings: 16
+		Length: 1
+
+# RAIN 281/289/290 stitched 2x2 (top-left empty); the bolt lands at the bottom centre.
+shaman-lightning:
+	strike:
+		Filename: art/effects/shaman-lightning/strike.png
+		Offset: 0, -32
+		Length: 1
+		Tick: 200
+
+# The Bomber's falling bomb (MOUSE 63).
+bomber-bomb:
+	idle:
+		Filename: art/effects/bomb.png

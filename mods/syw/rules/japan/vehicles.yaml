@@ -6,7 +6,7 @@
 jarmoredcar:
 	Inherits: ^firecar
 	RenderSprites:
-		Image: armoredcar
+		Image: jarmoredcar
 	# TANK 26-35 has a forward roof mount, not a central pivot.
 	# At 0.85 sprite scale: about 10 screen px forward, 6 px above ground.
 	# Rotate the mount with the hull; the turret can still aim independently.

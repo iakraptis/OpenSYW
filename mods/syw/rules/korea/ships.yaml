@@ -4,7 +4,7 @@ kpatrolship:
 	Inherits: ^patrolship
 	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
 	RenderSprites:
-		Image: patrolship
+		Image: kpatrolship
 	Buildable:
 		BuildPaletteOrder: 10
 	Health:
@@ -20,7 +20,7 @@ kcannonship:
 	Inherits: ^cannonship
 	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
 	RenderSprites:
-		Image: cannonship
+		Image: kcannonship
 	Valued:
 		Cost: 2000
 
@@ -28,7 +28,7 @@ ktransportship:
 	Inherits: ^transportship
 	# SHIP1.SPR index 2 is the projected shadow, like TANK: use the shadow-aware palette.
 	RenderSprites:
-		Image: transportship
+		Image: ktransportship
 	Health:
 		HP: 45900
 	Tooltip:

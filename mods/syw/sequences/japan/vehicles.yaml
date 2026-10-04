@@ -1,0 +1,24 @@
+# Japanese sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/japan).
+
+jarmoredcar:
+	Defaults:
+		Offset: [0, -10, 10]
+		Scale: 0.85
+	idle:
+		Filename: art/units/armoredcar/body.png
+		Facings: 8
+		Length: 1
+		Stride: 2
+	move:
+		Filename: art/units/armoredcar/body.png
+		Facings: 8
+		Length: 2
+		Tick: 110
+	turret:
+		Filename: art/units/armoredcar/turret.png
+		Facings: 16
+		Length: 1
+	icon:
+		Filename: art/icons/units/armoredcar.png
+		Offset: 0,0

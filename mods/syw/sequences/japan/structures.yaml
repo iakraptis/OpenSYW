@@ -1,0 +1,139 @@
+# Japanese sprites: units, buildings and their portraits. Sheets come from --install-assets (AssetInstaller Units.cs,
+# Buildings.cs and Effects.cs for the portraits); images are named after their actors (rules/japan).
+
+jhq:
+	underconstruction:
+		Filename: art/buildings/jheadquarters/underconstruction.png
+	idle:
+		Filename: art/buildings/jheadquarters/idle.png
+	damaged-idle:
+		Filename: art/buildings/jheadquarters/damaged-idle.png
+
+jbarracks:
+	underconstruction:
+		Filename: art/buildings/jbarracks/underconstruction.png
+	idle:
+		Filename: art/buildings/jbarracks/idle.png
+	damaged-idle:
+		Filename: art/buildings/jbarracks/damaged-idle.png
+	# Flags on the three roofs (MOUSE 84-87, building_effects_export.py). The pole foot (frame pixel 29,30) sits on each
+	# roof ridge: sprite pixels (40,15), (64,35) and (36,53). Staggered start frames so they don't wave in sync.
+	flag1:
+		Filename: art/effects/buildings/jflag.png
+		Frames: 0, 1, 2, 3
+		Length: 4
+		Tick: 150
+		Offset: -21, -47
+		ZOffset: 1024
+	flag2:
+		Filename: art/effects/buildings/jflag.png
+		Frames: 1, 2, 3, 0
+		Length: 4
+		Tick: 150
+		Offset: 3, -27
+		ZOffset: 1024
+	flag3:
+		Filename: art/effects/buildings/jflag.png
+		Frames: 2, 3, 0, 1
+		Length: 4
+		Tick: 150
+		Offset: -25, -9
+		ZOffset: 1024
+
+jmill:
+	underconstruction:
+		Filename: art/buildings/jmill/underconstruction.png
+	idle:
+	# Turning windmill: 4 whole-building frames from BUILD1 80-131.
+		Filename: art/buildings/jmill/idle.png
+		Length: 4
+		Tick: 150
+	damaged-idle:
+		Filename: art/buildings/jmill/damaged-idle.png
+
+jbeacon:
+	underconstruction:
+		Filename: art/buildings/jbeacon/underconstruction.png
+	idle:
+		Filename: art/buildings/jbeacon/idle.png
+	damaged-idle:
+		Filename: art/buildings/jbeacon/damaged-idle.png
+	# The Korean Beacon Mound's chimney smoke; the bottom of the 32x64 cloud sits on the tower opening at sprite pixel (28,11).
+	smoke:
+		Filename: art/effects/buildings/chimney.png
+		Length: 8
+		Tick: 120
+		Offset: -20, -69
+		ZOffset: 1024
+
+jheavyarms:
+	underconstruction:
+		Filename: art/buildings/jheavyarms/underconstruction.png
+	idle:
+		Filename: art/buildings/jheavyarms/idle.png
+	damaged-idle:
+		Filename: art/buildings/jheavyarms/damaged-idle.png
+
+jbarracks2:
+	underconstruction:
+		Filename: art/buildings/jbarracks2/underconstruction.png
+	idle:
+		Filename: art/buildings/jbarracks2/idle.png
+	damaged-idle:
+		Filename: art/buildings/jbarracks2/damaged-idle.png
+
+jairport:
+	underconstruction:
+		Filename: art/buildings/airport/underconstruction.png
+	idle:
+		Filename: art/buildings/airport/idle.png
+	damaged-idle:
+		Filename: art/buildings/airport/damaged-idle.png
+
+jtemple:
+	underconstruction:
+		Filename: art/buildings/jtemple/underconstruction.png
+	idle:
+		Filename: art/buildings/jtemple/idle.png
+	damaged-idle:
+		Filename: art/buildings/jtemple/damaged-idle.png
+
+jwitchhouse:
+	underconstruction:
+		Filename: art/buildings/witchhouse/underconstruction.png
+	idle:
+		Filename: art/buildings/witchhouse/idle.png
+	damaged-idle:
+		Filename: art/buildings/witchhouse/damaged-idle.png
+
+jstable:
+	underconstruction:
+		Filename: art/buildings/jstable/underconstruction.png
+	idle:
+		Filename: art/buildings/jstable/idle.png
+	damaged-idle:
+		Filename: art/buildings/jstable/damaged-idle.png
+
+jarrowtower:
+	underconstruction:
+		Filename: art/buildings/jarrowtower/underconstruction.png
+	idle:
+		Filename: art/buildings/jarrowtower/idle.png
+	damaged-idle:
+		Filename: art/buildings/jarrowtower/damaged-idle.png
+
+jcannontower:
+	underconstruction:
+		Filename: art/buildings/jcannontower/underconstruction.png
+	idle:
+		Filename: art/buildings/jcannontower/idle.png
+	damaged-idle:
+		Filename: art/buildings/jcannontower/damaged-idle.png
+
+jshipyard:
+	underconstruction:
+		Filename: art/buildings/jshipyard/underconstruction.png
+	idle:
+		Filename: art/buildings/jshipyard/idle.png
+	damaged-idle:
+		Filename: art/buildings/jshipyard/damaged-idle.png

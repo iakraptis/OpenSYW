@@ -57,7 +57,7 @@ jgunner:
 jgeneral:
 	Inherits: ^commander
 	RenderSprites:
-		Image: general
+		Image: jgeneral
 	Armament:
 		Weapon: GeneralSword
 	AutoTargetPriority@COMBAT:
@@ -70,7 +70,7 @@ jgeneral:
 jthief:
 	Inherits: ^occupier
 	RenderSprites:
-		Image: thief
+		Image: jthief
 	Buildable:
 		Queue: AdvancedInfantry.Japan
 	Tooltip:
@@ -80,7 +80,7 @@ jthief:
 jpriest:
 	Inherits: ^monk
 	RenderSprites:
-		Image: priest
+		Image: jpriest
 	Buildable:
 		Queue: Temple.Japan
 	Tooltip:
@@ -90,7 +90,7 @@ jpriest:
 jwitch:
 	Inherits: ^shaman
 	RenderSprites:
-		Image: witch
+		Image: jwitch
 	AmmoPool@MANA:
 		Armaments: none
 	Buildable:

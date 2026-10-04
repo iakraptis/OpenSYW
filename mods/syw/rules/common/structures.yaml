@@ -89,8 +89,8 @@
 		Duration: 500
 	FrozenUnderFog:
 	FireWarheadsOnDeath:
-		Weapon: KoreanBuildingExplosion
-		EmptyWeapon: KoreanBuildingExplosion
+		Weapon: BuildingExplosion
+		EmptyWeapon: BuildingExplosion
 	RevealsShroud:
 		Range: 6c0
 	MapEditorData:
