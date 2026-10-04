@@ -9,6 +9,8 @@ jfighter:
 		Image: jfighter
 	Buildable:
 		Queue: Aircraft.Japan
+	Armament:
+		Weapon: JapaneseFighterRockets
 
 # ---------------------------------------------------------------- Aircraft
 
@@ -30,7 +32,7 @@ jbomber:
 		Image: jbomber
 	# One bomb from each offset (left wing, centre, right wing), so the burst lands side by side.
 	Armament:
-		Weapon: BomberBombs
+		Weapon: JapaneseBomberBombs
 		LocalOffset: 0,-256,0, 0,0,0, 0,256,0
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground

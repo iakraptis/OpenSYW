@@ -1,4 +1,5 @@
-# Weapons both factions use, and the bases the faction weapons inherit from (korea.yaml, japan.yaml).
+# The shared explosion effects, and the bases (^Name) every faction weapon inherits from: korea.yaml and
+# japan.yaml define the weapons the units use, so each faction can be balanced on its own.
 # Balance: damage = original attack power x100 (same scale as HP = original HP x100);
 # armor matchups use Versus tables; no flat unit defense reduction. ReloadDelay =
 # original cooldown threshold x4/3 ticks (Archer 20 -> 27), after two user-requested 1.5x
@@ -30,7 +31,7 @@ ShipExplosion:
 	Warhead@Effect: CreateEffect
 		ImpactSounds: sink.wav
 
-Bow:
+^Bow:
 	Report: arrow1.wav
 	ReloadDelay: 27
 	Range: 5c0
@@ -56,7 +57,7 @@ Bow:
 
 # Gunner's weapon, also the base of every gun (Japanese Gunner, Armored Car, Japanese Arrow Tower).
 # The bullet is FIRE 140-148 (2026-09-30, user-identified); fast, so the hit lands almost at once.
-Musket:
+^Musket:
 	Report: gun1.wav, gun2.wav, gun3.wav
 	ReloadDelay: 40
 	Range: 5c0
@@ -81,7 +82,7 @@ Musket:
 
 # Footman's melee weapon. InstantHit at melee range - the swing itself is
 # shown by the attack animation, so no separate projectile sprite is needed.
-Sword:
+^Sword:
 	Report: sword1.wav, sword2.wav, sword3.wav
 	ReloadDelay: 18
 	Range: 1c256
@@ -104,7 +105,7 @@ Sword:
 # Power 50 split over a two-missile volley. Each missile explodes with area damage:
 # full within 1 cell of impact, then 50% to 1.5 cells and 25% to 2 cells; enemies/neutrals only.
 # Inherited by FighterRockets and CannonShot.
-FireCarRockets:
+^Rockets:
 	# Also the fighter's rockets (FighterRockets inherits this); CannonShot sets its own.
 	Report: tank1.wav
 	# Two shots 5 ticks apart; original cooldown 70.
@@ -146,8 +147,8 @@ FireCarRockets:
 
 # One stronger shot at longer range, ground-only at acquisition AND impact.
 # Shell speed, area damage and explosion come from FireCarRockets.
-CannonShot:
-	Inherits: FireCarRockets
+^CannonShot:
+	Inherits: ^Rockets
 	Report: cannon1.wav, cannon2.wav, cannon3.wav
 	ReloadDelay: 147
 	Burst: 1
@@ -167,23 +168,38 @@ CannonShot:
 		Explosions: cannon-impact
 		ValidTargets: Ground, Water
 
+# Fighter: Fire Car rockets with power 50, cooldown 90 -> 120, range 6.
+^FighterRockets:
+	Inherits: ^Rockets
+	ReloadDelay: 120
+	Range: 6c0
+
+# Patrol Ship: arrows with naval and air target support; power 50, cooldown 35.
+^ShipBow:
+	Inherits: ^Bow
+	ReloadDelay: 47
+	Range: 6c0
+	ValidTargets: Ground, Water, Air
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: Ground, Water, Air
+
 # Turtle Ship: power 75, cooldown 110.
-CannonShipShot:
-	Inherits: CannonShot
+^CannonShipShot:
+	Inherits: ^CannonShot
 	Range: 8c0
 	ValidTargets: Ground, Water
 	Warhead@Damage: SpreadDamage
 		Damage: 7500
 		ValidTargets: Ground, Water
 
-# Fighter: Fire Car rockets with power 50, cooldown 90 -> 120, range 6.
-FighterRockets:
-	Inherits: FireCarRockets
-	ReloadDelay: 120
-	Range: 6c0
+^CannonTowerShot:
+	Inherits: ^CannonShot
+	# Cannon range 10 cells x 1.10.
+	Range: 11c0
 
 # Monk fireball: initial stock damage approximation, not original spell mechanics.
-MonkFireball:
+^Fireball:
 	Report: buda1.wav
 	ReloadDelay: 33
 	Range: 5c0
@@ -208,7 +224,7 @@ MonkFireball:
 		DamageTypes: DefaultDeath
 
 # Stock medic-style healing, limited to one wounded allied infantry target.
-MonkHeal:
+^Heal:
 	TargetActorCenter: true
 	ReloadDelay: 80
 	Range: 4c0

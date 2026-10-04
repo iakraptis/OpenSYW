@@ -114,7 +114,6 @@
 	Tooltip:
 		Name: actor-cannonship.name
 	Armament:
-		Weapon: CannonShipShot
 		LocalOffset: 0,0,512
 		MuzzlePalette: knight
 	AttackFrontal:

@@ -16,7 +16,7 @@ jarrowship:
 	Tooltip:
 		Name: actor-arrowship.name
 	Armament:
-		Weapon: ArrowShipBow
+		Weapon: JapaneseArrowShipBow
 
 # ---------------------------------------------------------------- Ships
 
@@ -30,6 +30,8 @@ jcannonship:
 		Queue: Naval.Japan
 	Valued:
 		Cost: 1300
+	Armament:
+		Weapon: JapaneseCannonShipShot
 
 # Japan's transport is a submarine: carries units.
 jsubmarine:
@@ -57,7 +59,7 @@ jtorpedo:
 	RevealsShroud:
 		Range: 4c0
 	Armament:
-		Weapon: TorpedoTargeting
+		Weapon: JapaneseTorpedoTargeting
 	AttackFrontal:
 		FacingTolerance: 512
 	# Controls: attack-move only. Plain moves are refused (right-click needs force-move, which RejectMoveOrders then
@@ -81,8 +83,8 @@ jtorpedo:
 	KillsSelf:
 		RequiresCondition: triggered
 	FireWarheadsOnDeath:
-		Weapon: TorpedoBlast
-		EmptyWeapon: TorpedoBlast
+		Weapon: JapaneseTorpedoBlast
+		EmptyWeapon: JapaneseTorpedoBlast
 	Buildable:
 		Queue: Naval.Japan
 		BuildPaletteOrder: 40

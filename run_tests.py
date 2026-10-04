@@ -24,6 +24,8 @@ from pathlib import Path
 SDK = Path(__file__).resolve().parent
 ENGINE = SDK / 'engine'
 MAPS = SDK / 'mods' / 'syw' / 'maps'
+# Test maps the asset installer builds on converted original maps (bot-test), in the player content folder.
+CONTENT_MAPS = Path(os.environ.get('APPDATA', '')) / 'OpenRA' / 'Content' / 'syw' / 'v1' / 'maps'
 RESULTS = SDK / 'test-results'
 LOGS = Path(os.environ.get('APPDATA', '')) / 'OpenRA' / 'Logs'
 
@@ -129,8 +131,9 @@ def main():
         sys.exit('Build failed')
     yaml_ok = True if args.no_check else check_yaml()
 
-    maps = args.only.split(',') if args.only else sorted(
-        p.name for p in MAPS.iterdir() if p.name.endswith('-test') and p.name not in MANUAL)
+    folders = [MAPS] + ([CONTENT_MAPS] if CONTENT_MAPS.is_dir() else [])
+    maps = args.only.split(',') if args.only else sorted({
+        p.name for folder in folders for p in folder.iterdir() if p.name.endswith('-test') and p.name not in MANUAL})
     results = []
     for name in maps:
         print(f'{name:22} ...', end=' ', flush=True)

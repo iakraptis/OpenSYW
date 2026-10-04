@@ -8,6 +8,8 @@ kfighter:
 		Image: kfighter
 	Buildable:
 		Queue: Aircraft.Korea
+	Armament:
+		Weapon: KoreanFighterRockets
 
 ktransporter:
 	Inherits: ^transporter

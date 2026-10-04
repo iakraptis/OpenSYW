@@ -236,7 +236,6 @@ resource-chest:
 		CrushedSequencePalette: player
 		CrushedPaletteIsPlayerPalette: true
 	Armament:
-		Weapon: Bow
 		MuzzlePalette: knight
 		FireDelay: 6
 	AttackFrontal:
@@ -405,7 +404,6 @@ resource-chest:
 		CrushedSequencePalette: player
 		CrushedPaletteIsPlayerPalette: true
 	Armament:
-		Weapon: MonkFireball
 		MuzzlePalette: knight
 		FireDelay: 6
 	AmmoPool@MANA:
@@ -434,7 +432,6 @@ resource-chest:
 		AmmoUsage: 30
 		RequiresCondition: mana >= 30
 		Name: secondary
-		Weapon: MonkHeal
 		FireDelay: 6
 		MuzzlePalette: knight
 		Cursor: heal

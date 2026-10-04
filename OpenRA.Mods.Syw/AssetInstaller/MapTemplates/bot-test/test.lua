@@ -1,5 +1,5 @@
 -- Japanese bot (South, 77,33) vs Korean bot (North, 114,3) on kmulti1 at 5x speed.
--- Both bots must build a base and an army, and at least one of them must destroy an enemy building.
+-- Both bots must build a base, one of them a full base and an army, and one must destroy an enemy building.
 BaseTypes = { "khq", "kbarracks", "kmill", "kbeaconmound", "kheavyarmsworkshop", "kbarracks2", "kplaneworks", "ktemple",
     "kshamanhouse", "kstable", "karrowtower", "kcannontower", "kshipyard", "jhq", "jbarracks", "jmill", "jbeacon",
     "jheavyarms", "jbarracks2", "jairport", "jtemple", "jwitchhouse", "jstable", "jarrowtower", "jcannontower", "jshipyard" }
@@ -13,11 +13,12 @@ WorldLoaded = function()
     destroyed = 0
     Camera.Position = Map.NamedActor("SouthHQ").CenterPosition
     Watch()
-    WaitFor("the Korean bot builds a base (4+ buildings) and an army (3+ units)", 15000, function()
-        return peak.North.base >= 4 and peak.North.army >= 3
-    end)
-    WaitFor("the Japanese bot builds a base (4+ buildings) and an army (3+ units)", 15000, function()
-        return peak.South.base >= 4 and peak.South.army >= 3
+    -- Each bot must get going; the start positions are not equal (the north one has a cliff between its HQ and the
+    -- crops), so only one of them has to reach a full base and army.
+    WaitFor("the Korean bot builds a base (3+ buildings)", 15000, function() return peak.North.base >= 3 end)
+    WaitFor("the Japanese bot builds a base (3+ buildings)", 15000, function() return peak.South.base >= 3 end)
+    WaitFor("a bot builds a full base (4+ buildings) and an army (3+ units)", 15000, function()
+        return (peak.North.base >= 4 and peak.North.army >= 3) or (peak.South.base >= 4 and peak.South.army >= 3)
     end)
     WaitFor("a bot destroys an enemy building", 30000, function() return destroyed > 0 end)
     FinishWhenDone("BOT", 30500)

@@ -1,8 +1,36 @@
-# Korean weapons. Same scale as common.yaml; the Japanese counterparts (japan.yaml) inherit from some of them.
+# Korean weapons, each inheriting a base from common.yaml.
+
+# Footman.
+KoreanSword:
+	Inherits: ^Sword
+
+# Archer.
+KoreanBow:
+	Inherits: ^Bow
+
+# Gunner.
+KoreanMusket:
+	Inherits: ^Musket
+
+# Commander: power 50, cooldown 18 -> 24, range 6.
+KoreanCommanderBow:
+	Inherits: ^Bow
+	ReloadDelay: 24
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+# Monk and Shaman.
+KoreanFireball:
+	Inherits: ^Fireball
+
+# Monk.
+KoreanHeal:
+	Inherits: ^Heal
 
 # Sky strike at the target using original RAIN frame 281.
 # One-shots any infantry (toughest: Footman/Commander 26,775 HP), with headroom.
-ShamanLightning:
+KoreanLightning:
 	Report: thunder1.wav
 	TargetActorCenter: true
 	ReloadDelay: 50
@@ -30,7 +58,7 @@ ShamanLightning:
 		DamageTypes: DefaultDeath
 
 # Provisional mine balance, separate from original game research.
-MinerMineExplosion:
+KoreanMineExplosion:
 	Warhead@Sound: CreateEffect
 		ImpactSounds: exp1.wav
 		ImpactActors: false
@@ -48,29 +76,31 @@ MinerMineExplosion:
 			Concrete: 50
 		DamageTypes: DefaultDeath
 
-TowerBow:
-	Inherits: Bow
+# Fire Car.
+KoreanFireCarRockets:
+	Inherits: ^Rockets
+
+# Cannon.
+KoreanCannonShot:
+	Inherits: ^CannonShot
+
+# Fighter.
+KoreanFighterRockets:
+	Inherits: ^FighterRockets
+
+# Patrol Ship.
+KoreanPatrolShipBow:
+	Inherits: ^ShipBow
+
+# Turtle Ship.
+KoreanCannonShipShot:
+	Inherits: ^CannonShipShot
+
+# Arrow Tower.
+KoreanTowerBow:
+	Inherits: ^Bow
 	Range: 7c0
 
-CannonTowerShot:
-	Inherits: CannonShot
-	# Cannon range 10 cells x 1.10.
-	Range: 11c0
-
-# Patrol Ship: arrows with naval and air target support; power 50, cooldown 35.
-PatrolShipBow:
-	Inherits: Bow
-	ReloadDelay: 47
-	Range: 6c0
-	ValidTargets: Ground, Water, Air
-	Warhead@1Dam: SpreadDamage
-		Damage: 5000
-		ValidTargets: Ground, Water, Air
-
-# Commander: power 50, cooldown 18 -> 24, range 6.
-CommanderBow:
-	Inherits: Bow
-	ReloadDelay: 24
-	Range: 6c0
-	Warhead@1Dam: SpreadDamage
-		Damage: 5000
+# Cannon Tower.
+KoreanCannonTowerShot:
+	Inherits: ^CannonTowerShot
