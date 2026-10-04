@@ -209,6 +209,16 @@ FunctionEnd
 
 Section "Uninstall"
 	Call un.Clean
+
+	; The Seven Years War content converted on first launch is kept by default, so a reinstall doesn't ask for the
+	; game folder again. A silent uninstall (/S) keeps it.
+	SetShellVarContext current
+	IfFileExists "$APPDATA\OpenRA\Content\${MOD_ID}\*.*" 0 done
+	MessageBox MB_YESNO|MB_ICONQUESTION "Also remove the converted game content?$\r$\n$\r$\nThese are the art, sounds and maps OpenSYW converted from your copy of Seven Years War ($APPDATA\OpenRA\Content\${MOD_ID}). Keep them to skip the conversion if you install OpenSYW again." /SD IDNO IDNO done
+	RMDir /r "$APPDATA\OpenRA\Content\${MOD_ID}"
+	; Remove the Content folder too if nothing else (another OpenRA game) uses it.
+	RMDir "$APPDATA\OpenRA\Content"
+	done:
 SectionEnd
 
 ;***************************
