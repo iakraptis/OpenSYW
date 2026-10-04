@@ -48,6 +48,9 @@ namespace OpenRA.Mods.Syw.Tests
 		public int Mana(Actor actor) =>
 			actor.TraitsImplementing<AmmoPool>().FirstOrDefault(p => p.Info.Name == "mana")?.CurrentAmmoCount ?? -1;
 
+		[Desc("Whether a harvester is running its gather-and-deliver loop (the activity a Harvest order starts).")]
+		public bool Harvesting(Actor actor) => actor.CurrentActivity is Common.Activities.FindAndDeliverResources;
+
 		[Desc("Whether the building has finished construction.")]
 		public bool Finished(Actor actor) => actor.TraitOrDefault<UnderConstruction>()?.IsComplete ?? true;
 

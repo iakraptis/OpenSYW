@@ -247,8 +247,10 @@
 	Inherits: ^syw-building
 	# All building types share the two construction stages. Map-placed
 	# starting buildings have no UnderConstructionInit and start finished.
+	# The Peasant that built it starts harvesting the nearby crops.
 	UnderConstruction:
 		Duration: 400
+		BuilderHarvests: true
 	RenderSprites:
 	Health:
 		HP: 67500
