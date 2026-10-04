@@ -10,9 +10,11 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 	// power-of-two sizes.
 	public static class Chrome
 	{
-		// Sidebar: the FST Pannel13 column (160x768), cut into the emblem and stat boxes (rows 0-297, kept), the plain
-		// sandstone middle (298-671, repeated with every other copy flipped so the joins don't show) and the rocks
-		// (672-, kept), lengthened to SidebarHeight rows and doubled. chrome.yaml `sidebar-panel` slices it.
+		// Sidebar: the FST Pannel13 column (160x768), cut into the emblem (rows 0-197) and the stat boxes (198-297, both
+		// kept), the plain sandstone middle (298-671, repeated with every other copy flipped so the joins don't show) and
+		// the rocks (672-, kept), lengthened to SidebarHeight rows and doubled. chrome.yaml slices the result at these
+		// rows doubled: `sidebar-art` emblem 0-396 and boxes 396-596, `sidebar-panel` the sandstone and rocks below.
+		// Changing the cut rows means changing those regions too.
 		const int SidebarBoxesEnd = 298;
 		const int SidebarRocksStart = 672;
 		const int SidebarHeight = 1440;

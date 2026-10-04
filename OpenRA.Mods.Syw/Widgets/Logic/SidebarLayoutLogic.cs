@@ -4,7 +4,7 @@ using OpenRA.Widgets;
 
 namespace OpenRA.Mods.Syw.Widgets.Logic
 {
-	// Fits the sidebar's lower half (selection stats, unit commands, the build / training / cargo / spell panels) to
+	// Fits the sidebar's lower half (stat boxes art, selection stats, unit commands, the build / training / cargo / spell panels) to
 	// the window height, which with a UI scale above 100% is the scaled height. ingame-player.yaml holds the full
 	// layout for tall windows (1060 px and more); below that the stats panel moves up under the radar, the panels
 	// follow the command row (or take its place while it is hidden), and the palettes show only the rows that fit,
@@ -19,6 +19,8 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 		const int CompactStatsY = 316;
 		const int NoRadarStatsY = 48;
 
+		// The stat boxes art starts 12 px above the stats panel (396 vs 408 in the full layout).
+		const int BoxesAboveStats = 12;
 		const int StatsToCommands = 184;
 		const int CommandsToTitle = 64;
 		const int TitleToPalette = 30;
@@ -26,7 +28,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 		const int BottomMargin = 8;
 		const int MaxRows = 7;
 
-		readonly Widget stats, commands, title, productionBackground, buildPalette, cargo, spells;
+		readonly Widget boxes, stats, commands, title, productionBackground, buildPalette, cargo, spells;
 		readonly ProductionPaletteWidget production;
 		readonly Widget productionUp, productionDown;
 		readonly Func<bool> radarShown;
@@ -35,6 +37,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 		[ObjectCreator.UseCtor]
 		public SidebarLayoutLogic(Widget widget)
 		{
+			boxes = widget.Get("SIDEBAR_BOXES");
 			stats = widget.Get("STATS_PANEL");
 			commands = widget.Get("COMMAND_BAR");
 			title = widget.Get("TRAINING_TITLE");
@@ -47,6 +50,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 			var radar = widget.Get("RADAR_PANEL");
 			radarShown = radar.IsVisible;
 			radar.IsVisible = () => Height >= RadarMinHeight && radarShown();
+			widget.Get("SIDEBAR_EMBLEM").IsVisible = () => Height >= RadarMinHeight;
 
 			// Arrows beside the training palette; its mouse wheel scrolling is the engine's.
 			var up = widget.Get<ButtonWidget>("PRODUCTION_SCROLL_UP");
@@ -78,6 +82,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 			var paletteY = titleY + TitleToPalette;
 			var newRows = Math.Clamp((height - paletteY - BottomMargin + RowHeight - production.IconSize.Y) / RowHeight, 1, MaxRows);
 
+			boxes.Bounds.Y = statsY - BoxesAboveStats;
 			stats.Bounds.Y = statsY;
 			commands.Bounds.Y = commandsY;
 			title.Bounds.Y = titleY;

@@ -9,6 +9,21 @@ Container@PLAYER_WIDGETS:
 			Width: 320
 			Height: WINDOW_HEIGHT
 			Background: sidebar-panel
+		# The sidebar art over the plain panel: the emblem behind the radar and the stat boxes behind the stats panel.
+		# SidebarLayoutLogic moves the boxes with the stats panel and hides the emblem when the radar is hidden.
+		Image@SIDEBAR_EMBLEM:
+			X: WINDOW_WIDTH - 320
+			Width: 320
+			Height: 396
+			ImageCollection: sidebar-art
+			ImageName: emblem
+		Image@SIDEBAR_BOXES:
+			X: WINDOW_WIDTH - 320
+			Y: 396
+			Width: 320
+			Height: 200
+			ImageCollection: sidebar-art
+			ImageName: boxes
 		MenuButton@OPTIONS_BUTTON:
 			Key: escape
 		# Unit commands, a row in the sidebar under the selection panel: Attack (attack-move: click a target or area;
