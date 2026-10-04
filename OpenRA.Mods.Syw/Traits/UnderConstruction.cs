@@ -6,6 +6,7 @@
 
 using System.Linq;
 using OpenRA.Mods.Common;
+using OpenRA.Mods.Common.Activities;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Traits;
 
@@ -40,6 +41,10 @@ namespace OpenRA.Mods.Syw.Traits
 
 		[Desc("Range (in cells) the builder must reach before it is allowed to enter and start construction.")]
 		public readonly WDist EnterRange = WDist.FromCells(2);
+
+		[Desc("When construction finishes, a builder with nothing else to do starts harvesting the resources nearest to",
+			"the building (a Mill is built beside the crops). Needs a Harvester on the builder.")]
+		public readonly bool BuilderHarvests = false;
 
 		public override object Create(ActorInitializer init) { return new UnderConstruction(init, this); }
 	}
@@ -151,6 +156,9 @@ namespace OpenRA.Mods.Syw.Traits
 				w.Add(freedBuilder);
 				freedBuilder.Trait<IPositionable>().SetPosition(freedBuilder, cell);
 				freedBuilder.Trait<Builder>().Release();
+
+				if (Info.BuilderHarvests && freedBuilder.IsIdle && freedBuilder.TraitOrDefault<Harvester>() != null)
+					freedBuilder.QueueActivity(new FindAndDeliverResources(freedBuilder, self.Location));
 			});
 		}
 

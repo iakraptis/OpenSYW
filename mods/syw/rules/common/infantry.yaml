@@ -139,6 +139,8 @@ resource-chest:
 	StoresResources:
 		Capacity: 5
 		Resources: Potato, Rice
+	# Trained with the HQ's rally point on a crop field: walks there and starts harvesting.
+	HarvestAtRallyPoint:
 	# Hovering the HQ or Mill with nothing to unload showed the struck-out hand, although the order still works.
 	DockClientManager:
 		Voice: Harvest
