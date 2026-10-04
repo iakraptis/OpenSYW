@@ -26,11 +26,17 @@ jobs:
         shell: pwsh
         run: ./make.cmd all
 
-      # The runner image no longer ships NSIS; Chocolatey is preinstalled and puts it in Program Files (x86)\NSIS,
-      # where package-windows.ps1 looks for it.
+      # The runner image no longer ships NSIS. Install it with the preinstalled Chocolatey, find makensis.exe wherever
+      # it landed and put its folder on the PATH for the next step.
       - name: Install NSIS
         shell: pwsh
-        run: choco install nsis -y --no-progress
+        run: |
+          choco install nsis -y --no-progress
+          $found = @("${env:ProgramFiles(x86)}\NSIS\makensis.exe", "$env:ProgramFiles\NSIS\makensis.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $found) { $found = (Get-ChildItem "$env:ProgramData\chocolatey" -Recurse -Filter makensis.exe -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }
+          if (-not $found) { throw 'makensis.exe not found after installing NSIS' }
+          Write-Host "makensis: $found"
+          Split-Path $found | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Package
         shell: pwsh

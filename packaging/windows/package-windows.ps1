@@ -1,7 +1,8 @@
 # Builds the Windows release of OpenSYW on Windows: a self-contained game folder (players need no .NET install), an
 # NSIS setup.exe and a portable zip. It does what the SDK's buildpackage.sh does, without the Linux tools that needs.
 #
-#   powershell -ExecutionPolicy Bypass -File packaging\windows\package-windows.ps1 [-Tag v0.1] [-OutputDir dist] [-NoInstaller]
+#   powershell -ExecutionPolicy Bypass -File packaging\windows\package-windows.ps1 [-Tag v0.1] [-OutputDir dist]
+#       [-NoInstaller] [-Makensis C:\path\to\makensis.exe]
 #
 # Needs the .NET 6 SDK (or newer) and, for the setup.exe, NSIS (winget install NSIS.NSIS). Only files under mods/ that
 # git does not ignore are packaged, so converted Seven Years War assets in a working copy can never end up in a
@@ -9,7 +10,8 @@
 param(
 	[string]$Tag = "dev-$(Get-Date -Format yyyyMMdd)",
 	[string]$OutputDir,
-	[switch]$NoInstaller
+	[switch]$NoInstaller,
+	[string]$Makensis
 )
 
 $ErrorActionPreference = 'Stop'
@@ -41,16 +43,41 @@ if (-not (Test-Path (Join-Path $engine 'OpenRA.sln'))) {
 	throw "Engine not found in $engine. Run make.cmd first."
 }
 
-$makensis = $null
-if (-not $NoInstaller) {
-	$makensis = (Get-Command makensis -ErrorAction SilentlyContinue).Source
-	foreach ($candidate in "${env:ProgramFiles(x86)}\NSIS\makensis.exe", "$env:ProgramFiles\NSIS\makensis.exe") {
-		if (-not $makensis -and (Test-Path $candidate)) { $makensis = $candidate }
+function Find-Makensis {
+	if ($Makensis) { return $Makensis }
+	if ($env:MAKENSIS -and (Test-Path $env:MAKENSIS)) { return $env:MAKENSIS }
+
+	$command = Get-Command makensis -ErrorAction SilentlyContinue
+	if ($command) { return $command.Source }
+
+	# The NSIS installer records its folder in the registry (default value of the NSIS key).
+	foreach ($key in 'HKLM:\SOFTWARE\WOW6432Node\NSIS', 'HKLM:\SOFTWARE\NSIS') {
+		$folder = (Get-ItemProperty -Path $key -ErrorAction SilentlyContinue).'(default)'
+		if ($folder -and (Test-Path (Join-Path $folder 'makensis.exe'))) { return (Join-Path $folder 'makensis.exe') }
 	}
 
-	if (-not $makensis) {
-		throw "NSIS not found. Install it (winget install NSIS.NSIS) or pass -NoInstaller to build only the portable zip."
+	foreach ($candidate in "${env:ProgramFiles(x86)}\NSIS\makensis.exe", "$env:ProgramFiles\NSIS\makensis.exe") {
+		if (Test-Path $candidate) { return $candidate }
 	}
+
+	# Chocolatey's portable packages keep it under their lib folder.
+	$choco = if ($env:ChocolateyInstall) { $env:ChocolateyInstall } else { "$env:ProgramData\chocolatey" }
+	if (Test-Path "$choco\lib") {
+		$found = Get-ChildItem "$choco\lib" -Recurse -Filter makensis.exe -ErrorAction SilentlyContinue | Select-Object -First 1
+		if ($found) { return $found.FullName }
+	}
+
+	return $null
+}
+
+$makensisPath = $null
+if (-not $NoInstaller) {
+	$makensisPath = Find-Makensis
+	if (-not $makensisPath) {
+		throw "NSIS not found. Install it (winget install NSIS.NSIS), pass -Makensis PATH, or pass -NoInstaller to build only the portable zip."
+	}
+
+	Write-Host "Using $makensisPath"
 }
 
 Step "Cleaning $build"
@@ -178,10 +205,10 @@ try {
 }
 finally { $zip.Dispose() }
 
-if ($makensis) {
+if ($makensisPath) {
 	$setup = Join-Path $OutputDir "$($config['PACKAGING_INSTALLER_NAME'])-$Tag-x64.exe"
 	Step "Building $setup"
-	Invoke-Checked $makensis @('-V2', "-DSRCDIR=$build", "-DTAG=$Tag", "-DMOD_ID=$modId",
+	Invoke-Checked $makensisPath @('-V2', "-DSRCDIR=$build", "-DTAG=$Tag", "-DMOD_ID=$modId",
 		"-DPACKAGING_WINDOWS_INSTALL_DIR_NAME=$($config['PACKAGING_WINDOWS_INSTALL_DIR_NAME'])",
 		"-DPACKAGING_WINDOWS_LAUNCHER_NAME=$launcherName", "-DPACKAGING_DISPLAY_NAME=$($config['PACKAGING_DISPLAY_NAME'])",
 		"-DPACKAGING_WEBSITE_URL=$($config['PACKAGING_WEBSITE_URL'])", "-DPACKAGING_AUTHORS=$($config['PACKAGING_AUTHORS'])",
