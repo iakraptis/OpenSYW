@@ -1,0 +1,78 @@
+Background@MODCONTENT_BACKGROUND:
+	Logic: SywContentLogic
+	Background: background
+	Width: WINDOW_WIDTH
+	Height: WINDOW_HEIGHT
+	Children:
+		Background@PANEL:
+			X: (WINDOW_WIDTH - WIDTH) / 2
+			Y: (WINDOW_HEIGHT - HEIGHT) / 2
+			Width: 600
+			Height: 300
+			Background: panel-bg
+			Children:
+				Label@TITLE:
+					Y: 14
+					Width: PARENT_WIDTH
+					Height: 25
+					Text: label-syw-content-title
+					Align: Center
+					Font: MediumBold
+				Background@RULE:
+					X: 30
+					Y: 50
+					Width: PARENT_WIDTH - 60
+					Height: 150
+					Background: panel-rule
+				Label@MESSAGE:
+					X: 30
+					Y: 62
+					Width: PARENT_WIDTH - 60
+					Height: 70
+					Align: Center
+					VAlign: Top
+					WordWrap: true
+				Label@PATH:
+					X: 30
+					Y: 140
+					Width: PARENT_WIDTH - 60
+					Height: 20
+					Align: Center
+					Font: Bold
+				ProgressBar@PROGRESS:
+					X: 30
+					Y: 172
+					Width: PARENT_WIDTH - 60
+					Height: 16
+					BarMargin: 0, 0
+				Label@STATUS:
+					X: 30
+					Y: 194
+					Width: PARENT_WIDTH - 60
+					Height: 40
+					Align: Center
+					VAlign: Top
+					WordWrap: true
+				Button@BROWSE_BUTTON:
+					X: 30
+					Y: PARENT_HEIGHT - 52
+					Width: 140
+					Height: 32
+					Background: button-highlighted
+					Text: button-syw-content-browse
+					Font: Bold
+				Button@INSTALL_BUTTON:
+					X: 180
+					Y: PARENT_HEIGHT - 52
+					Width: 170
+					Height: 32
+					Background: button-highlighted
+					Font: Bold
+				Button@BACK_BUTTON:
+					X: PARENT_WIDTH - 140
+					Y: PARENT_HEIGHT - 52
+					Width: 110
+					Height: 32
+					Background: button-highlighted
+					Font: Bold
+					Key: escape

@@ -31,6 +31,27 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 					$"{Root} does not look like a Seven Years War folder; missing: {string.Join(", ", missing)}");
 		}
 
+		// A quick check (no full file scan) whether root holds the game, for auto-detection and the folder picker.
+		public static bool LooksLike(string root)
+		{
+			try
+			{
+				if (string.IsNullOrEmpty(root) || !Directory.Exists(root))
+					return false;
+
+				var options = new EnumerationOptions { MatchCasing = MatchCasing.CaseInsensitive, RecurseSubdirectories = false };
+				return RequiredFiles.All(file =>
+				{
+					var folder = Path.Combine(root, Path.GetDirectoryName(file) ?? "");
+					return Directory.Exists(folder) && Directory.EnumerateFiles(folder, Path.GetFileName(file), options).Any();
+				});
+			}
+			catch (Exception e) when (e is IOException || e is UnauthorizedAccessException)
+			{
+				return false;
+			}
+		}
+
 		public string Find(string relative)
 		{
 			if (files.TryGetValue(relative.Replace('\\', '/'), out var path))
