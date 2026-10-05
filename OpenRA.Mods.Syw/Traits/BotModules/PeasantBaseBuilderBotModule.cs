@@ -78,6 +78,20 @@ namespace OpenRA.Mods.Syw.Traits
 			"no towers; while it has fewer than allowed, towers come before anything else. Empty: towers follow their shares.")]
 		public readonly Dictionary<string, int> TowerSteps = new();
 
+		[Desc("Shipyards: built only when the map needs a navy (an enemy building the army can't walk to, or at least",
+			"NavalWaterShare percent of the map is water), on a shore the builders can walk to, and if possible on water",
+			"that reaches the enemy's coast.")]
+		public readonly HashSet<string> NavalBuildingTypes = new();
+
+		[Desc("Percentage of water on the map from which a navy is wanted even when every enemy can be walked to.")]
+		public readonly int NavalWaterShare = 25;
+
+		[Desc("How far from the base to look for a shore for NavalBuildingTypes, in cells.")]
+		public readonly int NavalSearchRadius = 30;
+
+		[Desc("Locomotor of the ships, to check that a shipyard's water reaches the enemy.")]
+		public readonly string NavalLocomotor = "naval";
+
 		public override object Create(ActorInitializer init) { return new PeasantBaseBuilderBotModule(init.Self, this); }
 	}
 
@@ -86,6 +100,9 @@ namespace OpenRA.Mods.Syw.Traits
 		// Crop field spots tried for a drop-off before giving up on that building type for this decision.
 		const int FieldCandidateCount = 12;
 
+		// Building decisions between two checks whether the map needs a navy (the answer changes only as enemies die).
+		const int NavalCheckDecisions = 10;
+
 		readonly World world;
 		readonly Player player;
 		PlayerResources resources;
@@ -93,6 +110,9 @@ namespace OpenRA.Mods.Syw.Traits
 		IResourceLayer resourceLayer;
 		IPathFinder pathFinder;
 		int ticks;
+		int decisions;
+		int waterShare = -1;
+		bool navalNeeded;
 
 		public PeasantBaseBuilderBotModule(Actor self, PeasantBaseBuilderBotModuleInfo info)
 			: base(info)
@@ -114,6 +134,8 @@ namespace OpenRA.Mods.Syw.Traits
 		{
 			if (++ticks % Info.DecisionInterval != 0)
 				return;
+
+			decisions++;
 
 			var builders = world.ActorsHavingTrait<Builder>()
 				.Where(a => a.Owner == player && a.IsInWorld && !a.IsDead && Info.BuilderTypes.Contains(a.Info.Name))
@@ -139,6 +161,9 @@ namespace OpenRA.Mods.Syw.Traits
 			// Try building types in priority order: a type with no valid site (e.g. a 3x3 building in a cramped
 			// base) must not block everything else. Wait for money only for the first buildable choice.
 			var baseCenter = BaseCenter(free);
+			if (Info.NavalBuildingTypes.Count > 0 && decisions % NavalCheckDecisions == 1)
+				navalNeeded = NavalNeeded(free[0]);
+
 			foreach (var type in ChooseBuildings(free[0].Trait<Builder>()))
 			{
 				var actorInfo = world.Map.Rules.Actors[type];
@@ -152,6 +177,8 @@ namespace OpenRA.Mods.Syw.Traits
 				IEnumerable<(CPos Center, int Min, int Max)> places = new[] { (baseCenter, Info.MinBaseRadius, Info.MaxBaseRadius) };
 				if (Info.ResourceBuildingTypes.Contains(type))
 					places = FieldCandidates(baseCenter, free[0]).Select(f => (f, 1, 6));
+				else if (Info.NavalBuildingTypes.Contains(type))
+					places = ShoreCandidates(baseCenter, free[0]).Select(s => (s, 0, 3));
 				else if (Info.DefenseBuildingTypes.Contains(type))
 				{
 					var guarded = GuardedByFewestTowers();
@@ -208,6 +235,7 @@ namespace OpenRA.Mods.Syw.Traits
 			// The type whose (count + 1) / weight is smallest is furthest below its desired share.
 			var byShare = Info.BuildingFractions
 				.Where(kv => kv.Value > 0 && builder.Info.Types.Contains(kv.Key) && world.Map.Rules.Actors.ContainsKey(kv.Key)
+					&& (navalNeeded || !Info.NavalBuildingTypes.Contains(kv.Key))
 					&& (!Info.BuildingLimits.TryGetValue(kv.Key, out var limit) || Count(kv.Key) < limit))
 				.Where(kv =>
 				{
@@ -291,6 +319,52 @@ namespace OpenRA.Mods.Syw.Traits
 				if (tried.Count >= FieldCandidateCount)
 					yield break;
 			}
+		}
+
+		// A navy is wanted when an enemy building can't be walked to from the base, or the map is mostly water.
+		bool NavalNeeded(Actor builder)
+		{
+			if (waterShare < 0)
+				waterShare = BotMapAnalysis.WaterShare(world);
+
+			if (waterShare >= Info.NavalWaterShare)
+				return true;
+
+			var foot = builder.TraitOrDefault<Mobile>()?.Locomotor;
+			return foot != null && BotMapAnalysis.UnreachableByLand(world, player, foot, builder.Location).Count > 0;
+		}
+
+		// Land cells on a shore within NavalSearchRadius of the base that the builder can walk to, nearest first, spread
+		// at least 4 cells apart. Shores on water that reaches an enemy's coast come first (a lake is no use to ships).
+		List<CPos> ShoreCandidates(CPos center, Actor builder)
+		{
+			var foot = builder.TraitOrDefault<Mobile>()?.Locomotor;
+			var naval = BotMapAnalysis.Locomotor(world, Info.NavalLocomotor);
+			if (foot == null)
+				return new List<CPos>();
+
+			var enemyWater = naval == null ? new List<CPos>() : BotMapAnalysis.EnemyBuildings(world, player)
+				.Select(b => world.Map.FindTilesInCircle(b.Location, 12).Cast<CPos?>()
+					.FirstOrDefault(c => BotMapAnalysis.IsWater(world, c.Value)))
+				.Where(c => c != null).Select(c => c.Value).Take(8).ToList();
+
+			var shores = new List<(CPos Land, bool ReachesEnemy)>();
+			foreach (var cell in world.Map.FindTilesInCircle(center, Info.NavalSearchRadius))
+			{
+				if (BotMapAnalysis.IsWater(world, cell) || shores.Any(s => (s.Land - cell).LengthSquared < 16))
+					continue;
+
+				var water = CVec.Directions.Select(d => cell + d).Where(c => BotMapAnalysis.IsWater(world, c)).ToList();
+				if (water.Count == 0 || !pathFinder.PathExistsForLocomotor(foot, builder.Location, cell))
+					continue;
+
+				var reaches = naval != null && water.Any(w => enemyWater.Any(e => pathFinder.PathExistsForLocomotor(naval, w, e)));
+				shores.Add((cell, reaches));
+				if (shores.Count >= FieldCandidateCount)
+					break;
+			}
+
+			return shores.OrderByDescending(s => s.ReachesEnemy).Select(s => s.Land).ToList();
 		}
 
 		CPos? FindSite(Actor builder, ActorInfo actorInfo, CPos center, int minRadius, int maxRadius)

@@ -23,7 +23,8 @@ namespace OpenRA.Mods.Syw.Traits
 
 		void IResolveOrder.ResolveOrder(Actor self, Order order)
 		{
-			if (order.OrderString == "AttackMove" || order.OrderString == "AssaultMove")
+			// The bots' naval squads can send an attack-move whose target has just become invalid.
+			if ((order.OrderString == "AttackMove" || order.OrderString == "AssaultMove") && order.Target.Type != TargetType.Invalid)
 				destination = order.Target.CenterPosition;
 			else if (order.OrderString == "Stop")
 				destination = null;
