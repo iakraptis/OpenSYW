@@ -31,6 +31,8 @@ player:
 		# Towers go next to the Mills (the one with the fewest towers first).
 		DefenseBuildingTypes: karrowtower, kcannontower, jarrowtower, jcannontower
 		DefendedBuildingTypes: kmill, jmill
+		# Shipyards only when the map needs a navy: an enemy the army can't walk to, or a mostly water map.
+		NavalBuildingTypes: kshipyard, jshipyard
 		MaxConcurrentConstructions: 2
 		MaxBaseRadius: 24
 		# Economy first: 4 workers before building, and $500 kept for unit production.
@@ -53,6 +55,7 @@ player:
 			kplaneworks: 25
 			karrowtower: 6
 			kcannontower: 5
+			kshipyard: 20
 			# Japan: the same shares under the Japanese names.
 			jmill: 40
 			jbarracks: 20
@@ -65,6 +68,7 @@ player:
 			jairport: 25
 			jarrowtower: 6
 			jcannontower: 5
+			jshipyard: 20
 		BuildingLimits:
 			kmill: 2
 			kbarracks: 2
@@ -77,6 +81,7 @@ player:
 			kplaneworks: 1
 			karrowtower: 4
 			kcannontower: 3
+			kshipyard: 1
 			jmill: 2
 			jbarracks: 2
 			jbeacon: 1
@@ -88,6 +93,7 @@ player:
 			jairport: 1
 			jarrowtower: 4
 			jcannontower: 3
+			jshipyard: 1
 	UnitBuilderBotModule@medium:
 		RequiresCondition: enable-medium-ai
 		UnitQueues: Workers.Korea, Infantry.Korea, Vehicles.Korea, Aircraft.Korea, AdvancedInfantry.Korea, Temple.Korea, Shaman.Korea, Cavalry.Korea, Naval.Korea, Workers.Japan, Infantry.Japan, Vehicles.Japan, Aircraft.Japan, AdvancedInfantry.Japan, Temple.Japan, Shaman.Japan, Cavalry.Japan, Naval.Japan
@@ -96,7 +102,7 @@ player:
 			kpeasant: 300
 			kbull: 8
 			# Army targets as percentages (the engine compares them with each unit's share of all listed units):
-			# about half infantry, a fifth vehicles, some cavalry and a few support units. Sums to 100.
+			# about half infantry, a fifth vehicles, some cavalry and a few support units. Sums to 100 without the warships.
 			kfootman: 20
 			karcher: 20
 			kgunner: 15
@@ -107,6 +113,9 @@ player:
 			kmonk: 4
 			kshaman: 4
 			koccupier: 2
+			# Warships, built only once a shipyard exists.
+			kpatrolship: 6
+			kcannonship: 6
 			# Japan (only one faction's list applies to a player, so each sums to 100 on its own).
 			jpeasant: 300
 			jbull: 8
@@ -121,6 +130,9 @@ player:
 			jpriest: 4
 			jwitch: 4
 			jthief: 2
+			jarrowship: 6
+			jcannonship: 5
+			jtorpedo: 2
 		UnitLimits:
 			kpeasant: 10
 			kbull: 2
@@ -152,6 +164,14 @@ player:
 		CapturingActorTypes: koccupier, jthief
 		CapturableActorTypes: khq, kbarracks, kmill, kbeaconmound, kheavyarmsworkshop, kbarracks2, kplaneworks, ktemple, kshamanhouse, kstable, karrowtower, kcannontower, kshipyard, jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, jairport, jtemple, jwitchhouse, jstable, jarrowtower, jcannontower, jshipyard
 
+	TransportBotModule@medium:
+		RequiresCondition: enable-medium-ai
+		# Carries soldiers to enemies they can't walk to (islands), by transport ship or Transporter.
+		NavalTransportTypes: ktransportship, jsubmarine
+		AirTransportTypes: ktransporter, jtransporter
+		PassengerTypes: kfootman, karcher, kgunner, kmonk, kshaman, jfootman, jarcher, jgunner, jpriest, jwitch
+		ScanInterval: 100
+		MinimumPassengers: 4
 	# ------------------------------------------------------------------ Hard General
 
 	PeasantBaseBuilderBotModule@hard:
@@ -162,6 +182,8 @@ player:
 		ResourceBuildingTypes: kmill, jmill
 		DefenseBuildingTypes: karrowtower, kcannontower, jarrowtower, jcannontower
 		DefendedBuildingTypes: kmill, jmill
+		# Shipyards only when the map needs a navy: an enemy the army can't walk to, or a mostly water map.
+		NavalBuildingTypes: kshipyard, jshipyard
 		# Tower stages (total towers once the building is finished): none before the Barracks, then one tower right
 		# away, then up to six (about two per Mill) once the Heavy Arms Workshop or Barracks2 stands. Below the
 		# allowed number, towers come before other buildings; each goes beside the least defended Mill.
@@ -194,6 +216,7 @@ player:
 			# Towers guard the Mills (least defended Mill first): a much larger share than Medium.
 			karrowtower: 18
 			kcannontower: 14
+			kshipyard: 20
 			jmill: 40
 			jbarracks: 20
 			jbeacon: 25
@@ -205,6 +228,7 @@ player:
 			jairport: 20
 			jarrowtower: 18
 			jcannontower: 14
+			jshipyard: 20
 		BuildingLimits:
 			# A third Mill for a stronger economy, and two to three towers per Mill.
 			kmill: 3
@@ -218,6 +242,7 @@ player:
 			kplaneworks: 1
 			karrowtower: 8
 			kcannontower: 6
+			kshipyard: 2
 			jmill: 3
 			jbarracks: 2
 			jbeacon: 1
@@ -229,6 +254,7 @@ player:
 			jairport: 1
 			jarrowtower: 8
 			jcannontower: 6
+			jshipyard: 2
 	UnitBuilderBotModule@hard:
 		RequiresCondition: enable-hard-ai
 		UnitQueues: Workers.Korea, Infantry.Korea, Vehicles.Korea, Aircraft.Korea, AdvancedInfantry.Korea, Temple.Korea, Shaman.Korea, Cavalry.Korea, Naval.Korea, Workers.Japan, Infantry.Japan, Vehicles.Japan, Aircraft.Japan, AdvancedInfantry.Japan, Temple.Japan, Shaman.Japan, Cavalry.Japan, Naval.Japan
@@ -245,6 +271,9 @@ player:
 			kmonk: 4
 			kshaman: 4
 			koccupier: 2
+			# Warships, built only once a shipyard exists.
+			kpatrolship: 6
+			kcannonship: 6
 			jpeasant: 300
 			jbull: 10
 			jfootman: 20
@@ -258,6 +287,9 @@ player:
 			jpriest: 4
 			jwitch: 4
 			jthief: 2
+			jarrowship: 6
+			jcannonship: 5
+			jtorpedo: 2
 		UnitLimits:
 			# More workers to feed three Mills.
 			kpeasant: 14
@@ -297,3 +329,11 @@ player:
 		RequiresCondition: enable-hard-ai
 		CapturingActorTypes: koccupier, jthief
 		CapturableActorTypes: khq, kbarracks, kmill, kbeaconmound, kheavyarmsworkshop, kbarracks2, kplaneworks, ktemple, kshamanhouse, kstable, karrowtower, kcannontower, kshipyard, jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, jairport, jtemple, jwitchhouse, jstable, jarrowtower, jcannontower, jshipyard
+	TransportBotModule@hard:
+		RequiresCondition: enable-hard-ai
+		# Carries soldiers to enemies they can't walk to (islands), by transport ship or Transporter.
+		NavalTransportTypes: ktransportship, jsubmarine
+		AirTransportTypes: ktransporter, jtransporter
+		PassengerTypes: kfootman, karcher, kgunner, kmonk, kshaman, jfootman, jarcher, jgunner, jpriest, jwitch
+		ScanInterval: 75
+		MinimumPassengers: 3
