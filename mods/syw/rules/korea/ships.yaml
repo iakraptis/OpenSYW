@@ -6,6 +6,7 @@ kpatrolship:
 	RenderSprites:
 		Image: kpatrolship
 	Buildable:
+		Description: description-kpatrolship
 		BuildPaletteOrder: 10
 	Health:
 		HP: 53550
@@ -25,6 +26,8 @@ kcannonship:
 		Cost: 2000
 	Armament:
 		Weapon: KoreanCannonShipShot
+	Buildable:
+		Description: description-kcannonship
 
 ktransportship:
 	Inherits: ^transportship
@@ -35,3 +38,5 @@ ktransportship:
 		HP: 45900
 	Tooltip:
 		Name: actor-transportship.name
+	Buildable:
+		Description: description-ktransportship

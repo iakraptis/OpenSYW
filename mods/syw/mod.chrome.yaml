@@ -55,6 +55,7 @@ ChromeLayout:
 	common|chrome/settings-input.yaml
 	common|chrome/text-notifications.yaml
 	common|chrome/tooltips.yaml
+	syw|chrome/tooltips.yaml
 
 ChromeMetrics:
 	common|metrics.yaml

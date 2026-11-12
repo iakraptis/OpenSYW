@@ -137,6 +137,10 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 				button.Get<SpriteWidget>("PORTRAIT").GetSprite = () => portrait;
 				button.Get("DISABLED").IsVisible = () => button.IsDisabled();
 				button.GetTooltipText = () => $"{(tooltipName != null ? FluentProvider.GetMessage(tooltipName) : actorType)} (${cost})";
+
+				// What the building does (Buildable.Description), under the name.
+				var description = string.IsNullOrEmpty(buildableInfo?.Description) ? "" : FluentProvider.GetMessage(buildableInfo.Description);
+				button.GetTooltipDesc = () => description;
 				button.IsDisabled = () => !prereqsOk || playerResources.Cash + playerResources.Resources < cost || builder.IsBusy;
 				button.OnClick = () => StartBuild(actorType);
 			}

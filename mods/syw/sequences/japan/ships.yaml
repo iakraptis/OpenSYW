@@ -9,6 +9,7 @@ jcannonship:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/jcannonship.png
+		Offset: 0,0
 
 jarrowship:
 	Defaults:
@@ -18,6 +19,7 @@ jarrowship:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/arrowship.png
+		Offset: 0,0
 
 jsubmarine:
 	Defaults:
@@ -27,6 +29,7 @@ jsubmarine:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/submarine.png
+		Offset: 0,0
 
 jtorpedo:
 	Defaults:
@@ -36,3 +39,4 @@ jtorpedo:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/torpedo.png
+		Offset: 0,0

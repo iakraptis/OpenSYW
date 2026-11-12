@@ -10,6 +10,8 @@ kfirecar:
 		Cost: 1200
 	Tooltip:
 		Name: actor-firecar.name
+	Buildable:
+		Description: description-kfirecar
 
 kcannon:
 	Inherits: ^cannon
@@ -17,3 +19,5 @@ kcannon:
 		Cost: 1400
 	Armament:
 		Weapon: KoreanCannonShot
+	Buildable:
+		Description: description-kcannon

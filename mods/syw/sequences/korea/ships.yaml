@@ -9,6 +9,7 @@ kpatrolship:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/patrolship.png
+		Offset: 0,0
 
 kcannonship:
 	Defaults:
@@ -18,6 +19,7 @@ kcannonship:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/cannonship.png
+		Offset: 0,0
 
 ktransportship:
 	Defaults:
@@ -27,3 +29,4 @@ ktransportship:
 		Facings: 16
 	icon:
 		Filename: art/icons/units/transportship.png
+		Offset: 0,0

@@ -7,6 +7,7 @@ jarrowship:
 	RenderSprites:
 		Image: jarrowship
 	Buildable:
+		Description: description-jarrowship
 		Queue: Naval.Japan
 		BuildPaletteOrder: 20
 	Health:
@@ -27,6 +28,7 @@ jcannonship:
 	RenderSprites:
 		Image: jcannonship
 	Buildable:
+		Description: description-jcannonship
 		Queue: Naval.Japan
 	Valued:
 		Cost: 1300
@@ -40,6 +42,7 @@ jsubmarine:
 	RenderSprites:
 		Image: jsubmarine
 	Buildable:
+		Description: description-jsubmarine
 		Queue: Naval.Japan
 	Health:
 		HP: 53550
@@ -86,6 +89,7 @@ jtorpedo:
 		Weapon: JapaneseTorpedoBlast
 		EmptyWeapon: JapaneseTorpedoBlast
 	Buildable:
+		Description: description-jtorpedo
 		Queue: Naval.Japan
 		BuildPaletteOrder: 40
 	Valued:

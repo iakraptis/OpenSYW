@@ -5,6 +5,7 @@ kpeasant:
 	RenderSprites:
 		Image: kpeasant
 	Buildable:
+		Description: description-kpeasant
 		Queue: Workers.Korea
 	Builder:
 		Types: khq, kbarracks, kmill, kbeaconmound, kheavyarmsworkshop, kbarracks2, kplaneworks, ktemple, kshamanhouse, kstable, karrowtower, kcannontower, kshipyard
@@ -14,6 +15,7 @@ kbull:
 	RenderSprites:
 		Image: kbull
 	Buildable:
+		Description: description-kbull
 		Queue: Workers.Korea
 
 kfootman:
@@ -25,6 +27,7 @@ kfootman:
 	Armament:
 		Weapon: KoreanSword
 	Buildable:
+		Description: description-kfootman
 		Queue: Infantry.Korea
 
 karcher:
@@ -32,6 +35,7 @@ karcher:
 	RenderSprites:
 		Image: karcher
 	Buildable:
+		Description: description-karcher
 		Queue: Infantry.Korea
 	Armament:
 		Weapon: KoreanBow
@@ -43,6 +47,7 @@ kgunner:
 	Armament:
 		Weapon: KoreanMusket
 	Buildable:
+		Description: description-kgunner
 		Queue: Infantry.Korea
 
 kcommander:
@@ -56,6 +61,7 @@ kcommander:
 	AutoTargetPriority@UNITS:
 		ValidTargets: Infantry, Vehicle, Air
 	Buildable:
+		Description: description-kcommander
 		Queue: Cavalry.Korea
 	Tooltip:
 		Name: actor-commander.name
@@ -65,6 +71,7 @@ koccupier:
 	RenderSprites:
 		Image: koccupier
 	Buildable:
+		Description: description-koccupier
 		Queue: AdvancedInfantry.Korea
 	Tooltip:
 		Name: actor-occupier.name
@@ -74,6 +81,7 @@ kmonk:
 	RenderSprites:
 		Image: kmonk
 	Buildable:
+		Description: description-kmonk
 		Queue: Temple.Korea
 	Tooltip:
 		Name: actor-monk.name
@@ -114,6 +122,7 @@ kshaman:
 		RequiresCondition: casting-lightning
 		FacingTolerance: 0
 	Buildable:
+		Description: description-kshaman
 		Queue: Shaman.Korea
 	Tooltip:
 		Name: actor-shaman.name
@@ -158,6 +167,7 @@ kminer:
 		Margin: 0, 4
 		RequiresSelection: true
 	Buildable:
+		Description: description-kminer
 		Queue: AdvancedInfantry.Korea
 		Prerequisites: barracks2
 		BuildPaletteOrder: 20

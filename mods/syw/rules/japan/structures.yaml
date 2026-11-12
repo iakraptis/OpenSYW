@@ -12,6 +12,8 @@ jhq:
 		Type: Workers.Japan
 	ProductionBar:
 		ProductionType: Workers.Japan
+	Buildable:
+		Description: description-jhq
 
 jbarracks:
 	Inherits: ^barracks
@@ -23,11 +25,15 @@ jbarracks:
 		Type: Infantry.Japan
 	ProductionBar:
 		ProductionType: Infantry.Japan
+	Buildable:
+		Description: description-jbarracks
 
 jmill:
 	Inherits: ^mill
 	RenderSprites:
 		Image: jmill
+	Buildable:
+		Description: description-jmill
 
 jbeacon:
 	Inherits: ^beaconmound
@@ -35,6 +41,8 @@ jbeacon:
 		Image: jbeacon
 	Tooltip:
 		Name: actor-jbeacon.name
+	Buildable:
+		Description: description-jbeacon
 
 jheavyarms:
 	Inherits: ^heavyarmsworkshop
@@ -48,6 +56,8 @@ jheavyarms:
 		Type: Vehicles.Japan
 	ProductionBar:
 		ProductionType: Vehicles.Japan
+	Buildable:
+		Description: description-jheavyarms
 
 jbarracks2:
 	Inherits: ^barracks2
@@ -59,6 +69,8 @@ jbarracks2:
 		Type: AdvancedInfantry.Japan
 	ProductionBar:
 		ProductionType: AdvancedInfantry.Japan
+	Buildable:
+		Description: description-jbarracks2
 
 jairport:
 	Inherits: ^planeworks
@@ -72,6 +84,8 @@ jairport:
 		Type: Aircraft.Japan
 	ProductionBar:
 		ProductionType: Aircraft.Japan
+	Buildable:
+		Description: description-jairport
 
 jtemple:
 	Inherits: ^temple
@@ -83,6 +97,8 @@ jtemple:
 		Type: Temple.Japan
 	ProductionBar:
 		ProductionType: Temple.Japan
+	Buildable:
+		Description: description-jtemple
 
 jwitchhouse:
 	Inherits: ^shamanhouse
@@ -96,6 +112,8 @@ jwitchhouse:
 		Type: Shaman.Japan
 	ProductionBar:
 		ProductionType: Shaman.Japan
+	Buildable:
+		Description: description-jwitchhouse
 
 jstable:
 	Inherits: ^stable
@@ -107,6 +125,8 @@ jstable:
 		Type: Cavalry.Japan
 	ProductionBar:
 		ProductionType: Cavalry.Japan
+	Buildable:
+		Description: description-jstable
 
 # Towers shoot guns: strong against infantry and cavalry.
 jarrowtower:
@@ -115,6 +135,8 @@ jarrowtower:
 		Weapon: JapaneseTowerGun
 	RenderSprites:
 		Image: jarrowtower
+	Buildable:
+		Description: description-jarrowtower
 
 jcannontower:
 	Inherits: ^cannontower
@@ -122,6 +144,8 @@ jcannontower:
 		Weapon: JapaneseCannonTowerShot
 	RenderSprites:
 		Image: jcannontower
+	Buildable:
+		Description: description-jcannontower
 
 jshipyard:
 	Inherits: ^shipyard
@@ -133,3 +157,5 @@ jshipyard:
 		Type: Naval.Japan
 	ProductionBar:
 		ProductionType: Naval.Japan
+	Buildable:
+		Description: description-jshipyard

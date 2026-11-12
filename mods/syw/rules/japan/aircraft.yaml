@@ -8,6 +8,7 @@ jfighter:
 	RenderSprites:
 		Image: jfighter
 	Buildable:
+		Description: description-jfighter
 		Queue: Aircraft.Japan
 	Armament:
 		Weapon: JapaneseFighterRockets
@@ -19,6 +20,7 @@ jtransporter:
 	RenderSprites:
 		Image: jtransporter
 	Buildable:
+		Description: description-jtransporter
 		Queue: Aircraft.Japan
 	Valued:
 		Cost: 1600
@@ -40,6 +42,7 @@ jbomber:
 	-AutoTargetPriority@UNITS:
 	-PreferUnitTargets:
 	Buildable:
+		Description: description-jbomber
 		Queue: Aircraft.Japan
 		BuildPaletteOrder: 30
 	Valued:

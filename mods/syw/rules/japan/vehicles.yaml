@@ -15,6 +15,7 @@ jarmoredcar:
 	Armament:
 		Weapon: JapaneseArmoredCarGun
 	Buildable:
+		Description: description-jarmoredcar
 		Queue: Vehicles.Japan
 	Valued:
 		Cost: 1300
@@ -31,6 +32,7 @@ jarmoredcar:
 jcannon:
 	Inherits: ^cannon
 	Buildable:
+		Description: description-jcannon
 		Queue: Vehicles.Japan
 	Valued:
 		Cost: 1600
