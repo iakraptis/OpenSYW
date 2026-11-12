@@ -17,6 +17,8 @@ FileSystem: ContentInstallerFileSystem
 	RequiredContentFiles:
 		# Written last by the installer: present only once a conversion has finished.
 		content|install-manifest.txt
+		# Added 2026-11-12: older conversions lack it, so their players are asked to convert again.
+		content|art/icons/spells/unload.png
 	ContentInstallerMod: syw-content
 
 MapFolders:

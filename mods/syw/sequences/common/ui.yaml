@@ -47,3 +47,6 @@ spell-icons:
 		Filename: art/icons/spells/repair.png
 	sell:
 		Filename: art/icons/spells/sell.png
+	# Transport Unload button (FIRE 192, the original's Stopover command).
+	unload:
+		Filename: art/icons/spells/unload.png

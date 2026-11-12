@@ -27,6 +27,8 @@ jarmoredcar:
 		Types: Infantry
 		MaxWeight: 5
 		AfterUnloadDelay: 10
+	# The sidebar Unload button: unload at a clicked place.
+	UnloadAtLocation:
 
 # The same Cannon as Korea's, 200 more expensive.
 jcannon:

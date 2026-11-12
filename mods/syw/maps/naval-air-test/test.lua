@@ -3,7 +3,13 @@
 -- 1. Shipyards and aircraft factories of both factions train.
 -- 2. The Japanese Submarine and Torpedo are visible to the enemy (no stealth).
 -- 3. Japanese Torpedoes only attack-move: they ram a Korean ship, or explode at their destination.
--- 4. An aircraft transport loads and unloads, and the cargo panel draws its passengers (real UI).
+-- 4. An aircraft transport loads, the cargo panel draws its passengers (real UI), and the Unload button's order
+--    lands it and unloads at the clicked place.
+-- 5. The same order sends a transport ship to the shore nearest a clicked land cell.
+Near = function(a, b, cells)
+    return math.abs(a.X - b.X) <= cells and math.abs(a.Y - b.Y) <= cells
+end
+
 WorldLoaded = function()
     me = Player.GetPlayer("Multi0")
     ko = Player.GetPlayer("Multi1")
@@ -64,9 +70,23 @@ WorldLoaded = function()
             SywTest.Select(transport)
             Later(10, function()
                 Check(SywTest.CargoPortraits() == 2, "the cargo panel draws both passengers (" .. SywTest.CargoPortraits() .. ")")
-                transport.UnloadPassengers(CPos.New(20, 30))
-                WaitFor("the Transporter unloads", 800, function() return transport.PassengerCount == 0 end)
+                -- The Unload button's order: fly there, land, unload.
+                SywTest.OrderAt(transport, "UnloadAt", CPos.New(20, 30))
+                WaitFor("the Transporter lands and unloads at the clicked place", 800, function()
+                    return transport.PassengerCount == 0 and rider1.IsInWorld and Near(rider1.Location, CPos.New(20, 30), 6)
+                end)
             end)
+        end)
+    end)
+
+    -- 5. A transport ship ordered to unload on land sails to the shore and puts its passenger ashore there.
+    local ship = Actor.Create("ktransportship", true, { Owner = me, Location = CPos.New(48, 25) })
+    local sailor = Actor.Create("kfootman", false, { Owner = me })
+    ship.LoadPassenger(sailor)
+    Later(5, function()
+        SywTest.OrderAt(ship, "UnloadAt", CPos.New(30, 25))
+        WaitFor("the Transport Ship unloads at the shore nearest the clicked land", 1500, function()
+            return ship.PassengerCount == 0 and sailor.IsInWorld and sailor.Location.X < 34 and Near(sailor.Location, CPos.New(30, 25), 8)
         end)
     end)
 

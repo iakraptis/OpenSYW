@@ -146,3 +146,5 @@
 		MaxWeight: 8
 		AfterUnloadDelay: 10
 		UnloadTerrainTypes: Water
+	# The sidebar Unload button: unload at a clicked place.
+	UnloadAtLocation:

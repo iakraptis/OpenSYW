@@ -27,14 +27,15 @@ Container@PLAYER_WIDGETS:
 		MenuButton@OPTIONS_BUTTON:
 			Key: escape
 		# Unit commands, a row in the sidebar under the selection panel: Attack (attack-move: click a target or area;
-		# hotkey A) and Stop (hotkey S). Shown only while own units are selected (UnitCommandsVisibilityLogic);
-		# CommandBarLogic issues the orders. The panels below start 56 px lower to make room.
+		# hotkey A), Stop (hotkey S) and, for transports, Unload (click the map: go there and unload). Shown only while
+		# own units are selected (UnitCommandsVisibilityLogic); CommandBarLogic issues Attack and Stop. The panels below
+		# start 56 px lower to make room.
 		Container@COMMAND_BAR:
 			Logic: CommandBarLogic, UnitCommandsVisibilityLogic
 				HighlightOnButtonPress: True
-			X: WINDOW_WIDTH - 200
+			X: WINDOW_WIDTH - 227
 			Y: 592
-			Width: 106
+			Width: 160
 			Height: 52
 			Children:
 				WorldButton@ATTACK_MOVE:
@@ -88,6 +89,34 @@ Container@PLAYER_WIDGETS:
 							Logic: SequenceIconLogic
 								Image: spell-icons
 								Sequence: stop
+							X: 2
+							Y: 2
+							Width: 48
+							Height: 48
+							Palette: knight
+							Scale: 1.5
+						ColorBlock@DISABLED:
+							X: 2
+							Y: 2
+							Width: 48
+							Height: 48
+							Color: 00000090
+				# Only while a transport is selected (UnloadButtonLogic); FIRE.SPR 192, the original's Stopover command.
+				Button@UNLOAD:
+					Logic: UnloadButtonLogic
+					X: 108
+					Width: 52
+					Height: 52
+					TooltipText: button-command-unload.tooltip
+					TooltipDesc: button-command-unload.tooltipdesc
+					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
+					Children:
+						Sprite@COMMAND_ICON:
+							Logic: SequenceIconLogic
+								Image: spell-icons
+								Sequence: unload
 							X: 2
 							Y: 2
 							Width: 48
