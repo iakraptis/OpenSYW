@@ -49,21 +49,21 @@ ShipExplosion:
 		ValidTargets: Ground, GroundActor, Air
 		Versus:
 			None: 100
-			Light: 125
-			Heavy: 25
-			Wood: 35
-			Concrete: 15
+			Light: 112
+			Heavy: 50
+			Wood: 57
 		DamageTypes: DefaultDeath
 
 # Gunner's weapon, also the base of every gun (Japanese Gunner, Armored Car, Japanese Arrow Tower).
-# The bullet is FIRE 140-148 (2026-09-30, user-identified); fast, so the hit lands almost at once.
+# The bullet is FIRE 140-148 (2026-09-30, user-identified). Speed 500: the original bullet is 1.3x the arrow
+# (35 vs 27 px per tick, docs/game/projectiles.md); faster made gunners hit walking units far more than the original.
 ^Musket:
 	Report: gun1.wav, gun2.wav, gun3.wav
 	ReloadDelay: 40
 	Range: 5c0
 	ValidTargets: Ground, GroundActor, Air
 	Projectile: Bullet
-		Speed: 700
+		Speed: 500
 		Image: musket-bullet
 		Sequences: idle
 		Palette: knight
@@ -73,11 +73,10 @@ ShipExplosion:
 		Damage: 5000
 		ValidTargets: Ground, GroundActor, Air
 		Versus:
-			None: 150
+			None: 125
 			Light: 100
-			Heavy: 60
-			Wood: 40
-			Concrete: 25
+			Heavy: 75
+			Wood: 55
 		DamageTypes: DefaultDeath
 
 # Footman's melee weapon. InstantHit at melee range - the swing itself is
@@ -94,11 +93,10 @@ ShipExplosion:
 		Damage: 4500
 		ValidTargets: Ground, GroundActor
 		Versus:
-			None: 75
-			Light: 75
-			Heavy: 150
-			Wood: 150
-			Concrete: 150
+			None: 90
+			Light: 90
+			Heavy: 125
+			Wood: 112
 		DamageTypes: DefaultDeath
 
 # Single-sprite missile: FIRE.SPR frames 0-8.
@@ -114,8 +112,9 @@ ShipExplosion:
 	BurstDelays: 5
 	Range: 7c0
 	ValidTargets: Ground, Air
+	# The original fire bolt is slower than an arrow (16 vs 27 px per tick, docs/game/projectiles.md).
 	Projectile: Bullet
-		Speed: 500
+		Speed: 300
 		Image: firecar-missile
 		Sequences: idle
 		Palette: knight
@@ -132,11 +131,10 @@ ShipExplosion:
 		ValidTargets: Ground, Air
 		ValidRelationships: Enemy, Neutral
 		Versus:
-			None: 125
+			None: 112
 			Light: 100
-			Heavy: 75
-			Wood: 75
-			Concrete: 50
+			Heavy: 90
+			Wood: 90
 		DamageTypes: DefaultDeath
 	# Rocket impact: EXP.SPR D2, the small dust burst.
 	Warhead@Explosion: CreateEffect
@@ -146,7 +144,7 @@ ShipExplosion:
 		ValidTargets: Ground, Water, Air
 
 # One stronger shot at longer range, ground-only at acquisition AND impact.
-# Shell speed, area damage and explosion come from FireCarRockets.
+# Area damage and the projectile's look come from ^Rockets; the shell speed is its own.
 ^CannonShot:
 	Inherits: ^Rockets
 	Report: cannon1.wav, cannon2.wav, cannon3.wav
@@ -154,15 +152,17 @@ ShipExplosion:
 	Burst: 1
 	Range: 10c0
 	ValidTargets: Ground
+	# The original cannonball is slower than an arrow (19 vs 27 px per tick, docs/game/projectiles.md).
+	Projectile: Bullet
+		Speed: 310
 	Warhead@Damage: SpreadDamage
 		Damage: 8000
 		ValidTargets: Ground
 		Versus:
-			None: 50
+			None: 62
 			Light: 100
-			Heavy: 150
-			Wood: 150
-			Concrete: 150
+			Heavy: 112
+			Wood: 125
 	# Cannon shell impact: EXP.SPR D1, the medium dust burst.
 	Warhead@Explosion: CreateEffect
 		Explosions: cannon-impact
@@ -218,9 +218,8 @@ ShipExplosion:
 		Versus:
 			None: 100
 			Light: 100
-			Heavy: 75
+			Heavy: 100
 			Wood: 100
-			Concrete: 50
 		DamageTypes: DefaultDeath
 
 # Stock medic-style healing, limited to one wounded allied infantry target.

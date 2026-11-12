@@ -50,7 +50,6 @@ JapaneseEarthquake:
 			Light: 100
 			Heavy: 100
 			Wood: 100
-			Concrete: 100
 		DamageTypes: DefaultDeath
 	# FIRE96 0-7.
 	Warhead@Explosion: CreateEffect
@@ -101,9 +100,8 @@ JapaneseBomberBombs:
 		Versus:
 			None: 50
 			Light: 100
-			Heavy: 150
-			Wood: 150
-			Concrete: 150
+			Heavy: 125
+			Wood: 125
 		DamageTypes: DefaultDeath
 	Warhead@Explosion: CreateEffect
 		Image: explosion
@@ -142,7 +140,6 @@ JapaneseTorpedoBlast:
 			Light: 150
 			Heavy: 150
 			Wood: 150
-			Concrete: 150
 		DamageTypes: DefaultDeath
 	Warhead@Explosion: CreateEffect
 		ImpactSounds: exp1.wav
@@ -159,13 +156,6 @@ JapaneseTowerGun:
 	Warhead@1Dam: SpreadDamage
 		Damage: 4100
 
-# Cannon Tower: the Korean shot and range, with the gun damage profile.
+# Cannon Tower: the same as Korea's (cannon shot, range and damage profile).
 JapaneseCannonTowerShot:
 	Inherits: ^CannonTowerShot
-	Warhead@Damage: SpreadDamage
-		Versus:
-			None: 150
-			Light: 100
-			Heavy: 60
-			Wood: 40
-			Concrete: 25
