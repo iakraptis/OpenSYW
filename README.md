@@ -84,6 +84,9 @@ Releases (Windows):
   them as a GitHub Release. Running that workflow by hand only uploads them as a build artifact.
 - The application icon is drawn by `packaging/artwork/make-icons.ps1`.
 
+What we know about the original game (file formats, combat rules, unit stats, projectiles), recovered mostly with
+Ghidra, is in [docs/](docs/README.md).
+
 The repository is based on the [OpenRA Mod SDK](https://github.com/OpenRA/OpenRAModSDK); see its
 [FAQ](https://github.com/OpenRA/OpenRAModSDK/wiki/FAQ) and the guide to
 [updating to a new engine version](https://github.com/OpenRA/OpenRAModSDK/wiki/Updating-to-a-new-SDK-or-Engine-version).

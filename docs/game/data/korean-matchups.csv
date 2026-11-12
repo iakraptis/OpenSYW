@@ -1,0 +1,18 @@
+attacker,Peasant,Bull,Footman,Archer,Gunner,Fire Car,Cannon,Transport Ship (provisional),Patrol Ship,Turtle Ship,Occupier,Miner,Commander,Transporter,Fighter,Monk,Shaman
+Peasant,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Bull,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Footman,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Archer,1,1,1,1,1,2/3,2/3,2/3,2/3,2/3,1,1,1,3/2,3/2,1,1
+Gunner,3/2,3/2,3/2,3/2,3/2,1,1,1,1,1,3/2,3/2,3/2,2/3,2/3,3/2,3/2
+Fire Car,3/2,3/2,3/2,3/2,3/2,1,1,1,1,1,3/2,3/2,2/3,1,1,3/2,3/2
+Cannon,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2
+Transport Ship (provisional),3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2
+Patrol Ship,1,1,1,1,1,2/3,2/3,2/3,2/3,2/3,1,1,1,3/2,3/2,1,1
+Turtle Ship,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2,3/2
+Occupier,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Miner,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Commander,1,1,1,1,1,2/3,2/3,2/3,2/3,2/3,1,1,1,3/2,3/2,1,1
+Transporter,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Fighter,3/2,3/2,3/2,3/2,3/2,1,1,1,1,1,3/2,3/2,2/3,1,1,3/2,3/2
+Monk,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Shaman,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
