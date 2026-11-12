@@ -13,6 +13,7 @@ jpeasant:
 	RenderSprites:
 		Image: jpeasant
 	Buildable:
+		Description: description-jpeasant
 		Queue: Workers.Japan
 	Builder:
 		Types: jhq, jbarracks, jmill, jbeacon, jheavyarms, jbarracks2, jairport, jtemple, jwitchhouse, jstable, jarrowtower, jcannontower, jshipyard
@@ -22,6 +23,7 @@ jbull:
 	RenderSprites:
 		Image: jbull
 	Buildable:
+		Description: description-jbull
 		Queue: Workers.Japan
 
 # User change: weaker than Korea's Footman (26,775 HP, 4,500 damage).
@@ -34,6 +36,7 @@ jfootman:
 	Armament:
 		Weapon: JapaneseSword
 	Buildable:
+		Description: description-jfootman
 		Queue: Infantry.Japan
 
 jarcher:
@@ -41,6 +44,7 @@ jarcher:
 	RenderSprites:
 		Image: jarcher
 	Buildable:
+		Description: description-jarcher
 		Queue: Infantry.Japan
 	Armament:
 		Weapon: JapaneseBow
@@ -53,6 +57,7 @@ jgunner:
 	Armament:
 		Weapon: JapaneseMusket
 	Buildable:
+		Description: description-jgunner
 		Queue: Infantry.Japan
 
 # Melee cavalry (Korea's Commander uses a bow).
@@ -65,6 +70,7 @@ jgeneral:
 	AutoTargetPriority@COMBAT:
 		ValidTargets: Ground
 	Buildable:
+		Description: description-jgeneral
 		Queue: Cavalry.Japan
 	Tooltip:
 		Name: actor-general.name
@@ -74,6 +80,7 @@ jthief:
 	RenderSprites:
 		Image: jthief
 	Buildable:
+		Description: description-jthief
 		Queue: AdvancedInfantry.Japan
 	Tooltip:
 		Name: actor-thief.name
@@ -84,6 +91,7 @@ jpriest:
 	RenderSprites:
 		Image: jpriest
 	Buildable:
+		Description: description-jpriest
 		Queue: Temple.Japan
 	Tooltip:
 		Name: actor-priest.name
@@ -100,6 +108,7 @@ jwitch:
 	AmmoPool@MANA:
 		Armaments: none
 	Buildable:
+		Description: description-jwitch
 		Queue: Shaman.Japan
 	Tooltip:
 		Name: actor-witch.name

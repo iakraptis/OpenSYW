@@ -10,6 +10,7 @@ jfighter:
 		Scale: 0.85
 	icon:
 		Filename: art/icons/units/jfighter.png
+		Offset: 0,0
 
 jtransporter:
 	idle:
@@ -20,6 +21,7 @@ jtransporter:
 		Scale: 0.85
 	icon:
 		Filename: art/icons/units/jtransporter.png
+		Offset: 0,0
 
 jbomber:
 	idle:
@@ -30,3 +32,4 @@ jbomber:
 		Scale: 0.85
 	icon:
 		Filename: art/icons/units/bomber.png
+		Offset: 0,0

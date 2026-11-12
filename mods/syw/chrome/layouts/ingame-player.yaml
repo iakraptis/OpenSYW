@@ -44,6 +44,7 @@ Container@PLAYER_WIDGETS:
 					TooltipText: button-command-attack.tooltip
 					TooltipDesc: button-command-attack.tooltipdesc
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						# CommandBarLogic needs a chrome Image named ICON; ours is a game sprite, so that one stays hidden.
@@ -75,6 +76,7 @@ Container@PLAYER_WIDGETS:
 					TooltipText: button-command-stop.tooltip
 					TooltipDesc: button-command-stop.tooltipdesc
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						# CommandBarLogic needs a chrome Image named ICON; ours is a game sprite, so that one stays hidden.
@@ -98,14 +100,15 @@ Container@PLAYER_WIDGETS:
 							Width: 48
 							Height: 48
 							Color: 00000090
+		# Centered on the blue ribbon of the sidebar art (x 40-295, y 34-53 of sidebar.png).
 		WorldLabelWithTooltip@CASH:
 			Logic: IngameCashCounterLogic
 			X: WINDOW_WIDTH - 280
-			Y: 16
-			Width: 240
+			Y: 32
+			Width: 256
 			Height: 24
 			Align: Center
-			Font: Bold
+			Font: MediumBold
 			Contrast: true
 			TooltipContainer: TOOLTIP_CONTAINER
 			TooltipTemplate: SIMPLE_TOOLTIP
@@ -156,6 +159,7 @@ Container@PLAYER_WIDGETS:
 					Width: 50
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					Children:
 						Sprite@ICON:
 							X: 1
@@ -177,6 +181,7 @@ Container@PLAYER_WIDGETS:
 					Width: 50
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					Children:
 						Sprite@ICON:
 							X: 1
@@ -262,7 +267,7 @@ Container@PLAYER_WIDGETS:
 			Y: 687
 			Width: 132
 			TooltipContainer: TOOLTIP_CONTAINER
-			TooltipTemplate: PRODUCTION_TOOLTIP
+			TooltipTemplate: SYW_PRODUCTION_TOOLTIP
 			ReadyText: production-palette.ready
 			HoldText: production-palette.hold
 			ClockPalette: knight
@@ -340,6 +345,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -359,6 +366,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -378,6 +387,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -397,6 +408,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -416,6 +429,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -435,6 +450,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -454,6 +471,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -473,6 +492,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -492,6 +513,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -511,6 +534,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -530,6 +555,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -549,6 +576,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -568,6 +597,8 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
+					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP
 					Children:
 						Sprite@PORTRAIT:
 							X: 1
@@ -633,6 +664,7 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					Children:
 						Sprite@ICON:
 							X: 1
@@ -653,6 +685,7 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					Children:
 						Sprite@ICON:
 							X: 1
@@ -673,6 +706,7 @@ Container@PLAYER_WIDGETS:
 					Width: 66
 					Height: 50
 					TooltipContainer: TOOLTIP_CONTAINER
+					IgnoreChildMouseOver: true
 					Children:
 						Sprite@ICON:
 							X: 1

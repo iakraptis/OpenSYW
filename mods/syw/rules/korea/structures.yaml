@@ -10,6 +10,8 @@ khq:
 		Type: Workers.Korea
 	ProductionBar:
 		ProductionType: Workers.Korea
+	Buildable:
+		Description: description-khq
 
 kbarracks:
 	Inherits: ^barracks
@@ -21,11 +23,15 @@ kbarracks:
 		Type: Infantry.Korea
 	ProductionBar:
 		ProductionType: Infantry.Korea
+	Buildable:
+		Description: description-kbarracks
 
 kmill:
 	Inherits: ^mill
 	RenderSprites:
 		Image: kmill
+	Buildable:
+		Description: description-kmill
 
 kbeaconmound:
 	Inherits: ^beaconmound
@@ -33,6 +39,8 @@ kbeaconmound:
 		Image: kbeaconmound
 	Tooltip:
 		Name: actor-beaconmound.name
+	Buildable:
+		Description: description-kbeaconmound
 
 kheavyarmsworkshop:
 	Inherits: ^heavyarmsworkshop
@@ -46,6 +54,8 @@ kheavyarmsworkshop:
 		Type: Vehicles.Korea
 	ProductionBar:
 		ProductionType: Vehicles.Korea
+	Buildable:
+		Description: description-kheavyarmsworkshop
 
 kbarracks2:
 	Inherits: ^barracks2
@@ -57,6 +67,8 @@ kbarracks2:
 		Type: AdvancedInfantry.Korea
 	ProductionBar:
 		ProductionType: AdvancedInfantry.Korea
+	Buildable:
+		Description: description-kbarracks2
 
 kplaneworks:
 	Inherits: ^planeworks
@@ -70,6 +82,8 @@ kplaneworks:
 		Type: Aircraft.Korea
 	ProductionBar:
 		ProductionType: Aircraft.Korea
+	Buildable:
+		Description: description-kplaneworks
 
 ktemple:
 	Inherits: ^temple
@@ -81,6 +95,8 @@ ktemple:
 		Type: Temple.Korea
 	ProductionBar:
 		ProductionType: Temple.Korea
+	Buildable:
+		Description: description-ktemple
 
 kshamanhouse:
 	Inherits: ^shamanhouse
@@ -94,6 +110,8 @@ kshamanhouse:
 		Type: Shaman.Korea
 	ProductionBar:
 		ProductionType: Shaman.Korea
+	Buildable:
+		Description: description-kshamanhouse
 
 kstable:
 	Inherits: ^stable
@@ -105,6 +123,8 @@ kstable:
 		Type: Cavalry.Korea
 	ProductionBar:
 		ProductionType: Cavalry.Korea
+	Buildable:
+		Description: description-kstable
 
 karrowtower:
 	Inherits: ^arrowtower
@@ -112,6 +132,8 @@ karrowtower:
 		Weapon: KoreanTowerBow
 	RenderSprites:
 		Image: karrowtower
+	Buildable:
+		Description: description-karrowtower
 
 kcannontower:
 	Inherits: ^cannontower
@@ -119,6 +141,8 @@ kcannontower:
 		Weapon: KoreanCannonTowerShot
 	RenderSprites:
 		Image: kcannontower
+	Buildable:
+		Description: description-kcannontower
 
 kshipyard:
 	Inherits: ^shipyard
@@ -130,3 +154,5 @@ kshipyard:
 		Type: Naval.Korea
 	ProductionBar:
 		ProductionType: Naval.Korea
+	Buildable:
+		Description: description-kshipyard

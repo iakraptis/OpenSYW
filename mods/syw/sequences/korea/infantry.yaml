@@ -7,6 +7,7 @@
 kpeasant:
 	icon:
 		Filename: art/icons/units/peasant.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -56,6 +57,7 @@ kpeasant:
 kbull:
 	icon:
 		Filename: art/icons/units/bull.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -104,6 +106,7 @@ kbull:
 kfootman:
 	icon:
 		Filename: art/icons/units/footman.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -140,6 +143,7 @@ kfootman:
 karcher:
 	icon:
 		Filename: art/icons/units/archer.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -176,6 +180,7 @@ karcher:
 kgunner:
 	icon:
 		Filename: art/icons/units/gunner.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -209,6 +214,7 @@ kgunner:
 kcommander:
 	icon:
 		Filename: art/icons/units/commander.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -240,6 +246,7 @@ kcommander:
 koccupier:
 	icon:
 		Filename: art/icons/units/occupier.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -266,6 +273,7 @@ koccupier:
 kmonk:
 	icon:
 		Filename: art/icons/units/monk.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -297,6 +305,7 @@ kmonk:
 kshaman:
 	icon:
 		Filename: art/icons/units/shaman.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85
@@ -328,6 +337,7 @@ kshaman:
 kminer:
 	icon:
 		Filename: art/icons/units/miner.png
+		Offset: 0,0
 	Defaults:
 		Offset: [0, -10, 10]
 		Scale: 0.85

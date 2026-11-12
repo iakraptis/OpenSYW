@@ -9,7 +9,8 @@ namespace OpenRA.Mods.Syw.Widgets
 	{
 		public Action<int> OnScroll = _ => { };
 
-		public MouseWheelAreaWidget() { }
+		// Invisible: it must not take the mouse-over from the widgets it overlaps, or their tooltips never open.
+		public MouseWheelAreaWidget() { IgnoreMouseOver = true; }
 
 		protected MouseWheelAreaWidget(MouseWheelAreaWidget other)
 			: base(other)

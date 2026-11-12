@@ -10,6 +10,7 @@ kfighter:
 		Scale: 0.85
 	icon:
 		Filename: art/icons/units/fighter.png
+		Offset: 0,0
 
 ktransporter:
 	idle:
@@ -20,3 +21,4 @@ ktransporter:
 		Scale: 0.85
 	icon:
 		Filename: art/icons/units/transporter.png
+		Offset: 0,0
