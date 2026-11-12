@@ -7,6 +7,11 @@ button-command-stop =
     .tooltip = Stop
     .tooltipdesc = Selected units stop what they are doing.
 
+button-command-unload =
+    .tooltip = Unload
+    .tooltipdesc = Click the map: the transport goes there and unloads.
+        Aircraft land first; ships unload at the nearest shore.
+
 ## Main menu
 label-mainmenu-title = OpenSYW
 
