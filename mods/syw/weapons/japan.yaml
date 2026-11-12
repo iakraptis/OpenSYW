@@ -91,12 +91,13 @@ JapaneseBomberBombs:
 		Image: bomber-bomb
 		Palette: knight
 		Shadow: true
-	Warhead@Damage: SpreadDamage
+	Warhead@Damage: SplashDamage
 		Spread: 512
 		Falloff: 100, 100, 50, 25, 0
 		Damage: 9000
 		ValidTargets: Ground, Water
-		ValidRelationships: Enemy, Neutral
+		# Also own and allied actors in the blast, at 75% (SplashDamage AllyDamage).
+		ValidRelationships: Enemy, Neutral, Ally
 		Versus:
 			None: 50
 			Light: 100
