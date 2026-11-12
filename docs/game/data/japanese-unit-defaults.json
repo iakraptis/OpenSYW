@@ -1,0 +1,1982 @@
+{
+  "exe_sha256": "4074920e28311dd2f558a29ecc0019debf309fa0bfbc7f0c8eacff3bf56af5dc",
+  "units": {
+    "Peasant": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0042d220",
+        "0x0042f390"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x0042d220"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0042f390"
+        },
+        "portrait": {
+          "value": 50,
+          "source": "0x0042f390"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x0042d220"
+        },
+        "raw_7c": {
+          "value": 3,
+          "source": "0x0042d220"
+        },
+        "raw_10c": {
+          "value": 5,
+          "source": "0x0042d220"
+        },
+        "max_hp": {
+          "value": 250,
+          "source": "0x0042d220"
+        },
+        "initial_hp": {
+          "value": 250,
+          "source": "0x0042d220"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0042d220"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x0042d220"
+        },
+        "type_id": {
+          "value": 16,
+          "source": "0x0042f390"
+        },
+        "raw_248": {
+          "value": 200,
+          "source": "0x0042f390"
+        }
+      }
+    },
+    "Bull": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0042d220",
+        "0x0042f760"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x0042d220"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0042f760"
+        },
+        "portrait": {
+          "value": 68,
+          "source": "0x0042f760"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x0042d220"
+        },
+        "raw_7c": {
+          "value": 3,
+          "source": "0x0042d220"
+        },
+        "raw_10c": {
+          "value": 5,
+          "source": "0x0042d220"
+        },
+        "max_hp": {
+          "value": 250,
+          "source": "0x0042d220"
+        },
+        "initial_hp": {
+          "value": 250,
+          "source": "0x0042d220"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0042d220"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x0042d220"
+        },
+        "type_id": {
+          "value": 34,
+          "source": "0x0042f760"
+        },
+        "raw_248": {
+          "value": 1200,
+          "source": "0x0042f760"
+        }
+      }
+    },
+    "Footman": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00438290",
+        "0x00438880"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 5,
+          "source": "0x00438290"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x00438290"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00438880"
+        },
+        "portrait": {
+          "value": 57,
+          "source": "0x00438880"
+        },
+        "raw_78": {
+          "value": 1,
+          "source": "0x00438290"
+        },
+        "raw_7c": {
+          "value": 4,
+          "source": "0x00438290"
+        },
+        "raw_10c": {
+          "value": 5,
+          "source": "0x00438290"
+        },
+        "type_id": {
+          "value": 19,
+          "source": "0x00438290"
+        },
+        "max_hp": {
+          "value": 350,
+          "source": "0x00438290"
+        },
+        "initial_hp": {
+          "value": 350,
+          "source": "0x00438290"
+        },
+        "base_power": {
+          "value": 45,
+          "source": "0x00438290"
+        },
+        "base_defense": {
+          "value": 30,
+          "source": "0x00438290"
+        }
+      }
+    },
+    "Archer": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00429760",
+        "0x00429c80"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 2,
+          "source": "0x00429760"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x00429760"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00429c80"
+        },
+        "portrait": {
+          "value": 51,
+          "source": "0x00429c80"
+        },
+        "raw_78": {
+          "value": 5,
+          "source": "0x00429760"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00429760"
+        },
+        "raw_10c": {
+          "value": 20,
+          "source": "0x00429760"
+        },
+        "type_id": {
+          "value": 17,
+          "source": "0x00429760"
+        },
+        "max_hp": {
+          "value": 250,
+          "source": "0x00429760"
+        },
+        "initial_hp": {
+          "value": 250,
+          "source": "0x00429760"
+        },
+        "base_power": {
+          "value": 35,
+          "source": "0x00429760"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x00429760"
+        }
+      }
+    },
+    "Gunner": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0044bb90",
+        "0x0044c110"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 1,
+          "source": "0x0044bb90"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x0044bb90"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "portrait": {
+          "value": 52,
+          "source": "0x0044c110"
+        },
+        "raw_78": {
+          "value": 6,
+          "source": "0x0044c110"
+        },
+        "raw_7c": {
+          "value": 6,
+          "source": "0x0044c110"
+        },
+        "raw_10c": {
+          "value": 30,
+          "source": "0x0044bb90"
+        },
+        "type_id": {
+          "value": 18,
+          "source": "0x0044bb90"
+        },
+        "max_hp": {
+          "value": 300,
+          "source": "0x0044bb90"
+        },
+        "initial_hp": {
+          "value": 300,
+          "source": "0x0044bb90"
+        },
+        "base_defense": {
+          "value": 30,
+          "source": "0x0044bb90"
+        },
+        "base_power": {
+          "value": 60,
+          "source": "0x0044c110"
+        }
+      }
+    },
+    "Armored Car": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0044cbc0",
+        "0x0044edf0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 1,
+          "source": "0x0044edf0"
+        },
+        "target_class": {
+          "value": 3,
+          "source": "0x0044edf0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0044edf0"
+        },
+        "portrait": {
+          "value": 53,
+          "source": "0x0044edf0"
+        },
+        "raw_78": {
+          "value": 7,
+          "source": "0x0044cbc0"
+        },
+        "raw_7c": {
+          "value": 7,
+          "source": "0x0044cbc0"
+        },
+        "raw_10c": {
+          "value": 25,
+          "source": "0x0044edf0"
+        },
+        "type_id": {
+          "value": 20,
+          "source": "0x0044cbc0"
+        },
+        "max_hp": {
+          "value": 500,
+          "source": "0x0044edf0"
+        },
+        "initial_hp": {
+          "value": 500,
+          "source": "0x0044edf0"
+        },
+        "base_power": {
+          "value": 60,
+          "source": "0x0044edf0"
+        },
+        "raw_248": {
+          "value": 40,
+          "source": "0x0044edf0"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x0044edf0"
+        }
+      }
+    },
+    "Cannon Ship (type 21)": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00434ce0",
+        "0x004374a0",
+        "0x00437c90"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 4,
+          "source": "0x00437c90"
+        },
+        "target_class": {
+          "value": 4,
+          "source": "0x00434ce0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00437c90"
+        },
+        "portrait": {
+          "value": 54,
+          "source": "0x00437c90"
+        },
+        "raw_78": {
+          "value": 8,
+          "source": "0x00437c90"
+        },
+        "raw_7c": {
+          "value": 8,
+          "source": "0x00437c90"
+        },
+        "raw_10c": {
+          "value": 110,
+          "source": "0x00437c90"
+        },
+        "raw_248": {
+          "value": 0,
+          "source": "0x00434ce0"
+        },
+        "type_id": {
+          "value": 21,
+          "source": "0x00437c90"
+        },
+        "max_hp": {
+          "value": 600,
+          "source": "0x00437c90"
+        },
+        "initial_hp": {
+          "value": 600,
+          "source": "0x00437c90"
+        },
+        "base_power": {
+          "value": 75,
+          "source": "0x00437c90"
+        },
+        "base_defense": {
+          "value": 60,
+          "source": "0x00437c90"
+        }
+      }
+    },
+    "Transport Ship (type 22)": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00434ce0",
+        "0x0043d270",
+        "0x0043e040"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 4,
+          "source": "0x00434ce0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0043e040"
+        },
+        "portrait": {
+          "value": 55,
+          "source": "0x0043e040"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x0043e040"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0043e040"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x0043e040"
+        },
+        "raw_248": {
+          "value": 0,
+          "source": "0x00434ce0"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x0043d270"
+        },
+        "initial_hp": {
+          "value": 700,
+          "source": "0x0043d270"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x0043e040"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0043e040"
+        },
+        "type_id": {
+          "value": 22,
+          "source": "0x0043e040"
+        }
+      }
+    },
+    "Arrow Ship (type 23)": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00434ce0",
+        "0x004374a0",
+        "0x00437f50"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 1,
+          "source": "0x00437f50"
+        },
+        "target_class": {
+          "value": 4,
+          "source": "0x00434ce0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00437f50"
+        },
+        "portrait": {
+          "value": 56,
+          "source": "0x00437f50"
+        },
+        "raw_78": {
+          "value": 7,
+          "source": "0x00437f50"
+        },
+        "raw_7c": {
+          "value": 7,
+          "source": "0x00437f50"
+        },
+        "raw_10c": {
+          "value": 35,
+          "source": "0x00437f50"
+        },
+        "raw_248": {
+          "value": 0,
+          "source": "0x00434ce0"
+        },
+        "type_id": {
+          "value": 23,
+          "source": "0x00437f50"
+        },
+        "max_hp": {
+          "value": 600,
+          "source": "0x00437f50"
+        },
+        "initial_hp": {
+          "value": 600,
+          "source": "0x00437f50"
+        },
+        "base_power": {
+          "value": 50,
+          "source": "0x00437f50"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00437f50"
+        }
+      }
+    },
+    "Submarine (type 31)": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00434ce0",
+        "0x00436ea0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 4,
+          "source": "0x00436ea0"
+        },
+        "target_class": {
+          "value": 4,
+          "source": "0x00434ce0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00436ea0"
+        },
+        "portrait": {
+          "value": 66,
+          "source": "0x00436ea0"
+        },
+        "raw_78": {
+          "value": 1,
+          "source": "0x00436ea0"
+        },
+        "raw_7c": {
+          "value": 1,
+          "source": "0x00436ea0"
+        },
+        "raw_10c": {
+          "value": 150,
+          "source": "0x00436ea0"
+        },
+        "raw_248": {
+          "value": 0,
+          "source": "0x00434ce0"
+        },
+        "type_id": {
+          "value": 31,
+          "source": "0x00436ea0"
+        },
+        "max_hp": {
+          "value": 50,
+          "source": "0x00436ea0"
+        },
+        "initial_hp": {
+          "value": 50,
+          "source": "0x00436ea0"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00436ea0"
+        },
+        "base_defense": {
+          "value": 10,
+          "source": "0x00436ea0"
+        }
+      }
+    },
+    "Thief": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0042c050",
+        "0x0042c8e0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x0042c050"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "portrait": {
+          "value": 58,
+          "source": "0x0042c8e0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x0042c050"
+        },
+        "raw_7c": {
+          "value": 3,
+          "source": "0x0042c050"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 24,
+          "source": "0x0042c050"
+        },
+        "max_hp": {
+          "value": 150,
+          "source": "0x0042c050"
+        },
+        "initial_hp": {
+          "value": 150,
+          "source": "0x0042c050"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0042c050"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x0042c050"
+        }
+      }
+    },
+    "Miner (unreachable)": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00428040",
+        "0x00428b20"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00428b20"
+        },
+        "portrait": {
+          "value": 60,
+          "source": "0x00428b20"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00428040"
+        },
+        "raw_7c": {
+          "value": 3,
+          "source": "0x00428040"
+        },
+        "raw_10c": {
+          "value": 5,
+          "source": "0x00428040"
+        },
+        "type_id": {
+          "value": 25,
+          "source": "0x00428040"
+        },
+        "max_hp": {
+          "value": 250,
+          "source": "0x00428040"
+        },
+        "initial_hp": {
+          "value": 250,
+          "source": "0x00428040"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00428040"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x00428040"
+        }
+      }
+    },
+    "General": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x00443470",
+        "0x00443ad0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 5,
+          "source": "0x00443ad0"
+        },
+        "target_class": {
+          "value": 2,
+          "source": "0x00443ad0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00443ad0"
+        },
+        "portrait": {
+          "value": 67,
+          "source": "0x00443ad0"
+        },
+        "raw_78": {
+          "value": 1,
+          "source": "0x00443ad0"
+        },
+        "raw_7c": {
+          "value": 4,
+          "source": "0x00443ad0"
+        },
+        "raw_10c": {
+          "value": 15,
+          "source": "0x00443ad0"
+        },
+        "type_id": {
+          "value": 33,
+          "source": "0x00443470"
+        },
+        "max_hp": {
+          "value": 350,
+          "source": "0x00443470"
+        },
+        "initial_hp": {
+          "value": 350,
+          "source": "0x00443470"
+        },
+        "base_power": {
+          "value": 60,
+          "source": "0x00443ad0"
+        },
+        "base_defense": {
+          "value": 40,
+          "source": "0x00443ad0"
+        }
+      }
+    },
+    "Transporter": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0043a1b0",
+        "0x0043ca60"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 6,
+          "source": "0x0043a1b0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0043ca60"
+        },
+        "portrait": {
+          "value": 61,
+          "source": "0x0043ca60"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x0043ca60"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0043ca60"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x0043ca60"
+        },
+        "raw_248": {
+          "value": 0,
+          "source": "0x0043ca60"
+        },
+        "type_id": {
+          "value": 26,
+          "source": "0x0043ca60"
+        },
+        "max_hp": {
+          "value": 500,
+          "source": "0x0043ca60"
+        },
+        "initial_hp": {
+          "value": 500,
+          "source": "0x0043ca60"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0043ca60"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x0043ca60"
+        }
+      }
+    },
+    "Fighter": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0043a1b0",
+        "0x0043ce70",
+        "0x0043d130"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 4,
+          "source": "0x0043d130"
+        },
+        "target_class": {
+          "value": 6,
+          "source": "0x0043a1b0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0043d130"
+        },
+        "portrait": {
+          "value": 62,
+          "source": "0x0043d130"
+        },
+        "raw_78": {
+          "value": 6,
+          "source": "0x0043d130"
+        },
+        "raw_7c": {
+          "value": 6,
+          "source": "0x0043d130"
+        },
+        "raw_10c": {
+          "value": 60,
+          "source": "0x0043d130"
+        },
+        "raw_248": {
+          "value": 5,
+          "source": "0x0043d130"
+        },
+        "type_id": {
+          "value": 27,
+          "source": "0x0043ce70"
+        },
+        "max_hp": {
+          "value": 300,
+          "source": "0x0043d130"
+        },
+        "initial_hp": {
+          "value": 300,
+          "source": "0x0043d130"
+        },
+        "base_power": {
+          "value": 50,
+          "source": "0x0043d130"
+        },
+        "base_defense": {
+          "value": 40,
+          "source": "0x0043d130"
+        }
+      }
+    },
+    "Bomber": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0043a1b0",
+        "0x0043cba0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 4,
+          "source": "0x0043cba0"
+        },
+        "target_class": {
+          "value": 6,
+          "source": "0x0043a1b0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0043cba0"
+        },
+        "portrait": {
+          "value": 63,
+          "source": "0x0043cba0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x0043cba0"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0043cba0"
+        },
+        "raw_10c": {
+          "value": 100,
+          "source": "0x0043cba0"
+        },
+        "raw_248": {
+          "value": 6,
+          "source": "0x0043cba0"
+        },
+        "type_id": {
+          "value": 28,
+          "source": "0x0043cba0"
+        },
+        "max_hp": {
+          "value": 400,
+          "source": "0x0043cba0"
+        },
+        "initial_hp": {
+          "value": 400,
+          "source": "0x0043cba0"
+        },
+        "base_power": {
+          "value": 90,
+          "source": "0x0043cba0"
+        },
+        "base_defense": {
+          "value": 45,
+          "source": "0x0043cba0"
+        }
+      }
+    },
+    "Priest": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0043e4d0",
+        "0x00440180"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 6,
+          "source": "0x0043e4d0"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x0043e4d0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00440180"
+        },
+        "portrait": {
+          "value": 64,
+          "source": "0x00440180"
+        },
+        "raw_78": {
+          "value": 5,
+          "source": "0x0043e4d0"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0043e4d0"
+        },
+        "raw_10c": {
+          "value": 25,
+          "source": "0x0043e4d0"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x0043e4d0"
+        },
+        "max_hp": {
+          "value": 300,
+          "source": "0x0043e4d0"
+        },
+        "initial_hp": {
+          "value": 300,
+          "source": "0x0043e4d0"
+        },
+        "base_power": {
+          "value": 60,
+          "source": "0x0043e4d0"
+        },
+        "type_id": {
+          "value": 29,
+          "source": "0x00440180"
+        }
+      }
+    },
+    "Witch": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x0043e4d0",
+        "0x00440300"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 6,
+          "source": "0x0043e4d0"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x0043e4d0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00440300"
+        },
+        "portrait": {
+          "value": 65,
+          "source": "0x00440300"
+        },
+        "raw_78": {
+          "value": 5,
+          "source": "0x0043e4d0"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0043e4d0"
+        },
+        "raw_10c": {
+          "value": 25,
+          "source": "0x0043e4d0"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x0043e4d0"
+        },
+        "max_hp": {
+          "value": 300,
+          "source": "0x0043e4d0"
+        },
+        "initial_hp": {
+          "value": 300,
+          "source": "0x0043e4d0"
+        },
+        "base_power": {
+          "value": 60,
+          "source": "0x0043e4d0"
+        },
+        "type_id": {
+          "value": 30,
+          "source": "0x00440300"
+        }
+      }
+    },
+    "Lord (type 35, campaign)": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00405780",
+        "0x004403c0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x004403c0"
+        },
+        "portrait": {
+          "value": 69,
+          "source": "0x004403c0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x004403c0"
+        },
+        "raw_7c": {
+          "value": 3,
+          "source": "0x004403c0"
+        },
+        "raw_10c": {
+          "value": 5,
+          "source": "0x004403c0"
+        },
+        "type_id": {
+          "value": 35,
+          "source": "0x004403c0"
+        },
+        "max_hp": {
+          "value": 250,
+          "source": "0x004403c0"
+        },
+        "initial_hp": {
+          "value": 250,
+          "source": "0x004403c0"
+        },
+        "base_defense": {
+          "value": 20,
+          "source": "0x004403c0"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x004403c0"
+        }
+      }
+    }
+  },
+  "buildings": {
+    "Headquarters": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00438920",
+        "0x00439410"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00439410"
+        },
+        "portrait": {
+          "value": 70,
+          "source": "0x00439410"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00438920"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 1,
+          "source": "0x00438920"
+        },
+        "base_defense": {
+          "value": 70,
+          "source": "0x00438920"
+        },
+        "max_hp": {
+          "value": 1000,
+          "source": "0x00438920"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00438920"
+        }
+      }
+    },
+    "Barracks": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x0044f360",
+        "0x0044fe80"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0044fe80"
+        },
+        "portrait": {
+          "value": 71,
+          "source": "0x0044fe80"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0044f360"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 2,
+          "source": "0x0044f360"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x0044f360"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0044f360"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x0044f360"
+        }
+      }
+    },
+    "Mill": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00434650",
+        "0x00434c30"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00434c30"
+        },
+        "portrait": {
+          "value": 73,
+          "source": "0x00434c30"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00434650"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 4,
+          "source": "0x00434650"
+        },
+        "base_defense": {
+          "value": 70,
+          "source": "0x00434650"
+        },
+        "max_hp": {
+          "value": 800,
+          "source": "0x00434650"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00434650"
+        }
+      }
+    },
+    "Arrow Tower": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x0042fe30",
+        "0x00430780"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 1,
+          "source": "0x00430780"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00430780"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00430780"
+        },
+        "portrait": {
+          "value": 74,
+          "source": "0x00430780"
+        },
+        "raw_78": {
+          "value": 7,
+          "source": "0x00430780"
+        },
+        "raw_7c": {
+          "value": 7,
+          "source": "0x00430780"
+        },
+        "raw_10c": {
+          "value": 80,
+          "source": "0x00430780"
+        },
+        "type_id": {
+          "value": 5,
+          "source": "0x00430780"
+        },
+        "base_power": {
+          "value": 70,
+          "source": "0x00430780"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00430780"
+        },
+        "max_hp": {
+          "value": 800,
+          "source": "0x00430780"
+        }
+      }
+    },
+    "Shipyard": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00445fb0",
+        "0x00446ba0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00446ba0"
+        },
+        "portrait": {
+          "value": 76,
+          "source": "0x00446ba0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00445fb0"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 6,
+          "source": "0x00445fb0"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x00445fb0"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00445fb0"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00445fb0"
+        }
+      }
+    },
+    "Heavy Arms": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00446cd0",
+        "0x00447620"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00447620"
+        },
+        "portrait": {
+          "value": 75,
+          "source": "0x00447620"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00446cd0"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 7,
+          "source": "0x00446cd0"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x00446cd0"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00446cd0"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00446cd0"
+        }
+      }
+    },
+    "Barracks2": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x0044c1b0",
+        "0x0044cad0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x0044cad0"
+        },
+        "portrait": {
+          "value": 77,
+          "source": "0x0044cad0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x0044c1b0"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 8,
+          "source": "0x0044c1b0"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x0044c1b0"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x0044c1b0"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x0044c1b0"
+        }
+      }
+    },
+    "Airport": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00428bb0",
+        "0x00429630"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00429630"
+        },
+        "portrait": {
+          "value": 78,
+          "source": "0x00429630"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00428bb0"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 10,
+          "source": "0x00428bb0"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x00428bb0"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00428bb0"
+        },
+        "base_defense": {
+          "value": 55,
+          "source": "0x00428bb0"
+        }
+      }
+    },
+    "Temple": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00445310",
+        "0x00445d00"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00445d00"
+        },
+        "portrait": {
+          "value": 79,
+          "source": "0x00445d00"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00445310"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 11,
+          "source": "0x00445310"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x00445310"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00445310"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00445310"
+        }
+      }
+    },
+    "Beacon": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00439520",
+        "0x00439b30"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00439b30"
+        },
+        "portrait": {
+          "value": 80,
+          "source": "0x00439b30"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 10,
+          "source": "0x00439520"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 12,
+          "source": "0x00439520"
+        },
+        "max_hp": {
+          "value": 800,
+          "source": "0x00439520"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00439520"
+        },
+        "base_defense": {
+          "value": 70,
+          "source": "0x00439520"
+        }
+      }
+    },
+    "Stable": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00433b20",
+        "0x004344b0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x004344b0"
+        },
+        "portrait": {
+          "value": 81,
+          "source": "0x004344b0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00433b20"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 13,
+          "source": "0x00433b20"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x00433b20"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00433b20"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00433b20"
+        }
+      }
+    },
+    "Witch House": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x00445310",
+        "0x00445ec0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00404950"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00445ec0"
+        },
+        "portrait": {
+          "value": 82,
+          "source": "0x00445ec0"
+        },
+        "raw_78": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "raw_7c": {
+          "value": 5,
+          "source": "0x00445310"
+        },
+        "raw_10c": {
+          "value": 0,
+          "source": "0x00401000"
+        },
+        "type_id": {
+          "value": 14,
+          "source": "0x00445ec0"
+        },
+        "max_hp": {
+          "value": 700,
+          "source": "0x00445310"
+        },
+        "base_power": {
+          "value": 0,
+          "source": "0x00445310"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00445310"
+        }
+      }
+    },
+    "Cannon Tower": {
+      "constructor_chain": [
+        "0x00401000",
+        "0x00404950",
+        "0x0042fe30",
+        "0x00430ca0"
+      ],
+      "fields": {
+        "attack_class": {
+          "value": 1,
+          "source": "0x00430ca0"
+        },
+        "target_class": {
+          "value": 5,
+          "source": "0x00430ca0"
+        },
+        "power_decrement": {
+          "value": 1,
+          "source": "0x00401000"
+        },
+        "faction": {
+          "value": 1,
+          "source": "0x00430ca0"
+        },
+        "portrait": {
+          "value": 83,
+          "source": "0x00430ca0"
+        },
+        "raw_78": {
+          "value": 9,
+          "source": "0x00430ca0"
+        },
+        "raw_7c": {
+          "value": 9,
+          "source": "0x00430ca0"
+        },
+        "raw_10c": {
+          "value": 200,
+          "source": "0x00430ca0"
+        },
+        "type_id": {
+          "value": 15,
+          "source": "0x00430ca0"
+        },
+        "base_defense": {
+          "value": 50,
+          "source": "0x00430ca0"
+        },
+        "max_hp": {
+          "value": 800,
+          "source": "0x00430ca0"
+        },
+        "base_power": {
+          "value": 100,
+          "source": "0x00430ca0"
+        }
+      }
+    }
+  }
+}

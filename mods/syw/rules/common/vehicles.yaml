@@ -104,7 +104,7 @@
 ^firecar:
 	Inherits: ^syw-vehicle
 	Armor:
-		Type: Light
+		Type: Heavy
 	Buildable:
 		BuildPaletteOrder: 10
 	Health:

@@ -54,7 +54,6 @@ KoreanLightning:
 			Light: 100
 			Heavy: 100
 			Wood: 100
-			Concrete: 100
 		DamageTypes: DefaultDeath
 
 # Provisional mine balance, separate from original game research.
@@ -65,15 +64,14 @@ KoreanMineExplosion:
 		ValidTargets: Ground
 	Warhead@Damage: SpreadDamage
 		Spread: 512
-		Damage: 12000
+		Damage: 13200
 		ValidTargets: Ground
 		ValidRelationships: Enemy
 		Versus:
 			None: 75
 			Light: 125
-			Heavy: 150
+			Heavy: 125
 			Wood: 50
-			Concrete: 50
 		DamageTypes: DefaultDeath
 
 # Fire Car.

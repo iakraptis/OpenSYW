@@ -594,8 +594,6 @@
 
 ^arrowtower:
 	Inherits: ^syw-tower
-	Armor:
-		Type: Concrete
 	RenderSprites:
 	Health:
 		# Provisional building durability.
@@ -612,8 +610,6 @@
 
 ^cannontower:
 	Inherits: ^syw-tower
-	Armor:
-		Type: Concrete
 	RenderSprites:
 	Health:
 		# Provisional building durability.

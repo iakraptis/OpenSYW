@@ -1,0 +1,231 @@
+unit	field	value	source	store_instruction
+Peasant	attack_class	0	0x00401000	0x4010f3
+Peasant	target_class	1	0x0042d220	0x42d285
+Peasant	power_decrement	1	0x00401000	0x401117
+Peasant	faction	0	0x0042f080	0x42f0b4
+Peasant	portrait	0	0x0042f080	0x42f0ba
+Peasant	raw_78	0	0x0042d220	0x42d27b
+Peasant	raw_7c	3	0x0042d220	0x42d27e
+Peasant	raw_10c	5	0x0042d220	0x42d294
+Peasant	max_hp	250	0x0042d220	0x42d26b
+Peasant	initial_hp	250	0x0042d220	0x42d26e
+Peasant	base_power	0	0x0042d220	0x42d288
+Peasant	base_defense	20	0x0042d220	0x42d28e
+Peasant	type_id	16	0x0042f080	0x42f0cc
+Peasant	raw_248	200	0x0042f080	0x42f0fe
+Bull	attack_class	0	0x00401000	0x4010f3
+Bull	target_class	1	0x0042d220	0x42d285
+Bull	power_decrement	1	0x00401000	0x401117
+Bull	faction	0	0x0042f690	0x42f6c4
+Bull	portrait	16	0x0042f690	0x42f6fb
+Bull	raw_78	0	0x0042d220	0x42d27b
+Bull	raw_7c	3	0x0042d220	0x42d27e
+Bull	raw_10c	5	0x0042d220	0x42d294
+Bull	max_hp	250	0x0042d220	0x42d26b
+Bull	initial_hp	250	0x0042d220	0x42d26e
+Bull	base_power	0	0x0042d220	0x42d288
+Bull	base_defense	20	0x0042d220	0x42d28e
+Bull	type_id	34	0x0042f690	0x42f6d6
+Bull	raw_248	1200	0x0042f690	0x42f712
+Footman	attack_class	5	0x00438290	0x438331
+Footman	target_class	1	0x00438290	0x43833a
+Footman	power_decrement	1	0x00401000	0x401117
+Footman	faction	0	0x004387f0	0x438816
+Footman	portrait	7	0x004387f0	0x43884d
+Footman	raw_78	1	0x00438290	0x438311
+Footman	raw_7c	4	0x00438290	0x438318
+Footman	raw_10c	5	0x00438290	0x438325
+Footman	type_id	19	0x00438290	0x4382b9
+Footman	max_hp	350	0x00438290	0x4382ce
+Footman	initial_hp	350	0x00438290	0x4382d1
+Footman	base_power	45	0x00438290	0x4382e1
+Footman	base_defense	30	0x00438290	0x4382fb
+Archer	attack_class	2	0x00429760	0x429806
+Archer	target_class	1	0x00429760	0x429809
+Archer	power_decrement	1	0x00401000	0x401117
+Archer	faction	0	0x00429bf0	0x429c16
+Archer	portrait	1	0x00429bf0	0x429c4d
+Archer	raw_78	5	0x00429760	0x4297a1
+Archer	raw_7c	5	0x00429760	0x4297a4
+Archer	raw_10c	20	0x00429760	0x4297f0
+Archer	type_id	17	0x00429760	0x429784
+Archer	max_hp	250	0x00429760	0x4297b4
+Archer	initial_hp	250	0x00429760	0x4297b7
+Archer	base_power	35	0x00429760	0x4297ce
+Archer	base_defense	20	0x00429760	0x4297e4
+Gunner	attack_class	1	0x0044bb90	0x44bc1b
+Gunner	target_class	1	0x0044bb90	0x44bc1e
+Gunner	power_decrement	1	0x00401000	0x401117
+Gunner	faction	0	0x00401000	0x40111d
+Gunner	portrait	2	0x0044c070	0x44c0e5
+Gunner	raw_78	5	0x0044c070	0x44c0af
+Gunner	raw_7c	5	0x0044c070	0x44c0b2
+Gunner	raw_10c	30	0x0044bb90	0x44bbf6
+Gunner	type_id	18	0x0044bb90	0x44bbb9
+Gunner	max_hp	300	0x0044bb90	0x44bbce
+Gunner	initial_hp	300	0x0044bb90	0x44bbd9
+Gunner	base_defense	30	0x0044bb90	0x44bbf0
+Gunner	base_power	50	0x0044c070	0x44c0c4
+Fire Car	attack_class	3	0x0044eb70	0x44ec27
+Fire Car	target_class	3	0x0044eb70	0x44ec2a
+Fire Car	power_decrement	1	0x00401000	0x401117
+Fire Car	faction	0	0x0044eb70	0x44ebb3
+Fire Car	portrait	3	0x0044eb70	0x44ec07
+Fire Car	raw_78	7	0x0044cbc0	0x44cbe5
+Fire Car	raw_7c	7	0x0044cbc0	0x44cbe8
+Fire Car	raw_10c	70	0x0044eb70	0x44ec17
+Fire Car	type_id	20	0x0044cbc0	0x44cc11
+Fire Car	max_hp	500	0x0044eb70	0x44ebbf
+Fire Car	initial_hp	500	0x0044eb70	0x44ebc2
+Fire Car	base_power	50	0x0044eb70	0x44ebd5
+Fire Car	raw_248	14	0x0044eb70	0x44ebe1
+Fire Car	base_defense	40	0x0044eb70	0x44ec21
+Cannon	attack_class	4	0x0044f0e0	0x44f1b1
+Cannon	target_class	3	0x0044f0e0	0x44f1b8
+Cannon	power_decrement	3	0x0044f0e0	0x44f1bf
+Cannon	faction	0	0x0044f0e0	0x44f189
+Cannon	portrait	14	0x0044f0e0	0x44f175
+Cannon	raw_78	10	0x0044f0e0	0x44f1aa
+Cannon	raw_7c	10	0x0044f0e0	0x44f1a3
+Cannon	raw_10c	110	0x0044f0e0	0x44f193
+Cannon	type_id	32	0x0044f0e0	0x44f104
+Cannon	max_hp	450	0x0044f0e0	0x44f138
+Cannon	initial_hp	450	0x0044f0e0	0x44f13b
+Cannon	base_power	80	0x0044f0e0	0x44f148
+Cannon	raw_248	66	0x0044f0e0	0x44f154
+Cannon	base_defense	30	0x0044f0e0	0x44f19d
+Transport Ship (provisional)	attack_class	4	0x00437df0	0x437e9d
+Transport Ship (provisional)	target_class	4	0x00434ce0	0x434d0b
+Transport Ship (provisional)	power_decrement	1	0x00401000	0x401117
+Transport Ship (provisional)	faction	0	0x00437df0	0x437e34
+Transport Ship (provisional)	portrait	6	0x00437df0	0x437e2a
+Transport Ship (provisional)	raw_78	8	0x00437df0	0x437eb6
+Transport Ship (provisional)	raw_7c	8	0x00437df0	0x437eb9
+Transport Ship (provisional)	raw_10c	140	0x00437df0	0x437f10
+Transport Ship (provisional)	raw_248	0	0x00434ce0	0x434d17
+Transport Ship (provisional)	type_id	23	0x00437df0	0x437e15
+Transport Ship (provisional)	max_hp	600	0x00437df0	0x437ec7
+Transport Ship (provisional)	initial_hp	600	0x00437df0	0x437eca
+Transport Ship (provisional)	base_power	75	0x00437df0	0x437ed8
+Transport Ship (provisional)	base_defense	50	0x00437df0	0x437ee9
+Patrol Ship	attack_class	0	0x00401000	0x4010f3
+Patrol Ship	target_class	4	0x00434ce0	0x434d0b
+Patrol Ship	power_decrement	1	0x00401000	0x401117
+Patrol Ship	faction	0	0x0043de40	0x43de65
+Patrol Ship	portrait	5	0x0043de40	0x43ded0
+Patrol Ship	raw_78	6	0x0043de40	0x43defe
+Patrol Ship	raw_7c	6	0x0043de40	0x43df01
+Patrol Ship	raw_10c	35	0x0043de40	0x43deea
+Patrol Ship	raw_248	0	0x00434ce0	0x434d17
+Patrol Ship	max_hp	700	0x0043d270	0x43d2aa
+Patrol Ship	initial_hp	700	0x0043d270	0x43d2ad
+Patrol Ship	base_power	50	0x0043de40	0x43dea6
+Patrol Ship	base_defense	50	0x0043de40	0x43deac
+Patrol Ship	type_id	22	0x0043de40	0x43debf
+Turtle Ship	attack_class	4	0x00437b20	0x437bb5
+Turtle Ship	target_class	4	0x00434ce0	0x434d0b
+Turtle Ship	power_decrement	1	0x00401000	0x401117
+Turtle Ship	faction	0	0x00437b20	0x437b69
+Turtle Ship	portrait	4	0x00437b20	0x437b5f
+Turtle Ship	raw_78	8	0x00437b20	0x437be2
+Turtle Ship	raw_7c	8	0x00437b20	0x437be5
+Turtle Ship	raw_10c	110	0x00437b20	0x437c47
+Turtle Ship	raw_248	0	0x00434ce0	0x434d17
+Turtle Ship	type_id	21	0x00437b20	0x437b45
+Turtle Ship	max_hp	600	0x00437b20	0x437bf2
+Turtle Ship	initial_hp	600	0x00437b20	0x437bf5
+Turtle Ship	base_power	75	0x00437b20	0x437c03
+Turtle Ship	base_defense	60	0x00437b20	0x437c14
+Occupier	attack_class	0	0x00401000	0x4010f3
+Occupier	target_class	1	0x0042c050	0x42c0af
+Occupier	power_decrement	1	0x00401000	0x401117
+Occupier	faction	0	0x00401000	0x40111d
+Occupier	portrait	8	0x0042c850	0x42c8b1
+Occupier	raw_78	0	0x0042c050	0x42c0a5
+Occupier	raw_7c	3	0x0042c050	0x42c0a8
+Occupier	raw_10c	0	0x00401000	0x401172
+Occupier	type_id	24	0x0042c050	0x42c077
+Occupier	max_hp	150	0x0042c050	0x42c094
+Occupier	initial_hp	150	0x0042c050	0x42c097
+Occupier	base_power	0	0x0042c050	0x42c0b9
+Occupier	base_defense	20	0x0042c050	0x42c0bf
+Miner	attack_class	0	0x00401000	0x4010f3
+Miner	target_class	1	0x00401000	0x4010f6
+Miner	power_decrement	1	0x00401000	0x401117
+Miner	faction	0	0x00428a60	0x428ab1
+Miner	portrait	9	0x00428a60	0x428abb
+Miner	raw_78	0	0x00428040	0x428093
+Miner	raw_7c	3	0x00428040	0x428096
+Miner	raw_10c	5	0x00428040	0x4280b2
+Miner	type_id	25	0x00428040	0x428067
+Miner	max_hp	250	0x00428040	0x428082
+Miner	initial_hp	250	0x00428040	0x428085
+Miner	base_power	0	0x00428040	0x4280a0
+Miner	base_defense	20	0x00428040	0x4280a6
+Commander	attack_class	2	0x00443a00	0x443a62
+Commander	target_class	2	0x00443a00	0x443a65
+Commander	power_decrement	1	0x00401000	0x401117
+Commander	faction	0	0x00443a00	0x443a29
+Commander	portrait	15	0x00443a00	0x443a81
+Commander	raw_78	6	0x00443a00	0x443a9f
+Commander	raw_7c	6	0x00443a00	0x443aa2
+Commander	raw_10c	18	0x00443a00	0x443a95
+Commander	type_id	33	0x00443470	0x443494
+Commander	max_hp	350	0x00443470	0x4434b9
+Commander	initial_hp	350	0x00443470	0x4434bc
+Commander	base_power	50	0x00443a00	0x443aa5
+Commander	base_defense	40	0x00443a00	0x443a52
+Transporter	attack_class	0	0x00401000	0x4010f3
+Transporter	target_class	6	0x0043a1b0	0x43a247
+Transporter	power_decrement	1	0x00401000	0x401117
+Transporter	faction	0	0x0043c8e0	0x43c912
+Transporter	portrait	10	0x0043c8e0	0x43c93a
+Transporter	raw_78	0	0x0043c8e0	0x43c979
+Transporter	raw_7c	5	0x0043c8e0	0x43c97c
+Transporter	raw_10c	0	0x0043c8e0	0x43c9bd
+Transporter	raw_248	0	0x0043c8e0	0x43c9c9
+Transporter	type_id	26	0x0043c8e0	0x43c90b
+Transporter	max_hp	500	0x0043c8e0	0x43c951
+Transporter	initial_hp	500	0x0043c8e0	0x43c954
+Transporter	base_defense	50	0x0043c8e0	0x43c95d
+Transporter	base_power	0	0x0043c8e0	0x43c9a7
+Fighter	attack_class	4	0x0043d000	0x43d0be
+Fighter	target_class	6	0x0043a1b0	0x43a247
+Fighter	power_decrement	1	0x00401000	0x401117
+Fighter	faction	0	0x0043d000	0x43d038
+Fighter	portrait	11	0x0043d000	0x43d044
+Fighter	raw_78	6	0x0043d000	0x43d054
+Fighter	raw_7c	6	0x0043d000	0x43d071
+Fighter	raw_10c	90	0x0043d000	0x43d094
+Fighter	raw_248	5	0x0043d000	0x43d0a4
+Fighter	type_id	27	0x0043ce70	0x43ce9c
+Fighter	max_hp	300	0x0043d000	0x43d066
+Fighter	initial_hp	300	0x0043d000	0x43d069
+Fighter	base_power	50	0x0043d000	0x43d078
+Fighter	base_defense	40	0x0043d000	0x43d089
+Monk	attack_class	6	0x0043e4d0	0x43e56e
+Monk	target_class	1	0x0043e4d0	0x43e575
+Monk	power_decrement	1	0x00401000	0x401117
+Monk	faction	0	0x004400c0	0x4400e2
+Monk	portrait	12	0x004400c0	0x44011a
+Monk	raw_78	5	0x0043e4d0	0x43e514
+Monk	raw_7c	5	0x0043e4d0	0x43e517
+Monk	raw_10c	25	0x0043e4d0	0x43e54e
+Monk	base_defense	20	0x0043e4d0	0x43e506
+Monk	max_hp	300	0x0043e4d0	0x43e522
+Monk	initial_hp	300	0x0043e4d0	0x43e525
+Monk	base_power	60	0x0043e4d0	0x43e52f
+Monk	type_id	29	0x004400c0	0x4400ff
+Shaman	attack_class	6	0x0043e4d0	0x43e56e
+Shaman	target_class	1	0x0043e4d0	0x43e575
+Shaman	power_decrement	1	0x00401000	0x401117
+Shaman	faction	0	0x00440240	0x440272
+Shaman	portrait	13	0x00440240	0x44029c
+Shaman	raw_78	5	0x0043e4d0	0x43e514
+Shaman	raw_7c	5	0x0043e4d0	0x43e517
+Shaman	raw_10c	25	0x0043e4d0	0x43e54e
+Shaman	base_defense	20	0x0043e4d0	0x43e506
+Shaman	max_hp	300	0x0043e4d0	0x43e522
+Shaman	initial_hp	300	0x0043e4d0	0x43e525
+Shaman	base_power	60	0x0043e4d0	0x43e52f
+Shaman	type_id	30	0x00440240	0x44026b

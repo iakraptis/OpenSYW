@@ -82,3 +82,7 @@ gathering-test-support/
 # Release builds (packaging/windows/package-windows.ps1)
 /dist/
 packaging/windows/build/
+
+# Local reverse-engineering workspace: Ghidra project, decompiled exports, probes, previews of original art
+# (see docs/README.md). Findings worth keeping go to docs/, without original game data.
+/research/
