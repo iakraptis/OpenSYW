@@ -62,11 +62,12 @@ KoreanMineExplosion:
 		ImpactSounds: exp1.wav
 		ImpactActors: false
 		ValidTargets: Ground
-	Warhead@Damage: SpreadDamage
+	Warhead@Damage: SplashDamage
 		Spread: 512
 		Damage: 13200
 		ValidTargets: Ground
-		ValidRelationships: Enemy
+		# Also own and allied actors in the blast, at 75% (SplashDamage AllyDamage).
+		ValidRelationships: Enemy, Ally
 		Versus:
 			None: 75
 			Light: 125

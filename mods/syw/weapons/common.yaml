@@ -101,7 +101,7 @@ ShipExplosion:
 
 # Single-sprite missile: FIRE.SPR frames 0-8.
 # Power 50 split over a two-missile volley. Each missile explodes with area damage:
-# full within 1 cell of impact, then 50% to 1.5 cells and 25% to 2 cells; enemies/neutrals only.
+# full within 1 cell of impact, then 50% to 1.5 cells and 25% to 2 cells; own and allied units take 75% of it.
 # Inherited by FighterRockets and CannonShot.
 ^Rockets:
 	# Also the fighter's rockets (FighterRockets inherits this); CannonShot sets its own.
@@ -124,12 +124,13 @@ ShipExplosion:
 		TrailInterval: 1
 		TrailDelay: 1
 		Blockable: false
-	Warhead@Damage: SpreadDamage
+	Warhead@Damage: SplashDamage
 		Spread: 512
 		Falloff: 100, 100, 50, 25, 0
 		Damage: 2500
 		ValidTargets: Ground, Air
-		ValidRelationships: Enemy, Neutral
+		# Also own and allied actors in the blast, at 75% (SplashDamage AllyDamage).
+		ValidRelationships: Enemy, Neutral, Ally
 		Versus:
 			None: 112
 			Light: 100
@@ -155,7 +156,7 @@ ShipExplosion:
 	# The original cannonball is slower than an arrow (19 vs 27 px per tick, docs/game/projectiles.md).
 	Projectile: Bullet
 		Speed: 310
-	Warhead@Damage: SpreadDamage
+	Warhead@Damage: SplashDamage
 		Damage: 8000
 		ValidTargets: Ground
 		Versus:
@@ -189,7 +190,7 @@ ShipExplosion:
 	Inherits: ^CannonShot
 	Range: 8c0
 	ValidTargets: Ground, Water
-	Warhead@Damage: SpreadDamage
+	Warhead@Damage: SplashDamage
 		Damage: 7500
 		ValidTargets: Ground, Water
 
