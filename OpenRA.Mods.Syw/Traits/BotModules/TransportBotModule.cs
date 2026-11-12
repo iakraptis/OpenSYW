@@ -50,7 +50,7 @@ namespace OpenRA.Mods.Syw.Traits
 
 	public class TransportBotModule : ConditionalTrait<TransportBotModuleInfo>, IBotTick
 	{
-		enum Phase { Idle, ToPickup, Loading, Travelling, Unloading }
+		enum Phase { Idle, ToPickup, Loading, Travelling, Unloading, Returning }
 
 		// Ticks between progress checks of a running trip.
 		const int StepInterval = 25;
@@ -105,6 +105,9 @@ namespace OpenRA.Mods.Syw.Traits
 
 		bool Alive(Actor a) => a != null && !a.IsDead && !a.Disposed && a.Owner == player;
 
+		// The target is an enemy building, so Alive (which also checks that we own it) doesn't apply.
+		bool TargetStanding => target != null && !target.IsDead && !target.Disposed && target.IsInWorld;
+
 		Cargo TransportCargo => transport.Trait<Cargo>();
 
 		void Plan(IBot bot)
@@ -129,15 +132,19 @@ namespace OpenRA.Mods.Syw.Traits
 					&& Info.PassengerTypes.Contains(a.Info.Name) && (a.Location - homeCell).LengthSquared <= 30 * 30
 					&& pathFinder.PathExistsForLocomotor(foot, a.Location, homeCell))
 				.ToList();
-			if (soldiers.Count < Info.MinimumPassengers)
+			// Not IsIdle: an aircraft circling or waiting in the air always has an activity. Transports with soldiers
+			// still aboard (a trip that could not unload) are used too, and those soldiers join the next trip, so they
+			// are never stranded.
+			var transports = world.Actors.Where(a => a.Owner == player && a.IsInWorld && !a.IsDead
+				&& (Info.NavalTransportTypes.Contains(a.Info.Name) || Info.AirTransportTypes.Contains(a.Info.Name)))
+				.ToList();
+
+			if (soldiers.Count < Info.MinimumPassengers && transports.All(t => t.Trait<Cargo>().IsEmpty()))
 				return;
 
-			// Not IsIdle: an aircraft circling or waiting in the air always has an activity.
-			var transports = world.Actors.Where(a => a.Owner == player && a.IsInWorld && !a.IsDead
-				&& (Info.NavalTransportTypes.Contains(a.Info.Name) || Info.AirTransportTypes.Contains(a.Info.Name))
-				&& a.Trait<Cargo>().IsEmpty()).ToList();
-
-			foreach (var t in transports.OrderBy(t => Info.NavalTransportTypes.Contains(t.Info.Name) ? 0 : 1))
+			// Loaded transports first, then ships before aircraft.
+			foreach (var t in transports.OrderBy(t => t.Trait<Cargo>().IsEmpty() ? 1 : 0)
+				.ThenBy(t => Info.NavalTransportTypes.Contains(t.Info.Name) ? 0 : 1))
 				if (TryRoute(t, homeCell, targetLand.Value))
 				{
 					Start(bot, t, soldiers);
@@ -250,8 +257,10 @@ namespace OpenRA.Mods.Syw.Traits
 		{
 			transport = t;
 			var cargo = t.Info.TraitInfo<CargoInfo>();
-			var room = cargo.MaxWeight;
-			passengers = new List<Actor>();
+
+			// Soldiers already aboard ride along.
+			passengers = t.Trait<Cargo>().Passengers.ToList();
+			var room = cargo.MaxWeight - passengers.Sum(p => p.Info.TraitInfoOrDefault<PassengerInfo>()?.Weight ?? 0);
 			foreach (var s in soldiers.OrderBy(s => (s.Location - pickupLand).LengthSquared))
 			{
 				var p = s.Info.TraitInfoOrDefault<PassengerInfo>();
@@ -262,7 +271,8 @@ namespace OpenRA.Mods.Syw.Traits
 				room -= p.Weight;
 			}
 
-			if (passengers.Count < Info.MinimumPassengers)
+			// A transport with soldiers aboard always goes, so they are not left stranded.
+			if (passengers.Count < Info.MinimumPassengers && t.Trait<Cargo>().IsEmpty())
 				return;
 
 			AIUtils.BotDebug("{0}: {1} carries {2} soldiers from {3} to {4} for {5}.", player, t.Info.Name, passengers.Count,
@@ -364,9 +374,15 @@ namespace OpenRA.Mods.Syw.Traits
 
 					if (timedOut)
 					{
-						// Stuck on the way: try to unload where it is, else bring them home.
-						bot.QueueOrder(new Order("Unload", transport, false));
-						Enter(Phase.Unloading);
+						// Stuck on the way: an aircraft can land and unload where it is; a ship at sea can't, so it
+						// brings them home.
+						if (byAir)
+						{
+							bot.QueueOrder(new Order("Unload", transport, false));
+							Enter(Phase.Unloading);
+						}
+						else
+							ReturnHome(bot);
 					}
 					else if (transport.IsIdle && Reorder())
 						bot.QueueOrder(new Order("Move", transport, Target.FromCell(world, drop), false));
@@ -375,7 +391,7 @@ namespace OpenRA.Mods.Syw.Traits
 				case Phase.Unloading:
 					if (cargo.IsEmpty())
 					{
-						var attackAt = Alive(target) ? target.Location : dropLand;
+						var attackAt = TargetStanding ? target.Location : dropLand;
 						foreach (var p in passengers.Where(p => p.IsInWorld))
 							bot.QueueOrder(new Order("AttackMove", p, Target.FromCell(world, attackAt), false));
 
@@ -385,13 +401,41 @@ namespace OpenRA.Mods.Syw.Traits
 					}
 					else if (timedOut)
 					{
-						AIUtils.BotDebug("{0}: could not unload, trip dropped.", player);
-						Finish();
+						AIUtils.BotDebug("{0}: could not unload, bringing the soldiers home.", player);
+						ReturnHome(bot);
 					}
 					else if (transport.IsIdle && Reorder())
 						bot.QueueOrder(new Order("Unload", transport, false));
 					return;
+
+				case Phase.Returning:
+					if (cargo.IsEmpty())
+					{
+						AIUtils.BotDebug("{0}: soldiers brought home.", player);
+						Finish();
+					}
+					else if (timedOut)
+					{
+						// Left loaded: the next plan picks this transport first and its soldiers join that trip.
+						AIUtils.BotDebug("{0}: could not bring the soldiers home, trip dropped.", player);
+						Finish();
+					}
+					else if (Near(pickup, 1) || (byAir && Near(pickup, 2)))
+					{
+						if (transport.IsIdle && Reorder())
+							bot.QueueOrder(new Order("Unload", transport, false));
+					}
+					else if (transport.IsIdle && Reorder())
+						bot.QueueOrder(new Order("Move", transport, Target.FromCell(world, pickup), false));
+					return;
 			}
+		}
+
+		// Sails or flies back to the pickup point (on our side, next to land we can walk from) and unloads there.
+		void ReturnHome(IBot bot)
+		{
+			bot.QueueOrder(new Order("Move", transport, Target.FromCell(world, pickup), false));
+			Enter(Phase.Returning);
 		}
 
 		// Ends the trip before departure: anyone already aboard gets off again at home.
