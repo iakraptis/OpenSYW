@@ -34,7 +34,8 @@ Requirements:
 - The [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0).
 - Your own copy of Seven Years War.
 
-The OpenRA engine (`release-20250330`) is downloaded automatically by the first build.
+The OpenRA engine is downloaded automatically by the first build, from our fork [iakraptis/OpenRA](https://github.com/iakraptis/OpenRA)
+(branch `syw`: `release-20250330` plus our engine fixes, pinned by tag in `mod.config`).
 
 1. Build the mod once: `make.cmd` (Windows) or `make` (Linux / macOS).
 2. Start the game with `launch-game.cmd` or `launch-game.sh`. On first launch it asks for the original game folder and
