@@ -115,7 +115,7 @@ Building HP, defence and cost match Korea exactly. Only the two towers differ, a
 
 ## Side finding: Korean ship identities
 
-The user confirmed the in-game Korean costs: Transport Ship 1,000, Patrol Ship 1,300, Turtle Ship 2,000. The exe cost table keys 1,000 to type 22 and 1,300 to type 23, which is the reverse of the current constructor-to-name mapping (type 22 `0x43de40` is treated as the Patrol Ship). The costs are settled; which Korean ship constructor belongs to which name may still be swapped, and should be checked if the ship stats are revisited.
+The user confirmed the in-game Korean costs: Transport Ship 1,000, Patrol Ship 1,300, Turtle Ship 2,000. The exe cost table keys 1,000 to type 22 and 1,300 to type 23, which is the opossite of the current constructor-to-name mapping (type 22 `0x43de40` is treated as the Patrol Ship). The costs are settled; which Korean ship constructor belongs to which name may still be swapped, and should be checked if the ship stats are revisited.
 
 ## Still unknown
 

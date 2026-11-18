@@ -1,6 +1,6 @@
 # PAL format
 
-Reverse-engineered from the 4 `.pal` files shipped in `SYWAR/`. Implemented in
+researched from the 4 `.pal` files shipped in `SYWAR/`. Implemented in
 opensy `SYWtoORA/tools/pal_extract.py` (extraction) and
 opensy `SYWtoORA/tools/pal_preview.py` (visual QA).
 

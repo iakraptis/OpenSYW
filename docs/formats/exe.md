@@ -113,12 +113,12 @@ above except HQ, which is typically a starting building, not menu-built).
 
 ## Confirmed file-format cross-references
 
-String literals confirm how the game loads assets already reverse-engineered
+String literals confirm how the game loads assets already researched
 in this project, plus the purpose of formats not yet decoded:
 
 - `fnt1\<name>.spr`, `fnt1\knight.pal`, `fnt1\title.pal` - matches `spr.md`/`pal.md`
 - `map\<name>.stg`, `cusmap\<name>.stg`, `cusmap\*.stg` - matches the `.stg`
-  files still to be reverse-engineered; loaded via `LoadStage()`
+  files still to be researched; loaded via `LoadStage()`
 - `fst\option1.fst`, `fst\lose.fst`, `fst\win1.fst`/`win2.fst`,
   `fst\save.fst`, `fst\pannel11.fst`...`pannel33.fst` (a 3x3 grid of panel
   UI files), `fst\brief1.fst`/`brief2.fst`, `fst\staff.fst`, `fst\title.fst`
@@ -316,7 +316,7 @@ was off by 4 bytes, and traced its one and only call site - overturning the
   pixels whenever it sees byte value `1` followed by a count -
   **this is the exact same marker=1 transparent-skip RLE scheme documented
   in `spr.md`**, confirming that scheme is a genuine core engine blit
-  primitive, not just an artifact of our own reverse-engineering of the
+  primitive, not just an artifact of our own research of the
   `.spr` file format.
 - **Conclusion**: despite the debug-trace name literally translating to
   "Calculate Attack Power With Attribute", the table's only confirmed use is
@@ -333,7 +333,7 @@ was off by 4 bytes, and traced its one and only call site - overturning the
 Traced end to end (VA `0x4259D0`-`0x425C0C`, the function whose body
 contains both `LoadStage()` debug-trace call sites). This is the single
 most productive trace this session - it directly cross-validates the
-independently reverse-engineered `.stg` format (`stg.md`) from the *other*
+independently researched `.stg` format (`stg.md`) from the *other*
 direction (code, not file bytes) and explains what its previously-undecoded
 3488-byte header actually is.
 
@@ -422,7 +422,7 @@ user's correction above. **88 calls total** to a small helper at
 it - 88 is not just "a lot", it's the *complete* set; there are no other
 call sites anywhere in the binary), each registering one entry into an
 array of 36-byte records starting at VA `0x482238` (this is the same
-struct the *prior* session partially reverse-engineered from the read
+struct the *prior* session partially research from the read
 side as a "build-queue slot" with a name-string field at `+4` relative to
 `0x48223C` - `0x482238+4 = 0x48223C`, so the two analyses agree exactly on
 field `+0x00`, and the write side below supersedes the read side's

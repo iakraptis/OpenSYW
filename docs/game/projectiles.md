@@ -98,7 +98,7 @@ if victim and victim is alive and +0x1a4 set:  # 0x42a5f0 -> 0x429dc0
 
 - **The layer comes from the target at aim time** (`+0x18`): 1 for aircraft (`0x43a1b0`), 2 for everything else
   (default in `0x401000`). A shot at an aircraft only checks the air grid, and a shot at a ground unit only checks
-  the ground grids. An arrow aimed at a plane cannot hit the soldier under it, and the reverse.
+  the ground grids. An arrow aimed at a plane cannot hit the soldier under it, and the opossite.
 - **No owner or alliance check.** `0x429dc0` tests only the ID range, the "exists" flag, the actor pointer and
   HP > 0, and `0x42a5f0` adds `+0x1a4`. Any living actor in the cell is hit: the intended target, another enemy,
   or one of the shooter's own units.

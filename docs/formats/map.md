@@ -1,6 +1,6 @@
 # MAP format
 
-Reverse-engineered from all 38 `.map` files in `SYWAR/MAP/` and
+researched from all 38 `.map` files in `SYWAR/MAP/` and
 `SYWAR/cusmap/`. Implemented in
 opensy `SYWtoORA/tools/map_extract.py`.
 
@@ -112,7 +112,7 @@ since all maps likely share one tileset, but unverified).
   regardless of map size, strongly suggesting scenario/unit-placement data
   (not terrain) that references a `.map` by name. Two `.stg` files diffed
   showed ~700 differing bytes clustered at specific 4-byte-aligned offsets -
-  consistent with a placement/entity table. Not yet reverse-engineered.
+  consistent with a placement/entity table. Not yet researched.
 
 ## Tile attributes and terrain set - SOLVED 2026-10-03
 

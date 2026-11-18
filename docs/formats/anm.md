@@ -1,13 +1,13 @@
 # ANM format
 
-Reverse-engineered from the single `.anm` file in the game data,
+Figured out from the single `.anm` file in the game data,
 `SYWAR/Ani/ani.anm` - a 56-frame, 640x400 full-screen fire animation.
 Implemented in opensy `SYWtoORA/tools/anm_extract.py`.
 
 Note: `SYWAR/Ani/` also contains `LOGO2.AVI`, a real 320x240 AVI (a
 company/publisher logo intro). That file is unrelated to `.anm` - different
 resolution, different content (a logo bumper vs. a looping flame effect) -
-and needs no reverse engineering since it's a standard AVI.
+and needs no further researchsince it's a standard AVI.
 
 ## Layout
 

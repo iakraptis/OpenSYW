@@ -1,6 +1,6 @@
 # SPR format
 
-Reverse-engineered from `FNT1/ARCHER.SPR`, `BUDA.SPR`, `BUILD1.SPR`, `FOOTMAN.SPR`,
+researched from `FNT1/ARCHER.SPR`, `BUDA.SPR`, `BUILD1.SPR`, `FOOTMAN.SPR`,
 `TREE.SPR` and validated across all 35 `.spr` files in `SYWAR/FNT1/`.
 Implemented in opensy `SYWtoORA/tools/spr_extract.py`.
 
@@ -149,7 +149,7 @@ found the cause where visual tuning could not.
 
 Buildings bigger than one cell (e.g. `BUILD1-3/5.SPR`, `BUDA.SPR`) are
 stored as a 3x3 grid of normal-sized (32x32) tiles, spread across the
-frame index space rather than stored contiguously. Reverse-engineered from
+frame index space rather than stored contiguously. researched from
 Korea's Headquarters and Mill in `BUILD2.SPR` (user hand-identified the
 finished Headquarters' 9 frames; the full pattern below was confirmed by
 stitching and visually inspecting all 6 combinations):

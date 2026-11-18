@@ -83,6 +83,6 @@ gathering-test-support/
 /dist/
 packaging/windows/build/
 
-# Local reverse-engineering workspace: Ghidra project, decompiled exports, probes, previews of original art
+# Local research workspace: Ghidra project, decompiled exports, probes, previews of original art
 # (see docs/README.md). Findings worth keeping go to docs/, without original game data.
 /research/

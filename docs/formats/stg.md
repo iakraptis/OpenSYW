@@ -1,6 +1,6 @@
 # STG format
 
-Reverse-engineered from all 38 `.stg` files in `SYWAR/MAP/` and
+researched from all 38 `.stg` files in `SYWAR/MAP/` and
 `SYWAR/cusmap/`. Implemented in
 opensy `SYWtoORA/tools/stg_extract.py`.
 

@@ -1,6 +1,6 @@
 # FST format
 
-Reverse-engineered from all 18 `.fst` files in `SYWAR/fst/`. Implemented in
+Researched from all 18 `.fst` files in `SYWAR/fst/`. Implemented in
 opensy `SYWtoORA/tools/fst_extract.py`.
 
 Each `.fst` is a single full-screen UI image (options, win/lose, title,
