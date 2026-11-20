@@ -19,6 +19,8 @@ FileSystem: ContentInstallerFileSystem
 		content|install-manifest.txt
 		# Added 2026-11-12: older conversions lack it, so their players are asked to convert again.
 		content|art/icons/spells/unload.png
+		# Added 2026-11-20 (the end-of-match screens).
+		content|chrome/assets/outcome.png
 	ContentInstallerMod: syw-content
 
 MapFolders:

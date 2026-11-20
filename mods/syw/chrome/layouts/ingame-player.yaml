@@ -4,6 +4,9 @@ Container@PLAYER_WIDGETS:
 	Logic: MenuButtonsChromeLogic, SelectionStatsLogic, BuildingTrainingLogic, TransportCargoLogic, SpellPaletteLogic, SidebarLayoutLogic
 	Children:
 		LogicTicker@SIDEBAR_TICKER:
+		# Shows the original Victory!/Defeat! screen when the match ends for the local player (ingame-outcome.yaml).
+		LogicTicker@GAME_OUTCOME_TICKER:
+			Logic: GameOutcomeLogic
 		Background@SIDEBAR_BACKGROUND:
 			X: WINDOW_WIDTH - 320
 			Width: 320

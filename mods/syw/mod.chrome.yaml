@@ -28,6 +28,7 @@ ChromeLayout:
 	syw|chrome/ingame-menu.yaml
 	common|chrome/ingame-perf.yaml
 	syw|chrome/ingame-observer.yaml
+	syw|chrome/ingame-outcome.yaml
 	syw|chrome/layouts/ingame-player.yaml
 	common|chrome/ingame-transients.yaml
 	common|chrome/lobby.yaml
