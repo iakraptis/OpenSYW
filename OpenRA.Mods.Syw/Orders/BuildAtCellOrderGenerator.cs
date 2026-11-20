@@ -39,15 +39,21 @@ namespace OpenRA.Mods.Syw.Orders
 			buildingInfo = actorInfo.TraitInfo<BuildingInfo>();
 		}
 
+		// Buttons follow the player's mouse control style (left places, right cancels under every style).
+		static MouseButton ActionButton => Game.Settings.Game.ResolveActionButton(MouseActionType.PlaceBuilding);
+		static MouseButton CancelButton => Game.Settings.Game.ResolveCancelButton(MouseActionType.PlaceBuilding);
+
+		MouseButton IOrderGenerator.ActionButton => ActionButton;
+
 		IEnumerable<Order> IOrderGenerator.Order(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
-			if (mi.Button == MouseButton.Right && mi.Event == MouseInputEvent.Up)
+			if (mi.Button == CancelButton && mi.Event == MouseInputEvent.Up)
 			{
 				world.CancelInputMode();
 				return Enumerable.Empty<Order>();
 			}
 
-			if (mi.Button != MouseButton.Left || mi.Event != MouseInputEvent.Down)
+			if (mi.Button != ActionButton || mi.Event != MouseInputEvent.Down)
 				return Enumerable.Empty<Order>();
 
 			if (builderActor.IsDead || builderActor.Disposed || !builderActor.IsInWorld)

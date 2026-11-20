@@ -2,6 +2,7 @@
 General:
 	Name: SYW Snow
 	Id: FIELD2
+	TileSize: 32, 32
 	EditorTemplateOrder: Land, Dirt, Shore, Field, Water, Cliff, Rock, Border
 	Palette:
 

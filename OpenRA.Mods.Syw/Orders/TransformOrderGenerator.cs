@@ -6,7 +6,7 @@ using OpenRA.Mods.Syw.Traits;
 
 namespace OpenRA.Mods.Syw.Orders
 {
-	// Unit-target spell targeting (Shaman Transform, Witch Bewilderment): left-click a valid unit, right-click cancels.
+	// Unit-target spell targeting (Shaman Transform, Witch Bewilderment): click a valid unit with the action button, the other button cancels.
 	// OrderGenerator (not UnitOrderGenerator) so the left-click reaches us instead of the selection logic.
 	public class TransformOrderGenerator : OrderGenerator
 	{
@@ -17,10 +17,13 @@ namespace OpenRA.Mods.Syw.Orders
 			: this(caster, caster.Trait<ShamanTransform>()) { }
 
 		public TransformOrderGenerator(Actor caster, IUnitTargetSpell spell)
+			: base(caster.World)
 		{
 			this.caster = caster;
 			this.spell = spell;
 		}
+
+		protected override MouseActionType ActionType => MouseActionType.SupportPower;
 
 		public bool CanCast => !caster.Disposed && caster.Owner == caster.World.LocalPlayer && spell.CanCast(caster);
 
@@ -31,7 +34,7 @@ namespace OpenRA.Mods.Syw.Orders
 
 		protected override IEnumerable<Order> OrderInner(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
-			if (mi.Button == MouseButton.Right || !CanCast)
+			if (!CanCast)
 			{
 				world.CancelInputMode();
 				yield break;

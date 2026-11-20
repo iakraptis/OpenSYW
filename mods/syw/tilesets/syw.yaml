@@ -1,6 +1,7 @@
 General:
 	Name: SYW
 	Id: SYW
+	TileSize: 32, 32
 	EditorTemplateOrder: Terrain
 	Palette:
 

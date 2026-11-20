@@ -20,7 +20,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		public readonly bool WriteYaml;
 		public readonly SywPalette Knight;
 		public readonly SortedDictionary<string, string> Written = new(StringComparer.Ordinal);
-		public readonly List<string> Warnings = new();
+		public readonly List<string> Warnings = [];
 
 		readonly Dictionary<string, SprFile> sprites = new(StringComparer.OrdinalIgnoreCase);
 

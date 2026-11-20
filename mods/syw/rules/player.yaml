@@ -1,5 +1,4 @@
 ^baseplayer:
-	AlwaysVisible:
 	Shroud:
 		FogCheckboxEnabled: true
 		ExploredMapCheckboxEnabled: false

@@ -25,7 +25,7 @@ namespace OpenRA.Mods.Syw.Widgets.Logic
 				if (world.OrderGenerator is UnloadAtOrderGenerator)
 					world.CancelInputMode();
 				else
-					world.OrderGenerator = new UnloadAtOrderGenerator();
+					world.OrderGenerator = new UnloadAtOrderGenerator(world);
 			};
 		}
 	}

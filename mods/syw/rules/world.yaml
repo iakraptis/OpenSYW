@@ -1,7 +1,6 @@
 ^baseworld:
 	Inherits: ^palettes
 	ActorMap:
-	AlwaysVisible:
 	ControlGroups:
 	Faction@Random:
 		InternalName: Random

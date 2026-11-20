@@ -10,7 +10,6 @@ using OpenRA.Mods.Common;
 using OpenRA.Mods.Common.Orders;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Syw.Activities;
-using OpenRA.Primitives;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Syw.Traits
@@ -22,7 +21,7 @@ namespace OpenRA.Mods.Syw.Traits
 	public class BuilderInfo : TraitInfo
 	{
 		[Desc("Actor types (from the Rules) this unit is allowed to construct.")]
-		public readonly HashSet<string> Types = new();
+		public readonly HashSet<string> Types = [];
 
 		[VoiceReference]
 		[Desc("Voice played when this unit is ordered to build or to resume a site.")]
@@ -129,14 +128,13 @@ namespace OpenRA.Mods.Syw.Traits
 			var faction = self.Owner.Faction.InternalName;
 			world.AddFrameEndTask(w =>
 			{
-				var building = w.CreateActor(buildingName, new TypeDictionary
-				{
+				var building = w.CreateActor(buildingName, [
 					new LocationInit(targetCell),
 					new OwnerInit(self.Owner),
 					new FactionInit(faction),
 					new HealthInit(1),
 					new UnderConstructionInit(),
-				});
+				]);
 
 				Claim(building);
 				self.QueueActivity(false, new ConstructBuilding(building));

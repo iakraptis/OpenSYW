@@ -69,7 +69,7 @@ namespace OpenRA.Mods.Syw.Traits
 		}
 
 		public void PreparingAttack(Actor self, in Target target, Armament armament, Barrel barrel) { }
-		public void Tick(Actor self)
+		void ITick.Tick(Actor self)
 		{
 			if (token != Actor.InvalidConditionToken && (self.IsIdle || !target.IsValidFor(self)))
 				Clear(self);

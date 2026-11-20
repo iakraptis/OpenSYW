@@ -21,7 +21,7 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 		public int FrameCount => offsets.Count;
 
 		readonly byte[] data;
-		readonly List<int> offsets = new();
+		readonly List<int> offsets = [];
 		readonly IndexedImage[] frames;
 
 		public SprFile(byte[] data, SywPalette palette, string name)

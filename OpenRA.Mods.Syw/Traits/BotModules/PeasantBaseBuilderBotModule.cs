@@ -14,16 +14,16 @@ namespace OpenRA.Mods.Syw.Traits
 	public class PeasantBaseBuilderBotModuleInfo : ConditionalTraitInfo
 	{
 		[Desc("Units with the Builder trait the AI may use.")]
-		public readonly HashSet<string> BuilderTypes = new() { "kpeasant", "jpeasant" };
+		public readonly HashSet<string> BuilderTypes = ["kpeasant", "jpeasant"];
 
 		[Desc("Buildings the base is centred on (the first one found is used).")]
-		public readonly HashSet<string> BaseCenterTypes = new() { "khq", "jhq" };
+		public readonly HashSet<string> BaseCenterTypes = ["khq", "jhq"];
 
 		[Desc("Desired share of each building type in the base (relative weights). Types not listed are never built.")]
-		public readonly Dictionary<string, int> BuildingFractions = new();
+		public readonly Dictionary<string, int> BuildingFractions = [];
 
 		[Desc("Maximum number of each building type.")]
-		public readonly Dictionary<string, int> BuildingLimits = new();
+		public readonly Dictionary<string, int> BuildingLimits = [];
 
 		[Desc("Ticks between building decisions.")]
 		public readonly int DecisionInterval = 60;
@@ -50,24 +50,24 @@ namespace OpenRA.Mods.Syw.Traits
 		public readonly int MinimumHarvesters = 4;
 
 		[Desc("Units counted for MinimumHarvesters.")]
-		public readonly HashSet<string> HarvesterTypes = new() { "kpeasant", "kbull", "jpeasant", "jbull" };
+		public readonly HashSet<string> HarvesterTypes = ["kpeasant", "kbull", "jpeasant", "jbull"];
 
 		[Desc("Cash kept back after paying for a building, so unit production (workers) never starves.")]
 		public readonly int CashReserve = 500;
 
 		[Desc("Drop-off buildings (like C&C refineries): placed next to the crop field nearest the base instead of",
 			"around the base centre.")]
-		public readonly HashSet<string> ResourceBuildingTypes = new() { "kmill", "jmill" };
+		public readonly HashSet<string> ResourceBuildingTypes = ["kmill", "jmill"];
 
 		[Desc("How far from the base to look for crop fields for ResourceBuildingTypes, in cells.")]
 		public readonly int ResourceSearchRadius = 30;
 
 		[Desc("Towers: placed next to one of the DefendedBuildingTypes instead of around the base centre, at the one",
 			"with the fewest towers nearby.")]
-		public readonly HashSet<string> DefenseBuildingTypes = new();
+		public readonly HashSet<string> DefenseBuildingTypes = [];
 
 		[Desc("Buildings the DefenseBuildingTypes guard (the Mills out at the crop fields).")]
-		public readonly HashSet<string> DefendedBuildingTypes = new();
+		public readonly HashSet<string> DefendedBuildingTypes = [];
 
 		[Desc("Distance from the guarded building for towers, in cells.")]
 		public readonly int DefenseMinRadius = 2;
@@ -76,12 +76,12 @@ namespace OpenRA.Mods.Syw.Traits
 		[Desc("Tower build stages: a finished building of the key's type allows up to the value's number of",
 			"DefenseBuildingTypes in total (the highest applicable value counts). Until the bot owns any of them it builds",
 			"no towers; while it has fewer than allowed, towers come before anything else. Empty: towers follow their shares.")]
-		public readonly Dictionary<string, int> TowerSteps = new();
+		public readonly Dictionary<string, int> TowerSteps = [];
 
 		[Desc("Shipyards: built only when the map needs a navy (an enemy building the army can't walk to, or at least",
 			"NavalWaterShare percent of the map is water), on a shore the builders can walk to, and if possible on water",
 			"that reaches the enemy's coast.")]
-		public readonly HashSet<string> NavalBuildingTypes = new();
+		public readonly HashSet<string> NavalBuildingTypes = [];
 
 		[Desc("Percentage of water on the map from which a navy is wanted even when every enemy can be walked to.")]
 		public readonly int NavalWaterShare = 25;
@@ -239,8 +239,8 @@ namespace OpenRA.Mods.Syw.Traits
 					&& (!Info.BuildingLimits.TryGetValue(kv.Key, out var limit) || Count(kv.Key) < limit))
 				.Where(kv =>
 				{
-					var prereqs = world.Map.Rules.Actors[kv.Key].TraitInfoOrDefault<BuildableInfo>()?.Prerequisites;
-					return prereqs == null || prereqs.Length == 0 || techTree.HasPrerequisites(prereqs);
+					var prereqs = world.Map.Rules.Actors[kv.Key].TraitInfoOrDefault<BuildableInfo>()?.Prerequisites ?? [];
+					return prereqs.Length == 0 || techTree.HasPrerequisites(prereqs);
 				})
 				.OrderBy(kv => (Count(kv.Key) + 1) * 1000 / kv.Value)
 				.ThenByDescending(kv => kv.Value)
@@ -341,9 +341,9 @@ namespace OpenRA.Mods.Syw.Traits
 			var foot = builder.TraitOrDefault<Mobile>()?.Locomotor;
 			var naval = BotMapAnalysis.Locomotor(world, Info.NavalLocomotor);
 			if (foot == null)
-				return new List<CPos>();
+				return [];
 
-			var enemyWater = naval == null ? new List<CPos>() : BotMapAnalysis.EnemyBuildings(world, player)
+			var enemyWater = naval == null ? [] : BotMapAnalysis.EnemyBuildings(world, player)
 				.Select(b => world.Map.FindTilesInCircle(b.Location, 12).Cast<CPos?>()
 					.FirstOrDefault(c => BotMapAnalysis.IsWater(world, c.Value)))
 				.Where(c => c != null).Select(c => c.Value).Take(8).ToList();

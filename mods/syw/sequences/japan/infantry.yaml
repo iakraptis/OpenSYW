@@ -6,7 +6,7 @@ jpeasant:
 		Filename: art/icons/units/jpeasant.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/jpeasant/walk.png
@@ -52,7 +52,7 @@ jbull:
 		Filename: art/icons/units/jbull.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/jbull/walk.png
@@ -98,7 +98,7 @@ jfootman:
 		Filename: art/icons/units/jfootman.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/jfootman/walk.png
@@ -130,7 +130,7 @@ jarcher:
 		Filename: art/icons/units/jarcher.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/jarcher/walk.png
@@ -162,7 +162,7 @@ jgunner:
 		Filename: art/icons/units/jgunner.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/jgunner/walk.png
@@ -194,7 +194,7 @@ jgeneral:
 		Filename: art/icons/units/general.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/general/walk.png
@@ -226,7 +226,7 @@ jthief:
 		Filename: art/icons/units/thief.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/thief/walk.png
@@ -253,7 +253,7 @@ jpriest:
 		Filename: art/icons/units/priest.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/priest/walk.png
@@ -285,7 +285,7 @@ jwitch:
 		Filename: art/icons/units/witch.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/witch/walk.png

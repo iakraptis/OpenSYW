@@ -12,6 +12,7 @@ ChromeLayout:
 	common|chrome/editor.yaml
 	common|chrome/gamesave-browser.yaml
 	common|chrome/gamesave-loading.yaml
+	common|chrome/load-game-browser.yaml
 	common|chrome/ingame.yaml
 	common|chrome/ingame-chat.yaml
 	common|chrome/ingame-debug.yaml
@@ -51,6 +52,7 @@ ChromeLayout:
 	common|chrome/settings-advanced.yaml
 	common|chrome/settings-audio.yaml
 	common|chrome/settings-display.yaml
+	common|chrome/settings-gameplay.yaml
 	common|chrome/settings-hotkeys.yaml
 	common|chrome/settings-input.yaml
 	common|chrome/text-notifications.yaml
@@ -108,6 +110,7 @@ FluentMessages:
 	common|fluent/common.ftl
 	common|fluent/chrome.ftl
 	common|fluent/hotkeys.ftl
+	common|fluent/ingame-debug.ftl
 	common|fluent/rules.ftl
 	syw|fluent/mod.ftl
 	syw|fluent/chrome.ftl

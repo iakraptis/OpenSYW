@@ -1,5 +1,4 @@
 using OpenRA.Mods.Common.Traits;
-using OpenRA.Primitives;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Syw.Traits
@@ -27,11 +26,11 @@ namespace OpenRA.Mods.Syw.Traits
 				return;
 
 			var cell = self.Location;
-			self.World.AddFrameEndTask(w => w.CreateActor(info.Chest, new TypeDictionary
-			{
+			self.World.AddFrameEndTask(w => w.CreateActor(info.Chest,
+			[
 				new OwnerInit(w.WorldActor.Owner),
 				new LocationInit(cell),
-			}));
+			]));
 		}
 	}
 }

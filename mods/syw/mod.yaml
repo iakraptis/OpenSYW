@@ -43,10 +43,8 @@ ServerTraits:
 	SkirmishLogic
 	PlayerPinger
 	MasterServerPinger
-	LobbySettingsNotification
 
 MapGrid:
-	TileSize: 32, 32
 	Type: Rectangular
 
 # ShpTS: OpenRA's own C&C bits (e.g. apctur.shp) used by the local GDI benchmark.

@@ -15,11 +15,15 @@ namespace OpenRA.Mods.Syw.Orders
 	{
 		readonly Actor caster;
 		readonly Armament spell;
+
 		public SpellOrderGenerator(Actor caster, Armament spell)
+			: base(caster.World)
 		{
 			this.caster = caster;
 			this.spell = spell;
 		}
+
+		protected override MouseActionType ActionType => MouseActionType.SupportPower;
 
 		public bool CanCast => !caster.IsDead && !caster.Disposed && caster.IsInWorld &&
 			caster.Owner == caster.World.LocalPlayer && (caster.TraitOrDefault<ManualLightning>() is ManualLightning manual
@@ -34,10 +38,10 @@ namespace OpenRA.Mods.Syw.Orders
 		Actor TargetUnderMouse(World world, int2 worldPixel) => world.ScreenMap.ActorsAtMouse(worldPixel)
 			.Select(a => a.Actor).FirstOrDefault(ValidTarget);
 
-		// The base class only forwards left-button Down and right-button Up.
+		// The base class only forwards the action button's Down event and cancels on the cancel button itself.
 		protected override IEnumerable<Order> OrderInner(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
-			if (mi.Button == MouseButton.Right || !CanCast)
+			if (!CanCast)
 			{
 				world.CancelInputMode();
 				yield break;

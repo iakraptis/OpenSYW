@@ -9,7 +9,7 @@ kpeasant:
 		Filename: art/icons/units/peasant.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/peasant/walk.png
@@ -59,7 +59,7 @@ kbull:
 		Filename: art/icons/units/bull.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/bull/walk.png
@@ -108,7 +108,7 @@ kfootman:
 		Filename: art/icons/units/footman.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/footman/walk.png
@@ -145,7 +145,7 @@ karcher:
 		Filename: art/icons/units/archer.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/archer/walk.png
@@ -182,7 +182,7 @@ kgunner:
 		Filename: art/icons/units/gunner.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/gunner/walk.png
@@ -216,7 +216,7 @@ kcommander:
 		Filename: art/icons/units/commander.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/commander/walk.png
@@ -248,7 +248,7 @@ koccupier:
 		Filename: art/icons/units/occupier.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/occupier/walk.png
@@ -275,7 +275,7 @@ kmonk:
 		Filename: art/icons/units/monk.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/monk/walk.png
@@ -307,7 +307,7 @@ kshaman:
 		Filename: art/icons/units/shaman.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/shaman/walk.png
@@ -339,7 +339,7 @@ kminer:
 		Filename: art/icons/units/miner.png
 		Offset: 0,0
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	walk:
 		Filename: art/units/miner/walk.png

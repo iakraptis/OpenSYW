@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Activities;
 using OpenRA.Mods.Common.Traits;
-using OpenRA.Primitives;
 using OpenRA.Traits;
 
 namespace OpenRA.Mods.Syw.Traits
@@ -112,7 +111,7 @@ namespace OpenRA.Mods.Syw.Traits
 					var resources = owner.PlayerActor.Trait<PlayerResources>();
 					if (!resources.TakeCash(layer.Info.CreditCost)) return;
 					Mana(self).TakeAmmo(self, layer.Info.ManaCost);
-					construction = w.CreateActor(layer.Info.Mine, new TypeDictionary { new OwnerInit(owner), new LocationInit(cell) });
+					construction = w.CreateActor(layer.Info.Mine, [new OwnerInit(owner), new LocationInit(cell)]);
 				});
 			}
 
@@ -126,7 +125,7 @@ namespace OpenRA.Mods.Syw.Traits
 			readonly PaidMineLayer layer;
 			readonly CPos center;
 			readonly int orientation;
-			readonly List<Actor> constructions = new();
+			readonly List<Actor> constructions = [];
 			bool resolved;
 
 			public LayMineLine(PaidMineLayer layer, CPos center, int orientation)
@@ -155,7 +154,7 @@ namespace OpenRA.Mods.Syw.Traits
 
 					Mana(self).TakeAmmo(self, layer.LineManaCost);
 					foreach (var cell in layer.LineCells(center, orientation))
-						constructions.Add(w.CreateActor(layer.Info.Mine, new TypeDictionary { new OwnerInit(owner), new LocationInit(cell) }));
+						constructions.Add(w.CreateActor(layer.Info.Mine, [new OwnerInit(owner), new LocationInit(cell)]));
 				});
 			}
 

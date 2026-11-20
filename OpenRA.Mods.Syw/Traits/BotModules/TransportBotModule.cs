@@ -15,13 +15,13 @@ namespace OpenRA.Mods.Syw.Traits
 	public class TransportBotModuleInfo : ConditionalTraitInfo
 	{
 		[Desc("Ships that carry units. Unloaded from water next to the shore.")]
-		public readonly HashSet<string> NavalTransportTypes = new();
+		public readonly HashSet<string> NavalTransportTypes = [];
 
 		[Desc("Aircraft that carry units. Land to load and unload.")]
-		public readonly HashSet<string> AirTransportTypes = new();
+		public readonly HashSet<string> AirTransportTypes = [];
 
 		[Desc("Units the bot may send on a trip (idle ones near its base).")]
-		public readonly HashSet<string> PassengerTypes = new();
+		public readonly HashSet<string> PassengerTypes = [];
 
 		[Desc("Fewest idle soldiers worth a trip.")]
 		public readonly int MinimumPassengers = 4;
@@ -68,7 +68,7 @@ namespace OpenRA.Mods.Syw.Traits
 		Actor transport, target;
 		bool byAir;
 		CPos pickup, drop, pickupLand, dropLand;
-		List<Actor> passengers = new();
+		List<Actor> passengers = [];
 
 		public TransportBotModule(Actor self, TransportBotModuleInfo info)
 			: base(info)
@@ -132,6 +132,7 @@ namespace OpenRA.Mods.Syw.Traits
 					&& Info.PassengerTypes.Contains(a.Info.Name) && (a.Location - homeCell).LengthSquared <= 30 * 30
 					&& pathFinder.PathExistsForLocomotor(foot, a.Location, homeCell))
 				.ToList();
+
 			// Not IsIdle: an aircraft circling or waiting in the air always has an activity. Transports with soldiers
 			// still aboard (a trip that could not unload) are used too, and those soldiers join the next trip, so they
 			// are never stranded.
