@@ -17,6 +17,15 @@ to build walking, sailing or flying combat units which are used to defeat the en
 - Day and night (units see less at night) and rain showers.
 - The original art, voices and sound effects.
 
+## Screenshots
+
+![The main menu over the original title screen](docs/images/main_menu.png)
+
+<p>
+  <img src="docs/images/bridge_skirmish.png" width="49%" alt="Japanese and Korean troops fighting over a stone bridge">
+  <img src="docs/images/night_gathering.png" width="49%" alt="Workers gathering crops at night">
+</p>
+
 ## Playing (Windows)
 
 1. Download the latest `OpenSYW-<version>-x64.exe` installer (or the portable `.zip`) from the
