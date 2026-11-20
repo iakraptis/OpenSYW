@@ -108,3 +108,5 @@ The repository is based on the [OpenRA Mod SDK](https://github.com/OpenRA/OpenRA
 The OpenRA engine and SDK scripts are made available under the [GPLv3](https://github.com/OpenRA/OpenRA/blob/bleed/COPYING)
 license, and any executable code developed by a mod and loaded by the engine (i.e. custom mod DLLs, lua scripts) must
 be released under a compatible license.
+
+OpenSYW is released under the GPLv3 as well; see [COPYING](COPYING).
