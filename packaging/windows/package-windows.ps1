@@ -39,7 +39,7 @@ function Invoke-Checked([string]$exe, [string[]]$arguments) {
 	if ($LASTEXITCODE -ne 0) { throw "$exe failed with exit code $LASTEXITCODE" }
 }
 
-if (-not (Test-Path (Join-Path $engine 'OpenRA.sln'))) {
+if (-not (Test-Path (Join-Path $engine 'OpenRA.slnx'))) {
 	throw "Engine not found in $engine. Run make.cmd first."
 }
 
@@ -87,7 +87,7 @@ New-Item -ItemType Directory $build | Out-Null
 Step 'Building the engine (self-contained)'
 Push-Location $engine
 try {
-	Invoke-Checked dotnet @('publish', 'OpenRA.sln', '-c', 'Release', '-r', $platform, '--self-contained', 'true', '--nologo',
+	Invoke-Checked dotnet @('publish', 'OpenRA.slnx', '-c', 'Release', '-r', $platform, '--self-contained', 'true', '--nologo',
 		"-p:TargetPlatform=$platform", '-p:CopyGenericLauncher=False', "-p:CopyCncDll=$($config['PACKAGING_COPY_CNC_DLL'])",
 		"-p:CopyD2kDll=$($config['PACKAGING_COPY_D2K_DLL'])", "-p:PublishDir=$build\")
 }
