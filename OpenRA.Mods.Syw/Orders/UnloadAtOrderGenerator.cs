@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Graphics;
-using OpenRA.Mods.Common.Orders;
 using OpenRA.Mods.Syw.Traits;
 
 namespace OpenRA.Mods.Syw.Orders
 {
-	// The Unload button's targeting: click a cell with the action button and every transport with passengers that was
-	// selected goes there and unloads (shift queues it); the other button cancels.
+	// The Unload button's targeting: confirm a cell (see SywOrderGenerator for the buttons) and every transport with
+	// passengers that was selected goes there and unloads (shift queues it).
 	// The transports are remembered when the mode starts, because under the Classic mouse style the base class clears
 	// the selection.
-	public class UnloadAtOrderGenerator : OrderGenerator
+	public class UnloadAtOrderGenerator : SywOrderGenerator
 	{
 		Actor[] transports;
 
@@ -22,8 +21,6 @@ namespace OpenRA.Mods.Syw.Orders
 		{
 			this.transports = transports;
 		}
-
-		protected override MouseActionType ActionType => MouseActionType.SupportPower;
 
 		public static IEnumerable<Actor> Transports(World world) => world.Selection.Actors.Where(a => CanUnload(world, a));
 
