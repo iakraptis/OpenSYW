@@ -1,0 +1,27 @@
+# The original end-of-match screen (Victory! or Defeat!), loaded over the whole UI by GameOutcomeLogic when the local
+# player wins or loses. It blocks the game and the in-game menu below it until Continue (or Escape) closes it.
+Background@GAME_OUTCOME_SCREEN:
+	Logic: GameOutcomeScreenLogic
+	Width: WINDOW_WIDTH
+	Height: WINDOW_HEIGHT
+	Background:
+	Children:
+		ColorBlock@SHADE:
+			Width: WINDOW_WIDTH
+			Height: WINDOW_HEIGHT
+			Color: 000000A0
+		# The 400x300 original, doubled.
+		StretchedImage@PICTURE:
+			X: (WINDOW_WIDTH - WIDTH) / 2
+			Y: (WINDOW_HEIGHT - HEIGHT - 50) / 2
+			Width: 800
+			Height: 600
+			ImageCollection: game-outcome
+		Button@CONTINUE:
+			X: (WINDOW_WIDTH - WIDTH) / 2
+			Y: (WINDOW_HEIGHT + 600 - 50) / 2 + 15
+			Width: 160
+			Height: 35
+			Text: button-game-outcome-continue
+			Font: Bold
+			Key: escape

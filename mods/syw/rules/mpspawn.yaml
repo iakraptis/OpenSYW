@@ -1,5 +1,4 @@
 mpspawn:
-	AlwaysVisible:
 	Immobile:
 		OccupiesSpace: false
 	MapEditorData:

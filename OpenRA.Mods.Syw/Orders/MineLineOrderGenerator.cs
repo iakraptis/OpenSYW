@@ -11,8 +11,8 @@ using OpenRA.Widgets;
 namespace OpenRA.Mods.Syw.Orders
 {
 	// Minefield placement: a line of mines follows the cursor, outlined white where it can be laid and red where not.
-	// Tab or the mouse wheel rotates the line (horizontal, diagonal, vertical, other diagonal); left-click orders the
-	// Miner to walk to the middle cell and lay the line; right-click cancels.
+	// Tab or the mouse wheel rotates the line (horizontal, diagonal, vertical, other diagonal); confirming orders the
+	// Miner to walk to the middle cell and lay the line (see SywOrderGenerator for the buttons).
 	// Implements IOrderGenerator directly (not UnitOrderGenerator) so every click and key reaches it.
 	public class MineLineOrderGenerator : IOrderGenerator
 	{
@@ -37,6 +37,9 @@ namespace OpenRA.Mods.Syw.Orders
 			Orientation = ((Orientation + steps) % PaidMineLayer.Orientations + PaidMineLayer.Orientations) % PaidMineLayer.Orientations;
 		}
 
+		// Confirmed and cancelled like the other targeting modes, on the button's release (see SywOrderGenerator).
+		public MouseButton ActionButton => SywOrderGenerator.ConfirmButton;
+
 		public IEnumerable<Order> Order(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
 			if (mi.Event == MouseInputEvent.Scroll)
@@ -45,13 +48,16 @@ namespace OpenRA.Mods.Syw.Orders
 				yield break;
 			}
 
-			if (mi.Button == MouseButton.Right && mi.Event == MouseInputEvent.Up)
+			if (mi.Event != MouseInputEvent.Up)
+				yield break;
+
+			if (mi.Button == SywOrderGenerator.DismissButton)
 			{
 				world.CancelInputMode();
 				yield break;
 			}
 
-			if (mi.Button != MouseButton.Left || mi.Event != MouseInputEvent.Down || !CanPlace(cell))
+			if (mi.Button != ActionButton || !CanPlace(cell))
 				yield break;
 
 			world.CancelInputMode();

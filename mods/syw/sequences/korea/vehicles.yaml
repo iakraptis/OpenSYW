@@ -3,7 +3,7 @@
 
 kfirecar:
 	Defaults:
-		Offset: [0, -10, 10]
+		Offset: 0, -10
 		Scale: 0.85
 	idle:
 		Filename: art/units/firecar/body.png

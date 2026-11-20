@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace OpenRA.Mods.Syw.AssetInstaller
 {
-	// Menu and interface art: the title screen and sidebar (FST screens), the main menu fire loop (ani.anm) and the
+	// Menu and interface art: the title screen, sidebar and end-of-match screens (FST screens), the main menu fire loop (ani.anm) and the
 	// mouse cursors (syw.exe resources). Chrome images are uploaded whole as textures, so they are padded to
 	// power-of-two sizes.
 	public static class Chrome
@@ -68,8 +68,23 @@ namespace OpenRA.Mods.Syw.AssetInstaller
 			var doubled = Effects.ScaleNearest(sidebar, sidebar.Width * 2, sidebar.Height * 2);
 			c.WriteRgba("chrome/assets/sidebar.png", Pow2(doubled.Width), Pow2(doubled.Height), Opaque(doubled, c.Knight, Pow2(doubled.Width), Pow2(doubled.Height)));
 
+			Outcome(c);
 			MenuFire(c, title);
 			ExportCursors(c);
+		}
+
+		// The end-of-match screens (400x300 each, Knight.pal), stacked in a 512x1024 texture. chrome.yaml `game-outcome`
+		// slices them at these rows: WIN1 (a Korean turtle ship) 0, WIN2 (a fleet under red banners, used for Japan) 300,
+		// LOSE 600. Which side the original showed each victory screen to is unconfirmed.
+		static void Outcome(InstallContext c)
+		{
+			var screens = new[] { "fst/WIN1.FST", "fst/WIN2.FST", "fst/LOSE.FST" }.Select(f => Fst(c.Game.Read(f))).ToArray();
+			var sheet = new IndexedImage(screens.Max(s => s.Width), screens.Sum(s => s.Height));
+			for (int i = 0, y = 0; i < screens.Length; y += screens[i].Height, i++)
+				sheet.Paste(screens[i], 0, y);
+
+			int width = Pow2(sheet.Width), height = Pow2(sheet.Height);
+			c.WriteRgba("chrome/assets/outcome.png", width, height, Opaque(sheet, c.Knight, width, height));
 		}
 
 		static int Pow2(int n) => 1 << (int)Math.Ceiling(Math.Log2(n));

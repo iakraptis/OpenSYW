@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Graphics;
-using OpenRA.Mods.Common.Orders;
 using OpenRA.Mods.Syw.Traits;
 
 namespace OpenRA.Mods.Syw.Orders
 {
-	// Ground-target spell targeting (Witch Earthquake): left-click a visible cell, right-click cancels.
-	public class GroundSpellOrderGenerator : OrderGenerator
+	// Ground-target spell targeting (Witch Earthquake): confirm a visible cell (see SywOrderGenerator for the buttons).
+	public class GroundSpellOrderGenerator : SywOrderGenerator
 	{
 		readonly Actor caster;
 		readonly EarthquakeSpell spell;
 
 		public GroundSpellOrderGenerator(Actor caster)
+			: base(caster.World)
 		{
 			this.caster = caster;
 			spell = caster.Trait<EarthquakeSpell>();
@@ -24,7 +24,7 @@ namespace OpenRA.Mods.Syw.Orders
 
 		protected override IEnumerable<Order> OrderInner(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
-			if (mi.Button == MouseButton.Right || !CanCast)
+			if (!CanCast)
 			{
 				world.CancelInputMode();
 				yield break;

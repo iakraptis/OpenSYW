@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Graphics;
-using OpenRA.Mods.Common.Orders;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Syw.Traits;
 using OpenRA.Traits;
@@ -9,13 +8,15 @@ using OpenRA.Traits;
 namespace OpenRA.Mods.Syw.Orders
 {
 	// Target selection only: the synchronized stock Attack order handles casting and mana.
-	// Derives from OrderGenerator, not UnitOrderGenerator: the interaction controller treats a UnitOrderGenerator
-	// left-click as a selection click and cancels the input mode, so the cast order was never issued.
-	public class SpellOrderGenerator : OrderGenerator
+	// Not a UnitOrderGenerator: the interaction controller treats a UnitOrderGenerator left-click as a selection click
+	// and cancels the input mode, so under Classic the cast order was never issued.
+	public class SpellOrderGenerator : SywOrderGenerator
 	{
 		readonly Actor caster;
 		readonly Armament spell;
+
 		public SpellOrderGenerator(Actor caster, Armament spell)
+			: base(caster.World)
 		{
 			this.caster = caster;
 			this.spell = spell;
@@ -34,10 +35,9 @@ namespace OpenRA.Mods.Syw.Orders
 		Actor TargetUnderMouse(World world, int2 worldPixel) => world.ScreenMap.ActorsAtMouse(worldPixel)
 			.Select(a => a.Actor).FirstOrDefault(ValidTarget);
 
-		// The base class only forwards left-button Down and right-button Up.
 		protected override IEnumerable<Order> OrderInner(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
-			if (mi.Button == MouseButton.Right || !CanCast)
+			if (!CanCast)
 			{
 				world.CancelInputMode();
 				yield break;

@@ -14,8 +14,8 @@ namespace OpenRA.Mods.Syw.Traits
 		[Desc("Ticks between growth steps.")]
 		public readonly int Interval = 250;
 
-		[Desc("Density added to each depleted cell per growth step.")]
-		public readonly int Amount = 1;
+		[Desc("Density added to each depleted cell per growth step (at most 255).")]
+		public readonly byte Amount = 1;
 
 		[Desc("Growth speed in percent while the world's RainController reports rain (150 = half again as fast).")]
 		public readonly int RainGrowthPercent = 100;
@@ -45,7 +45,7 @@ namespace OpenRA.Mods.Syw.Traits
 			if (fields == null)
 			{
 				rain = self.TraitOrDefault<RainController>();
-				fields = new List<(CPos, int)>();
+				fields = [];
 				foreach (var cell in self.World.Map.AllCells)
 				{
 					var content = layer.GetResource(cell);
@@ -65,7 +65,7 @@ namespace OpenRA.Mods.Syw.Traits
 				if ((content.Type != null && content.Type != info.ResourceType) || content.Density >= density)
 					continue;
 
-				var amount = Math.Min(info.Amount, density - content.Density);
+				var amount = (byte)Math.Min(info.Amount, density - content.Density);
 				if (layer.CanAddResource(info.ResourceType, cell, amount))
 					layer.AddResource(info.ResourceType, cell, amount);
 			}

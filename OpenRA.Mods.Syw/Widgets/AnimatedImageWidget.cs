@@ -1,3 +1,4 @@
+using System.Numerics;
 using OpenRA.Graphics;
 using OpenRA.Widgets;
 
@@ -51,8 +52,8 @@ namespace OpenRA.Mods.Syw.Widgets
 				return;
 
 			var b = RenderBounds;
-			var scale = new float3((float)b.Width / SourceSize.X, (float)b.Height / SourceSize.Y, 1);
-			var pos = new float3(b.X, b.Bottom - sprite.Size.Y * scale.Y, 0);
+			var scale = new Vector3((float)b.Width / SourceSize.X, (float)b.Height / SourceSize.Y, 1);
+			var pos = new Vector3(b.X, b.Bottom - sprite.Size.Y * scale.Y, 0);
 			Game.Renderer.RgbaSpriteRenderer.DrawSprite(sprite, pos, scale);
 		}
 	}

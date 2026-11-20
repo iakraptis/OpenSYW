@@ -28,7 +28,7 @@ namespace OpenRA.Mods.Syw.Traits
 		public static CPos? LandCellBeside(World world, Actor building, Locomotor foot)
 		{
 			var footprint = building.TraitOrDefault<Building>()?.Info.Tiles(building.Location).ToHashSet()
-				?? new HashSet<CPos> { building.Location };
+				?? [building.Location];
 			return footprint.SelectMany(c => CVec.Directions.Select(d => c + d))
 				.Where(c => !footprint.Contains(c) && world.Map.Contains(c) && foot.MovementCostForCell(c) != PathGraph.MovementCostForUnreachableCell)
 				.Cast<CPos?>().FirstOrDefault();

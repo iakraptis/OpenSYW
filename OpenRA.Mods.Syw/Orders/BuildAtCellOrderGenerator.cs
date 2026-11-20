@@ -39,15 +39,21 @@ namespace OpenRA.Mods.Syw.Orders
 			buildingInfo = actorInfo.TraitInfo<BuildingInfo>();
 		}
 
+		// Confirmed and cancelled like the other targeting modes, on the button's release (see SywOrderGenerator).
+		MouseButton IOrderGenerator.ActionButton => SywOrderGenerator.ConfirmButton;
+
 		IEnumerable<Order> IOrderGenerator.Order(World world, CPos cell, int2 worldPixel, MouseInput mi)
 		{
-			if (mi.Button == MouseButton.Right && mi.Event == MouseInputEvent.Up)
+			if (mi.Event != MouseInputEvent.Up)
+				return Enumerable.Empty<Order>();
+
+			if (mi.Button == SywOrderGenerator.DismissButton)
 			{
 				world.CancelInputMode();
 				return Enumerable.Empty<Order>();
 			}
 
-			if (mi.Button != MouseButton.Left || mi.Event != MouseInputEvent.Down)
+			if (mi.Button != SywOrderGenerator.ConfirmButton)
 				return Enumerable.Empty<Order>();
 
 			if (builderActor.IsDead || builderActor.Disposed || !builderActor.IsInWorld)

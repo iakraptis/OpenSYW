@@ -12,6 +12,9 @@ button-command-unload =
     .tooltipdesc = Click the map: the transport goes there and unloads.
         Aircraft land first; ships unload at the nearest shore.
 
+## End of match
+button-game-outcome-continue = Continue
+
 ## Main menu
 label-mainmenu-title = OpenSYW
 

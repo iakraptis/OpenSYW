@@ -439,3 +439,12 @@ title-screen:
 	Image: chrome/assets/title.png
 	Regions:
 		title: 0, 0, 640, 480
+
+# Original end-of-match screens (FST WIN1, WIN2, LOSE, 400x300 each), stacked in a 512x1024 texture by the asset
+# installer (AssetInstaller/Chrome.cs Outcome). GameOutcomeScreenLogic picks one and shows it doubled.
+game-outcome:
+	Image: chrome/assets/outcome.png
+	Regions:
+		victory-korea: 0, 0, 400, 300
+		victory-japan: 0, 300, 400, 300
+		defeat: 0, 600, 400, 300
