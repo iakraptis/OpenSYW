@@ -43,10 +43,11 @@ Requirements:
 - The [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
 - Your own copy of Seven Years War.
 
-The OpenRA engine is downloaded automatically by the first build. Since 2026-11-20 it is upstream OpenRA `bleed`, pinned
-in `mod.config` to commit `4cc9a9f` (2026-11-17), since upstream has made no release after `release-20250330`. It will
-move to a tag on our fork [iakraptis/OpenRA](https://github.com/iakraptis/OpenRA) once the headless test mode and the
-agent bridge are published there.
+The OpenRA engine is downloaded automatically by the first build. Since 2026-11-21 it is branch `jmods` of our fork
+[iakraptis/OpenRA](https://github.com/iakraptis/OpenRA), pinned in `mod.config` to commit `9f29d43`: upstream OpenRA
+`bleed` `4cc9a9f` (2026-11-17; upstream has made no release after `release-20250330`) plus one pathfinding change
+shared with OpenPW. It will move to a tag on the fork once the headless test mode and the agent bridge are published
+there.
 
 1. Build the mod once: `make.cmd` (Windows) or `make` (Linux / macOS).
 2. Start the game with `launch-game.cmd` or `launch-game.sh`. On first launch it asks for the original game folder and
